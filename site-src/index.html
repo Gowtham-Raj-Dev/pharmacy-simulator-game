@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1f1d" />
+<meta name="description" content="RxShift — hospital pharmacy training simulator for new trainees. Play in the browser or install the Android app." />
+<title>RxShift Pharmacy Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Tamil:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1f1d; --bg2: #0f2b28; --card: #12332f; --line: #1f4a45;
+    --teal: #0fa596; --teal-d: #0b7f74; --teal-l: #7fe0d4; --ink: #e9f5f3; --ink2: #a9c4c0; --ink3: #7d9a96; --warn: #f2b33d;
+    --font: "Inter", "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: radial-gradient(1200px 600px at 80% -10%, #14504a 0%, transparent 60%), radial-gradient(900px 500px at -10% 110%, #103c37 0%, transparent 60%), var(--bg);
+    color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: calc(20px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom)); }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .cross { width: 40px; height: 40px; position: relative; flex: none; }
+  .cross::before, .cross::after { content: ''; position: absolute; background: linear-gradient(135deg, #3fe0c8, var(--teal)); border-radius: 7px; }
+  .cross::before { left: 13px; top: 0; width: 14px; height: 40px; }
+  .cross::after { left: 0; top: 13px; width: 40px; height: 14px; }
+  .logo h1 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+  .logo h1 span { color: var(--teal-l); }
+  .logo p { margin: 3px 0 0; font-size: 12px; color: var(--ink3); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+  .lang { display: inline-flex; gap: 2px; padding: 3px; border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid var(--line); }
+  .lang button { font: inherit; font-size: 13px; font-weight: 700; color: var(--ink2); background: none; border: 0; padding: 7px 12px; border-radius: 9px; cursor: pointer; min-height: 36px; }
+  .lang button.on { background: var(--teal); color: #fff; }
+
+  .hero { margin: 44px 0 28px; max-width: 680px; }
+  .hero h2 { margin: 0 0 10px; font-size: clamp(26px, 5vw, 40px); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; }
+  .hero p { margin: 0; color: var(--ink2); font-size: clamp(15px, 2.2vw, 17px); }
+
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .choice { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1.5px solid var(--line); border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 14px; position: relative; min-width: 0; }
+  .choice.rec { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(15,165,150,.14); }
+  .badge { position: absolute; top: -11px; left: 20px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; display: none; }
+  .choice.rec .badge { display: inline-block; }
+  .ic { width: 48px; height: 48px; border-radius: 14px; background: rgba(15,165,150,.16); color: var(--teal-l); display: grid; place-items: center; }
+  .choice h3 { margin: 0; font-size: 20px; font-weight: 800; }
+  .choice .sub { margin: 0; color: var(--ink2); font-size: 14.5px; }
+  .choice ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--ink2); }
+  .choice li { display: flex; gap: 8px; align-items: flex-start; }
+  .choice li::before { content: ''; flex: none; width: 6px; height: 6px; margin-top: 8px; border-radius: 50%; background: var(--teal); }
+  .btn { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 20px; border-radius: 16px; font: inherit; font-weight: 800; font-size: 16px; text-decoration: none; cursor: pointer; border: 0; transition: transform .1s, filter .15s; }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: linear-gradient(135deg, #14b8a6, var(--teal-d)); color: #fff; box-shadow: 0 8px 22px rgba(15,165,150,.35); }
+  .btn.secondary { background: #fff; color: #0b3d38; }
+  .btn:hover { filter: brightness(1.06); }
+  .btn small { font-weight: 600; opacity: .75; font-size: 13px; }
+  .btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+  .note { font-size: 12.5px; color: var(--ink3); margin: -4px 0 0; }
+
+  .soon { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 18px; border: 1.5px dashed var(--line); background: rgba(255,255,255,.02); min-width: 0; }
+  .soon .ic { width: 42px; height: 42px; border-radius: 12px; flex: none; color: var(--ink3); background: rgba(255,255,255,.05); }
+  .soon-text { flex: 1; min-width: 0; }
+  .soon h3 { margin: 0; font-size: 16px; font-weight: 800; color: var(--ink2); }
+  .soon h3 small { font-size: 12px; font-weight: 600; color: var(--ink3); margin-left: 6px; }
+  .soon p { margin: 2px 0 0; font-size: 13px; color: var(--ink3); }
+  .pill { flex: none; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--warn); background: rgba(242,179,61,.12); border: 1px solid rgba(242,179,61,.35); padding: 7px 12px; border-radius: 999px; white-space: nowrap; }
+  .steps { margin-top: 28px; background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+  .steps h4 { margin: 0 0 10px; font-size: 15px; }
+  .steps ol { margin: 0; padding-left: 20px; color: var(--ink2); font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+  .notice { margin-top: 18px; display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--ink3); }
+  .notice svg { flex: none; color: var(--warn); margin-top: 2px; }
+  footer { margin-top: 30px; font-size: 12px; color: var(--ink3); text-align: center; }
+
+  html:not([lang="en"]) [data-l="en"], html:not([lang="ta"]) [data-l="ta"] { display: none !important; }
+
+  /* ── desktop: everything on one screen (no page scroll), wider page ── */
+  @media (min-width: 1000px) and (min-height: 600px) {
+    html, body { height: 100%; }
+    .wrap { max-width: min(1600px, 94vw); min-height: 100vh; display: flex; flex-direction: column; padding: 22px 40px 14px; }
+    .main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(340px, 0.85fr) 1.6fr; grid-template-rows: auto auto auto; column-gap: 36px; row-gap: 16px;
+      grid-template-areas: 'hero choices' 'steps choices' 'notice choices'; align-items: start; align-content: center; padding: clamp(12px, 3vh, 36px) 0 8px; }
+    .hero { grid-area: hero; margin: 0; }
+    .hero h2 { font-size: clamp(28px, 2.6vw, 40px); overflow-wrap: anywhere; }
+    html[lang="ta"] .hero h2 { font-size: clamp(22px, 1.9vw, 30px); line-height: 1.3; }
+    html[lang="ta"] .hero p { font-size: 14.5px; }
+    html[lang="ta"] .steps ol { font-size: 12.5px; }
+    .choices { grid-area: choices; align-self: center; }
+    .choice .btn { margin-top: 8px; }
+    .choice { padding: clamp(18px, 2.4vh, 26px); gap: clamp(10px, 1.6vh, 16px); }
+    .steps { grid-area: steps; margin: 0; padding: 16px 18px; }
+    .steps ol { font-size: 13.5px; }
+    .notice { grid-area: notice; margin: 0; }
+    footer { margin-top: 0; }
+  }
+  @media (min-width: 1700px) and (min-height: 950px) {
+    body { font-size: 17px; }
+    .hero h2 { font-size: 46px; }
+    .hero p { font-size: 18px; }
+    .choice { padding: 32px; }
+    .choice h3 { font-size: 24px; }
+    .choice .sub, .choice ul { font-size: 16px; }
+    .btn { min-height: 60px; font-size: 18px; }
+    .steps ol { font-size: 15px; }
+  }
+  @media (min-width: 1000px) and (max-height: 760px) {
+    .wrap { padding-top: 14px; }
+    .hero p { font-size: 14.5px; }
+    .steps { padding: 12px 16px; }
+    .steps ol { gap: 2px; }
+    .choice ul { gap: 4px; font-size: 13.5px; }
+    .notice { font-size: 12px; }
+  }
+  @media (max-width: 720px) {
+    .soon { display: grid; grid-template-columns: auto 1fr; gap: 10px 14px; padding: 14px 16px; }
+    .soon .pill { grid-column: 1 / -1; justify-self: start; }
+    .choices { grid-template-columns: 1fr; }
+    .hero { margin: 30px 0 22px; }
+    .choice { padding: 18px; border-radius: 18px; }
+    .logo h1 { font-size: 22px; }
+    .logo p { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><div class="cross"></div><div><h1>Rx<span>Shift</span></h1><p>Pharmacy Training Simulator</p></div></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en">English</button>
+      <button type="button" data-set="ta">தமிழ்</button>
+    </div>
+  </header>
+
+  <main class="main">
+  <section class="hero">
+    <h2 data-l="en">Hospital pharmacy training for new trainees</h2>
+    <h2 data-l="ta">புதிய மருந்தகப் பயிற்சியாளர்களுக்கான மருத்துவமனைப் பயிற்சி</h2>
+    <p data-l="en">Patients walk in and describe their problem. You ask the right questions, pick the right medicine from real brands on the shelf, check safety, and learn when to refer to a doctor.</p>
+    <p data-l="ta">நோயாளிகள் வந்து தங்கள் பிரச்சனையைச் சொல்வார்கள். நீங்கள் சரியான கேள்விகளைக் கேட்டு, அலமாரியில் உள்ள உண்மையான பிராண்டுகளில் சரியான மருந்தைத் தேர்ந்தெடுத்து, பாதுகாப்பைச் சரிபார்த்து, எப்போது மருத்துவரிடம் அனுப்ப வேண்டும் என்று கற்றுக்கொள்வீர்கள்.</p>
+  </section>
+
+  <section class="choices" aria-label="How do you want to play?">
+    <article class="choice" id="c-web">
+      <span class="badge" data-l="en">Recommended for this device</span><span class="badge" data-l="ta">இந்தச் சாதனத்துக்குப் பரிந்துரை</span>
+      <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+      <h3 data-l="en">Play in browser</h3><h3 data-l="ta">பிரவுசரில் விளையாடு</h3>
+      <p class="sub" data-l="en">No install. Works on a computer, laptop, tablet or phone.</p>
+      <p class="sub" data-l="ta">நிறுவத் தேவையில்லை. கணினி, லேப்டாப், டேப்லெட் அல்லது போனில் இயங்கும்.</p>
+      <ul data-l="en"><li>Chrome, Edge or Safari (recent version)</li><li>First load downloads about 35 MB, then it is cached</li><li>Best voices: Microsoft Edge on Windows (English &amp; Tamil)</li></ul>
+      <ul data-l="ta"><li>Chrome, Edge அல்லது Safari (புதிய பதிப்பு)</li><li>முதல் முறை சுமார் 35 MB பதிவிறங்கும்; பிறகு சேமிக்கப்படும்</li><li>சிறந்த குரல்கள்: Windows-இல் Microsoft Edge (ஆங்கிலம் &amp; தமிழ்)</li></ul>
+      <a class="btn primary" href="./rxshift-sim/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span data-l="en">Play now</span><span data-l="ta">இப்போது விளையாடு</span>
+      </a>
+    </article>
+
+    <article class="choice" id="c-apk">
+      <span class="badge" data-l="en">Recommended for this device</span><span class="badge" data-l="ta">இந்தச் சாதனத்துக்குப் பரிந்துரை</span>
+      <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+      <h3 data-l="en">Download Android app</h3><h3 data-l="ta">Android ஆப் பதிவிறக்கு</h3>
+      <p class="sub" data-l="en">Install once and play offline: full screen, Tamil voice from the phone.</p>
+      <p class="sub" data-l="ta">ஒருமுறை நிறுவினால் இணையம் இல்லாமலும் விளையாடலாம்: முழுத் திரை, போனின் தமிழ் குரல்.</p>
+      <ul data-l="en"><li>Android 6.0 or newer</li><li>Works without internet after install</li><li>Not for iPhone. iPhone users: play in the browser</li></ul>
+      <ul data-l="ta"><li>Android 6.0 அல்லது அதற்குப் பிறகு</li><li>நிறுவிய பின் இணையம் இல்லாமலும் இயங்கும்</li><li>iPhone-க்கு இல்லை. iPhone பயனர்கள் பிரவுசரில் விளையாடுங்கள்</li></ul>
+      <a class="btn secondary" id="apk-link" href="./download/RxShift-Pharmacy-Sim.apk" download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        <span data-l="en">Download APK</span><span data-l="ta">APK பதிவிறக்கு</span>
+        <small id="apk-size"></small>
+      </a>
+      <p class="note" id="ios-note" hidden><span data-l="en">You are on an iPhone/iPad. The APK will not install here, so use Play in browser.</span><span data-l="ta">நீங்கள் iPhone/iPad-இல் இருக்கிறீர்கள். APK இங்கு நிறுவ முடியாது; பிரவுசரில் விளையாடுங்கள்.</span></p>
+    </article>
+
+    <article class="soon" id="c-desk" aria-disabled="true">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="soon-text">
+        <h3><span data-l="en">Desktop app</span><span data-l="ta">டெஸ்க்டாப் ஆப்</span> <small>Windows · macOS</small></h3>
+        <p data-l="en">Install on hospital training PCs and play offline. Until then, use Play in browser.</p>
+        <p data-l="ta">மருத்துவமனைப் பயிற்சிக் கணினிகளில் நிறுவி இணையம் இல்லாமல் விளையாடலாம். அதுவரை பிரவுசரில் விளையாடுங்கள்.</p>
+      </div>
+      <span class="pill"><span data-l="en">Coming soon</span><span data-l="ta">விரைவில் வருகிறது</span></span>
+    </article>
+  </section>
+
+  <section class="steps">
+    <h4 data-l="en">Installing the APK</h4><h4 data-l="ta">APK நிறுவுவது எப்படி</h4>
+    <ol data-l="en">
+      <li>Tap <b>Download APK</b> and open the file when it finishes.</li>
+      <li>If Android asks, allow <b>Install unknown apps</b> for your browser or file manager.</li>
+      <li>Tap <b>Install</b>, then open <b>RxShift Pharmacy Sim</b>.</li>
+      <li>For Tamil speech: Settings › Text-to-speech › Google › install <b>Tamil</b>.</li>
+    </ol>
+    <ol data-l="ta">
+      <li><b>APK பதிவிறக்கு</b> அழுத்தி, பதிவிறக்கம் முடிந்ததும் கோப்பைத் திறங்கள்.</li>
+      <li>Android கேட்டால், உங்கள் பிரவுசர் / File manager-க்கு <b>Install unknown apps</b> அனுமதி கொடுங்கள்.</li>
+      <li><b>Install</b> அழுத்தி, பிறகு <b>RxShift Pharmacy Sim</b> ஆப்பைத் திறங்கள்.</li>
+      <li>தமிழ் பேச்சுக்கு: Settings › Text-to-speech › Google › <b>Tamil</b> நிறுவுங்கள்.</li>
+    </ol>
+  </section>
+
+  <div class="notice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+    <span data-l="en">For training only. It does not diagnose or prescribe. In real practice, always follow the hospital formulary, local regulations and a qualified pharmacist or doctor.</span>
+    <span data-l="ta">பயிற்சிக்காக மட்டும். இது நோயறிதல் செய்யாது, மருந்து பரிந்துரைக்காது. நிஜப் பணியில் எப்போதும் மருத்துவமனை மருந்துப் பட்டியல், உள்ளூர் விதிமுறைகள், தகுதிவாய்ந்த மருந்தாளர் அல்லது மருத்துவரைப் பின்பற்றுங்கள்.</span>
+  </div>
+  </main>
+  <footer>RxShift Pharmacy Sim · Zrubix</footer>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('rx-site-lang'); } catch (e) {}
+    var lang = saved || (/^ta/i.test(navigator.language || '') ? 'ta' : 'en');
+    function setLang(l) {
+      root.lang = l;
+      document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.dataset.set === l); });
+      try { localStorage.setItem('rx-site-lang', l); } catch (e) {}
+    }
+    document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.set); }); });
+    setLang(lang);
+
+    // recommend: Android → APK, everything else → browser
+    var ua = navigator.userAgent || '';
+    var android = /Android/i.test(ua);
+    var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    document.getElementById(android ? 'c-apk' : 'c-web').classList.add('rec');
+    if (ios) { document.getElementById('ios-note').hidden = false; document.getElementById('apk-link').setAttribute('aria-disabled', 'true'); }
+
+    // APK size (filled in at build time; hide the button if no APK was published)
+    var size = '__APK_SIZE__';
+    if (size === '') { var a = document.getElementById('apk-link'); a.setAttribute('aria-disabled', 'true'); }
+    else if (size.indexOf('__') !== 0) document.getElementById('apk-size').textContent = '· ' + size;
+  })();
+</script>
+</body>
+</html>

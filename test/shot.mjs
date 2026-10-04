@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const [,, url, out, w='1280', h='720', waitMs='1200'] = process.argv;
+const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist'] });
+const page = await browser.newPage({ viewport: { width: +w, height: +h } });
+const logs = [];
+page.on('console', m => logs.push(m.type() + ': ' + m.text()));
+page.on('pageerror', e => logs.push('PAGEERROR: ' + e.message));
+await page.goto(url, { waitUntil: 'load' });
+await page.waitForTimeout(+waitMs);
+await page.screenshot({ path: out, timeout: 120000 });
+console.log(logs.slice(0, 30).join('\n'));
+await browser.close();

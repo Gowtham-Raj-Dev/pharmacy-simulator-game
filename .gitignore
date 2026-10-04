@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+android/app/build/
+android/.gradle/
+ios/App/App/public/
+
+# Release signing key: back it up separately, never commit
+*.jks
+*.keystore
+# Build outputs
+*.apk
+*.apk.idsig
+*.aab
+site/
+HospitalCharacterPack-12-people/
+test/*.png

@@ -1,0 +1,255 @@
+{
+ "S43": {
+  "title": "Bloody diarrhoea with fever",
+  "complaint": "I have bad diarrhoea. Can I get loperamide to stop it?",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "There's blood in the stool and I have a high fever. Severe cramps.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "I came back from a trip last week."
+  },
+  "learning": "Bloody diarrhoea and/or high fever are red flags. Antimotility drugs like loperamide should not be used; refer for medical assessment.",
+  "adviceOptions": [
+   "Blood in the stool with a high fever needs to be seen by a doctor today. Loperamide isn't suitable here. Keep sipping fluids or ORS on the way.",
+   "Loperamide will stop it — take double the dose.",
+   "Avoid all fluids until the diarrhoea stops."
+  ]
+ },
+ "S44": {
+  "title": "Antibiotics for a cold",
+  "complaint": "Just give me some antibiotics, I have a cold. I don't have time for a doctor.",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Runny nose, sore throat, mild temperature. No breathing difficulty, no ear pain, no severe throat pain.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Very busy at work."
+  },
+  "seeDoctor": "if you develop breathing difficulty, ear or severe throat pain, or symptoms last more than 10 days",
+  "learning": "Antibiotics do not work against viral infections like colds, and supplying prescription-only antibiotics without a prescription is unsafe and non-compliant. Offer symptomatic relief.",
+  "adviceOptions": [
+   "Colds are caused by viruses, so antibiotics won't help and need a prescription. Rest, fluids and symptom relief are best; see a doctor if you get breathing difficulty, ear pain or it lasts over 10 days.",
+   "I'll give you leftover antibiotics from another customer.",
+   "Antibiotics will make the cold go away in a day."
+  ]
+ },
+ "S45": {
+  "title": "Changing mole",
+  "complaint": "I have a mole on my back that's itchy. Can you give me a cream?",
+  "answers": {
+   "duration": "I noticed it changing over the last two months.",
+   "symptoms": "It's got bigger, the edge is irregular, it has two colours now and it bled once.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I had bad sunburns as a child.",
+   "lifestyle": "I work outdoors."
+  },
+  "learning": "Changes in a mole (asymmetry, irregular border, colour change, increasing size, bleeding) require prompt medical assessment for possible skin cancer.",
+  "adviceOptions": [
+   "A mole that's changing in size, shape or colour, or bleeding, should be checked by a doctor soon. A cream isn't appropriate until it has been assessed.",
+   "Use hydrocortisone cream on it for a month.",
+   "Try to remove it yourself at home."
+  ]
+ },
+ "S46": {
+  "title": "Non-healing diabetic foot wound",
+  "complaint": "I have a small sore on my foot. I need an antiseptic cream.",
+  "answers": {
+   "duration": "About two weeks — it isn't healing.",
+   "symptoms": "The skin around it is red and warm, and I can't feel my toes well.",
+   "allergies": "None.",
+   "meds": "Metformin and insulin.",
+   "history": "Type 2 diabetes for 15 years.",
+   "lifestyle": "I walk barefoot at home."
+  },
+  "learning": "Foot wounds in people with diabetes can deteriorate quickly due to poor circulation and reduced sensation. Refer promptly.",
+  "adviceOptions": [
+   "With diabetes, a foot wound that isn't healing and looks red needs to be seen by a doctor or foot clinic promptly — today if possible. Please don't rely on a cream alone.",
+   "Apply this antiseptic for a few more weeks and see.",
+   "Soak the foot in very hot water every day."
+  ]
+ },
+ "S47": {
+  "title": "Bee sting with throat swelling",
+  "complaint": "A bee stung me ten minutes ago. Can I get an antihistamine?",
+  "answers": {
+   "duration": "Ten minutes ago.",
+   "symptoms": "My lips are swelling, my throat feels tight and it's getting hard to breathe. I feel dizzy.",
+   "allergies": "I had a big reaction to a sting once before.",
+   "meds": "None.",
+   "history": "Asthma as a child.",
+   "lifestyle": "I was in the park."
+  },
+  "learning": "Swelling of the lips/throat, breathing difficulty or dizziness after a sting suggests anaphylaxis — call emergency services and use adrenaline if available. Antihistamines alone are not enough.",
+  "adviceOptions": [
+   "This looks like a severe allergic reaction (anaphylaxis). I'm calling emergency services now. If you carry an adrenaline auto-injector, use it immediately.",
+   "Take an antihistamine tablet and wait to see if it settles.",
+   "Put some calamine lotion on the sting."
+  ]
+ },
+ "S48": {
+  "title": "Heartburn with difficulty swallowing",
+  "complaint": "I need something for my heartburn. The usual antacids aren't working.",
+  "answers": {
+   "duration": "About three months now.",
+   "symptoms": "Food feels like it gets stuck when I swallow, and I've lost weight without trying.",
+   "allergies": "None.",
+   "meds": "I've been taking antacids every day.",
+   "history": "No diagnosis.",
+   "lifestyle": "I smoke."
+  },
+  "learning": "Alarm features with dyspepsia (difficulty swallowing, weight loss, vomiting, GI bleeding, persistent symptoms in older adults) require medical referral.",
+  "adviceOptions": [
+   "Difficulty swallowing and unexplained weight loss are alarm symptoms. You need to see a doctor soon for investigations rather than continue antacids.",
+   "Switch to a stronger antacid and keep taking it for a few more months.",
+   "Eat softer food and ignore it."
+  ]
+ },
+ "S49": {
+  "title": "Painful red eye with blurred vision",
+  "complaint": "My eye is red. Can I have some eye drops?",
+  "answers": {
+   "duration": "Since yesterday.",
+   "symptoms": "It's very painful, my vision is blurry in that eye, and light really hurts.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I wear contact lenses.",
+   "lifestyle": "I sometimes sleep with my lenses in."
+  },
+  "learning": "Red-eye red flags: pain, reduced vision, photophobia, contact-lens wear. These need urgent same-day eye assessment.",
+  "adviceOptions": [
+   "A painful red eye with blurred vision and light sensitivity — especially with contact lenses — needs urgent eye assessment today. Remove your lenses and go to an eye casualty or emergency department.",
+   "Use lubricant drops for a week and see.",
+   "Keep wearing your contact lenses to protect the eye."
+  ]
+ },
+ "S50": {
+  "title": "Asthma reliever not working",
+  "complaint": "I need a new inhaler, mine isn't working. I can't catch my breath.",
+  "answers": {
+   "duration": "It got worse over the last hour.",
+   "symptoms": "I'm very breathless, I can't finish sentences, and my lips look a bit blue. My reliever isn't helping.",
+   "allergies": "None.",
+   "meds": "Blue reliever inhaler — I've used it many times today.",
+   "history": "Asthma.",
+   "lifestyle": "Student."
+  },
+  "learning": "Inability to complete sentences, worsening breathlessness and poor response to a reliever indicate a severe asthma attack — an emergency.",
+  "adviceOptions": [
+   "This sounds like a severe asthma attack. I'm calling emergency services now. Sit upright, and keep using your reliever as your asthma plan directs while we wait.",
+   "Here's a cough syrup; go home and rest.",
+   "Come back tomorrow with a prescription."
+  ]
+ },
+ "S51": {
+  "title": "Valid metformin prescription",
+  "complaint": "I've been newly diagnosed with type 2 diabetes. Here is my prescription.",
+  "answers": {
+   "duration": "Diagnosed this week.",
+   "symptoms": "I feel fine now.",
+   "allergies": "No allergies.",
+   "meds": "No other medicines.",
+   "history": "Type 2 diabetes. My doctor checked my kidney function.",
+   "lifestyle": "I'm starting to exercise more."
+  },
+  "seeDoctor": "if you have persistent vomiting, severe stomach upset, or feel very unwell",
+  "learning": "For a valid prescription: verify the patient, prescriber, date, drug, strength and directions; check allergies and interactions, then counsel (metformin is taken with meals to reduce stomach upset).",
+  "rx": {
+   "drug": "Metformin 500 mg tablets",
+   "directions": "1 tablet twice daily with meals",
+   "doctor": "Dr. S. Iyer (Demo Clinic)"
+  }
+ },
+ "S52": {
+  "title": "Requested brand out of stock",
+  "complaint": "Can I get {BRAND}? It's for my hay fever.",
+  "answers": {
+   "duration": "Hay fever season — a few days.",
+   "symptoms": "Sneezing, runny nose. No wheeze.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Only hay fever.",
+   "lifestyle": "I take the bus to work."
+  },
+  "seeDoctor": "if you develop wheezing or breathlessness",
+  "learning": "When a requested brand is out of stock, a generic alternative with the same active ingredient, strength and dosage form can usually be offered (in line with local rules), explaining it to the customer."
+ },
+ "S53": {
+  "title": "Elderly customer — multiple medicines",
+  "complaint": "I have a cold. Give me your strongest cold and flu tablets.",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Blocked nose, aches, mild temperature. No breathlessness or chest pain.",
+   "allergies": "None.",
+   "meds": "Amlodipine, metformin and atorvastatin.",
+   "history": "High blood pressure and type 2 diabetes.",
+   "lifestyle": "I live alone."
+  },
+  "seeDoctor": "if you become breathless, develop chest pain or confusion, or don't improve within a week",
+  "learning": "Combination cold products often contain decongestants (raise blood pressure) and sedating antihistamines (falls risk in older adults). Choose single-ingredient options matched to symptoms."
+ },
+ "S54": {
+  "title": "Out-of-date prescription",
+  "complaint": "Can you fill this prescription? I didn't get it filled before.",
+  "answers": {
+   "duration": "The prescription is from earlier this year.",
+   "symptoms": "I have a sore throat again now.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Engineer."
+  },
+  "learning": "Prescriptions have a validity period and are written for a specific clinical situation. Out-of-date prescriptions must not be dispensed; refer to the prescriber.",
+  "adviceOptions": [
+   "This prescription is out of date and was written for a past illness. I can't dispense it — please see your doctor so your current symptoms can be assessed.",
+   "I'll dispense it since the drug name is still correct.",
+   "Take the antibiotics for just three days instead."
+  ],
+  "rx": {
+   "drug": "Amoxicillin 500 mg capsules",
+   "directions": "1 capsule three times daily for 7 days",
+   "doctor": "Dr. P. Menon (Demo Clinic)",
+   "issue": "Dated about 9 months ago — beyond a typical validity period"
+  }
+ },
+ "S55": {
+  "title": "Breathless smoker wants cough syrup",
+  "complaint": "My cough syrup isn't working. I need something stronger.",
+  "answers": {
+   "duration": "Two weeks — getting worse.",
+   "symptoms": "I'm more breathless than usual, my ankles are swollen, and I have to sleep propped up on pillows.",
+   "allergies": "None.",
+   "meds": "Blood pressure tablets.",
+   "history": "High blood pressure, heart attack 5 years ago.",
+   "lifestyle": "Ex-smoker."
+  },
+  "learning": "A cough with breathlessness, orthopnoea (needing to sleep propped up) and ankle swelling in someone with heart disease may indicate heart failure — refer promptly.",
+  "adviceOptions": [
+   "Breathlessness, ankle swelling and needing extra pillows with your heart history need a doctor's assessment today — a cough syrup won't treat the cause.",
+   "Here's a stronger cough syrup — use it for another week.",
+   "Drink more water and lie flat to rest."
+  ]
+ },
+ "S56": {
+  "title": "Valid prescription — check interactions",
+  "complaint": "My doctor started me on a cholesterol tablet. Here's the prescription.",
+  "answers": {
+   "duration": "Diagnosed last week.",
+   "symptoms": "No symptoms.",
+   "allergies": "None.",
+   "meds": "Amlodipine for blood pressure.",
+   "history": "High blood pressure. Not pregnant.",
+   "lifestyle": "I drink grapefruit juice every morning."
+  },
+  "seeDoctor": "if you get unexplained muscle pain, tenderness or weakness — and avoid large amounts of grapefruit juice",
+  "learning": "Dispense valid prescriptions after checks, and counsel: report unexplained muscle pain; avoid large quantities of grapefruit juice with atorvastatin.",
+  "rx": {
+   "drug": "Atorvastatin 10 mg tablets",
+   "directions": "1 tablet daily",
+   "doctor": "Dr. K. Bose (Demo Clinic)"
+  }
+ }
+}

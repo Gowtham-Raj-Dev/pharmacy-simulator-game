@@ -1,0 +1,8 @@
+# Keep LF everywhere so gradlew / shell scripts work on Linux CI
+* text=auto eol=lf
+*.bat text eol=crlf
+*.glb binary
+*.png binary
+*.webp binary
+*.jar binary
+*.jks binary

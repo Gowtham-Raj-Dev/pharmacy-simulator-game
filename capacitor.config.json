@@ -1,0 +1,17 @@
+{
+  "appId": "com.zrubix.rxshift",
+  "appName": "RxShift Pharmacy Sim",
+  "webDir": "dist",
+  "backgroundColor": "#0b1f1d",
+  "android": {
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false
+  },
+  "ios": {
+    "contentInset": "never",
+    "scrollEnabled": false
+  },
+  "plugins": {
+    "StatusBar": { "overlaysWebView": true, "style": "DARK" }
+  }
+}

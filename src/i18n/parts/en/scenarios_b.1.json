@@ -1,0 +1,238 @@
+{
+ "S29": {
+  "title": "Already taking a paracetamol combination",
+  "complaint": "I'm taking a cold and flu tablet but my headache is still there. Can I add some paracetamol?",
+  "answers": {
+   "duration": "Cold started two days ago.",
+   "symptoms": "Runny nose, mild headache, slight temperature. No stiff neck, rash or breathing problems.",
+   "allergies": "None.",
+   "meds": "A cold and flu combination tablet — the label says paracetamol, phenylephrine and chlorphenamine. Four times a day.",
+   "history": "Healthy.",
+   "lifestyle": "Desk job."
+  },
+  "seeDoctor": "if symptoms worsen or last more than a week",
+  "learning": "Duplicate ingredients are a common cause of accidental overdose. Many cold & flu products contain paracetamol — always check the full ingredient list.",
+  "adviceOptions": [
+   "Your cold tablet already contains paracetamol, so taking more could exceed the safe daily limit. Keep to the label dose, rest and drink fluids; see a doctor if you feel worse or it lasts beyond a week.",
+   "Paracetamol is very safe, so you can take extra tablets on top of the cold & flu product.",
+   "Double your cold & flu tablets for a day to clear the headache faster."
+  ]
+ },
+ "S30": {
+  "title": "Headache in pregnancy",
+  "complaint": "I have a headache. Can I take ibuprofen?",
+  "answers": {
+   "duration": "Since this afternoon.",
+   "symptoms": "Mild headache. No blurred vision or flashing lights, no sudden swelling of my face or hands, no tummy pain.",
+   "allergies": "No allergies.",
+   "meds": "Just pregnancy vitamins with folic acid.",
+   "history": "I'm 24 weeks pregnant. Otherwise healthy.",
+   "lifestyle": "I'm on maternity leave soon."
+  },
+  "seeDoctor": "and let your midwife know so your blood pressure can be checked — seek urgent care for a severe headache, visual disturbances, or sudden swelling of the face, hands or feet",
+  "learning": "NSAIDs such as ibuprofen are generally avoided in pregnancy unless prescribed. Paracetamol at the lowest effective dose is usually preferred. Severe headache with visual symptoms or swelling may signal pre-eclampsia."
+ },
+ "S31": {
+  "title": "Heartburn in pregnancy",
+  "complaint": "I get heartburn every evening. Is there something safe I can take?",
+  "answers": {
+   "duration": "A few weeks — it started in the third trimester.",
+   "symptoms": "Burning after meals and when lying down. No vomiting, no severe upper tummy pain, no headache or vision changes.",
+   "allergies": "None.",
+   "meds": "Pregnancy multivitamin.",
+   "history": "I'm 30 weeks pregnant.",
+   "lifestyle": "I eat late dinners."
+  },
+  "seeDoctor": "and mention it to your midwife; seek urgent care for severe upper abdominal pain, headache or vision changes",
+  "learning": "Heartburn is common in pregnancy; antacids and alginates are commonly used first-line. Acid-reducing tablets should be checked with the doctor."
+ },
+ "S32": {
+  "title": "Penicillin allergy — amoxicillin prescription",
+  "complaint": "Here's my prescription from the clinic. I need these antibiotics.",
+  "answers": {
+   "duration": "The doctor diagnosed a chest infection yesterday.",
+   "symptoms": "Cough with fever. No severe breathlessness.",
+   "allergies": "Yes — penicillin gives me a rash and swelling. I don't think I told the doctor.",
+   "meds": "Nothing else.",
+   "history": "No other conditions.",
+   "lifestyle": "I work in a bank."
+  },
+  "learning": "Always check allergies before dispensing, even with a valid prescription. A penicillin allergy means amoxicillin must not be given; contact the prescriber for an alternative.",
+  "adviceOptions": [
+   "Amoxicillin is a penicillin, and you've reacted to penicillin before. I can't dispense this safely — I'll contact your prescriber so they can choose a suitable alternative today.",
+   "It's a different brand, so the allergy won't matter. Take it as prescribed.",
+   "Take half the dose to reduce the chance of a reaction."
+  ],
+  "rx": {
+   "drug": "Amoxicillin 500 mg capsules",
+   "directions": "1 capsule three times daily for 5 days",
+   "doctor": "Dr. A. Rao (Demo Clinic)"
+  }
+ },
+ "S33": {
+  "title": "Elderly customer wants sleeping pills",
+  "complaint": "I can't sleep well these days. Give me some sleeping tablets.",
+  "answers": {
+   "duration": "A few weeks.",
+   "symptoms": "I wake up at night to pass urine and can't get back to sleep. No low mood, no pain, no breathing problems at night.",
+   "allergies": "None.",
+   "meds": "Tablets for my prostate and for blood pressure.",
+   "history": "Enlarged prostate and high blood pressure.",
+   "lifestyle": "I drink tea in the evening and nap in the afternoon."
+  },
+  "seeDoctor": "if poor sleep continues, or the night-time urination gets worse",
+  "learning": "Sedating antihistamines (e.g., diphenhydramine) are generally not recommended for older adults due to anticholinergic effects, confusion and falls risk. Address causes and sleep hygiene.",
+  "adviceOptions": [
+   "Sedating sleep aids can cause confusion, falls and urinary problems in older adults, especially with prostate issues. Let's try sleep-hygiene steps — less evening tea, shorter naps, a regular bedtime — and see your doctor if it continues, as the night-time urination should be reviewed.",
+   "Take two antihistamine sleep tablets every night; they're harmless.",
+   "Borrow a friend's prescription sleeping pills for a few nights."
+  ]
+ },
+ "S34": {
+  "title": "Knee pain — stomach ulcer history",
+  "complaint": "My knee aches after walking. I want some painkiller tablets.",
+  "answers": {
+   "duration": "On and off for months.",
+   "symptoms": "Aching knee after activity. No redness, no hot swollen joint, no injury, no fever.",
+   "allergies": "No allergies.",
+   "meds": "Nothing regular.",
+   "history": "I had a stomach ulcer that bled two years ago.",
+   "lifestyle": "I walk every morning."
+  },
+  "seeDoctor": "if the knee becomes hot, red and swollen, you can't bear weight, or the pain keeps getting worse",
+  "learning": "Oral NSAIDs and aspirin are avoided after a peptic ulcer/GI bleed. Paracetamol or a topical NSAID (low systemic exposure) are commonly considered instead."
+ },
+ "S35": {
+  "title": "Toothache — patient on lithium",
+  "complaint": "I have a toothache. Can I get ibuprofen until I see the dentist?",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Throbbing tooth. No facial swelling, no fever, no difficulty swallowing or opening my mouth.",
+   "allergies": "None.",
+   "meds": "I take lithium every day.",
+   "history": "Bipolar disorder — stable on lithium.",
+   "lifestyle": "Teacher."
+  },
+  "seeDoctor": "and book a dentist appointment soon — go urgently for facial swelling, fever or difficulty swallowing",
+  "learning": "NSAIDs can raise lithium levels and cause toxicity. Paracetamol is preferred, and dental pain needs a dentist."
+ },
+ "S36": {
+  "title": "Graze — iodine allergy",
+  "complaint": "I fell off my bike and scraped my elbow. I need something to clean it.",
+  "answers": {
+   "duration": "Half an hour ago.",
+   "symptoms": "Surface graze, a little gravel I've rinsed out. No deep cut, I can move my arm fine.",
+   "allergies": "Yes — I react to iodine.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Tetanus jab is up to date."
+  },
+  "seeDoctor": "if the wound shows signs of infection, or dirt can't be removed",
+  "learning": "Always ask about allergies before recommending antiseptics. Povidone-iodine should be avoided in people with iodine sensitivity."
+ },
+ "S37": {
+  "title": "Teenager with fever — aspirin request",
+  "complaint": "My 15-year-old daughter has a fever and body aches. Can I give her aspirin?",
+  "answers": {
+   "duration": "Since yesterday.",
+   "symptoms": "Fever 38.2 °C, body aches, sore throat. No rash, no stiff neck, she's drinking fluids.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "Healthy, no asthma.",
+   "lifestyle": "She has exams this week."
+  },
+  "seeDoctor": "if the fever lasts more than 3 days, or she develops a rash, stiff neck, severe sore throat with difficulty swallowing, or confusion",
+  "learning": "Aspirin is not given to anyone under 16 because of the risk of Reye's syndrome. Paracetamol or ibuprofen are suitable alternatives when there are no contraindications."
+ },
+ "S38": {
+  "title": "Child with cough",
+  "complaint": "My 4-year-old has a cough. Can I give her a cough suppressant syrup?",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Dry cough, runny nose. She's eating and playing. No breathing difficulty, no high fever, no wheeze.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Goes to nursery."
+  },
+  "seeDoctor": "if she has breathing difficulty, a high fever, or the cough lasts more than 3 weeks",
+  "learning": "Many OTC cough suppressants are not recommended for young children. Simple soothing remedies (e.g., honey for children over 1 year) and fluids are preferred.",
+  "adviceOptions": [
+   "For young children, cough suppressants aren't recommended. Warm drinks, honey (over age 1) and rest usually help; see a doctor if she has breathing difficulty, high fever or the cough lasts more than 3 weeks.",
+   "Give her an adult cough suppressant at half dose.",
+   "Antibiotics will stop the cough quickly."
+  ]
+ },
+ "S39": {
+  "title": "Chest pain disguised as indigestion",
+  "complaint": "I've got bad indigestion. Can I have an antacid?",
+  "answers": {
+   "duration": "It started about 30 minutes ago.",
+   "symptoms": "It's a heavy pressure in my chest spreading to my left arm and jaw. I feel sweaty and a bit sick.",
+   "allergies": "None.",
+   "meds": "Blood pressure tablets.",
+   "history": "High blood pressure, I smoke.",
+   "lifestyle": "I was climbing stairs when it started."
+  },
+  "learning": "Chest pressure spreading to the arm or jaw with sweating or nausea may indicate a heart attack. Call emergency services immediately — never treat as indigestion.",
+  "adviceOptions": [
+   "These symptoms could be a heart problem. Please sit down — I'm calling emergency services right now. This needs urgent hospital care, not an antacid.",
+   "Take this antacid and come back tomorrow if it hasn't settled.",
+   "Walk around a bit to see if the pain goes away."
+  ]
+ },
+ "S40": {
+  "title": "Sudden severe headache",
+  "complaint": "I need your strongest painkiller. My head is killing me.",
+  "answers": {
+   "duration": "It came on suddenly about an hour ago — like being hit on the head.",
+   "symptoms": "It's the worst headache of my life. My neck is stiff and I've vomited twice. Light hurts my eyes.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I don't usually get headaches.",
+   "lifestyle": "Office worker."
+  },
+  "learning": "A \"thunderclap\" (sudden, worst-ever) headache, especially with a stiff neck, vomiting or light sensitivity, is a medical emergency.",
+  "adviceOptions": [
+   "A sudden, severe headache with a stiff neck and vomiting needs emergency assessment. I'm calling an ambulance. Please lie down here while we wait, and don't take any painkillers in the meantime.",
+   "Take two strong painkillers and lie down in a dark room.",
+   "It's probably a migraine; come back if it happens again."
+  ]
+ },
+ "S41": {
+  "title": "Fever in a young infant",
+  "complaint": "My 2-month-old baby has a temperature. Can I get some infant paracetamol drops?",
+  "answers": {
+   "duration": "Since this morning.",
+   "symptoms": "His temperature is 38.4 °C. He's feeding less than usual and sleepier.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "He was born full-term, healthy.",
+   "lifestyle": "He had his first vaccines last week."
+  },
+  "learning": "Any infant under 3 months with a fever of 38 °C or higher must be urgently assessed by a doctor. Do not simply sell an antipyretic.",
+  "adviceOptions": [
+   "Babies under 3 months with a temperature of 38 °C or more need to be seen by a doctor urgently today. Please take him to a doctor or emergency department now.",
+   "Give the drops every 4 hours and wait a few days.",
+   "Wrap him in warm blankets to sweat out the fever."
+  ]
+ },
+ "S42": {
+  "title": "Persistent cough with weight loss",
+  "complaint": "I need a strong cough syrup. This cough just won't go away.",
+  "answers": {
+   "duration": "About four weeks now.",
+   "symptoms": "I've lost weight without trying, I sweat at night, and sometimes there's a little blood in my phlegm.",
+   "allergies": "None.",
+   "meds": "I tried two cough syrups already.",
+   "history": "No known conditions.",
+   "lifestyle": "I live in a crowded hostel."
+  },
+  "learning": "A cough lasting more than 2–3 weeks, especially with weight loss, night sweats or blood, requires medical evaluation (e.g., for tuberculosis or other serious causes).",
+  "adviceOptions": [
+   "A cough lasting this long with weight loss, night sweats and blood in the phlegm must be checked by a doctor promptly — it needs tests, not another cough syrup.",
+   "Try this stronger cough syrup for another two weeks.",
+   "It's probably just a smoker's cough; ignore it."
+  ]
+ }
+}

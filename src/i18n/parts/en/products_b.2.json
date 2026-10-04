@@ -1,0 +1,251 @@
+{
+ "levothyroxine": {
+  "generic": "Levothyroxine sodium",
+  "cls": "Thyroid hormone",
+  "use": "Prescription medicine used to treat an underactive thyroid (hypothyroidism).",
+  "warnings": [
+   "Take on an empty stomach, usually 30–60 minutes before breakfast.",
+   "Separate from calcium and iron supplements by about 4 hours."
+  ],
+  "symptoms": [
+   "thyroid"
+  ]
+ },
+ "salbutamol": {
+  "generic": "Salbutamol (Albuterol)",
+  "cls": "Short-acting bronchodilator (reliever inhaler)",
+  "use": "Prescription reliever inhaler used for quick relief of asthma symptoms (wheeze, breathlessness).",
+  "warnings": [
+   "Needing it more often than usual means asthma control should be reviewed.",
+   "Use with a spacer if advised.",
+   "Severe breathlessness not relieved by the inhaler is an emergency."
+  ],
+  "symptoms": [
+   "asthma",
+   "wheeze"
+  ]
+ },
+ "budesonide": {
+  "generic": "Budesonide",
+  "cls": "Inhaled corticosteroid (preventer)",
+  "use": "Prescription preventer inhaler used regularly to control airway inflammation in asthma.",
+  "warnings": [
+   "Use every day as prescribed, even when well.",
+   "Rinse mouth after use to reduce oral thrush."
+  ],
+  "symptoms": [
+   "asthma"
+  ]
+ },
+ "prednisolone": {
+  "generic": "Prednisolone",
+  "cls": "Oral corticosteroid",
+  "use": "Prescription steroid for various inflammatory conditions.",
+  "warnings": [
+   "Take with food in the morning as prescribed.",
+   "Do not stop longer courses abruptly."
+  ],
+  "symptoms": [
+   "inflammation"
+  ]
+ },
+ "warfarin": {
+  "generic": "Warfarin sodium",
+  "cls": "Anticoagulant",
+  "use": "Prescription anticoagulant used to prevent and treat blood clots.",
+  "warnings": [
+   "Regular INR blood tests required.",
+   "Many interactions: avoid NSAIDs/aspirin unless prescribed.",
+   "Report unusual bleeding or bruising."
+  ],
+  "symptoms": [
+   "blood clot"
+  ]
+ },
+ "clopidogrel": {
+  "generic": "Clopidogrel",
+  "cls": "Antiplatelet",
+  "use": "Prescription antiplatelet used to reduce the risk of heart attack and stroke in certain patients.",
+  "warnings": [
+   "Increases bleeding risk.",
+   "Do not stop without medical advice."
+  ],
+  "symptoms": [
+   "heart"
+  ]
+ },
+ "sertraline": {
+  "generic": "Sertraline",
+  "cls": "Antidepressant (SSRI)",
+  "use": "Prescription medicine used for depression and certain anxiety disorders.",
+  "warnings": [
+   "Takes a few weeks to work.",
+   "Do not stop suddenly.",
+   "Increased bleeding risk with NSAIDs."
+  ],
+  "symptoms": [
+   "depression"
+  ]
+ },
+ "codeineSyrup": {
+  "generic": "Codeine phosphate linctus",
+  "cls": "Opioid cough suppressant (controlled)",
+  "use": "Prescription-only cough suppressant in many countries; potential for misuse and dependence.",
+  "warnings": [
+   "Causes drowsiness and constipation.",
+   "Risk of dependence and misuse.",
+   "Not for children and certain groups."
+  ],
+  "symptoms": [
+   "dry cough"
+  ]
+ },
+ "ondansetron": {
+  "generic": "Ondansetron",
+  "cls": "Antiemetic",
+  "use": "Prescription medicine to prevent nausea and vomiting in certain situations.",
+  "warnings": [
+   "May cause constipation and headache."
+  ],
+  "symptoms": [
+   "nausea",
+   "vomiting"
+  ]
+ },
+ "albendazole": {
+  "generic": "Albendazole",
+  "cls": "Anthelmintic (deworming)",
+  "use": "Used to treat certain intestinal worm infections.",
+  "warnings": [
+   "Avoid in pregnancy.",
+   "Follow label/prescriber dose."
+  ],
+  "symptoms": [
+   "worms",
+   "threadworm"
+  ]
+ },
+ "mebendazole": {
+  "generic": "Mebendazole",
+  "cls": "Anthelmintic (deworming)",
+  "use": "Used to treat threadworm and certain other intestinal worm infections.",
+  "warnings": [
+   "Treat the whole household for threadworm and follow hygiene measures.",
+   "Not for children under 2 or in pregnancy without advice."
+  ],
+  "symptoms": [
+   "worms",
+   "threadworm",
+   "itchy bottom"
+  ]
+ },
+ "ssd": {
+  "generic": "Silver sulfadiazine 1%",
+  "cls": "Topical antibacterial (burns)",
+  "use": "Prescription cream used on certain burns to prevent infection.",
+  "warnings": [
+   "Avoid with sulfonamide (\"sulfa\") allergy.",
+   "Not for use in late pregnancy or newborns."
+  ],
+  "symptoms": [
+   "burn"
+  ]
+ },
+ "mupirocin": {
+  "generic": "Mupirocin 2%",
+  "cls": "Topical antibiotic",
+  "use": "Prescription topical antibiotic for certain localised bacterial skin infections.",
+  "warnings": [
+   "Use for the prescribed duration only (resistance risk)."
+  ],
+  "symptoms": [
+   "skin infection"
+  ]
+ },
+ "fusidic": {
+  "generic": "Fusidic acid 2%",
+  "cls": "Topical antibiotic",
+  "use": "Prescription topical antibiotic for certain localised skin infections.",
+  "warnings": [
+   "Short courses only (resistance risk)."
+  ],
+  "symptoms": [
+   "skin infection"
+  ]
+ },
+ "chloramphenicolEye": {
+  "generic": "Chloramphenicol 0.5% eye drops",
+  "cls": "Antibiotic eye drops",
+  "use": "Antibiotic eye drops for bacterial conjunctivitis (classification varies by country).",
+  "warnings": [
+   "Refer red, painful eye with blurred vision or light sensitivity urgently.",
+   "Discard after course/opening as per label."
+  ],
+  "symptoms": [
+   "red eye",
+   "sticky eye",
+   "conjunctivitis"
+  ]
+ },
+ "insulinHuman": {
+  "generic": "Human insulin (regular)",
+  "cls": "Insulin (short-acting)",
+  "use": "Prescription insulin used to control blood glucose in diabetes.",
+  "warnings": [
+   "Store unopened in fridge 2–8 °C; never freeze.",
+   "In-use vials/pens may be kept at room temperature for a limited time per label.",
+   "Hypoglycaemia risk — know the signs."
+  ],
+  "symptoms": [
+   "diabetes"
+  ]
+ },
+ "insulinGlargine": {
+  "generic": "Insulin glargine",
+  "cls": "Insulin (long-acting)",
+  "use": "Prescription long-acting (basal) insulin.",
+  "warnings": [
+   "Store unopened in fridge 2–8 °C; never freeze.",
+   "Do not mix with other insulins in the same syringe."
+  ],
+  "symptoms": [
+   "diabetes"
+  ]
+ },
+ "latanoprost": {
+  "generic": "Latanoprost 0.005% eye drops",
+  "cls": "Glaucoma eye drops (prostaglandin analogue)",
+  "use": "Prescription eye drops used to lower eye pressure in glaucoma.",
+  "warnings": [
+   "Unopened bottles refrigerated; after opening follow label (commonly room temperature up to 4 weeks).",
+   "May darken iris colour."
+  ],
+  "symptoms": [
+   "glaucoma"
+  ]
+ },
+ "tetanus": {
+  "generic": "Tetanus toxoid vaccine",
+  "cls": "Vaccine (administered by a health professional)",
+  "use": "Vaccine given by a qualified health professional to protect against tetanus.",
+  "warnings": [
+   "Maintain the cold chain 2–8 °C at all times; do not freeze.",
+   "Administered only by trained professionals."
+  ],
+  "symptoms": [
+   "tetanus",
+   "wound"
+  ]
+ },
+ "probioticCold": {
+  "generic": "Lactobacillus (refrigerated probiotic drops)",
+  "cls": "Probiotic supplement",
+  "use": "Dietary probiotic supplement that requires refrigeration.",
+  "warnings": [
+   "Keep refrigerated after purchase as per label."
+  ],
+  "symptoms": [
+   "digestive health"
+  ]
+ }
+}

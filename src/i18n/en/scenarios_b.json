@@ -1,0 +1,491 @@
+{
+ "S29": {
+  "title": "Already taking a paracetamol combination",
+  "complaint": "I'm taking a cold and flu tablet but my headache is still there. Can I add some paracetamol?",
+  "answers": {
+   "duration": "Cold started two days ago.",
+   "symptoms": "Runny nose, mild headache, slight temperature. No stiff neck, rash or breathing problems.",
+   "allergies": "None.",
+   "meds": "A cold and flu combination tablet — the label says paracetamol, phenylephrine and chlorphenamine. Four times a day.",
+   "history": "Healthy.",
+   "lifestyle": "Desk job."
+  },
+  "seeDoctor": "if symptoms worsen or last more than a week",
+  "learning": "Duplicate ingredients are a common cause of accidental overdose. Many cold & flu products contain paracetamol — always check the full ingredient list.",
+  "adviceOptions": [
+   "Your cold tablet already contains paracetamol, so taking more could exceed the safe daily limit. Keep to the label dose, rest and drink fluids; see a doctor if you feel worse or it lasts beyond a week.",
+   "Paracetamol is very safe, so you can take extra tablets on top of the cold & flu product.",
+   "Double your cold & flu tablets for a day to clear the headache faster."
+  ]
+ },
+ "S30": {
+  "title": "Headache in pregnancy",
+  "complaint": "I have a headache. Can I take ibuprofen?",
+  "answers": {
+   "duration": "Since this afternoon.",
+   "symptoms": "Mild headache. No blurred vision or flashing lights, no sudden swelling of my face or hands, no tummy pain.",
+   "allergies": "No allergies.",
+   "meds": "Just pregnancy vitamins with folic acid.",
+   "history": "I'm 24 weeks pregnant. Otherwise healthy.",
+   "lifestyle": "I'm on maternity leave soon."
+  },
+  "seeDoctor": "and let your midwife know so your blood pressure can be checked — seek urgent care for a severe headache, visual disturbances, or sudden swelling of the face, hands or feet",
+  "learning": "NSAIDs such as ibuprofen are generally avoided in pregnancy unless prescribed. Paracetamol at the lowest effective dose is usually preferred. Severe headache with visual symptoms or swelling may signal pre-eclampsia."
+ },
+ "S31": {
+  "title": "Heartburn in pregnancy",
+  "complaint": "I get heartburn every evening. Is there something safe I can take?",
+  "answers": {
+   "duration": "A few weeks — it started in the third trimester.",
+   "symptoms": "Burning after meals and when lying down. No vomiting, no severe upper tummy pain, no headache or vision changes.",
+   "allergies": "None.",
+   "meds": "Pregnancy multivitamin.",
+   "history": "I'm 30 weeks pregnant.",
+   "lifestyle": "I eat late dinners."
+  },
+  "seeDoctor": "and mention it to your midwife; seek urgent care for severe upper abdominal pain, headache or vision changes",
+  "learning": "Heartburn is common in pregnancy; antacids and alginates are commonly used first-line. Acid-reducing tablets should be checked with the doctor."
+ },
+ "S32": {
+  "title": "Penicillin allergy — amoxicillin prescription",
+  "complaint": "Here's my prescription from the clinic. I need these antibiotics.",
+  "answers": {
+   "duration": "The doctor diagnosed a chest infection yesterday.",
+   "symptoms": "Cough with fever. No severe breathlessness.",
+   "allergies": "Yes — penicillin gives me a rash and swelling. I don't think I told the doctor.",
+   "meds": "Nothing else.",
+   "history": "No other conditions.",
+   "lifestyle": "I work in a bank."
+  },
+  "learning": "Always check allergies before dispensing, even with a valid prescription. A penicillin allergy means amoxicillin must not be given; contact the prescriber for an alternative.",
+  "adviceOptions": [
+   "Amoxicillin is a penicillin, and you've reacted to penicillin before. I can't dispense this safely — I'll contact your prescriber so they can choose a suitable alternative today.",
+   "It's a different brand, so the allergy won't matter. Take it as prescribed.",
+   "Take half the dose to reduce the chance of a reaction."
+  ],
+  "rx": {
+   "drug": "Amoxicillin 500 mg capsules",
+   "directions": "1 capsule three times daily for 5 days",
+   "doctor": "Dr. A. Rao (Demo Clinic)"
+  }
+ },
+ "S33": {
+  "title": "Elderly customer wants sleeping pills",
+  "complaint": "I can't sleep well these days. Give me some sleeping tablets.",
+  "answers": {
+   "duration": "A few weeks.",
+   "symptoms": "I wake up at night to pass urine and can't get back to sleep. No low mood, no pain, no breathing problems at night.",
+   "allergies": "None.",
+   "meds": "Tablets for my prostate and for blood pressure.",
+   "history": "Enlarged prostate and high blood pressure.",
+   "lifestyle": "I drink tea in the evening and nap in the afternoon."
+  },
+  "seeDoctor": "if poor sleep continues, or the night-time urination gets worse",
+  "learning": "Sedating antihistamines (e.g., diphenhydramine) are generally not recommended for older adults due to anticholinergic effects, confusion and falls risk. Address causes and sleep hygiene.",
+  "adviceOptions": [
+   "Sedating sleep aids can cause confusion, falls and urinary problems in older adults, especially with prostate issues. Let's try sleep-hygiene steps — less evening tea, shorter naps, a regular bedtime — and see your doctor if it continues, as the night-time urination should be reviewed.",
+   "Take two antihistamine sleep tablets every night; they're harmless.",
+   "Borrow a friend's prescription sleeping pills for a few nights."
+  ]
+ },
+ "S34": {
+  "title": "Knee pain — stomach ulcer history",
+  "complaint": "My knee aches after walking. I want some painkiller tablets.",
+  "answers": {
+   "duration": "On and off for months.",
+   "symptoms": "Aching knee after activity. No redness, no hot swollen joint, no injury, no fever.",
+   "allergies": "No allergies.",
+   "meds": "Nothing regular.",
+   "history": "I had a stomach ulcer that bled two years ago.",
+   "lifestyle": "I walk every morning."
+  },
+  "seeDoctor": "if the knee becomes hot, red and swollen, you can't bear weight, or the pain keeps getting worse",
+  "learning": "Oral NSAIDs and aspirin are avoided after a peptic ulcer/GI bleed. Paracetamol or a topical NSAID (low systemic exposure) are commonly considered instead."
+ },
+ "S35": {
+  "title": "Toothache — patient on lithium",
+  "complaint": "I have a toothache. Can I get ibuprofen until I see the dentist?",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Throbbing tooth. No facial swelling, no fever, no difficulty swallowing or opening my mouth.",
+   "allergies": "None.",
+   "meds": "I take lithium every day.",
+   "history": "Bipolar disorder — stable on lithium.",
+   "lifestyle": "Teacher."
+  },
+  "seeDoctor": "and book a dentist appointment soon — go urgently for facial swelling, fever or difficulty swallowing",
+  "learning": "NSAIDs can raise lithium levels and cause toxicity. Paracetamol is preferred, and dental pain needs a dentist."
+ },
+ "S36": {
+  "title": "Graze — iodine allergy",
+  "complaint": "I fell off my bike and scraped my elbow. I need something to clean it.",
+  "answers": {
+   "duration": "Half an hour ago.",
+   "symptoms": "Surface graze, a little gravel I've rinsed out. No deep cut, I can move my arm fine.",
+   "allergies": "Yes — I react to iodine.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Tetanus jab is up to date."
+  },
+  "seeDoctor": "if the wound shows signs of infection, or dirt can't be removed",
+  "learning": "Always ask about allergies before recommending antiseptics. Povidone-iodine should be avoided in people with iodine sensitivity."
+ },
+ "S37": {
+  "title": "Teenager with fever — aspirin request",
+  "complaint": "My 15-year-old daughter has a fever and body aches. Can I give her aspirin?",
+  "answers": {
+   "duration": "Since yesterday.",
+   "symptoms": "Fever 38.2 °C, body aches, sore throat. No rash, no stiff neck, she's drinking fluids.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "Healthy, no asthma.",
+   "lifestyle": "She has exams this week."
+  },
+  "seeDoctor": "if the fever lasts more than 3 days, or she develops a rash, stiff neck, severe sore throat with difficulty swallowing, or confusion",
+  "learning": "Aspirin is not given to anyone under 16 because of the risk of Reye's syndrome. Paracetamol or ibuprofen are suitable alternatives when there are no contraindications."
+ },
+ "S38": {
+  "title": "Child with cough",
+  "complaint": "My 4-year-old has a cough. Can I give her a cough suppressant syrup?",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Dry cough, runny nose. She's eating and playing. No breathing difficulty, no high fever, no wheeze.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Goes to nursery."
+  },
+  "seeDoctor": "if she has breathing difficulty, a high fever, or the cough lasts more than 3 weeks",
+  "learning": "Many OTC cough suppressants are not recommended for young children. Simple soothing remedies (e.g., honey for children over 1 year) and fluids are preferred.",
+  "adviceOptions": [
+   "For young children, cough suppressants aren't recommended. Warm drinks, honey (over age 1) and rest usually help; see a doctor if she has breathing difficulty, high fever or the cough lasts more than 3 weeks.",
+   "Give her an adult cough suppressant at half dose.",
+   "Antibiotics will stop the cough quickly."
+  ]
+ },
+ "S39": {
+  "title": "Chest pain disguised as indigestion",
+  "complaint": "I've got bad indigestion. Can I have an antacid?",
+  "answers": {
+   "duration": "It started about 30 minutes ago.",
+   "symptoms": "It's a heavy pressure in my chest spreading to my left arm and jaw. I feel sweaty and a bit sick.",
+   "allergies": "None.",
+   "meds": "Blood pressure tablets.",
+   "history": "High blood pressure, I smoke.",
+   "lifestyle": "I was climbing stairs when it started."
+  },
+  "learning": "Chest pressure spreading to the arm or jaw with sweating or nausea may indicate a heart attack. Call emergency services immediately — never treat as indigestion.",
+  "adviceOptions": [
+   "These symptoms could be a heart problem. Please sit down — I'm calling emergency services right now. This needs urgent hospital care, not an antacid.",
+   "Take this antacid and come back tomorrow if it hasn't settled.",
+   "Walk around a bit to see if the pain goes away."
+  ]
+ },
+ "S40": {
+  "title": "Sudden severe headache",
+  "complaint": "I need your strongest painkiller. My head is killing me.",
+  "answers": {
+   "duration": "It came on suddenly about an hour ago — like being hit on the head.",
+   "symptoms": "It's the worst headache of my life. My neck is stiff and I've vomited twice. Light hurts my eyes.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I don't usually get headaches.",
+   "lifestyle": "Office worker."
+  },
+  "learning": "A \"thunderclap\" (sudden, worst-ever) headache, especially with a stiff neck, vomiting or light sensitivity, is a medical emergency.",
+  "adviceOptions": [
+   "A sudden, severe headache with a stiff neck and vomiting needs emergency assessment. I'm calling an ambulance. Please lie down here while we wait, and don't take any painkillers in the meantime.",
+   "Take two strong painkillers and lie down in a dark room.",
+   "It's probably a migraine; come back if it happens again."
+  ]
+ },
+ "S41": {
+  "title": "Fever in a young infant",
+  "complaint": "My 2-month-old baby has a temperature. Can I get some infant paracetamol drops?",
+  "answers": {
+   "duration": "Since this morning.",
+   "symptoms": "His temperature is 38.4 °C. He's feeding less than usual and sleepier.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "He was born full-term, healthy.",
+   "lifestyle": "He had his first vaccines last week."
+  },
+  "learning": "Any infant under 3 months with a fever of 38 °C or higher must be urgently assessed by a doctor. Do not simply sell an antipyretic.",
+  "adviceOptions": [
+   "Babies under 3 months with a temperature of 38 °C or more need to be seen by a doctor urgently today. Please take him to a doctor or emergency department now.",
+   "Give the drops every 4 hours and wait a few days.",
+   "Wrap him in warm blankets to sweat out the fever."
+  ]
+ },
+ "S42": {
+  "title": "Persistent cough with weight loss",
+  "complaint": "I need a strong cough syrup. This cough just won't go away.",
+  "answers": {
+   "duration": "About four weeks now.",
+   "symptoms": "I've lost weight without trying, I sweat at night, and sometimes there's a little blood in my phlegm.",
+   "allergies": "None.",
+   "meds": "I tried two cough syrups already.",
+   "history": "No known conditions.",
+   "lifestyle": "I live in a crowded hostel."
+  },
+  "learning": "A cough lasting more than 2–3 weeks, especially with weight loss, night sweats or blood, requires medical evaluation (e.g., for tuberculosis or other serious causes).",
+  "adviceOptions": [
+   "A cough lasting this long with weight loss, night sweats and blood in the phlegm must be checked by a doctor promptly — it needs tests, not another cough syrup.",
+   "Try this stronger cough syrup for another two weeks.",
+   "It's probably just a smoker's cough; ignore it."
+  ]
+ },
+ "S43": {
+  "title": "Bloody diarrhoea with fever",
+  "complaint": "I have bad diarrhoea. Can I get loperamide to stop it?",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "There's blood in the stool and I have a high fever. Severe cramps.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "I came back from a trip last week."
+  },
+  "learning": "Bloody diarrhoea and/or high fever are red flags. Antimotility drugs like loperamide should not be used; refer for medical assessment.",
+  "adviceOptions": [
+   "Blood in the stool with a high fever needs to be seen by a doctor today. Loperamide isn't suitable here. Keep sipping fluids or ORS on the way.",
+   "Loperamide will stop it — take double the dose.",
+   "Avoid all fluids until the diarrhoea stops."
+  ]
+ },
+ "S44": {
+  "title": "Antibiotics for a cold",
+  "complaint": "Just give me some antibiotics, I have a cold. I don't have time for a doctor.",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Runny nose, sore throat, mild temperature. No breathing difficulty, no ear pain, no severe throat pain.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Very busy at work."
+  },
+  "seeDoctor": "if you develop breathing difficulty, ear or severe throat pain, or symptoms last more than 10 days",
+  "learning": "Antibiotics do not work against viral infections like colds, and supplying prescription-only antibiotics without a prescription is unsafe and non-compliant. Offer symptomatic relief.",
+  "adviceOptions": [
+   "Colds are caused by viruses, so antibiotics won't help and need a prescription. Rest, fluids and symptom relief are best; see a doctor if you get breathing difficulty, ear pain or it lasts over 10 days.",
+   "I'll give you leftover antibiotics from another customer.",
+   "Antibiotics will make the cold go away in a day."
+  ]
+ },
+ "S45": {
+  "title": "Changing mole",
+  "complaint": "I have a mole on my back that's itchy. Can you give me a cream?",
+  "answers": {
+   "duration": "I noticed it changing over the last two months.",
+   "symptoms": "It's got bigger, the edge is irregular, it has two colours now and it bled once.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I had bad sunburns as a child.",
+   "lifestyle": "I work outdoors."
+  },
+  "learning": "Changes in a mole (asymmetry, irregular border, colour change, increasing size, bleeding) require prompt medical assessment for possible skin cancer.",
+  "adviceOptions": [
+   "A mole that's changing in size, shape or colour, or bleeding, should be checked by a doctor soon. A cream isn't appropriate until it has been assessed.",
+   "Use hydrocortisone cream on it for a month.",
+   "Try to remove it yourself at home."
+  ]
+ },
+ "S46": {
+  "title": "Non-healing diabetic foot wound",
+  "complaint": "I have a small sore on my foot. I need an antiseptic cream.",
+  "answers": {
+   "duration": "About two weeks — it isn't healing.",
+   "symptoms": "The skin around it is red and warm, and I can't feel my toes well.",
+   "allergies": "None.",
+   "meds": "Metformin and insulin.",
+   "history": "Type 2 diabetes for 15 years.",
+   "lifestyle": "I walk barefoot at home."
+  },
+  "learning": "Foot wounds in people with diabetes can deteriorate quickly due to poor circulation and reduced sensation. Refer promptly.",
+  "adviceOptions": [
+   "With diabetes, a foot wound that isn't healing and looks red needs to be seen by a doctor or foot clinic promptly — today if possible. Please don't rely on a cream alone.",
+   "Apply this antiseptic for a few more weeks and see.",
+   "Soak the foot in very hot water every day."
+  ]
+ },
+ "S47": {
+  "title": "Bee sting with throat swelling",
+  "complaint": "A bee stung me ten minutes ago. Can I get an antihistamine?",
+  "answers": {
+   "duration": "Ten minutes ago.",
+   "symptoms": "My lips are swelling, my throat feels tight and it's getting hard to breathe. I feel dizzy.",
+   "allergies": "I had a big reaction to a sting once before.",
+   "meds": "None.",
+   "history": "Asthma as a child.",
+   "lifestyle": "I was in the park."
+  },
+  "learning": "Swelling of the lips/throat, breathing difficulty or dizziness after a sting suggests anaphylaxis — call emergency services and use adrenaline if available. Antihistamines alone are not enough.",
+  "adviceOptions": [
+   "This looks like a severe allergic reaction (anaphylaxis). I'm calling emergency services now. If you carry an adrenaline auto-injector, use it immediately.",
+   "Take an antihistamine tablet and wait to see if it settles.",
+   "Put some calamine lotion on the sting."
+  ]
+ },
+ "S48": {
+  "title": "Heartburn with difficulty swallowing",
+  "complaint": "I need something for my heartburn. The usual antacids aren't working.",
+  "answers": {
+   "duration": "About three months now.",
+   "symptoms": "Food feels like it gets stuck when I swallow, and I've lost weight without trying.",
+   "allergies": "None.",
+   "meds": "I've been taking antacids every day.",
+   "history": "No diagnosis.",
+   "lifestyle": "I smoke."
+  },
+  "learning": "Alarm features with dyspepsia (difficulty swallowing, weight loss, vomiting, GI bleeding, persistent symptoms in older adults) require medical referral.",
+  "adviceOptions": [
+   "Difficulty swallowing and unexplained weight loss are alarm symptoms. You need to see a doctor soon for investigations rather than continue antacids.",
+   "Switch to a stronger antacid and keep taking it for a few more months.",
+   "Eat softer food and ignore it."
+  ]
+ },
+ "S49": {
+  "title": "Painful red eye with blurred vision",
+  "complaint": "My eye is red. Can I have some eye drops?",
+  "answers": {
+   "duration": "Since yesterday.",
+   "symptoms": "It's very painful, my vision is blurry in that eye, and light really hurts.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I wear contact lenses.",
+   "lifestyle": "I sometimes sleep with my lenses in."
+  },
+  "learning": "Red-eye red flags: pain, reduced vision, photophobia, contact-lens wear. These need urgent same-day eye assessment.",
+  "adviceOptions": [
+   "A painful red eye with blurred vision and light sensitivity — especially with contact lenses — needs urgent eye assessment today. Remove your lenses and go to an eye casualty or emergency department.",
+   "Use lubricant drops for a week and see.",
+   "Keep wearing your contact lenses to protect the eye."
+  ]
+ },
+ "S50": {
+  "title": "Asthma reliever not working",
+  "complaint": "I need a new inhaler, mine isn't working. I can't catch my breath.",
+  "answers": {
+   "duration": "It got worse over the last hour.",
+   "symptoms": "I'm very breathless, I can't finish sentences, and my lips look a bit blue. My reliever isn't helping.",
+   "allergies": "None.",
+   "meds": "Blue reliever inhaler — I've used it many times today.",
+   "history": "Asthma.",
+   "lifestyle": "Student."
+  },
+  "learning": "Inability to complete sentences, worsening breathlessness and poor response to a reliever indicate a severe asthma attack — an emergency.",
+  "adviceOptions": [
+   "This sounds like a severe asthma attack. I'm calling emergency services now. Sit upright, and keep using your reliever as your asthma plan directs while we wait.",
+   "Here's a cough syrup; go home and rest.",
+   "Come back tomorrow with a prescription."
+  ]
+ },
+ "S51": {
+  "title": "Valid metformin prescription",
+  "complaint": "I've been newly diagnosed with type 2 diabetes. Here is my prescription.",
+  "answers": {
+   "duration": "Diagnosed this week.",
+   "symptoms": "I feel fine now.",
+   "allergies": "No allergies.",
+   "meds": "No other medicines.",
+   "history": "Type 2 diabetes. My doctor checked my kidney function.",
+   "lifestyle": "I'm starting to exercise more."
+  },
+  "seeDoctor": "if you have persistent vomiting, severe stomach upset, or feel very unwell",
+  "learning": "For a valid prescription: verify the patient, prescriber, date, drug, strength and directions; check allergies and interactions, then counsel (metformin is taken with meals to reduce stomach upset).",
+  "rx": {
+   "drug": "Metformin 500 mg tablets",
+   "directions": "1 tablet twice daily with meals",
+   "doctor": "Dr. S. Iyer (Demo Clinic)"
+  }
+ },
+ "S52": {
+  "title": "Requested brand out of stock",
+  "complaint": "Can I get {BRAND}? It's for my hay fever.",
+  "answers": {
+   "duration": "Hay fever season — a few days.",
+   "symptoms": "Sneezing, runny nose. No wheeze.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Only hay fever.",
+   "lifestyle": "I take the bus to work."
+  },
+  "seeDoctor": "if you develop wheezing or breathlessness",
+  "learning": "When a requested brand is out of stock, a generic alternative with the same active ingredient, strength and dosage form can usually be offered (in line with local rules), explaining it to the customer."
+ },
+ "S53": {
+  "title": "Elderly customer — multiple medicines",
+  "complaint": "I have a cold. Give me your strongest cold and flu tablets.",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Blocked nose, aches, mild temperature. No breathlessness or chest pain.",
+   "allergies": "None.",
+   "meds": "Amlodipine, metformin and atorvastatin.",
+   "history": "High blood pressure and type 2 diabetes.",
+   "lifestyle": "I live alone."
+  },
+  "seeDoctor": "if you become breathless, develop chest pain or confusion, or don't improve within a week",
+  "learning": "Combination cold products often contain decongestants (raise blood pressure) and sedating antihistamines (falls risk in older adults). Choose single-ingredient options matched to symptoms."
+ },
+ "S54": {
+  "title": "Out-of-date prescription",
+  "complaint": "Can you fill this prescription? I didn't get it filled before.",
+  "answers": {
+   "duration": "The prescription is from earlier this year.",
+   "symptoms": "I have a sore throat again now.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "Engineer."
+  },
+  "learning": "Prescriptions have a validity period and are written for a specific clinical situation. Out-of-date prescriptions must not be dispensed; refer to the prescriber.",
+  "adviceOptions": [
+   "This prescription is out of date and was written for a past illness. I can't dispense it — please see your doctor so your current symptoms can be assessed.",
+   "I'll dispense it since the drug name is still correct.",
+   "Take the antibiotics for just three days instead."
+  ],
+  "rx": {
+   "drug": "Amoxicillin 500 mg capsules",
+   "directions": "1 capsule three times daily for 7 days",
+   "doctor": "Dr. P. Menon (Demo Clinic)",
+   "issue": "Dated about 9 months ago — beyond a typical validity period"
+  }
+ },
+ "S55": {
+  "title": "Breathless smoker wants cough syrup",
+  "complaint": "My cough syrup isn't working. I need something stronger.",
+  "answers": {
+   "duration": "Two weeks — getting worse.",
+   "symptoms": "I'm more breathless than usual, my ankles are swollen, and I have to sleep propped up on pillows.",
+   "allergies": "None.",
+   "meds": "Blood pressure tablets.",
+   "history": "High blood pressure, heart attack 5 years ago.",
+   "lifestyle": "Ex-smoker."
+  },
+  "learning": "A cough with breathlessness, orthopnoea (needing to sleep propped up) and ankle swelling in someone with heart disease may indicate heart failure — refer promptly.",
+  "adviceOptions": [
+   "Breathlessness, ankle swelling and needing extra pillows with your heart history need a doctor's assessment today — a cough syrup won't treat the cause.",
+   "Here's a stronger cough syrup — use it for another week.",
+   "Drink more water and lie flat to rest."
+  ]
+ },
+ "S56": {
+  "title": "Valid prescription — check interactions",
+  "complaint": "My doctor started me on a cholesterol tablet. Here's the prescription.",
+  "answers": {
+   "duration": "Diagnosed last week.",
+   "symptoms": "No symptoms.",
+   "allergies": "None.",
+   "meds": "Amlodipine for blood pressure.",
+   "history": "High blood pressure. Not pregnant.",
+   "lifestyle": "I drink grapefruit juice every morning."
+  },
+  "seeDoctor": "if you get unexplained muscle pain, tenderness or weakness — and avoid large amounts of grapefruit juice",
+  "learning": "Dispense valid prescriptions after checks, and counsel: report unexplained muscle pain; avoid large quantities of grapefruit juice with atorvastatin.",
+  "rx": {
+   "drug": "Atorvastatin 10 mg tablets",
+   "directions": "1 tablet daily",
+   "doctor": "Dr. K. Bose (Demo Clinic)"
+  }
+ }
+}

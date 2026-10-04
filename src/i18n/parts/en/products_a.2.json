@@ -1,0 +1,441 @@
+{
+ "menthol": {
+  "generic": "Menthol + Eucalyptus oil",
+  "cls": "Aromatic inhalant / Chest rub",
+  "use": "Used as a steam inhalation or rub to help relieve the feeling of a blocked nose.",
+  "warnings": [
+   "Not for children under 2.",
+   "For external use / inhalation only; do not swallow.",
+   "Keep away from eyes."
+  ],
+  "symptoms": [
+   "blocked nose",
+   "nasal congestion",
+   "cold"
+  ]
+ },
+ "dimenhydrinate": {
+  "generic": "Dimenhydrinate",
+  "cls": "Antihistamine for motion sickness",
+  "use": "Used to prevent and relieve travel (motion) sickness.",
+  "warnings": [
+   "Causes drowsiness — do not drive.",
+   "Take before travel as per label.",
+   "Caution in glaucoma, prostate problems, older adults."
+  ],
+  "symptoms": [
+   "travel sickness",
+   "motion sickness",
+   "nausea"
+  ]
+ },
+ "nicotine": {
+  "generic": "Nicotine (replacement therapy)",
+  "cls": "Smoking-cessation aid (NRT)",
+  "use": "Used to reduce nicotine withdrawal symptoms and cravings when quitting smoking.",
+  "warnings": [
+   "Seek advice in pregnancy, recent heart attack/stroke or unstable heart disease.",
+   "Use the \"chew and park\" technique for gum.",
+   "Combine with behavioural support for best results."
+  ],
+  "symptoms": [
+   "smoking",
+   "quit smoking",
+   "nicotine"
+  ]
+ },
+ "chlorhexMouth": {
+  "generic": "Chlorhexidine gluconate 0.2% mouthwash",
+  "cls": "Antiseptic mouthwash",
+  "use": "Used as an antiseptic mouth rinse, e.g., for mouth ulcers or gum inflammation.",
+  "warnings": [
+   "Do not swallow.",
+   "May temporarily stain teeth and alter taste.",
+   "Mouth ulcers lasting more than 3 weeks must be referred."
+  ],
+  "symptoms": [
+   "mouth ulcer",
+   "gum",
+   "bad breath",
+   "sore gums"
+  ]
+ },
+ "lidoGel": {
+  "generic": "Lidocaine 2% oral gel",
+  "cls": "Local anaesthetic (oral)",
+  "use": "Used for temporary numbing relief of painful mouth ulcers in adults.",
+  "warnings": [
+   "Not for teething infants or young children.",
+   "Avoid eating or drinking hot food until numbness wears off.",
+   "Refer ulcers lasting > 3 weeks or recurrent unexplained ulcers."
+  ],
+  "symptoms": [
+   "mouth ulcer",
+   "canker sore"
+  ]
+ },
+ "clotrimazole": {
+  "generic": "Clotrimazole 1%",
+  "cls": "Antifungal (topical)",
+  "use": "Used for fungal skin infections such as athlete's foot, ringworm and fungal groin rash.",
+  "warnings": [
+   "Continue for about 2 weeks after symptoms clear (as per label).",
+   "Keep the area clean and dry.",
+   "Refer nail infections, widespread infection, or diabetic foot problems."
+  ],
+  "symptoms": [
+   "athlete's foot",
+   "fungal infection",
+   "ringworm",
+   "itchy feet",
+   "jock itch"
+  ]
+ },
+ "terbinafine": {
+  "generic": "Terbinafine hydrochloride 1%",
+  "cls": "Antifungal (topical)",
+  "use": "Used for athlete's foot and other fungal skin infections.",
+  "warnings": [
+   "For external use only.",
+   "Check label age limits.",
+   "Refer nail or widespread infections."
+  ],
+  "symptoms": [
+   "athlete's foot",
+   "fungal infection",
+   "ringworm"
+  ]
+ },
+ "hydrocortisone": {
+  "generic": "Hydrocortisone 1%",
+  "cls": "Mild topical corticosteroid",
+  "use": "Used short-term for mild inflammatory skin conditions such as irritant dermatitis and insect bite reactions.",
+  "warnings": [
+   "Do not use on the face, broken or infected skin unless advised.",
+   "Short courses only (as per label).",
+   "Children: use only on medical advice."
+  ],
+  "symptoms": [
+   "itching",
+   "eczema",
+   "dermatitis",
+   "insect bite",
+   "rash"
+  ]
+ },
+ "calamine": {
+  "generic": "Calamine (Zinc carbonate/Zinc oxide) lotion",
+  "cls": "Soothing / Anti-itch",
+  "use": "Used to soothe itchy or irritated skin, e.g., mild rashes, insect bites and mild sunburn.",
+  "warnings": [
+   "For external use only.",
+   "Shake well before use."
+  ],
+  "symptoms": [
+   "itching",
+   "insect bite",
+   "sunburn",
+   "rash",
+   "chickenpox itch"
+  ]
+ },
+ "aloe": {
+  "generic": "Aloe vera gel (after-sun, cosmetic)",
+  "cls": "Skin soothing (cosmetic)",
+  "use": "Used as a cooling, moisturising after-sun gel for mild sunburned skin.",
+  "warnings": [
+   "Cosmetic product — not a treatment for severe burns or blistering.",
+   "Seek help for extensive sunburn with fever, chills or blistering."
+  ],
+  "symptoms": [
+   "sunburn",
+   "dry skin"
+  ]
+ },
+ "emollient": {
+  "generic": "Light liquid paraffin + White soft paraffin",
+  "cls": "Emollient (moisturiser)",
+  "use": "Used to moisturise and protect dry, scaly skin (e.g., dry skin, eczema care).",
+  "warnings": [
+   "Fire hazard: paraffin-based emollients can soak into clothing/bedding — keep away from flames.",
+   "Apply frequently and generously."
+  ],
+  "symptoms": [
+   "dry skin",
+   "eczema",
+   "cracked skin",
+   "chapped hands"
+  ]
+ },
+ "urea": {
+  "generic": "Urea 10%",
+  "cls": "Emollient / Keratolytic",
+  "use": "Used to moisturise very dry, rough or thickened skin.",
+  "warnings": [
+   "May sting on broken skin.",
+   "For external use only."
+  ],
+  "symptoms": [
+   "dry skin",
+   "cracked heels",
+   "rough skin"
+  ]
+ },
+ "diclofenacGel": {
+  "generic": "Diclofenac diethylamine 1.16% (topical)",
+  "cls": "Topical NSAID",
+  "use": "Used for local relief of muscle and joint pain, sprains and strains.",
+  "warnings": [
+   "Do not apply to broken skin.",
+   "Do not use with NSAID/aspirin allergy or asthma triggered by aspirin/NSAIDs.",
+   "Avoid in the last trimester of pregnancy.",
+   "Wash hands after use."
+  ],
+  "symptoms": [
+   "sprain",
+   "muscle pain",
+   "back pain",
+   "joint pain",
+   "strain"
+  ]
+ },
+ "salicylateRub": {
+  "generic": "Methyl salicylate + Menthol (rub)",
+  "cls": "Counter-irritant pain rub",
+  "use": "Used for temporary relief of minor muscle aches.",
+  "warnings": [
+   "Contains a salicylate — avoid with aspirin/NSAID allergy.",
+   "Do not apply to broken skin or use with heat pads.",
+   "Not for young children."
+  ],
+  "symptoms": [
+   "muscle pain",
+   "back pain",
+   "stiffness"
+  ]
+ },
+ "benzoyl": {
+  "generic": "Benzoyl peroxide",
+  "cls": "Topical acne treatment",
+  "use": "Used for mild to moderate acne.",
+  "warnings": [
+   "May cause dryness and irritation — start with lower strength.",
+   "Can bleach hair and fabrics.",
+   "Avoid eyes and lips."
+  ],
+  "symptoms": [
+   "acne",
+   "pimples",
+   "spots"
+  ]
+ },
+ "sunscreen": {
+  "generic": "Broad-spectrum sunscreen SPF 50",
+  "cls": "Sun protection",
+  "use": "Used to help protect skin from UV radiation (SPF indicates UVB protection; look for UVA rating too).",
+  "warnings": [
+   "Apply generously and reapply every 2 hours and after swimming.",
+   "Babies under 6 months should be kept out of direct sun."
+  ],
+  "symptoms": [
+   "sun protection",
+   "sunburn prevention"
+  ]
+ },
+ "permethrin": {
+  "generic": "Permethrin",
+  "cls": "Topical antiparasitic (scabies/head lice)",
+  "use": "Used to treat scabies (5% cream) and head lice (1% lotion).",
+  "warnings": [
+   "Follow label application time precisely.",
+   "Close contacts may need treatment at the same time (scabies).",
+   "Seek advice for infants and in pregnancy."
+  ],
+  "symptoms": [
+   "head lice",
+   "lice",
+   "scabies",
+   "itching at night"
+  ]
+ },
+ "dimeticone": {
+  "generic": "Dimeticone 4%",
+  "cls": "Physical head-lice treatment",
+  "use": "Used to treat head lice by coating and suffocating lice.",
+  "warnings": [
+   "Repeat after 7 days as per label.",
+   "Flammable until dry — keep away from flames.",
+   "Check all family members."
+  ],
+  "symptoms": [
+   "head lice",
+   "lice",
+   "nits"
+  ]
+ },
+ "ketoShampoo": {
+  "generic": "Ketoconazole 2% shampoo",
+  "cls": "Antifungal shampoo",
+  "use": "Used for dandruff and seborrhoeic dermatitis of the scalp.",
+  "warnings": [
+   "Leave on scalp for the time stated on the label before rinsing.",
+   "Avoid contact with eyes."
+  ],
+  "symptoms": [
+   "dandruff",
+   "itchy scalp",
+   "flaky scalp"
+  ]
+ },
+ "iodine": {
+  "generic": "Povidone-iodine",
+  "cls": "Antiseptic",
+  "use": "Used to clean minor cuts, scrapes and wounds to reduce the risk of infection.",
+  "warnings": [
+   "Avoid with iodine allergy or thyroid disorders.",
+   "Avoid prolonged use in pregnancy, breastfeeding and newborns.",
+   "Deep, dirty or large wounds need medical care."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "graze"
+  ]
+ },
+ "chlorhexAntiseptic": {
+  "generic": "Chlorhexidine gluconate + Cetrimide",
+  "cls": "Antiseptic",
+  "use": "Used for cleansing minor cuts, grazes and skin before first aid dressing.",
+  "warnings": [
+   "For external use only.",
+   "Avoid eyes and ears.",
+   "Seek medical care for animal bites, deep or dirty wounds."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "graze"
+  ]
+ },
+ "plaster": {
+  "generic": "Adhesive bandage strips (assorted)",
+  "cls": "Wound dressing",
+  "use": "Used to cover and protect minor cuts and grazes.",
+  "warnings": [
+   "Clean the wound before applying.",
+   "Change daily or if wet/dirty.",
+   "Check for adhesive sensitivity."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "blister"
+  ]
+ },
+ "gauze": {
+  "generic": "Sterile gauze swabs",
+  "cls": "Wound dressing",
+  "use": "Used to clean and cover wounds and to apply pressure to stop minor bleeding.",
+  "warnings": [
+   "Single use; keep sterile until use.",
+   "Uncontrolled bleeding is an emergency."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "bleeding"
+  ]
+ },
+ "crepe": {
+  "generic": "Elastic crepe bandage",
+  "cls": "Support bandage",
+  "use": "Used to provide light support and compression for minor sprains and strains.",
+  "warnings": [
+   "Do not wrap too tightly — check circulation (numbness, tingling, colour change).",
+   "Remove at night unless advised."
+  ],
+  "symptoms": [
+   "sprain",
+   "strain",
+   "twisted ankle"
+  ]
+ },
+ "cotton": {
+  "generic": "Absorbent cotton wool",
+  "cls": "First-aid consumable",
+  "use": "Used for cleaning skin and applying lotions.",
+  "warnings": [
+   "Do not leave fibres in open wounds."
+  ],
+  "symptoms": [
+   "cleaning",
+   "first aid"
+  ]
+ },
+ "tape": {
+  "generic": "Microporous surgical tape",
+  "cls": "First-aid consumable",
+  "use": "Used to secure dressings to skin.",
+  "warnings": [
+   "Remove gently to avoid skin damage."
+  ],
+  "symptoms": [
+   "dressing",
+   "first aid"
+  ]
+ },
+ "coldPack": {
+  "generic": "Instant cold pack",
+  "cls": "Cold therapy",
+  "use": "Used to apply cold to minor sprains, bumps and bruises to reduce swelling.",
+  "warnings": [
+   "Wrap in cloth — do not apply directly to skin.",
+   "Apply for short periods (e.g., 15–20 minutes)."
+  ],
+  "symptoms": [
+   "sprain",
+   "bruise",
+   "swelling"
+  ]
+ },
+ "burnGel": {
+  "generic": "Hydrogel burn dressing",
+  "cls": "Burn first aid",
+  "use": "Used to cover minor burns after cooling the burn under cool running water.",
+  "warnings": [
+   "First cool the burn under cool running water for about 20 minutes.",
+   "Large, deep, facial, hand, genital or electrical/chemical burns need urgent care.",
+   "Do not apply ice, butter or toothpaste."
+  ],
+  "symptoms": [
+   "burn",
+   "scald"
+  ]
+ },
+ "wipes": {
+  "generic": "Antiseptic wipes (isopropyl alcohol 70%)",
+  "cls": "First-aid consumable",
+  "use": "Used to clean skin and equipment (e.g., thermometer tips).",
+  "warnings": [
+   "Flammable.",
+   "Stings on broken skin; not for wound beds."
+  ],
+  "symptoms": [
+   "cleaning"
+  ]
+ },
+ "firstAidKit": {
+  "generic": "Home first-aid kit",
+  "cls": "First-aid kit",
+  "use": "Contains basic dressings, tape, gloves and antiseptic wipes for minor injuries.",
+  "warnings": [
+   "Check and replace expired items regularly."
+  ],
+  "symptoms": [
+   "first aid"
+  ]
+ }
+}

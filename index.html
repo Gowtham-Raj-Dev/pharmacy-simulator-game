@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1f1d" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="description" content="RxShift — hospital pharmacy training simulator for new trainees. Play in the browser or install the Android app." />
+<title>RxShift Pharmacy Training Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Tamil:wght@400;600;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./src/styles.css" />
+<link rel="stylesheet" href="./src/landing.css" />
+</head>
+<body>
+
+<!-- Landing Page (Restored Previous Home Page Design) -->
+<div id="landing">
+  <div class="wrap">
+    <header>
+      <div class="logo"><div class="cross"></div><div><h1>Rx<span>Shift</span></h1><p>Pharmacy Training Simulator</p></div></div>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set="en" class="on">English</button>
+        <button type="button" data-set="ta">தமிழ்</button>
+      </div>
+    </header>
+
+    <main class="main">
+    <section class="hero">
+      <h2 data-l="en">Hospital pharmacy training for new trainees</h2>
+      <h2 data-l="ta">புதிய மருந்தகப் பயிற்சியாளர்களுக்கான மருத்துவமனைப் பயிற்சி</h2>
+      <p data-l="en">Patients walk in and describe their problem. You ask the right questions, pick the right medicine from real brands on the shelf, check safety, and learn when to refer to a doctor.</p>
+      <p data-l="ta">நோயாளிகள் வந்து தங்கள் பிரச்சனையைச் சொல்வார்கள். நீங்கள் சரியான கேள்விகளைக் கேட்டு, அலமாரியில் உள்ள உண்மையான பிராண்டுகளில் சரியான மருந்தைத் தேர்ந்தெடுத்து, பாதுகாப்பைச் சரிபார்த்து, எப்போது மருத்துவரிடம் அனுப்ப வேண்டும் என்று கற்றுக்கொள்வீர்கள்.</p>
+    </section>
+
+    <section class="choices" aria-label="How do you want to play?">
+      <article class="choice rec" id="c-web">
+        <span class="badge" data-l="en">Recommended for this device</span><span class="badge" data-l="ta">இந்தச் சாதனத்துக்குப் பரிந்துரை</span>
+        <div class="choice-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+        <h3 data-l="en">Play in browser</h3><h3 data-l="ta">பிரவுசரில் விளையாடு</h3>
+        <p class="sub" data-l="en">No install. Works on a computer, laptop, tablet or phone.</p>
+        <p class="sub" data-l="ta">நிறுவத் தேவையில்லை. கணினி, லேப்டாப், டேப்லெட் அல்லது போனில் இயங்கும்.</p>
+        <ul data-l="en"><li>Chrome, Edge or Safari (recent version)</li><li>First load downloads about 35 MB, then it is cached</li><li>Best voices: Microsoft Edge on Windows (English &amp; Tamil)</li></ul>
+        <ul data-l="ta"><li>Chrome, Edge அல்லது Safari (புதிய பதிப்பு)</li><li>முதல் முறை சுமார் 35 MB பதிவிறங்கும்; பிறகு சேமிக்கப்படும்</li><li>சிறந்த குரல்கள்: Windows-இல் Microsoft Edge (ஆங்கிலம் &amp; தமிழ்)</li></ul>
+        <button type="button" class="btn primary" id="play-now-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span data-l="en">Play now</span><span data-l="ta">இப்போது விளையாடு</span>
+        </button>
+      </article>
+
+      <article class="choice" id="c-apk">
+        <span class="badge" data-l="en">Recommended for this device</span><span class="badge" data-l="ta">இந்தச் சாதனத்துக்குப் பரிந்துரை</span>
+        <div class="choice-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+        <h3 data-l="en">Download Android app</h3><h3 data-l="ta">Android ஆப் பதிவிறக்கு</h3>
+        <p class="sub" data-l="en">Install once and play offline: full screen, Tamil voice from the phone.</p>
+        <p class="sub" data-l="ta">ஒருமுறை நிறுவினால் இணையம் இல்லாமலும் விளையாடலாம்: முழுத் திரை, போனின் தமிழ் குரல்.</p>
+        <ul data-l="en"><li>Android 6.0 or newer</li><li>Works without internet after install</li><li>Not for iPhone. iPhone users: play in the browser</li></ul>
+        <ul data-l="ta"><li>Android 6.0 அல்லது அதற்குப் பிறகு</li><li>நிறுவிய பின் இணையம் இல்லாமலும் இயங்கும்</li><li>iPhone-க்கு இல்லை. iPhone பயனர்கள் பிரவுசரில் விளையாடுங்கள்</li></ul>
+        <a class="btn secondary" id="apk-link" href="./download/RxShift-Pharmacy-Sim.apk" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+          <span data-l="en">Download APK</span><span data-l="ta">APK பதிவிறக்கு</span>
+          <small id="apk-size">· 34 MB</small>
+        </a>
+        <p class="note" id="ios-note" hidden><span data-l="en">You are on an iPhone/iPad. The APK will not install here, so use Play in browser.</span><span data-l="ta">நீங்கள் iPhone/iPad-இல் இருக்கிறீர்கள். APK இங்கு நிறுவ முடியாது; பிரவுசரில் விளையாடுங்கள்.</span></p>
+      </article>
+
+      <article class="soon" id="c-desk" aria-disabled="true">
+        <div class="soon-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="soon-text">
+          <h3><span data-l="en">Desktop app</span><span data-l="ta">டெஸ்க்டாப் ஆப்</span> <small>Windows · macOS</small></h3>
+          <p data-l="en">Install on hospital training PCs and play offline. Until then, use Play in browser.</p>
+          <p data-l="ta">மருத்துவமனைப் பயிற்சிக் கணினிகளில் நிறுவி இணையம் இல்லாமல் விளையாடலாம். அதுவரை பிரவுசரில் விளையாடுங்கள்.</p>
+        </div>
+        <span class="pill"><span data-l="en">Coming soon</span><span data-l="ta">விரைவில் வருகிறது</span></span>
+      </article>
+    </section>
+
+    <section class="steps">
+      <h4 data-l="en">Installing the APK</h4><h4 data-l="ta">APK நிறுவுவது எப்படி</h4>
+      <ol data-l="en">
+        <li>Tap <b>Download APK</b> and open the file when it finishes.</li>
+        <li>If Android asks, allow <b>Install unknown apps</b> for your browser or file manager.</li>
+        <li>Tap <b>Install</b>, then open <b>RxShift Pharmacy Sim</b>.</li>
+        <li>For Tamil speech: Settings › Text-to-speech › Google › install <b>Tamil</b>.</li>
+      </ol>
+      <ol data-l="ta">
+        <li><b>APK பதிவிறக்கு</b> அழுத்தி, பதிவிறக்கம் முடிந்ததும் கோப்பைத் திறங்கள்.</li>
+        <li>Android கேட்டால், உங்கள் பிரவுசர் / File manager-க்கு <b>Install unknown apps</b> அனுமதி கொடுங்கள்.</li>
+        <li><b>Install</b> அழுத்தி, பிறகு <b>RxShift Pharmacy Sim</b> ஆப்பைத் திறங்கள்.</li>
+        <li>தமிழ் பேச்சுக்கு: Settings › Text-to-speech › Google › <b>Tamil</b> நிறுவுங்கள்.</li>
+      </ol>
+    </section>
+
+    <div class="notice">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span data-l="en">For training only. It does not diagnose or prescribe. In real practice, always follow the hospital formulary, local regulations and a qualified pharmacist or doctor.</span>
+      <span data-l="ta">பயிற்சிக்காக மட்டும். இது நோயறிதல் செய்யாது, மருந்து பரிந்துரைக்காது. நிஜப் பணியில் எப்போதும் மருத்துவமனை மருந்துப் பட்டியல், உள்ளூர் விதிமுறைகள், தகுதிவாய்ந்த மருந்தாளர் அல்லது மருத்துவரைப் பின்பற்றுங்கள்.</span>
+    </div>
+    </main>
+    <footer>RxShift Pharmacy Sim · Zrubix</footer>
+  </div>
+</div>
+
+<!-- 3D Simulator canvas, UI, and loading screen -->
+<canvas id="gl"></canvas>
+<div id="ui"></div>
+<div class="loading">
+  <div class="logo"><div class="cross"></div><div><h1>Rx<span>Shift</span></h1><p>Pharmacy Training Simulator</p></div></div>
+  <div class="lbar"><i id="lbar"></i></div>
+  <div class="lstep" id="lstep">Starting…</div>
+</div>
+<div class="rotate-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><div>Please rotate your phone<br>தயவுசெய்து போனைத் திருப்பவும்</div></div>
+<noscript>RxShift needs JavaScript and WebGL.</noscript>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

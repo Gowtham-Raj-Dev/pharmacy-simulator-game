@@ -1,0 +1,254 @@
+{
+ "S01": {
+  "title": "Headache and mild fever",
+  "complaint": "I have a headache and mild fever since yesterday.",
+  "answers": {
+   "duration": "Since yesterday evening — about a day now.",
+   "symptoms": "Mild fever, around 38 °C, and some body ache. No rash, no stiff neck, no vomiting, and I'm breathing fine.",
+   "allergies": "No, I'm not allergic to any medicine that I know of.",
+   "meds": "I'm not taking any medicines right now.",
+   "history": "No medical conditions. I'm generally healthy.",
+   "lifestyle": "I work in an office. Nothing unusual."
+  },
+  "seeDoctor": "if the fever lasts more than 3 days, gets higher, or you develop a rash, stiff neck, confusion or difficulty breathing",
+  "learning": "A short-lived headache with mild fever and no red flags is commonly managed with a simple analgesic such as paracetamol or ibuprofen, after checking allergies and current medicines."
+ },
+ "S02": {
+  "title": "Seasonal hay fever",
+  "complaint": "My nose keeps running, I'm sneezing all the time and my eyes are itchy. It happens every spring.",
+  "answers": {
+   "duration": "About a week. It's the same every year around this time.",
+   "symptoms": "Itchy watery eyes and a runny nose. No fever, no wheezing or chest tightness.",
+   "allergies": "Only pollen — no medicine allergies.",
+   "meds": "Nothing regularly.",
+   "history": "Just seasonal allergies. Not pregnant.",
+   "lifestyle": "I work from home, I don't drive much."
+  },
+  "seeDoctor": "if you develop wheezing or breathlessness, or your symptoms don't improve within a week or two",
+  "learning": "Second-generation (low-sedating) antihistamines such as cetirizine, loratadine or fexofenadine are commonly used for hay fever. Wheeze or breathlessness needs referral."
+ },
+ "S03": {
+  "title": "Heartburn after a heavy meal",
+  "complaint": "I've got a burning feeling in my chest after a big spicy dinner. I think it's acidity.",
+  "answers": {
+   "duration": "Started an hour after dinner. It happens occasionally after heavy meals.",
+   "symptoms": "Burning behind the breastbone that rises up. No pain in my arm or jaw, no sweating, no breathlessness, no trouble swallowing and no weight loss.",
+   "allergies": "No allergies.",
+   "meds": "No regular medicines.",
+   "history": "No heart problems or other conditions.",
+   "lifestyle": "Office job. I sometimes eat late at night."
+  },
+  "seeDoctor": "if it keeps coming back, lasts more than 2 weeks, or you have trouble swallowing, weight loss, vomiting or black stools — and call emergency services for chest pain spreading to the arm or jaw",
+  "learning": "Occasional heartburn after meals without alarm features can be managed with an antacid or alginate. Always rule out cardiac-type chest pain by asking about other symptoms."
+ },
+ "S04": {
+  "title": "Small kitchen cut",
+  "complaint": "I cut my finger while chopping vegetables. It's only a small cut.",
+  "answers": {
+   "duration": "About an hour ago.",
+   "symptoms": "It's shallow and stopped bleeding after I pressed it. No numbness, I can move my finger normally.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "Healthy. I'm not diabetic.",
+   "lifestyle": "I had a tetanus booster two years ago."
+  },
+  "seeDoctor": "if it becomes red, swollen, hot or starts oozing pus, if you develop a fever, or if it won't stop bleeding",
+  "learning": "Minor clean cuts: clean, apply antiseptic if desired, and cover with a plaster. Deep wounds, uncontrolled bleeding, numbness or signs of infection need medical care."
+ },
+ "S05": {
+  "title": "Dry, cracked hands",
+  "complaint": "My hands are so dry and cracked from all the washing. Can you suggest something?",
+  "answers": {
+   "duration": "A few weeks — worse since winter started.",
+   "symptoms": "Just dryness and small cracks. No weeping, crusting or signs of infection.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "No skin conditions.",
+   "lifestyle": "I wash my hands a lot at work in a kitchen."
+  },
+  "seeDoctor": "if the skin becomes weepy, crusted or painful, or doesn't improve within 2 weeks",
+  "learning": "Emollients are the mainstay for dry skin — apply often and generously. Paraffin-based emollients carry a fire-risk warning."
+ },
+ "S06": {
+  "title": "Mild diarrhoea",
+  "complaint": "I've had loose motions since this morning. What can I take?",
+  "answers": {
+   "duration": "Since this morning — about four times.",
+   "symptoms": "Mild cramps. No blood in the stool, no high fever, and I can keep fluids down.",
+   "allergies": "No allergies.",
+   "meds": "Nothing.",
+   "history": "Healthy.",
+   "lifestyle": "I ate street food yesterday."
+  },
+  "seeDoctor": "if you notice blood in the stool, develop a high fever, show signs of dehydration (very little urine, dizziness), or it lasts more than 2 days",
+  "learning": "Fluid and electrolyte replacement (ORS) is the priority in acute diarrhoea. Loperamide may be used short-term by adults only when there is no blood or fever."
+ },
+ "S07": {
+  "title": "Home thermometer",
+  "complaint": "I need a thermometer for home, for checking my kids' temperature.",
+  "answers": {
+   "duration": "Nobody is unwell right now — I just want one at home.",
+   "symptoms": "No symptoms, just buying ahead.",
+   "allergies": "Not relevant — no allergies.",
+   "meds": "None.",
+   "history": "None.",
+   "lifestyle": "I have two children, 4 and 7."
+  },
+  "seeDoctor": "if a child has a high fever with a rash, breathing difficulty, drowsiness, or any baby under 3 months has a fever",
+  "learning": "Digital thermometers are accurate and easy to clean. A temperature of 38 °C or higher is commonly considered a fever."
+ },
+ "S08": {
+  "title": "Painful mouth ulcer",
+  "complaint": "I have a painful ulcer inside my mouth. It hurts when I eat.",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Just one small ulcer. No fever, no other sores, I'm otherwise well.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I get one every few months, they heal in about a week.",
+   "lifestyle": "I bit my cheek by accident last week."
+  },
+  "seeDoctor": "if the ulcer lasts more than 3 weeks, keeps coming back more often, or is unusually large or painless",
+  "learning": "Minor mouth ulcers usually heal within 1–2 weeks. Antiseptic mouthwashes or local anaesthetic gels can ease symptoms. Any ulcer lasting > 3 weeks must be referred."
+ },
+ "S09": {
+  "title": "Mild sunburn",
+  "complaint": "I got a bit sunburnt at the beach yesterday. My shoulders are red and sore.",
+  "answers": {
+   "duration": "Since yesterday afternoon.",
+   "symptoms": "Red, warm skin on my shoulders. No blisters, no fever, chills or dizziness.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "I'm going outdoors again this weekend."
+  },
+  "seeDoctor": "if you develop blisters over a large area, fever, chills, dizziness or confusion",
+  "learning": "Mild sunburn: cool the skin, moisturise with after-sun or calamine, drink fluids, and protect from further sun exposure. Extensive blistering or systemic symptoms need medical care."
+ },
+ "S10": {
+  "title": "Dry tickly cough",
+  "complaint": "I've had a dry, tickly cough for three days. It's keeping me up at night.",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Dry cough, a bit of a scratchy throat. No phlegm, no breathlessness, no chest pain, no blood.",
+   "allergies": "No allergies.",
+   "meds": "No medicines.",
+   "history": "No asthma or lung problems.",
+   "lifestyle": "Non-smoker."
+  },
+  "seeDoctor": "if the cough lasts more than 3 weeks, you cough up blood, or develop breathlessness, chest pain or high fever",
+  "learning": "For a short dry cough, a cough suppressant or soothing linctus can help. Expectorants are meant for chesty coughs. Coughs > 3 weeks need referral."
+ },
+ "S11": {
+  "title": "Chesty cough",
+  "complaint": "My chest feels heavy and I'm coughing up phlegm. Can you give me a cough syrup?",
+  "answers": {
+   "duration": "Four days.",
+   "symptoms": "White phlegm. No fever, no blood, not breathless, no chest pain.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "No asthma, no heart or lung disease.",
+   "lifestyle": "I don't smoke."
+  },
+  "seeDoctor": "if the phlegm becomes green or bloody with fever, you become breathless or have chest pain, or the cough lasts more than 3 weeks",
+  "learning": "Chesty (productive) coughs are commonly managed with fluids and an expectorant such as guaifenesin. Cough suppressants are generally not used for productive coughs."
+ },
+ "S12": {
+  "title": "Itchy, peeling feet",
+  "complaint": "The skin between my toes is itchy, white and peeling. I go to the gym a lot.",
+  "answers": {
+   "duration": "About two weeks.",
+   "symptoms": "Itching and peeling between the toes. Nails look normal, no spreading redness, no fever.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "I'm not diabetic and have no circulation problems.",
+   "lifestyle": "I wear trainers all day."
+  },
+  "seeDoctor": "if it spreads, affects the nails, or doesn't improve after 2 weeks of treatment — people with diabetes should have foot problems checked",
+  "learning": "Athlete's foot is commonly treated with a topical antifungal (e.g., clotrimazole, terbinafine) plus keeping feet clean and dry. Diabetic foot problems need referral."
+ },
+ "S13": {
+  "title": "Constipation",
+  "complaint": "I haven't been able to pass stools properly for four days. I feel bloated.",
+  "answers": {
+   "duration": "Four days.",
+   "symptoms": "Bloating. No blood, no weight loss, no severe pain, no vomiting.",
+   "allergies": "None.",
+   "meds": "No medicines (no iron tablets or painkillers).",
+   "history": "Not pregnant, no bowel conditions.",
+   "lifestyle": "I've been travelling and eating less fibre and water."
+  },
+  "seeDoctor": "if you notice blood, unexplained weight loss, severe pain, or it lasts more than 2 weeks",
+  "learning": "Short-term constipation: increase fluids and fibre; bulk-forming or osmotic laxatives are common first choices. Red flags such as blood or weight loss require referral."
+ },
+ "S14": {
+  "title": "Twisted ankle",
+  "complaint": "I twisted my ankle while jogging this morning. It's a bit swollen.",
+  "answers": {
+   "duration": "This morning.",
+   "symptoms": "Mild swelling. I can walk on it, no deformity, no numbness.",
+   "allergies": "No medicine allergies.",
+   "meds": "None.",
+   "history": "No asthma, no stomach problems.",
+   "lifestyle": "I run three times a week."
+  },
+  "seeDoctor": "if you can't bear weight, there is severe swelling or deformity, or it isn't improving after a few days",
+  "learning": "Minor sprains: rest, ice (wrapped), compression and elevation, with topical NSAID or simple analgesia if suitable. Inability to bear weight needs assessment."
+ },
+ "S15": {
+  "title": "Toddler nappy rash",
+  "complaint": "My 2-year-old son has a red nappy rash. What can I use?",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Red skin in the nappy area. No blisters or pus, and he has no fever. He's eating and playing normally.",
+   "allergies": "He has no known allergies.",
+   "meds": "He isn't taking anything.",
+   "history": "He's healthy.",
+   "lifestyle": "We've been using new wipes."
+  },
+  "seeDoctor": "if the rash is severe, blistered, spreading beyond the nappy area, or the child develops a fever",
+  "learning": "Mild nappy rash: frequent changes, nappy-free time and a barrier cream such as zinc oxide. Severe or spreading rash, or fever, needs referral."
+ },
+ "S16": {
+  "title": "Head lice",
+  "complaint": "The school called — my daughter has head lice. What should I use?",
+  "answers": {
+   "duration": "We noticed it yesterday.",
+   "symptoms": "Itchy scalp and I can see live lice. No broken or infected skin.",
+   "allergies": "No allergies.",
+   "meds": "None.",
+   "history": "She's 7 and healthy.",
+   "lifestyle": "I'll check the rest of the family too."
+  },
+  "seeDoctor": "if the scalp becomes infected or the treatment fails after two correct applications",
+  "learning": "Head lice products (e.g., dimeticone or permethrin lotion) must be applied exactly as directed and usually repeated after 7 days; check and treat affected family members only."
+ },
+ "S17": {
+  "title": "Travel sickness",
+  "complaint": "I'm taking a long bus trip tomorrow and always get travel sick.",
+  "answers": {
+   "duration": "It always happens on long journeys.",
+   "symptoms": "Nausea during travel only. No other symptoms.",
+   "allergies": "None.",
+   "meds": "Nothing.",
+   "history": "No glaucoma or prostate problems.",
+   "lifestyle": "I'm a passenger — I won't be driving."
+  },
+  "seeDoctor": "if vomiting is persistent or you can't keep fluids down",
+  "learning": "Sedating antihistamines like dimenhydrinate can prevent travel sickness but cause drowsiness — check the person isn't driving and has no contraindications."
+ },
+ "S18": {
+  "title": "Mild acne",
+  "complaint": "I keep getting pimples on my face. Is there something I can use?",
+  "answers": {
+   "duration": "A few months.",
+   "symptoms": "Small spots and blackheads. No painful cysts or scarring.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy.",
+   "lifestyle": "I wash my face once a day."
+  },
+  "seeDoctor": "if acne is severe, painful, scarring, affecting your mood, or not improving after about 2 months of treatment",
+  "learning": "Mild acne is often managed with benzoyl peroxide, starting with a low strength. Severe, scarring or cystic acne needs a doctor."
+ }
+}

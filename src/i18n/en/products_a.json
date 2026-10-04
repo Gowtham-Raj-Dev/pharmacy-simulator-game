@@ -1,0 +1,927 @@
+{
+ "paracetamol": {
+  "generic": "Paracetamol (Acetaminophen)",
+  "cls": "Analgesic / Fever relief",
+  "use": "Used for temporary relief of mild to moderate pain (e.g., headache, toothache, body ache) and to reduce fever.",
+  "warnings": [
+   "Do not exceed the maximum daily dose on the label.",
+   "Avoid taking with other paracetamol-containing products (duplicate ingredient risk).",
+   "Use with caution in liver disease or regular heavy alcohol use.",
+   "Overdose can cause serious liver damage — seek urgent help even if the person feels well."
+  ],
+  "symptoms": [
+   "headache",
+   "fever",
+   "pain",
+   "body ache",
+   "toothache",
+   "period pain",
+   "back pain",
+   "cold",
+   "flu"
+  ]
+ },
+ "ibuprofen": {
+  "generic": "Ibuprofen",
+  "cls": "NSAID / Pain & inflammation",
+  "use": "Used for temporary relief of mild to moderate pain, inflammation and fever.",
+  "warnings": [
+   "Take with or after food.",
+   "Avoid in people with stomach ulcers or GI bleeding history.",
+   "Avoid if asthma is worsened by NSAIDs/aspirin, or NSAID allergy.",
+   "Caution in kidney disease, heart disease and with anticoagulants (e.g., warfarin) or lithium.",
+   "Generally avoided in pregnancy unless advised by a doctor."
+  ],
+  "symptoms": [
+   "headache",
+   "fever",
+   "pain",
+   "toothache",
+   "period pain",
+   "back pain",
+   "muscle pain",
+   "sprain",
+   "inflammation"
+  ]
+ },
+ "aspirin": {
+  "generic": "Aspirin (Acetylsalicylic acid)",
+  "cls": "Salicylate / NSAID analgesic",
+  "use": "Used for short-term relief of mild to moderate pain and fever in adults.",
+  "warnings": [
+   "Do NOT give to children or teenagers under 16 (risk of Reye's syndrome).",
+   "Increases bleeding risk; avoid with anticoagulants unless prescribed.",
+   "Avoid with stomach ulcers, NSAID allergy or NSAID-sensitive asthma.",
+   "Avoid in pregnancy unless prescribed."
+  ],
+  "symptoms": [
+   "headache",
+   "pain",
+   "fever"
+  ]
+ },
+ "naproxen": {
+  "generic": "Naproxen",
+  "cls": "NSAID / Pain & inflammation",
+  "use": "Used for relief of pain such as period pain and musculoskeletal pain in adults.",
+  "warnings": [
+   "Take with food.",
+   "Avoid with stomach ulcers, NSAID allergy/asthma, kidney disease.",
+   "Interacts with anticoagulants and lithium.",
+   "Avoid in pregnancy unless prescribed."
+  ],
+  "symptoms": [
+   "period pain",
+   "back pain",
+   "muscle pain",
+   "pain"
+  ]
+ },
+ "cetirizine": {
+  "generic": "Cetirizine hydrochloride",
+  "cls": "Antihistamine (2nd generation)",
+  "use": "Used for relief of allergy symptoms such as sneezing, runny nose, itchy/watery eyes (hay fever) and itchy skin rash (urticaria).",
+  "warnings": [
+   "Low-sedating, but some people may feel drowsy — check before driving.",
+   "Avoid alcohol.",
+   "Dose adjustment may be needed in kidney disease."
+  ],
+  "symptoms": [
+   "allergy",
+   "hay fever",
+   "sneezing",
+   "runny nose",
+   "itchy eyes",
+   "itching",
+   "hives",
+   "rash"
+  ]
+ },
+ "loratadine": {
+  "generic": "Loratadine",
+  "cls": "Antihistamine (2nd generation)",
+  "use": "Used for relief of hay fever symptoms and itchy skin allergies.",
+  "warnings": [
+   "Non-sedating for most people.",
+   "Check label for age limits.",
+   "Caution in severe liver disease."
+  ],
+  "symptoms": [
+   "allergy",
+   "hay fever",
+   "sneezing",
+   "runny nose",
+   "itchy eyes",
+   "itching",
+   "hives"
+  ]
+ },
+ "fexofenadine": {
+  "generic": "Fexofenadine hydrochloride",
+  "cls": "Antihistamine (2nd generation)",
+  "use": "Used for relief of seasonal allergic rhinitis (hay fever) symptoms.",
+  "warnings": [
+   "Non-sedating for most people.",
+   "Avoid taking with fruit juice or antacids close to the dose (reduced absorption)."
+  ],
+  "symptoms": [
+   "allergy",
+   "hay fever",
+   "sneezing",
+   "runny nose",
+   "itchy eyes"
+  ]
+ },
+ "chlorphenamine": {
+  "generic": "Chlorphenamine maleate",
+  "cls": "Antihistamine (1st generation, sedating)",
+  "use": "Used for relief of allergy symptoms; causes drowsiness.",
+  "warnings": [
+   "Causes drowsiness — do not drive or operate machinery.",
+   "Avoid alcohol and other sedatives.",
+   "Caution in glaucoma, prostate enlargement and in older adults (confusion, falls)."
+  ],
+  "symptoms": [
+   "allergy",
+   "hay fever",
+   "itching",
+   "sneezing",
+   "runny nose",
+   "insect bite"
+  ]
+ },
+ "diphenhydramine": {
+  "generic": "Diphenhydramine hydrochloride",
+  "cls": "Antihistamine (sedating) / Short-term sleep aid",
+  "use": "Used short-term for occasional sleeplessness in adults and for allergy symptoms.",
+  "warnings": [
+   "Causes drowsiness; next-day drowsiness possible — do not drive.",
+   "Not recommended for older adults (confusion, falls, urinary retention).",
+   "Avoid in glaucoma and prostate enlargement.",
+   "Short-term use only; persistent insomnia needs assessment."
+  ],
+  "symptoms": [
+   "insomnia",
+   "sleep",
+   "allergy"
+  ]
+ },
+ "antacid": {
+  "generic": "Aluminium hydroxide + Magnesium hydroxide",
+  "cls": "Antacid",
+  "use": "Used for temporary relief of heartburn, acidity and indigestion by neutralising stomach acid.",
+  "warnings": [
+   "Separate from other medicines by about 2 hours (can reduce their absorption).",
+   "Caution in kidney disease.",
+   "Refer if symptoms persist, or with alarm signs (difficulty swallowing, weight loss, vomiting blood, black stools)."
+  ],
+  "symptoms": [
+   "heartburn",
+   "acidity",
+   "indigestion",
+   "acid reflux",
+   "stomach burning"
+  ]
+ },
+ "alginate": {
+  "generic": "Sodium alginate + Sodium bicarbonate + Calcium carbonate",
+  "cls": "Alginate (raft-forming) / Antacid",
+  "use": "Used for relief of heartburn and acid reflux; forms a protective layer on stomach contents.",
+  "warnings": [
+   "Contains sodium — caution in salt-restricted diets.",
+   "Separate from other medicines by about 2 hours.",
+   "Persistent symptoms need medical review."
+  ],
+  "symptoms": [
+   "heartburn",
+   "acid reflux",
+   "indigestion",
+   "acidity",
+   "heartburn in pregnancy"
+  ]
+ },
+ "famotidine": {
+  "generic": "Famotidine",
+  "cls": "H2-receptor antagonist (acid reducer)",
+  "use": "Used for short-term relief of heartburn and acid indigestion by reducing stomach acid production.",
+  "warnings": [
+   "Short-term self-care only; persistent symptoms need review.",
+   "Check with a doctor during pregnancy.",
+   "Dose adjustment in kidney disease."
+  ],
+  "symptoms": [
+   "heartburn",
+   "acidity",
+   "indigestion"
+  ]
+ },
+ "omeprazole": {
+  "generic": "Omeprazole",
+  "cls": "Proton pump inhibitor (PPI)",
+  "use": "Used for short-term relief of frequent heartburn by reducing stomach acid production.",
+  "warnings": [
+   "Self-care courses are short (as per label); longer use needs medical review.",
+   "Refer alarm symptoms: difficulty swallowing, weight loss, vomiting blood, black stools, age over ~55 with new symptoms.",
+   "Check with doctor in pregnancy."
+  ],
+  "symptoms": [
+   "heartburn",
+   "acid reflux",
+   "acidity"
+  ]
+ },
+ "loperamide": {
+  "generic": "Loperamide hydrochloride",
+  "cls": "Antidiarrhoeal",
+  "use": "Used for short-term symptomatic relief of acute diarrhoea in adults.",
+  "warnings": [
+   "Do not use if there is blood in the stool or high fever — refer.",
+   "Not for children under 12 (as per most labels).",
+   "Maintain fluids; ORS is the priority in dehydration.",
+   "Stop and seek advice if no improvement within 48 hours."
+  ],
+  "symptoms": [
+   "diarrhoea",
+   "loose motions",
+   "diarrhea"
+  ]
+ },
+ "ors": {
+  "generic": "Oral Rehydration Salts (WHO low-osmolarity formula)",
+  "cls": "Rehydration / Electrolyte replacement",
+  "use": "Used to replace fluids and electrolytes lost through diarrhoea or vomiting.",
+  "warnings": [
+   "Mix with the exact volume of clean water stated on the pack.",
+   "Discard prepared solution as directed on the label (commonly after 24 hours).",
+   "Seek medical help for signs of severe dehydration, blood in stool, or in young infants."
+  ],
+  "symptoms": [
+   "diarrhoea",
+   "diarrhea",
+   "loose motions",
+   "dehydration",
+   "vomiting"
+  ]
+ },
+ "zinc": {
+  "generic": "Zinc sulfate (dispersible)",
+  "cls": "Mineral supplement (diarrhoea adjunct in children)",
+  "use": "Used alongside ORS in children with diarrhoea, as recommended in WHO guidance.",
+  "warnings": [
+   "Use the dose on the label for the child's age.",
+   "May cause nausea."
+  ],
+  "symptoms": [
+   "diarrhoea",
+   "diarrhea"
+  ]
+ },
+ "simethicone": {
+  "generic": "Simethicone (Simeticone)",
+  "cls": "Antiflatulent",
+  "use": "Used to relieve trapped wind, gas and bloating.",
+  "warnings": [
+   "Persistent abdominal pain needs medical assessment.",
+   "Infant colic that is severe or with fever, vomiting or poor feeding needs a doctor."
+  ],
+  "symptoms": [
+   "gas",
+   "bloating",
+   "wind",
+   "colic"
+  ]
+ },
+ "lactulose": {
+  "generic": "Lactulose",
+  "cls": "Osmotic laxative",
+  "use": "Used for relief of constipation; draws water into the bowel to soften stools.",
+  "warnings": [
+   "May take 1–2 days to work.",
+   "May cause wind and cramps initially.",
+   "Refer if constipation persists, or with blood in stool, weight loss or severe pain."
+  ],
+  "symptoms": [
+   "constipation"
+  ]
+ },
+ "ispaghula": {
+  "generic": "Ispaghula husk (Psyllium)",
+  "cls": "Bulk-forming laxative (fibre)",
+  "use": "Used to relieve constipation by increasing stool bulk.",
+  "warnings": [
+   "Take with plenty of water; do not take immediately before bed.",
+   "Not for bowel obstruction or difficulty swallowing."
+  ],
+  "symptoms": [
+   "constipation"
+  ]
+ },
+ "bisacodyl": {
+  "generic": "Bisacodyl",
+  "cls": "Stimulant laxative",
+  "use": "Used for short-term relief of occasional constipation in adults.",
+  "warnings": [
+   "Short-term use only.",
+   "May cause abdominal cramps.",
+   "Do not take within 1 hour of antacids or milk."
+  ],
+  "symptoms": [
+   "constipation"
+  ]
+ },
+ "senna": {
+  "generic": "Senna (Sennosides)",
+  "cls": "Stimulant laxative",
+  "use": "Used for short-term relief of occasional constipation.",
+  "warnings": [
+   "Short-term use only; usually works in 8–12 hours.",
+   "May colour urine.",
+   "Refer if no improvement or alarm symptoms."
+  ],
+  "symptoms": [
+   "constipation"
+  ]
+ },
+ "dextromethorphan": {
+  "generic": "Dextromethorphan hydrobromide",
+  "cls": "Cough suppressant (dry cough)",
+  "use": "Used for temporary relief of a dry, tickly (non-productive) cough.",
+  "warnings": [
+   "Not for chesty/productive cough.",
+   "Do not use with MAO inhibitors or within 14 days of stopping them.",
+   "May cause drowsiness or dizziness.",
+   "Misuse potential at high doses.",
+   "Refer a cough lasting more than about 3 weeks."
+  ],
+  "symptoms": [
+   "dry cough",
+   "cough",
+   "tickly cough"
+  ]
+ },
+ "guaifenesin": {
+  "generic": "Guaifenesin",
+  "cls": "Expectorant (chesty cough)",
+  "use": "Used to help loosen mucus in a chesty (productive) cough.",
+  "warnings": [
+   "Drink plenty of fluids.",
+   "Refer if phlegm is green/bloody with fever, breathlessness or chest pain, or cough > ~3 weeks."
+  ],
+  "symptoms": [
+   "chesty cough",
+   "productive cough",
+   "cough",
+   "phlegm",
+   "mucus"
+  ]
+ },
+ "linctus": {
+  "generic": "Glycerin + Honey + Lemon (soothing linctus)",
+  "cls": "Demulcent / Soothing cough syrup",
+  "use": "Used to soothe a dry, irritated throat and tickly cough.",
+  "warnings": [
+   "Contains sugars (honey) — not suitable for diabetics without advice.",
+   "Honey-containing products are not given to infants under 1 year."
+  ],
+  "symptoms": [
+   "dry cough",
+   "sore throat",
+   "tickly cough",
+   "cough"
+  ]
+ },
+ "lozenge": {
+  "generic": "Amylmetacresol + 2,4-Dichlorobenzyl alcohol",
+  "cls": "Antiseptic throat lozenge",
+  "use": "Used to soothe a sore throat; mild antiseptic action.",
+  "warnings": [
+   "Not for children under 6.",
+   "Refer if sore throat lasts more than a week, or with difficulty swallowing/breathing or high fever."
+  ],
+  "symptoms": [
+   "sore throat",
+   "throat pain"
+  ]
+ },
+ "benzydamine": {
+  "generic": "Benzydamine hydrochloride",
+  "cls": "Anti-inflammatory throat spray",
+  "use": "Used for temporary relief of painful sore throat and mouth inflammation.",
+  "warnings": [
+   "May cause numbness or stinging.",
+   "Refer persistent symptoms."
+  ],
+  "symptoms": [
+   "sore throat",
+   "mouth ulcer",
+   "throat pain"
+  ]
+ },
+ "saline": {
+  "generic": "Sodium chloride 0.65% (saline)",
+  "cls": "Nasal saline",
+  "use": "Used to moisten nasal passages and help clear a blocked or dry nose.",
+  "warnings": [
+   "Generally suitable for most ages including infants (drops).",
+   "Do not share nasal devices."
+  ],
+  "symptoms": [
+   "blocked nose",
+   "nasal congestion",
+   "stuffy nose",
+   "cold",
+   "dry nose"
+  ]
+ },
+ "xylometazoline": {
+  "generic": "Xylometazoline hydrochloride",
+  "cls": "Topical nasal decongestant",
+  "use": "Used for short-term relief of nasal congestion.",
+  "warnings": [
+   "Do not use for more than 7 days (risk of rebound congestion).",
+   "Caution in high blood pressure, heart disease, glaucoma.",
+   "Use the paediatric strength only as per age on label."
+  ],
+  "symptoms": [
+   "blocked nose",
+   "nasal congestion",
+   "stuffy nose",
+   "sinus"
+  ]
+ },
+ "pseudoephedrine": {
+  "generic": "Pseudoephedrine hydrochloride",
+  "cls": "Oral decongestant",
+  "use": "Used for short-term relief of nasal and sinus congestion in adults.",
+  "warnings": [
+   "Avoid in high blood pressure, heart disease, overactive thyroid, glaucoma.",
+   "Do not use with MAO inhibitors.",
+   "May cause insomnia and restlessness.",
+   "Sale is restricted in many countries."
+  ],
+  "symptoms": [
+   "blocked nose",
+   "nasal congestion",
+   "sinus"
+  ]
+ },
+ "coldCombo": {
+  "generic": "Paracetamol + Phenylephrine + Chlorphenamine",
+  "cls": "Combination cold & flu remedy",
+  "use": "Used for temporary relief of multiple cold symptoms (fever, aches, congestion, runny nose).",
+  "warnings": [
+   "Contains paracetamol — do not take with other paracetamol products.",
+   "Contains a decongestant — avoid in high blood pressure/heart disease or with MAO inhibitors.",
+   "Contains a sedating antihistamine — may cause drowsiness.",
+   "Regulators have questioned the effectiveness of oral phenylephrine as a decongestant.",
+   "Avoid in pregnancy unless advised by a doctor."
+  ],
+  "symptoms": [
+   "cold",
+   "flu",
+   "blocked nose",
+   "runny nose",
+   "body ache",
+   "fever"
+  ]
+ },
+ "menthol": {
+  "generic": "Menthol + Eucalyptus oil",
+  "cls": "Aromatic inhalant / Chest rub",
+  "use": "Used as a steam inhalation or rub to help relieve the feeling of a blocked nose.",
+  "warnings": [
+   "Not for children under 2.",
+   "For external use / inhalation only; do not swallow.",
+   "Keep away from eyes."
+  ],
+  "symptoms": [
+   "blocked nose",
+   "nasal congestion",
+   "cold"
+  ]
+ },
+ "dimenhydrinate": {
+  "generic": "Dimenhydrinate",
+  "cls": "Antihistamine for motion sickness",
+  "use": "Used to prevent and relieve travel (motion) sickness.",
+  "warnings": [
+   "Causes drowsiness — do not drive.",
+   "Take before travel as per label.",
+   "Caution in glaucoma, prostate problems, older adults."
+  ],
+  "symptoms": [
+   "travel sickness",
+   "motion sickness",
+   "nausea"
+  ]
+ },
+ "nicotine": {
+  "generic": "Nicotine (replacement therapy)",
+  "cls": "Smoking-cessation aid (NRT)",
+  "use": "Used to reduce nicotine withdrawal symptoms and cravings when quitting smoking.",
+  "warnings": [
+   "Seek advice in pregnancy, recent heart attack/stroke or unstable heart disease.",
+   "Use the \"chew and park\" technique for gum.",
+   "Combine with behavioural support for best results."
+  ],
+  "symptoms": [
+   "smoking",
+   "quit smoking",
+   "nicotine"
+  ]
+ },
+ "chlorhexMouth": {
+  "generic": "Chlorhexidine gluconate 0.2% mouthwash",
+  "cls": "Antiseptic mouthwash",
+  "use": "Used as an antiseptic mouth rinse, e.g., for mouth ulcers or gum inflammation.",
+  "warnings": [
+   "Do not swallow.",
+   "May temporarily stain teeth and alter taste.",
+   "Mouth ulcers lasting more than 3 weeks must be referred."
+  ],
+  "symptoms": [
+   "mouth ulcer",
+   "gum",
+   "bad breath",
+   "sore gums"
+  ]
+ },
+ "lidoGel": {
+  "generic": "Lidocaine 2% oral gel",
+  "cls": "Local anaesthetic (oral)",
+  "use": "Used for temporary numbing relief of painful mouth ulcers in adults.",
+  "warnings": [
+   "Not for teething infants or young children.",
+   "Avoid eating or drinking hot food until numbness wears off.",
+   "Refer ulcers lasting > 3 weeks or recurrent unexplained ulcers."
+  ],
+  "symptoms": [
+   "mouth ulcer",
+   "canker sore"
+  ]
+ },
+ "clotrimazole": {
+  "generic": "Clotrimazole 1%",
+  "cls": "Antifungal (topical)",
+  "use": "Used for fungal skin infections such as athlete's foot, ringworm and fungal groin rash.",
+  "warnings": [
+   "Continue for about 2 weeks after symptoms clear (as per label).",
+   "Keep the area clean and dry.",
+   "Refer nail infections, widespread infection, or diabetic foot problems."
+  ],
+  "symptoms": [
+   "athlete's foot",
+   "fungal infection",
+   "ringworm",
+   "itchy feet",
+   "jock itch"
+  ]
+ },
+ "terbinafine": {
+  "generic": "Terbinafine hydrochloride 1%",
+  "cls": "Antifungal (topical)",
+  "use": "Used for athlete's foot and other fungal skin infections.",
+  "warnings": [
+   "For external use only.",
+   "Check label age limits.",
+   "Refer nail or widespread infections."
+  ],
+  "symptoms": [
+   "athlete's foot",
+   "fungal infection",
+   "ringworm"
+  ]
+ },
+ "hydrocortisone": {
+  "generic": "Hydrocortisone 1%",
+  "cls": "Mild topical corticosteroid",
+  "use": "Used short-term for mild inflammatory skin conditions such as irritant dermatitis and insect bite reactions.",
+  "warnings": [
+   "Do not use on the face, broken or infected skin unless advised.",
+   "Short courses only (as per label).",
+   "Children: use only on medical advice."
+  ],
+  "symptoms": [
+   "itching",
+   "eczema",
+   "dermatitis",
+   "insect bite",
+   "rash"
+  ]
+ },
+ "calamine": {
+  "generic": "Calamine (Zinc carbonate/Zinc oxide) lotion",
+  "cls": "Soothing / Anti-itch",
+  "use": "Used to soothe itchy or irritated skin, e.g., mild rashes, insect bites and mild sunburn.",
+  "warnings": [
+   "For external use only.",
+   "Shake well before use."
+  ],
+  "symptoms": [
+   "itching",
+   "insect bite",
+   "sunburn",
+   "rash",
+   "chickenpox itch"
+  ]
+ },
+ "aloe": {
+  "generic": "Aloe vera gel (after-sun, cosmetic)",
+  "cls": "Skin soothing (cosmetic)",
+  "use": "Used as a cooling, moisturising after-sun gel for mild sunburned skin.",
+  "warnings": [
+   "Cosmetic product — not a treatment for severe burns or blistering.",
+   "Seek help for extensive sunburn with fever, chills or blistering."
+  ],
+  "symptoms": [
+   "sunburn",
+   "dry skin"
+  ]
+ },
+ "emollient": {
+  "generic": "Light liquid paraffin + White soft paraffin",
+  "cls": "Emollient (moisturiser)",
+  "use": "Used to moisturise and protect dry, scaly skin (e.g., dry skin, eczema care).",
+  "warnings": [
+   "Fire hazard: paraffin-based emollients can soak into clothing/bedding — keep away from flames.",
+   "Apply frequently and generously."
+  ],
+  "symptoms": [
+   "dry skin",
+   "eczema",
+   "cracked skin",
+   "chapped hands"
+  ]
+ },
+ "urea": {
+  "generic": "Urea 10%",
+  "cls": "Emollient / Keratolytic",
+  "use": "Used to moisturise very dry, rough or thickened skin.",
+  "warnings": [
+   "May sting on broken skin.",
+   "For external use only."
+  ],
+  "symptoms": [
+   "dry skin",
+   "cracked heels",
+   "rough skin"
+  ]
+ },
+ "diclofenacGel": {
+  "generic": "Diclofenac diethylamine 1.16% (topical)",
+  "cls": "Topical NSAID",
+  "use": "Used for local relief of muscle and joint pain, sprains and strains.",
+  "warnings": [
+   "Do not apply to broken skin.",
+   "Do not use with NSAID/aspirin allergy or asthma triggered by aspirin/NSAIDs.",
+   "Avoid in the last trimester of pregnancy.",
+   "Wash hands after use."
+  ],
+  "symptoms": [
+   "sprain",
+   "muscle pain",
+   "back pain",
+   "joint pain",
+   "strain"
+  ]
+ },
+ "salicylateRub": {
+  "generic": "Methyl salicylate + Menthol (rub)",
+  "cls": "Counter-irritant pain rub",
+  "use": "Used for temporary relief of minor muscle aches.",
+  "warnings": [
+   "Contains a salicylate — avoid with aspirin/NSAID allergy.",
+   "Do not apply to broken skin or use with heat pads.",
+   "Not for young children."
+  ],
+  "symptoms": [
+   "muscle pain",
+   "back pain",
+   "stiffness"
+  ]
+ },
+ "benzoyl": {
+  "generic": "Benzoyl peroxide",
+  "cls": "Topical acne treatment",
+  "use": "Used for mild to moderate acne.",
+  "warnings": [
+   "May cause dryness and irritation — start with lower strength.",
+   "Can bleach hair and fabrics.",
+   "Avoid eyes and lips."
+  ],
+  "symptoms": [
+   "acne",
+   "pimples",
+   "spots"
+  ]
+ },
+ "sunscreen": {
+  "generic": "Broad-spectrum sunscreen SPF 50",
+  "cls": "Sun protection",
+  "use": "Used to help protect skin from UV radiation (SPF indicates UVB protection; look for UVA rating too).",
+  "warnings": [
+   "Apply generously and reapply every 2 hours and after swimming.",
+   "Babies under 6 months should be kept out of direct sun."
+  ],
+  "symptoms": [
+   "sun protection",
+   "sunburn prevention"
+  ]
+ },
+ "permethrin": {
+  "generic": "Permethrin",
+  "cls": "Topical antiparasitic (scabies/head lice)",
+  "use": "Used to treat scabies (5% cream) and head lice (1% lotion).",
+  "warnings": [
+   "Follow label application time precisely.",
+   "Close contacts may need treatment at the same time (scabies).",
+   "Seek advice for infants and in pregnancy."
+  ],
+  "symptoms": [
+   "head lice",
+   "lice",
+   "scabies",
+   "itching at night"
+  ]
+ },
+ "dimeticone": {
+  "generic": "Dimeticone 4%",
+  "cls": "Physical head-lice treatment",
+  "use": "Used to treat head lice by coating and suffocating lice.",
+  "warnings": [
+   "Repeat after 7 days as per label.",
+   "Flammable until dry — keep away from flames.",
+   "Check all family members."
+  ],
+  "symptoms": [
+   "head lice",
+   "lice",
+   "nits"
+  ]
+ },
+ "ketoShampoo": {
+  "generic": "Ketoconazole 2% shampoo",
+  "cls": "Antifungal shampoo",
+  "use": "Used for dandruff and seborrhoeic dermatitis of the scalp.",
+  "warnings": [
+   "Leave on scalp for the time stated on the label before rinsing.",
+   "Avoid contact with eyes."
+  ],
+  "symptoms": [
+   "dandruff",
+   "itchy scalp",
+   "flaky scalp"
+  ]
+ },
+ "iodine": {
+  "generic": "Povidone-iodine",
+  "cls": "Antiseptic",
+  "use": "Used to clean minor cuts, scrapes and wounds to reduce the risk of infection.",
+  "warnings": [
+   "Avoid with iodine allergy or thyroid disorders.",
+   "Avoid prolonged use in pregnancy, breastfeeding and newborns.",
+   "Deep, dirty or large wounds need medical care."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "graze"
+  ]
+ },
+ "chlorhexAntiseptic": {
+  "generic": "Chlorhexidine gluconate + Cetrimide",
+  "cls": "Antiseptic",
+  "use": "Used for cleansing minor cuts, grazes and skin before first aid dressing.",
+  "warnings": [
+   "For external use only.",
+   "Avoid eyes and ears.",
+   "Seek medical care for animal bites, deep or dirty wounds."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "graze"
+  ]
+ },
+ "plaster": {
+  "generic": "Adhesive bandage strips (assorted)",
+  "cls": "Wound dressing",
+  "use": "Used to cover and protect minor cuts and grazes.",
+  "warnings": [
+   "Clean the wound before applying.",
+   "Change daily or if wet/dirty.",
+   "Check for adhesive sensitivity."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "scrape",
+   "blister"
+  ]
+ },
+ "gauze": {
+  "generic": "Sterile gauze swabs",
+  "cls": "Wound dressing",
+  "use": "Used to clean and cover wounds and to apply pressure to stop minor bleeding.",
+  "warnings": [
+   "Single use; keep sterile until use.",
+   "Uncontrolled bleeding is an emergency."
+  ],
+  "symptoms": [
+   "cut",
+   "wound",
+   "bleeding"
+  ]
+ },
+ "crepe": {
+  "generic": "Elastic crepe bandage",
+  "cls": "Support bandage",
+  "use": "Used to provide light support and compression for minor sprains and strains.",
+  "warnings": [
+   "Do not wrap too tightly — check circulation (numbness, tingling, colour change).",
+   "Remove at night unless advised."
+  ],
+  "symptoms": [
+   "sprain",
+   "strain",
+   "twisted ankle"
+  ]
+ },
+ "cotton": {
+  "generic": "Absorbent cotton wool",
+  "cls": "First-aid consumable",
+  "use": "Used for cleaning skin and applying lotions.",
+  "warnings": [
+   "Do not leave fibres in open wounds."
+  ],
+  "symptoms": [
+   "cleaning",
+   "first aid"
+  ]
+ },
+ "tape": {
+  "generic": "Microporous surgical tape",
+  "cls": "First-aid consumable",
+  "use": "Used to secure dressings to skin.",
+  "warnings": [
+   "Remove gently to avoid skin damage."
+  ],
+  "symptoms": [
+   "dressing",
+   "first aid"
+  ]
+ },
+ "coldPack": {
+  "generic": "Instant cold pack",
+  "cls": "Cold therapy",
+  "use": "Used to apply cold to minor sprains, bumps and bruises to reduce swelling.",
+  "warnings": [
+   "Wrap in cloth — do not apply directly to skin.",
+   "Apply for short periods (e.g., 15–20 minutes)."
+  ],
+  "symptoms": [
+   "sprain",
+   "bruise",
+   "swelling"
+  ]
+ },
+ "burnGel": {
+  "generic": "Hydrogel burn dressing",
+  "cls": "Burn first aid",
+  "use": "Used to cover minor burns after cooling the burn under cool running water.",
+  "warnings": [
+   "First cool the burn under cool running water for about 20 minutes.",
+   "Large, deep, facial, hand, genital or electrical/chemical burns need urgent care.",
+   "Do not apply ice, butter or toothpaste."
+  ],
+  "symptoms": [
+   "burn",
+   "scald"
+  ]
+ },
+ "wipes": {
+  "generic": "Antiseptic wipes (isopropyl alcohol 70%)",
+  "cls": "First-aid consumable",
+  "use": "Used to clean skin and equipment (e.g., thermometer tips).",
+  "warnings": [
+   "Flammable.",
+   "Stings on broken skin; not for wound beds."
+  ],
+  "symptoms": [
+   "cleaning"
+  ]
+ },
+ "firstAidKit": {
+  "generic": "Home first-aid kit",
+  "cls": "First-aid kit",
+  "use": "Contains basic dressings, tape, gloves and antiseptic wipes for minor injuries.",
+  "warnings": [
+   "Check and replace expired items regularly."
+  ],
+  "symptoms": [
+   "first aid"
+  ]
+ }
+}

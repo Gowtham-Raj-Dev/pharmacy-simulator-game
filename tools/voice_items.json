@@ -1,0 +1,2444 @@
+[
+  {
+    "id": "S01",
+    "gender": "M",
+    "en": "I have a headache and mild fever since yesterday.",
+    "ta": "நேற்றிலிருந்து எனக்குத் தலைவலியும் லேசான காய்ச்சலும் இருக்கிறது."
+  },
+  {
+    "id": "S01_duration",
+    "gender": "M",
+    "en": "Since yesterday evening — about a day now.",
+    "ta": "நேற்று மாலையிலிருந்து — இப்போது சுமார் ஒரு நாள் ஆகிறது."
+  },
+  {
+    "id": "S01_symptoms",
+    "gender": "M",
+    "en": "Mild fever, around 38 °C, and some body ache. No rash, no stiff neck, no vomiting, and I'm breathing fine.",
+    "ta": "லேசான காய்ச்சல், சுமார் 38 °C இருக்கும், கொஞ்சம் உடல் வலியும் இருக்கிறது. தடிப்பு இல்லை, கழுத்து விறைப்பு இல்லை, வாந்தி இல்லை, மூச்சு விடுவதிலும் சிரமம் இல்லை."
+  },
+  {
+    "id": "S01_allergies",
+    "gender": "M",
+    "en": "No, I'm not allergic to any medicine that I know of.",
+    "ta": "இல்லை, எனக்குத் தெரிந்தவரை எந்த மருந்துக்கும் ஒவ்வாமை இல்லை."
+  },
+  {
+    "id": "S01_meds",
+    "gender": "M",
+    "en": "I'm not taking any medicines right now.",
+    "ta": "இப்போது நான் எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S01_history",
+    "gender": "M",
+    "en": "No medical conditions. I'm generally healthy.",
+    "ta": "எந்த உடல்நலப் பிரச்சினையும் இல்லை. பொதுவாக நான் ஆரோக்கியமாகத்தான் இருக்கிறேன்."
+  },
+  {
+    "id": "S01_lifestyle",
+    "gender": "M",
+    "en": "I work in an office. Nothing unusual.",
+    "ta": "நான் அலுவலகத்தில் வேலை செய்கிறேன். வழக்கத்துக்கு மாறாக எதுவும் இல்லை."
+  },
+  {
+    "id": "S02",
+    "gender": "F",
+    "en": "My nose keeps running, I'm sneezing all the time and my eyes are itchy. It happens every spring.",
+    "ta": "என் மூக்கிலிருந்து தொடர்ந்து நீர் வடிகிறது, எப்போதும் தும்மிக்கொண்டே இருக்கிறேன், கண்களும் அரிக்கின்றன. ஒவ்வொரு வசந்த காலத்திலும் இப்படித்தான் ஆகிறது."
+  },
+  {
+    "id": "S02_duration",
+    "gender": "F",
+    "en": "About a week. It's the same every year around this time.",
+    "ta": "சுமார் ஒரு வாரமாக. ஒவ்வொரு வருடமும் இந்த நேரத்தில் இப்படித்தான் இருக்கும்."
+  },
+  {
+    "id": "S02_symptoms",
+    "gender": "F",
+    "en": "Itchy watery eyes and a runny nose. No fever, no wheezing or chest tightness.",
+    "ta": "கண்களில் அரிப்பும் நீர் வடிதலும், மூக்கு ஒழுகுதலும் இருக்கிறது. காய்ச்சல் இல்லை, மூச்சிரைப்போ நெஞ்சு இறுக்கமோ இல்லை."
+  },
+  {
+    "id": "S02_allergies",
+    "gender": "F",
+    "en": "Only pollen — no medicine allergies.",
+    "ta": "மகரந்தத்துக்கு மட்டும்தான் — மருந்து ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S02_meds",
+    "gender": "F",
+    "en": "Nothing regularly.",
+    "ta": "வழக்கமாக எதுவும் எடுப்பதில்லை."
+  },
+  {
+    "id": "S02_history",
+    "gender": "F",
+    "en": "Just seasonal allergies. Not pregnant.",
+    "ta": "பருவகால ஒவ்வாமை மட்டும்தான். நான் கர்ப்பமாக இல்லை."
+  },
+  {
+    "id": "S02_lifestyle",
+    "gender": "F",
+    "en": "I work from home, I don't drive much.",
+    "ta": "நான் வீட்டிலிருந்தே வேலை செய்கிறேன், அதிகம் வாகனம் ஓட்டுவதில்லை."
+  },
+  {
+    "id": "S03",
+    "gender": "M",
+    "en": "I've got a burning feeling in my chest after a big spicy dinner. I think it's acidity.",
+    "ta": "நிறைய காரமான இரவு உணவு சாப்பிட்ட பிறகு நெஞ்சில் எரிச்சலாக இருக்கிறது. அமிலத்தன்மை என்று நினைக்கிறேன்."
+  },
+  {
+    "id": "S03_duration",
+    "gender": "M",
+    "en": "Started an hour after dinner. It happens occasionally after heavy meals.",
+    "ta": "இரவு உணவு சாப்பிட்டு ஒரு மணி நேரம் கழித்துத் தொடங்கியது. கனமான உணவுக்குப் பிறகு அவ்வப்போது இப்படி வரும்."
+  },
+  {
+    "id": "S03_symptoms",
+    "gender": "M",
+    "en": "Burning behind the breastbone that rises up. No pain in my arm or jaw, no sweating, no breathlessness, no trouble swallowing and no weight loss.",
+    "ta": "மார்பெலும்புக்குப் பின்னால் எரிச்சல், அது மேல்நோக்கி ஏறுகிறது. கையிலோ தாடையிலோ வலி இல்லை, வியர்வை இல்லை, மூச்சுத் திணறல் இல்லை, விழுங்குவதில் சிரமம் இல்லை, எடையும் குறையவில்லை."
+  },
+  {
+    "id": "S03_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S03_meds",
+    "gender": "M",
+    "en": "No regular medicines.",
+    "ta": "வழக்கமாக எந்த மருந்தும் எடுப்பதில்லை."
+  },
+  {
+    "id": "S03_history",
+    "gender": "M",
+    "en": "No heart problems or other conditions.",
+    "ta": "இதயப் பிரச்சினைகளோ வேறு உடல்நலப் பிரச்சினைகளோ இல்லை."
+  },
+  {
+    "id": "S03_lifestyle",
+    "gender": "M",
+    "en": "Office job. I sometimes eat late at night.",
+    "ta": "அலுவலக வேலை. சில நேரங்களில் இரவு தாமதமாகச் சாப்பிடுவேன்."
+  },
+  {
+    "id": "S04",
+    "gender": "F",
+    "en": "I cut my finger while chopping vegetables. It's only a small cut.",
+    "ta": "காய்கறி நறுக்கும்போது விரலை வெட்டிக்கொண்டேன். சின்ன வெட்டுதான்."
+  },
+  {
+    "id": "S04_duration",
+    "gender": "F",
+    "en": "About an hour ago.",
+    "ta": "சுமார் ஒரு மணி நேரத்துக்கு முன்பு."
+  },
+  {
+    "id": "S04_symptoms",
+    "gender": "F",
+    "en": "It's shallow and stopped bleeding after I pressed it. No numbness, I can move my finger normally.",
+    "ta": "ஆழமில்லாத வெட்டுதான், அழுத்திப் பிடித்ததும் இரத்தம் நின்றுவிட்டது. மரத்துப்போகவில்லை, விரலை வழக்கம்போல் அசைக்க முடிகிறது."
+  },
+  {
+    "id": "S04_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S04_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S04_history",
+    "gender": "F",
+    "en": "Healthy. I'm not diabetic.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன். எனக்கு நீரிழிவு (சர்க்கரை நோய்) இல்லை."
+  },
+  {
+    "id": "S04_lifestyle",
+    "gender": "F",
+    "en": "I had a tetanus booster two years ago.",
+    "ta": "இரண்டு வருடங்களுக்கு முன்பு டெட்டனஸ் பூஸ்டர் ஊசி போட்டுக்கொண்டேன்."
+  },
+  {
+    "id": "S05",
+    "gender": "F",
+    "en": "My hands are so dry and cracked from all the washing. Can you suggest something?",
+    "ta": "அடிக்கடி கை கழுவுவதால் என் கைகள் ரொம்ப வறண்டு வெடித்துவிட்டன. ஏதாவது பரிந்துரைக்க முடியுமா?"
+  },
+  {
+    "id": "S05_duration",
+    "gender": "F",
+    "en": "A few weeks — worse since winter started.",
+    "ta": "சில வாரங்களாக — குளிர்காலம் தொடங்கியதிலிருந்து இன்னும் மோசமாகிவிட்டது."
+  },
+  {
+    "id": "S05_symptoms",
+    "gender": "F",
+    "en": "Just dryness and small cracks. No weeping, crusting or signs of infection.",
+    "ta": "வறட்சியும் சிறிய வெடிப்புகளும் மட்டும்தான். நீர் கசிவு, பொருக்கு அல்லது தொற்றின் அறிகுறிகள் எதுவும் இல்லை."
+  },
+  {
+    "id": "S05_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S05_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S05_history",
+    "gender": "F",
+    "en": "No skin conditions.",
+    "ta": "தோல் நோய் எதுவும் இல்லை."
+  },
+  {
+    "id": "S05_lifestyle",
+    "gender": "F",
+    "en": "I wash my hands a lot at work in a kitchen.",
+    "ta": "நான் ஒரு சமையலறையில் வேலை செய்கிறேன், அங்கே அடிக்கடி கை கழுவுவேன்."
+  },
+  {
+    "id": "S06",
+    "gender": "M",
+    "en": "I've had loose motions since this morning. What can I take?",
+    "ta": "இன்று காலையிலிருந்து எனக்கு வயிற்றுப்போக்கு இருக்கிறது. நான் என்ன எடுத்துக்கொள்ளலாம்?"
+  },
+  {
+    "id": "S06_duration",
+    "gender": "M",
+    "en": "Since this morning — about four times.",
+    "ta": "இன்று காலையிலிருந்து — சுமார் நான்கு முறை போயிருக்கிறது."
+  },
+  {
+    "id": "S06_symptoms",
+    "gender": "M",
+    "en": "Mild cramps. No blood in the stool, no high fever, and I can keep fluids down.",
+    "ta": "லேசான வயிற்றுப் பிடிப்பு இருக்கிறது. மலத்தில் இரத்தம் இல்லை, அதிகக் காய்ச்சல் இல்லை, குடிக்கும் நீர் வாந்தியாகாமல் உள்ளே தங்குகிறது."
+  },
+  {
+    "id": "S06_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S06_meds",
+    "gender": "M",
+    "en": "Nothing.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S06_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S06_lifestyle",
+    "gender": "M",
+    "en": "I ate street food yesterday.",
+    "ta": "நேற்று தெருவோரக் கடையில் சாப்பிட்டேன்."
+  },
+  {
+    "id": "S07",
+    "gender": "F",
+    "en": "I need a thermometer for home, for checking my kids' temperature.",
+    "ta": "வீட்டில் என் குழந்தைகளின் உடல் வெப்பநிலையைப் பார்க்க ஒரு தெர்மாமீட்டர் வேண்டும்."
+  },
+  {
+    "id": "S07_duration",
+    "gender": "F",
+    "en": "Nobody is unwell right now — I just want one at home.",
+    "ta": "இப்போது யாருக்கும் உடம்பு சரியில்லாமல் இல்லை — வீட்டில் ஒன்று வைத்திருக்கலாம் என்றுதான்."
+  },
+  {
+    "id": "S07_symptoms",
+    "gender": "F",
+    "en": "No symptoms, just buying ahead.",
+    "ta": "அறிகுறிகள் எதுவும் இல்லை, முன்கூட்டியே வாங்கி வைக்கிறேன்."
+  },
+  {
+    "id": "S07_allergies",
+    "gender": "F",
+    "en": "Not relevant — no allergies.",
+    "ta": "இதற்கு அது தேவையில்லை — ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S07_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S07_history",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S07_lifestyle",
+    "gender": "F",
+    "en": "I have two children, 4 and 7.",
+    "ta": "எனக்கு 4 வயதிலும் 7 வயதிலும் இரண்டு குழந்தைகள் இருக்கிறார்கள்."
+  },
+  {
+    "id": "S08",
+    "gender": "M",
+    "en": "I have a painful ulcer inside my mouth. It hurts when I eat.",
+    "ta": "என் வாய்க்குள் ஒரு புண் இருக்கிறது. சாப்பிடும்போது ரொம்ப வலிக்கிறது."
+  },
+  {
+    "id": "S08_duration",
+    "gender": "M",
+    "en": "Three days.",
+    "ta": "மூன்று நாட்களாக."
+  },
+  {
+    "id": "S08_symptoms",
+    "gender": "M",
+    "en": "Just one small ulcer. No fever, no other sores, I'm otherwise well.",
+    "ta": "ஒரே ஒரு சிறிய புண்தான். காய்ச்சல் இல்லை, வேறு புண்கள் இல்லை, மற்றபடி நன்றாக இருக்கிறேன்."
+  },
+  {
+    "id": "S08_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S08_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S08_history",
+    "gender": "M",
+    "en": "I get one every few months, they heal in about a week.",
+    "ta": "சில மாதங்களுக்கு ஒருமுறை இப்படி வரும், சுமார் ஒரு வாரத்தில் ஆறிவிடும்."
+  },
+  {
+    "id": "S08_lifestyle",
+    "gender": "M",
+    "en": "I bit my cheek by accident last week.",
+    "ta": "போன வாரம் தெரியாமல் கன்னத்தின் உட்புறத்தைக் கடித்துக்கொண்டேன்."
+  },
+  {
+    "id": "S09",
+    "gender": "F",
+    "en": "I got a bit sunburnt at the beach yesterday. My shoulders are red and sore.",
+    "ta": "நேற்று கடற்கரையில் வெயிலால் என் தோல் கொஞ்சம் எரிந்துவிட்டது. தோள்கள் சிவந்து வலிக்கின்றன."
+  },
+  {
+    "id": "S09_duration",
+    "gender": "F",
+    "en": "Since yesterday afternoon.",
+    "ta": "நேற்று மதியத்திலிருந்து."
+  },
+  {
+    "id": "S09_symptoms",
+    "gender": "F",
+    "en": "Red, warm skin on my shoulders. No blisters, no fever, chills or dizziness.",
+    "ta": "தோள்களில் தோல் சிவந்து சூடாக இருக்கிறது. கொப்புளங்கள் இல்லை, காய்ச்சல், குளிர் நடுக்கம் அல்லது தலைச்சுற்றல் எதுவும் இல்லை."
+  },
+  {
+    "id": "S09_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S09_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S09_history",
+    "gender": "F",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S09_lifestyle",
+    "gender": "F",
+    "en": "I'm going outdoors again this weekend.",
+    "ta": "இந்த வார இறுதியில் மீண்டும் வெளியே வெயிலில் செல்லப்போகிறேன்."
+  },
+  {
+    "id": "S10",
+    "gender": "M",
+    "en": "I've had a dry, tickly cough for three days. It's keeping me up at night.",
+    "ta": "மூன்று நாட்களாகத் தொண்டை உறுத்தும் வறட்டு இருமல் இருக்கிறது. இரவில் தூங்கவே முடியவில்லை."
+  },
+  {
+    "id": "S10_duration",
+    "gender": "M",
+    "en": "Three days.",
+    "ta": "மூன்று நாட்களாக."
+  },
+  {
+    "id": "S10_symptoms",
+    "gender": "M",
+    "en": "Dry cough, a bit of a scratchy throat. No phlegm, no breathlessness, no chest pain, no blood.",
+    "ta": "வறட்டு இருமல், தொண்டையில் கொஞ்சம் கரகரப்பு. கோழை வரவில்லை, மூச்சுத் திணறல் இல்லை, நெஞ்சு வலி இல்லை, இரத்தமும் வரவில்லை."
+  },
+  {
+    "id": "S10_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S10_meds",
+    "gender": "M",
+    "en": "No medicines.",
+    "ta": "எந்த மருந்தும் எடுக்கவில்லை."
+  },
+  {
+    "id": "S10_history",
+    "gender": "M",
+    "en": "No asthma or lung problems.",
+    "ta": "ஆஸ்துமாவோ நுரையீரல் பிரச்சினைகளோ இல்லை."
+  },
+  {
+    "id": "S10_lifestyle",
+    "gender": "M",
+    "en": "Non-smoker.",
+    "ta": "நான் புகைபிடிப்பதில்லை."
+  },
+  {
+    "id": "S11",
+    "gender": "F",
+    "en": "My chest feels heavy and I'm coughing up phlegm. Can you give me a cough syrup?",
+    "ta": "என் நெஞ்சு கனமாக இருக்கிறது, இருமும்போது கோழை (சளி) வருகிறது. ஒரு இருமல் சிரப் தர முடியுமா?"
+  },
+  {
+    "id": "S11_duration",
+    "gender": "F",
+    "en": "Four days.",
+    "ta": "நான்கு நாட்களாக."
+  },
+  {
+    "id": "S11_symptoms",
+    "gender": "F",
+    "en": "White phlegm. No fever, no blood, not breathless, no chest pain.",
+    "ta": "வெள்ளை நிறக் கோழை வருகிறது. காய்ச்சல் இல்லை, இரத்தம் இல்லை, மூச்சுத் திணறல் இல்லை, நெஞ்சு வலியும் இல்லை."
+  },
+  {
+    "id": "S11_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S11_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S11_history",
+    "gender": "F",
+    "en": "No asthma, no heart or lung disease.",
+    "ta": "ஆஸ்துமா இல்லை, இதய நோயோ நுரையீரல் நோயோ இல்லை."
+  },
+  {
+    "id": "S11_lifestyle",
+    "gender": "F",
+    "en": "I don't smoke.",
+    "ta": "நான் புகைபிடிப்பதில்லை."
+  },
+  {
+    "id": "S12",
+    "gender": "M",
+    "en": "The skin between my toes is itchy, white and peeling. I go to the gym a lot.",
+    "ta": "என் கால் விரல்களுக்கு இடையே தோல் அரிக்கிறது, வெள்ளையாகி உரிகிறது. நான் அடிக்கடி ஜிம்முக்குப் போவேன்."
+  },
+  {
+    "id": "S12_duration",
+    "gender": "M",
+    "en": "About two weeks.",
+    "ta": "சுமார் இரண்டு வாரங்களாக."
+  },
+  {
+    "id": "S12_symptoms",
+    "gender": "M",
+    "en": "Itching and peeling between the toes. Nails look normal, no spreading redness, no fever.",
+    "ta": "கால் விரல்களுக்கு இடையே அரிப்பும் தோல் உரிதலும் இருக்கிறது. நகங்கள் சாதாரணமாகத்தான் இருக்கின்றன, சிவப்பு பரவவில்லை, காய்ச்சலும் இல்லை."
+  },
+  {
+    "id": "S12_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S12_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S12_history",
+    "gender": "M",
+    "en": "I'm not diabetic and have no circulation problems.",
+    "ta": "எனக்கு நீரிழிவு (சர்க்கரை நோய்) இல்லை, இரத்த ஓட்டப் பிரச்சினைகளும் இல்லை."
+  },
+  {
+    "id": "S12_lifestyle",
+    "gender": "M",
+    "en": "I wear trainers all day.",
+    "ta": "நாள் முழுவதும் ஸ்போர்ட்ஸ் ஷூ அணிந்திருப்பேன்."
+  },
+  {
+    "id": "S13",
+    "gender": "F",
+    "en": "I haven't been able to pass stools properly for four days. I feel bloated.",
+    "ta": "நான்கு நாட்களாக எனக்கு மலம் சரியாகப் போகவில்லை. வயிறு உப்புசமாக இருக்கிறது."
+  },
+  {
+    "id": "S13_duration",
+    "gender": "F",
+    "en": "Four days.",
+    "ta": "நான்கு நாட்களாக."
+  },
+  {
+    "id": "S13_symptoms",
+    "gender": "F",
+    "en": "Bloating. No blood, no weight loss, no severe pain, no vomiting.",
+    "ta": "வயிறு உப்புசம். இரத்தம் இல்லை, எடை குறையவில்லை, கடுமையான வலி இல்லை, வாந்தியும் இல்லை."
+  },
+  {
+    "id": "S13_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S13_meds",
+    "gender": "F",
+    "en": "No medicines (no iron tablets or painkillers).",
+    "ta": "எந்த மருந்தும் எடுக்கவில்லை (இரும்புச்சத்து மாத்திரைகளோ வலி நிவாரணிகளோ இல்லை)."
+  },
+  {
+    "id": "S13_history",
+    "gender": "F",
+    "en": "Not pregnant, no bowel conditions.",
+    "ta": "நான் கர்ப்பமாக இல்லை, குடல் சம்பந்தமான நோய்களும் இல்லை."
+  },
+  {
+    "id": "S13_lifestyle",
+    "gender": "F",
+    "en": "I've been travelling and eating less fibre and water.",
+    "ta": "பயணத்தில் இருந்ததால் நார்ச்சத்துள்ள உணவும் தண்ணீரும் குறைவாகவே எடுத்துக்கொண்டேன்."
+  },
+  {
+    "id": "S14",
+    "gender": "M",
+    "en": "I twisted my ankle while jogging this morning. It's a bit swollen.",
+    "ta": "இன்று காலை ஜாகிங் செய்யும்போது கணுக்கால் சுளுக்கிக்கொண்டது. கொஞ்சம் வீங்கியிருக்கிறது."
+  },
+  {
+    "id": "S14_duration",
+    "gender": "M",
+    "en": "This morning.",
+    "ta": "இன்று காலையில்."
+  },
+  {
+    "id": "S14_symptoms",
+    "gender": "M",
+    "en": "Mild swelling. I can walk on it, no deformity, no numbness.",
+    "ta": "லேசான வீக்கம் இருக்கிறது. அந்தக் காலை ஊன்றி நடக்க முடிகிறது, உருக்குலைவு எதுவும் இல்லை, மரத்துப்போகவும் இல்லை."
+  },
+  {
+    "id": "S14_allergies",
+    "gender": "M",
+    "en": "No medicine allergies.",
+    "ta": "மருந்து ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S14_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S14_history",
+    "gender": "M",
+    "en": "No asthma, no stomach problems.",
+    "ta": "ஆஸ்துமா இல்லை, வயிற்றுப் பிரச்சினைகளும் இல்லை."
+  },
+  {
+    "id": "S14_lifestyle",
+    "gender": "M",
+    "en": "I run three times a week.",
+    "ta": "வாரத்துக்கு மூன்று முறை ஓடுவேன்."
+  },
+  {
+    "id": "S15",
+    "gender": "F",
+    "en": "My 2-year-old son has a red nappy rash. What can I use?",
+    "ta": "என் 2 வயது மகனுக்கு டயபர் போடும் இடத்தில் சிவப்பாகத் தடிப்பு வந்திருக்கிறது. என்ன பயன்படுத்தலாம்?"
+  },
+  {
+    "id": "S15_duration",
+    "gender": "F",
+    "en": "Two days.",
+    "ta": "இரண்டு நாட்களாக."
+  },
+  {
+    "id": "S15_symptoms",
+    "gender": "F",
+    "en": "Red skin in the nappy area. No blisters or pus, and he has no fever. He's eating and playing normally.",
+    "ta": "டயபர் போடும் பகுதியில் தோல் சிவந்திருக்கிறது. கொப்புளங்களோ சீழோ இல்லை, அவனுக்குக் காய்ச்சலும் இல்லை. வழக்கம்போல் சாப்பிடுகிறான், விளையாடுகிறான்."
+  },
+  {
+    "id": "S15_allergies",
+    "gender": "F",
+    "en": "He has no known allergies.",
+    "ta": "அவனுக்குத் தெரிந்த ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S15_meds",
+    "gender": "F",
+    "en": "He isn't taking anything.",
+    "ta": "அவன் எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S15_history",
+    "gender": "F",
+    "en": "He's healthy.",
+    "ta": "அவன் ஆரோக்கியமாக இருக்கிறான்."
+  },
+  {
+    "id": "S15_lifestyle",
+    "gender": "F",
+    "en": "We've been using new wipes.",
+    "ta": "சமீபத்தில் புதிய வெட் வைப்ஸ் பயன்படுத்தத் தொடங்கினோம்."
+  },
+  {
+    "id": "S16",
+    "gender": "F",
+    "en": "The school called — my daughter has head lice. What should I use?",
+    "ta": "பள்ளியிலிருந்து போன் செய்தார்கள் — என் மகளுக்குத் தலையில் பேன் இருக்கிறதாம். நான் என்ன பயன்படுத்த வேண்டும்?"
+  },
+  {
+    "id": "S16_duration",
+    "gender": "F",
+    "en": "We noticed it yesterday.",
+    "ta": "நேற்றுதான் கவனித்தோம்."
+  },
+  {
+    "id": "S16_symptoms",
+    "gender": "F",
+    "en": "Itchy scalp and I can see live lice. No broken or infected skin.",
+    "ta": "தலையில் அரிப்பு இருக்கிறது, உயிருள்ள பேன்களைப் பார்க்க முடிகிறது. தோலில் புண்ணோ தொற்றோ இல்லை."
+  },
+  {
+    "id": "S16_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S16_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S16_history",
+    "gender": "F",
+    "en": "She's 7 and healthy.",
+    "ta": "அவளுக்கு 7 வயது, ஆரோக்கியமாக இருக்கிறாள்."
+  },
+  {
+    "id": "S16_lifestyle",
+    "gender": "F",
+    "en": "I'll check the rest of the family too.",
+    "ta": "வீட்டில் மற்றவர்களையும் சோதித்துப் பார்க்கப் போகிறேன்."
+  },
+  {
+    "id": "S17",
+    "gender": "M",
+    "en": "I'm taking a long bus trip tomorrow and always get travel sick.",
+    "ta": "நாளை நீண்ட தூரம் பஸ்ஸில் பயணம் செய்யப்போகிறேன். பயணம் செய்யும்போது எனக்கு எப்போதும் குமட்டலும் வாந்தி வருவது போலவும் இருக்கும்."
+  },
+  {
+    "id": "S17_duration",
+    "gender": "M",
+    "en": "It always happens on long journeys.",
+    "ta": "நீண்ட பயணங்களில் எப்போதும் இப்படித்தான் ஆகும்."
+  },
+  {
+    "id": "S17_symptoms",
+    "gender": "M",
+    "en": "Nausea during travel only. No other symptoms.",
+    "ta": "பயணத்தின்போது மட்டும் குமட்டல். வேறு அறிகுறிகள் இல்லை."
+  },
+  {
+    "id": "S17_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S17_meds",
+    "gender": "M",
+    "en": "Nothing.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S17_history",
+    "gender": "M",
+    "en": "No glaucoma or prostate problems.",
+    "ta": "கிளாக்கோமாவோ (கண் அழுத்த நோய்) புராஸ்டேட் பிரச்சினைகளோ இல்லை."
+  },
+  {
+    "id": "S17_lifestyle",
+    "gender": "M",
+    "en": "I'm a passenger — I won't be driving.",
+    "ta": "நான் பயணி மட்டும்தான் — வண்டி ஓட்டப்போவதில்லை."
+  },
+  {
+    "id": "S18",
+    "gender": "F",
+    "en": "I keep getting pimples on my face. Is there something I can use?",
+    "ta": "என் முகத்தில் அடிக்கடி பருக்கள் வருகின்றன. பயன்படுத்த ஏதாவது இருக்கிறதா?"
+  },
+  {
+    "id": "S18_duration",
+    "gender": "F",
+    "en": "A few months.",
+    "ta": "சில மாதங்களாக."
+  },
+  {
+    "id": "S18_symptoms",
+    "gender": "F",
+    "en": "Small spots and blackheads. No painful cysts or scarring.",
+    "ta": "சிறிய பருக்களும் கரும்புள்ளிகளும் (பிளாக்ஹெட்ஸ்) இருக்கின்றன. வலிக்கும் கட்டிகளோ தழும்புகளோ இல்லை."
+  },
+  {
+    "id": "S18_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S18_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S18_history",
+    "gender": "F",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S18_lifestyle",
+    "gender": "F",
+    "en": "I wash my face once a day.",
+    "ta": "தினமும் ஒரு முறை முகம் கழுவுவேன்."
+  },
+  {
+    "id": "S19",
+    "gender": "M",
+    "en": "My right ear feels blocked. I think it's wax.",
+    "ta": "என் வலது காது அடைத்தது போல இருக்கிறது. காது மெழுகு (குரும்பி) என்று நினைக்கிறேன்."
+  },
+  {
+    "id": "S19_duration",
+    "gender": "M",
+    "en": "About a week.",
+    "ta": "சுமார் ஒரு வாரமாக."
+  },
+  {
+    "id": "S19_symptoms",
+    "gender": "M",
+    "en": "Muffled hearing only. No pain, no discharge, no dizziness, no fever.",
+    "ta": "காது மந்தமாகக் கேட்கிறது, அவ்வளவுதான். வலி இல்லை, காதிலிருந்து நீர் வடியவில்லை, தலைச்சுற்றல் இல்லை, காய்ச்சலும் இல்லை."
+  },
+  {
+    "id": "S19_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S19_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S19_history",
+    "gender": "M",
+    "en": "No ear operations or perforated eardrum.",
+    "ta": "காதில் அறுவை சிகிச்சை எதுவும் செய்ததில்லை, செவிப்பறையில் துளையும் இல்லை."
+  },
+  {
+    "id": "S19_lifestyle",
+    "gender": "M",
+    "en": "I use cotton buds a lot.",
+    "ta": "நான் அடிக்கடி காட்டன் பட் (பஞ்சுக் குச்சி) பயன்படுத்துவேன்."
+  },
+  {
+    "id": "S20",
+    "gender": "F",
+    "en": "My eyes feel dry and gritty, especially after work on the computer.",
+    "ta": "என் கண்கள் வறண்டும், மணல் விழுந்தது போல உறுத்தலாகவும் இருக்கின்றன, குறிப்பாகக் கணினியில் வேலை செய்த பிறகு."
+  },
+  {
+    "id": "S20_duration",
+    "gender": "F",
+    "en": "A couple of months, worse in the evening.",
+    "ta": "இரண்டு மூன்று மாதங்களாக, மாலையில் அதிகமாக இருக்கும்."
+  },
+  {
+    "id": "S20_symptoms",
+    "gender": "F",
+    "en": "Gritty and tired eyes. No pain, no light sensitivity, and my vision is normal.",
+    "ta": "கண்கள் உறுத்தலாகவும் சோர்வாகவும் இருக்கின்றன. வலி இல்லை, வெளிச்சம் கண்ணைக் கூசவில்லை, பார்வையும் சரியாகத்தான் இருக்கிறது."
+  },
+  {
+    "id": "S20_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S20_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S20_history",
+    "gender": "F",
+    "en": "Healthy, I don't wear contact lenses.",
+    "ta": "நான் ஆரோக்கியமாக இருக்கிறேன், காண்டாக்ட் லென்ஸ் அணிவதில்லை."
+  },
+  {
+    "id": "S20_lifestyle",
+    "gender": "F",
+    "en": "I work at a screen for 9 hours a day.",
+    "ta": "நான் ஒரு நாளைக்கு 9 மணி நேரம் திரையின் முன் வேலை செய்கிறேன்."
+  },
+  {
+    "id": "S21",
+    "gender": "F",
+    "en": "My son has an itchy bottom at night and I saw tiny white worms. I think it's threadworm.",
+    "ta": "என் மகனுக்கு இரவில் ஆசனவாயில் அரிப்பு இருக்கிறது, சின்னச் சின்ன வெள்ளைப் புழுக்களையும் பார்த்தேன். நூல்புழு (கீரைப்பூச்சி) என்று நினைக்கிறேன்."
+  },
+  {
+    "id": "S21_duration",
+    "gender": "F",
+    "en": "A few nights now.",
+    "ta": "சில இரவுகளாக இருக்கிறது."
+  },
+  {
+    "id": "S21_symptoms",
+    "gender": "F",
+    "en": "Itching at night. No weight loss, tummy pain or blood.",
+    "ta": "இரவில் அரிப்பு மட்டும்தான். எடை குறையவில்லை, வயிற்று வலியோ இரத்தமோ இல்லை."
+  },
+  {
+    "id": "S21_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S21_meds",
+    "gender": "F",
+    "en": "Nothing.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S21_history",
+    "gender": "F",
+    "en": "He's 7. I'm not pregnant or breastfeeding.",
+    "ta": "அவனுக்கு 7 வயது. நான் கர்ப்பமாக இல்லை, தாய்ப்பாலும் ஊட்டவில்லை."
+  },
+  {
+    "id": "S21_lifestyle",
+    "gender": "F",
+    "en": "There are four of us at home.",
+    "ta": "வீட்டில் நாங்கள் நான்கு பேர் இருக்கிறோம்."
+  },
+  {
+    "id": "S22",
+    "gender": "M",
+    "en": "I want to quit smoking. Is there something to help with the cravings?",
+    "ta": "நான் புகைபிடிப்பதை நிறுத்த விரும்புகிறேன். புகைக்க வேண்டும் என்ற ஏக்கத்தைக் கட்டுப்படுத்த உதவும் ஏதாவது இருக்கிறதா?"
+  },
+  {
+    "id": "S22_duration",
+    "gender": "M",
+    "en": "I've smoked for 20 years.",
+    "ta": "நான் 20 வருடங்களாகப் புகைபிடிக்கிறேன்."
+  },
+  {
+    "id": "S22_symptoms",
+    "gender": "M",
+    "en": "No chest pain or breathing problems.",
+    "ta": "நெஞ்சு வலியோ மூச்சுப் பிரச்சினையோ இல்லை."
+  },
+  {
+    "id": "S22_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S22_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S22_history",
+    "gender": "M",
+    "en": "No heart attack, stroke or heart problems.",
+    "ta": "மாரடைப்பு, பக்கவாதம் அல்லது இதயப் பிரச்சினை எதுவும் இருந்ததில்லை."
+  },
+  {
+    "id": "S22_lifestyle",
+    "gender": "M",
+    "en": "About 15 cigarettes a day.",
+    "ta": "ஒரு நாளைக்குச் சுமார் 15 சிகரெட்."
+  },
+  {
+    "id": "S23",
+    "gender": "M",
+    "en": "I've got a nagging tension headache. Can I have some ibuprofen?",
+    "ta": "எனக்கு விடாமல் ஒரு டென்ஷன் தலைவலி (மன அழுத்தத் தலைவலி) இருக்கிறது. கொஞ்சம் இப்யூபுரூஃபன் தர முடியுமா?"
+  },
+  {
+    "id": "S23_duration",
+    "gender": "M",
+    "en": "Since this morning.",
+    "ta": "இன்று காலையிலிருந்து."
+  },
+  {
+    "id": "S23_symptoms",
+    "gender": "M",
+    "en": "Dull headache across the forehead. It came on slowly. No fall or knock to the head, no drowsiness or vomiting, no vision problems, no weakness, no unusual bleeding.",
+    "ta": "நெற்றி முழுவதும் மந்தமான தலைவலி. மெதுவாகத்தான் தொடங்கியது. கீழே விழவில்லை, தலையில் அடிபடவில்லை, தூக்கக் கலக்கமோ வாந்தியோ இல்லை, பார்வைப் பிரச்சினை இல்லை, உடல் பலவீனம் இல்லை, அசாதாரண இரத்தப்போக்கும் இல்லை."
+  },
+  {
+    "id": "S23_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S23_meds",
+    "gender": "M",
+    "en": "I take warfarin for my heart rhythm, and a cholesterol tablet.",
+    "ta": "இதயத் துடிப்புக் கோளாறுக்காக வார்ஃபரின் எடுத்துக்கொள்கிறேன், கொலஸ்ட்ராலுக்கு ஒரு மாத்திரையும் சாப்பிடுகிறேன்."
+  },
+  {
+    "id": "S23_history",
+    "gender": "M",
+    "en": "Atrial fibrillation — that's why I'm on warfarin. I get this same tension headache now and then when I'm stressed; it feels exactly like my usual ones.",
+    "ta": "எனக்கு ஏட்ரியல் ஃபிப்ரிலேஷன் (சீரற்ற இதயத் துடிப்பு) இருக்கிறது — அதனால்தான் வார்ஃபரின் எடுக்கிறேன். மன அழுத்தமாக இருக்கும்போது அவ்வப்போது இதே மாதிரி டென்ஷன் தலைவலி வரும்; இதுவும் எப்போதும் வருவது போலவேதான் இருக்கிறது."
+  },
+  {
+    "id": "S23_lifestyle",
+    "gender": "M",
+    "en": "Retired.",
+    "ta": "நான் ஓய்வு பெற்றுவிட்டேன்."
+  },
+  {
+    "id": "S24",
+    "gender": "F",
+    "en": "I strained my lower back lifting boxes. Give me something strong, please.",
+    "ta": "பெட்டிகளைத் தூக்கும்போது கீழ் முதுகில் சுளுக்கு பிடித்துவிட்டது. தயவுசெய்து ஏதாவது வீரியமான மருந்து கொடுங்கள்."
+  },
+  {
+    "id": "S24_duration",
+    "gender": "F",
+    "en": "Two days.",
+    "ta": "இரண்டு நாட்களாக."
+  },
+  {
+    "id": "S24_symptoms",
+    "gender": "F",
+    "en": "Muscle ache in the lower back. No numbness, no leg weakness, no problems passing urine.",
+    "ta": "கீழ் முதுகில் தசை வலி. மரத்துப்போதல் இல்லை, காலில் பலவீனம் இல்லை, சிறுநீர் கழிப்பதிலும் பிரச்சினை இல்லை."
+  },
+  {
+    "id": "S24_allergies",
+    "gender": "F",
+    "en": "Not allergic exactly — but ibuprofen made my asthma worse once.",
+    "ta": "சரியாகச் சொன்னால் ஒவ்வாமை இல்லை — ஆனால் ஒருமுறை இப்யூபுரூஃபன் சாப்பிட்டதும் என் ஆஸ்துமா மோசமானது."
+  },
+  {
+    "id": "S24_meds",
+    "gender": "F",
+    "en": "Just my blue reliever inhaler when needed.",
+    "ta": "தேவைப்படும்போது என் நீல நிற நிவாரண இன்ஹேலர் மட்டும்."
+  },
+  {
+    "id": "S24_history",
+    "gender": "F",
+    "en": "I have asthma. Last time I took ibuprofen I became wheezy.",
+    "ta": "எனக்கு ஆஸ்துமா இருக்கிறது. கடைசியாக இப்யூபுரூஃபன் எடுத்தபோது மூச்சிரைப்பு (வீசிங்) வந்தது."
+  },
+  {
+    "id": "S24_lifestyle",
+    "gender": "F",
+    "en": "I'm moving house.",
+    "ta": "நான் வீடு மாறிக்கொண்டிருக்கிறேன்."
+  },
+  {
+    "id": "S25",
+    "gender": "M",
+    "en": "I have a terribly blocked nose from a cold. I need a strong decongestant tablet.",
+    "ta": "சளியால் என் மூக்கு மிகவும் அடைத்துக்கொண்டிருக்கிறது. வீரியமான மூக்கடைப்பு நீக்கும் மாத்திரை வேண்டும்."
+  },
+  {
+    "id": "S25_duration",
+    "gender": "M",
+    "en": "Three days.",
+    "ta": "மூன்று நாட்களாக."
+  },
+  {
+    "id": "S25_symptoms",
+    "gender": "M",
+    "en": "Blocked nose and mild sore throat. No high fever, no facial swelling.",
+    "ta": "மூக்கடைப்பும் லேசான தொண்டை வலியும் இருக்கிறது. அதிகக் காய்ச்சல் இல்லை, முகத்தில் வீக்கமும் இல்லை."
+  },
+  {
+    "id": "S25_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S25_meds",
+    "gender": "M",
+    "en": "I take amlodipine for my blood pressure.",
+    "ta": "இரத்த அழுத்தத்துக்கு அம்லோடிபின் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S25_history",
+    "gender": "M",
+    "en": "High blood pressure.",
+    "ta": "எனக்கு உயர் இரத்த அழுத்தம் இருக்கிறது."
+  },
+  {
+    "id": "S25_lifestyle",
+    "gender": "M",
+    "en": "Office worker.",
+    "ta": "நான் அலுவலகத்தில் வேலை செய்கிறேன்."
+  },
+  {
+    "id": "S26",
+    "gender": "F",
+    "en": "I have a dry cough that won't settle. Can I have a cough syrup?",
+    "ta": "எனக்கு வறட்டு இருமல் இருக்கிறது, குறையவே இல்லை. ஒரு இருமல் சிரப் தர முடியுமா?"
+  },
+  {
+    "id": "S26_duration",
+    "gender": "F",
+    "en": "Five days.",
+    "ta": "ஐந்து நாட்களாக."
+  },
+  {
+    "id": "S26_symptoms",
+    "gender": "F",
+    "en": "Dry, irritating cough. No breathlessness, no blood, no fever.",
+    "ta": "வறண்ட, எரிச்சலூட்டும் இருமல். மூச்சுத் திணறல் இல்லை, இரத்தம் வரவில்லை, காய்ச்சலும் இல்லை."
+  },
+  {
+    "id": "S26_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S26_meds",
+    "gender": "F",
+    "en": "Metformin for my diabetes.",
+    "ta": "என் சர்க்கரை நோய்க்கு மெட்ஃபார்மின் எடுக்கிறேன்."
+  },
+  {
+    "id": "S26_history",
+    "gender": "F",
+    "en": "Type 2 diabetes.",
+    "ta": "டைப் 2 நீரிழிவு (சர்க்கரை நோய்)."
+  },
+  {
+    "id": "S26_lifestyle",
+    "gender": "F",
+    "en": "I watch my sugar intake carefully.",
+    "ta": "சர்க்கரை உட்கொள்வதைக் கவனமாகக் கட்டுப்படுத்துகிறேன்."
+  },
+  {
+    "id": "S27",
+    "gender": "M",
+    "en": "My hay fever is bad this week — sneezing and runny nose. Something cheap that works?",
+    "ta": "இந்த வாரம் என் ஹே ஃபீவர் (ஒவ்வாமை சளி) மோசமாக இருக்கிறது — தும்மலும் மூக்கு ஒழுகலும். விலை குறைவாக, நன்றாக வேலை செய்யும் ஏதாவது இருக்கிறதா?"
+  },
+  {
+    "id": "S27_duration",
+    "gender": "M",
+    "en": "About five days.",
+    "ta": "சுமார் ஐந்து நாட்களாக."
+  },
+  {
+    "id": "S27_symptoms",
+    "gender": "M",
+    "en": "Sneezing, runny nose, itchy eyes. No wheeze.",
+    "ta": "தும்மல், மூக்கு ஒழுகுதல், கண் அரிப்பு. மூச்சிரைப்பு இல்லை."
+  },
+  {
+    "id": "S27_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S27_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S27_history",
+    "gender": "M",
+    "en": "Only hay fever.",
+    "ta": "ஹே ஃபீவர் மட்டும்தான்."
+  },
+  {
+    "id": "S27_lifestyle",
+    "gender": "M",
+    "en": "I'm a truck driver — I'll be driving through the night.",
+    "ta": "நான் லாரி ஓட்டுநர் — இரவு முழுவதும் வண்டி ஓட்ட வேண்டியிருக்கும்."
+  },
+  {
+    "id": "S28",
+    "gender": "F",
+    "en": "My 6-year-old has a fever. Can I give him some of my aspirin?",
+    "ta": "என் 6 வயது மகனுக்குக் காய்ச்சல் இருக்கிறது. என்னுடைய ஆஸ்பிரினில் கொஞ்சம் அவனுக்குக் கொடுக்கலாமா?"
+  },
+  {
+    "id": "S28_duration",
+    "gender": "F",
+    "en": "Since last night.",
+    "ta": "நேற்று இரவிலிருந்து."
+  },
+  {
+    "id": "S28_symptoms",
+    "gender": "F",
+    "en": "Temperature 38.4 °C. He's a bit tired but drinking and playing. No rash, no breathing difficulty, no stiff neck, not drowsy.",
+    "ta": "வெப்பநிலை 38.4 °C. கொஞ்சம் சோர்வாக இருக்கிறான், ஆனால் தண்ணீர் குடிக்கிறான், விளையாடுகிறான். தடிப்பு இல்லை, மூச்சுவிடுவதில் சிரமம் இல்லை, கழுத்து விறைப்பு இல்லை, தூக்கக் கலக்கமும் இல்லை."
+  },
+  {
+    "id": "S28_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S28_meds",
+    "gender": "F",
+    "en": "Nothing.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S28_history",
+    "gender": "F",
+    "en": "He's healthy. No asthma.",
+    "ta": "அவன் ஆரோக்கியமாக இருக்கிறான். ஆஸ்துமா இல்லை."
+  },
+  {
+    "id": "S28_lifestyle",
+    "gender": "F",
+    "en": "He goes to school.",
+    "ta": "அவன் பள்ளிக்குச் செல்கிறான்."
+  },
+  {
+    "id": "S29",
+    "gender": "M",
+    "en": "I'm taking a cold and flu tablet but my headache is still there. Can I add some paracetamol?",
+    "ta": "நான் சளி, காய்ச்சலுக்கான மாத்திரை எடுத்துக்கொண்டிருக்கிறேன், ஆனால் தலைவலி இன்னும் போகவில்லை. கூடவே கொஞ்சம் பாராசிட்டமால் சேர்த்துக்கொள்ளலாமா?"
+  },
+  {
+    "id": "S29_duration",
+    "gender": "M",
+    "en": "Cold started two days ago.",
+    "ta": "சளி இரண்டு நாட்களுக்கு முன்பு தொடங்கியது."
+  },
+  {
+    "id": "S29_symptoms",
+    "gender": "M",
+    "en": "Runny nose, mild headache, slight temperature. No stiff neck, rash or breathing problems.",
+    "ta": "மூக்கு ஒழுகுகிறது, லேசான தலைவலி, லேசான காய்ச்சல். கழுத்து விறைப்பு, தடிப்பு, மூச்சுவிடுவதில் சிரமம் எதுவும் இல்லை."
+  },
+  {
+    "id": "S29_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S29_meds",
+    "gender": "M",
+    "en": "A cold and flu combination tablet — the label says paracetamol, phenylephrine and chlorphenamine. Four times a day.",
+    "ta": "சளி, காய்ச்சலுக்கான ஒரு கலவை மாத்திரை — லேபிளில் பாராசிட்டமால், ஃபினைல்எஃப்ரின், குளோர்ஃபெனிரமின் என்று இருக்கிறது. நாளுக்கு நான்கு முறை எடுக்கிறேன்."
+  },
+  {
+    "id": "S29_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S29_lifestyle",
+    "gender": "M",
+    "en": "Desk job.",
+    "ta": "அலுவலகத்தில் மேசைப் பணி செய்கிறேன்."
+  },
+  {
+    "id": "S30",
+    "gender": "F",
+    "en": "I have a headache. Can I take ibuprofen?",
+    "ta": "எனக்குத் தலைவலியாக இருக்கிறது. இப்யூபுரூஃபன் எடுத்துக்கொள்ளலாமா?"
+  },
+  {
+    "id": "S30_duration",
+    "gender": "F",
+    "en": "Since this afternoon.",
+    "ta": "இன்று மதியத்திலிருந்து."
+  },
+  {
+    "id": "S30_symptoms",
+    "gender": "F",
+    "en": "Mild headache. No blurred vision or flashing lights, no sudden swelling of my face or hands, no tummy pain.",
+    "ta": "லேசான தலைவலி. பார்வை மங்கலோ கண்ணில் மின்னல் போன்ற ஒளியோ இல்லை, முகத்திலோ கைகளிலோ திடீர் வீக்கம் இல்லை, வயிற்று வலியும் இல்லை."
+  },
+  {
+    "id": "S30_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S30_meds",
+    "gender": "F",
+    "en": "Just pregnancy vitamins with folic acid.",
+    "ta": "ஃபோலிக் அமிலம் உள்ள கர்ப்ப கால வைட்டமின்கள் மட்டும் எடுக்கிறேன்."
+  },
+  {
+    "id": "S30_history",
+    "gender": "F",
+    "en": "I'm 24 weeks pregnant. Otherwise healthy.",
+    "ta": "நான் 24 வாரக் கர்ப்பிணி. மற்றபடி ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S30_lifestyle",
+    "gender": "F",
+    "en": "I'm on maternity leave soon.",
+    "ta": "விரைவில் மகப்பேறு விடுப்பில் செல்லவிருக்கிறேன்."
+  },
+  {
+    "id": "S31",
+    "gender": "F",
+    "en": "I get heartburn every evening. Is there something safe I can take?",
+    "ta": "எனக்கு ஒவ்வொரு மாலையும் நெஞ்செரிச்சல் வருகிறது. பாதுகாப்பாக எடுத்துக்கொள்ளக்கூடிய மருந்து ஏதாவது இருக்கிறதா?"
+  },
+  {
+    "id": "S31_duration",
+    "gender": "F",
+    "en": "A few weeks — it started in the third trimester.",
+    "ta": "சில வாரங்களாக — கர்ப்பத்தின் கடைசி மூன்று மாதக் காலம் தொடங்கியதும் ஆரம்பித்தது."
+  },
+  {
+    "id": "S31_symptoms",
+    "gender": "F",
+    "en": "Burning after meals and when lying down. No vomiting, no severe upper tummy pain, no headache or vision changes.",
+    "ta": "சாப்பிட்ட பிறகும் படுக்கும்போதும் நெஞ்சில் எரிச்சல். வாந்தி இல்லை, மேல் வயிற்றில் கடுமையான வலி இல்லை, தலைவலியோ பார்வை மாற்றங்களோ இல்லை."
+  },
+  {
+    "id": "S31_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S31_meds",
+    "gender": "F",
+    "en": "Pregnancy multivitamin.",
+    "ta": "கர்ப்ப கால மல்டிவைட்டமின் எடுக்கிறேன்."
+  },
+  {
+    "id": "S31_history",
+    "gender": "F",
+    "en": "I'm 30 weeks pregnant.",
+    "ta": "நான் 30 வாரக் கர்ப்பிணி."
+  },
+  {
+    "id": "S31_lifestyle",
+    "gender": "F",
+    "en": "I eat late dinners.",
+    "ta": "இரவு உணவைத் தாமதமாகச் சாப்பிடுகிறேன்."
+  },
+  {
+    "id": "S32",
+    "gender": "F",
+    "en": "Here's my prescription from the clinic. I need these antibiotics.",
+    "ta": "கிளினிக்கில் கொடுத்த மருந்துச்சீட்டு இதோ. இந்த ஆன்டிபயாடிக் மருந்துகள் எனக்கு வேண்டும்."
+  },
+  {
+    "id": "S32_duration",
+    "gender": "F",
+    "en": "The doctor diagnosed a chest infection yesterday.",
+    "ta": "நெஞ்சில் தொற்று இருப்பதாக மருத்துவர் நேற்று கண்டறிந்தார்."
+  },
+  {
+    "id": "S32_symptoms",
+    "gender": "F",
+    "en": "Cough with fever. No severe breathlessness.",
+    "ta": "காய்ச்சலுடன் இருமல். கடுமையான மூச்சுத்திணறல் இல்லை."
+  },
+  {
+    "id": "S32_allergies",
+    "gender": "F",
+    "en": "Yes — penicillin gives me a rash and swelling. I don't think I told the doctor.",
+    "ta": "ஆமாம் — பென்சிலின் எடுத்தால் எனக்குத் தடிப்பும் வீக்கமும் வரும். அதை மருத்துவரிடம் நான் சொல்லவில்லை என்று நினைக்கிறேன்."
+  },
+  {
+    "id": "S32_meds",
+    "gender": "F",
+    "en": "Nothing else.",
+    "ta": "வேறு எதுவும் எடுக்கவில்லை."
+  },
+  {
+    "id": "S32_history",
+    "gender": "F",
+    "en": "No other conditions.",
+    "ta": "வேறு உடல்நலப் பிரச்சினைகள் இல்லை."
+  },
+  {
+    "id": "S32_lifestyle",
+    "gender": "F",
+    "en": "I work in a bank.",
+    "ta": "நான் ஒரு வங்கியில் வேலை செய்கிறேன்."
+  },
+  {
+    "id": "S33",
+    "gender": "M",
+    "en": "I can't sleep well these days. Give me some sleeping tablets.",
+    "ta": "இந்த நாட்களில் எனக்குச் சரியாகத் தூக்கம் வருவதில்லை. கொஞ்சம் தூக்க மாத்திரைகள் கொடுங்களேன்."
+  },
+  {
+    "id": "S33_duration",
+    "gender": "M",
+    "en": "A few weeks.",
+    "ta": "சில வாரங்களாக."
+  },
+  {
+    "id": "S33_symptoms",
+    "gender": "M",
+    "en": "I wake up at night to pass urine and can't get back to sleep. No low mood, no pain, no breathing problems at night.",
+    "ta": "இரவில் சிறுநீர் கழிக்க எழுந்திருக்கிறேன், பிறகு மீண்டும் தூக்கம் வருவதில்லை. மனச்சோர்வு இல்லை, வலி இல்லை, இரவில் மூச்சுப் பிரச்சினையும் இல்லை."
+  },
+  {
+    "id": "S33_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S33_meds",
+    "gender": "M",
+    "en": "Tablets for my prostate and for blood pressure.",
+    "ta": "புரோஸ்டேட்டுக்கும் இரத்த அழுத்தத்துக்கும் மாத்திரைகள் எடுக்கிறேன்."
+  },
+  {
+    "id": "S33_history",
+    "gender": "M",
+    "en": "Enlarged prostate and high blood pressure.",
+    "ta": "புரோஸ்டேட் வீக்கமும் உயர் இரத்த அழுத்தமும் இருக்கிறது."
+  },
+  {
+    "id": "S33_lifestyle",
+    "gender": "M",
+    "en": "I drink tea in the evening and nap in the afternoon.",
+    "ta": "மாலையில் டீ குடிப்பேன், மதியம் குட்டித் தூக்கம் போடுவேன்."
+  },
+  {
+    "id": "S34",
+    "gender": "M",
+    "en": "My knee aches after walking. I want some painkiller tablets.",
+    "ta": "நடந்த பிறகு என் முழங்கால் வலிக்கிறது. வலி நிவாரணி மாத்திரைகள் வேண்டும்."
+  },
+  {
+    "id": "S34_duration",
+    "gender": "M",
+    "en": "On and off for months.",
+    "ta": "பல மாதங்களாக விட்டுவிட்டு வருகிறது."
+  },
+  {
+    "id": "S34_symptoms",
+    "gender": "M",
+    "en": "Aching knee after activity. No redness, no hot swollen joint, no injury, no fever.",
+    "ta": "நடமாடிய பிறகு முழங்கால் வலிக்கிறது. சிவப்பு இல்லை, மூட்டு சூடாகவோ வீங்கியோ இல்லை, அடிபடவில்லை, காய்ச்சல் இல்லை."
+  },
+  {
+    "id": "S34_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S34_meds",
+    "gender": "M",
+    "en": "Nothing regular.",
+    "ta": "தொடர்ந்து எடுக்கும் மருந்து எதுவும் இல்லை."
+  },
+  {
+    "id": "S34_history",
+    "gender": "M",
+    "en": "I had a stomach ulcer that bled two years ago.",
+    "ta": "இரண்டு வருடங்களுக்கு முன்பு எனக்கு வயிற்றுப் புண் ஏற்பட்டு இரத்தப்போக்கு வந்தது."
+  },
+  {
+    "id": "S34_lifestyle",
+    "gender": "M",
+    "en": "I walk every morning.",
+    "ta": "தினமும் காலையில் நடைப்பயிற்சி செய்கிறேன்."
+  },
+  {
+    "id": "S35",
+    "gender": "F",
+    "en": "I have a toothache. Can I get ibuprofen until I see the dentist?",
+    "ta": "எனக்குப் பல்வலி இருக்கிறது. பல் மருத்துவரைப் பார்க்கும் வரை இப்யூபுரூஃபன் கிடைக்குமா?"
+  },
+  {
+    "id": "S35_duration",
+    "gender": "F",
+    "en": "Two days.",
+    "ta": "இரண்டு நாட்களாக."
+  },
+  {
+    "id": "S35_symptoms",
+    "gender": "F",
+    "en": "Throbbing tooth. No facial swelling, no fever, no difficulty swallowing or opening my mouth.",
+    "ta": "பல் துடிதுடிப்பாக வலிக்கிறது. முக வீக்கம் இல்லை, காய்ச்சல் இல்லை, விழுங்குவதிலோ வாயைத் திறப்பதிலோ சிரமம் இல்லை."
+  },
+  {
+    "id": "S35_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S35_meds",
+    "gender": "F",
+    "en": "I take lithium every day.",
+    "ta": "நான் தினமும் லித்தியம் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S35_history",
+    "gender": "F",
+    "en": "Bipolar disorder — stable on lithium.",
+    "ta": "இருதுருவக் கோளாறு (பைபோலார்) — லித்தியத்தால் கட்டுப்பாட்டில் உள்ளது."
+  },
+  {
+    "id": "S35_lifestyle",
+    "gender": "F",
+    "en": "Teacher.",
+    "ta": "நான் ஆசிரியர்."
+  },
+  {
+    "id": "S36",
+    "gender": "M",
+    "en": "I fell off my bike and scraped my elbow. I need something to clean it.",
+    "ta": "சைக்கிளிலிருந்து விழுந்து முழங்கையில் சிராய்ப்பு ஏற்பட்டது. அதைச் சுத்தம் செய்ய ஏதாவது வேண்டும்."
+  },
+  {
+    "id": "S36_duration",
+    "gender": "M",
+    "en": "Half an hour ago.",
+    "ta": "அரை மணி நேரத்துக்கு முன்பு."
+  },
+  {
+    "id": "S36_symptoms",
+    "gender": "M",
+    "en": "Surface graze, a little gravel I've rinsed out. No deep cut, I can move my arm fine.",
+    "ta": "மேலோட்டமான சிராய்ப்புதான், கொஞ்சம் சரளைக் கல் ஒட்டியிருந்தது, அதைக் கழுவிவிட்டேன். ஆழமான வெட்டு இல்லை, கையை நன்றாக அசைக்க முடிகிறது."
+  },
+  {
+    "id": "S36_allergies",
+    "gender": "M",
+    "en": "Yes — I react to iodine.",
+    "ta": "ஆமாம் — அயோடின் எனக்கு ஒவ்வாமை தரும்."
+  },
+  {
+    "id": "S36_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S36_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறேன்."
+  },
+  {
+    "id": "S36_lifestyle",
+    "gender": "M",
+    "en": "Tetanus jab is up to date.",
+    "ta": "டெட்டனஸ் (ரணஜன்னி) தடுப்பூசி முறைப்படி போட்டிருக்கிறேன்."
+  },
+  {
+    "id": "S37",
+    "gender": "F",
+    "en": "My 15-year-old daughter has a fever and body aches. Can I give her aspirin?",
+    "ta": "என் 15 வயது மகளுக்குக் காய்ச்சலும் உடல்வலியும் இருக்கிறது. அவளுக்கு ஆஸ்பிரின் கொடுக்கலாமா?"
+  },
+  {
+    "id": "S37_duration",
+    "gender": "F",
+    "en": "Since yesterday.",
+    "ta": "நேற்றிலிருந்து."
+  },
+  {
+    "id": "S37_symptoms",
+    "gender": "F",
+    "en": "Fever 38.2 °C, body aches, sore throat. No rash, no stiff neck, she's drinking fluids.",
+    "ta": "காய்ச்சல் 38.2 °C, உடல்வலி, தொண்டை வலி. தடிப்பு இல்லை, கழுத்து விறைப்பு இல்லை, திரவங்கள் குடிக்கிறாள்."
+  },
+  {
+    "id": "S37_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S37_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S37_history",
+    "gender": "F",
+    "en": "Healthy, no asthma.",
+    "ta": "ஆரோக்கியமாக இருக்கிறாள், ஆஸ்துமா இல்லை."
+  },
+  {
+    "id": "S37_lifestyle",
+    "gender": "F",
+    "en": "She has exams this week.",
+    "ta": "இந்த வாரம் அவளுக்குத் தேர்வுகள் இருக்கின்றன."
+  },
+  {
+    "id": "S38",
+    "gender": "M",
+    "en": "My 4-year-old has a cough. Can I give her a cough suppressant syrup?",
+    "ta": "என் 4 வயது மகளுக்கு இருமல் இருக்கிறது. இருமலை அடக்கும் சிரப் கொடுக்கலாமா?"
+  },
+  {
+    "id": "S38_duration",
+    "gender": "M",
+    "en": "Three days.",
+    "ta": "மூன்று நாட்களாக."
+  },
+  {
+    "id": "S38_symptoms",
+    "gender": "M",
+    "en": "Dry cough, runny nose. She's eating and playing. No breathing difficulty, no high fever, no wheeze.",
+    "ta": "வறட்டு இருமல், மூக்கு ஒழுகுகிறது. நன்றாகச் சாப்பிடுகிறாள், விளையாடுகிறாள். மூச்சுவிடுவதில் சிரமம் இல்லை, அதிகக் காய்ச்சல் இல்லை, மூச்சில் விசில் சத்தம் இல்லை."
+  },
+  {
+    "id": "S38_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S38_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S38_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "ஆரோக்கியமாக இருக்கிறாள்."
+  },
+  {
+    "id": "S38_lifestyle",
+    "gender": "M",
+    "en": "Goes to nursery.",
+    "ta": "நர்சரி பள்ளிக்குச் செல்கிறாள்."
+  },
+  {
+    "id": "S39",
+    "gender": "M",
+    "en": "I've got bad indigestion. Can I have an antacid?",
+    "ta": "எனக்குக் கடுமையான அஜீரணமாக இருக்கிறது. ஆன்டாசிட் கிடைக்குமா?"
+  },
+  {
+    "id": "S39_duration",
+    "gender": "M",
+    "en": "It started about 30 minutes ago.",
+    "ta": "சுமார் 30 நிமிடங்களுக்கு முன்பு தொடங்கியது."
+  },
+  {
+    "id": "S39_symptoms",
+    "gender": "M",
+    "en": "It's a heavy pressure in my chest spreading to my left arm and jaw. I feel sweaty and a bit sick.",
+    "ta": "நெஞ்சில் கனமாக அழுத்துவது போல இருக்கிறது, அது இடது கைக்கும் தாடைக்கும் பரவுகிறது. வியர்க்கிறது, கொஞ்சம் குமட்டலாகவும் இருக்கிறது."
+  },
+  {
+    "id": "S39_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S39_meds",
+    "gender": "M",
+    "en": "Blood pressure tablets.",
+    "ta": "இரத்த அழுத்த மாத்திரைகள் எடுக்கிறேன்."
+  },
+  {
+    "id": "S39_history",
+    "gender": "M",
+    "en": "High blood pressure, I smoke.",
+    "ta": "உயர் இரத்த அழுத்தம் இருக்கிறது, புகைபிடிப்பேன்."
+  },
+  {
+    "id": "S39_lifestyle",
+    "gender": "M",
+    "en": "I was climbing stairs when it started.",
+    "ta": "படிக்கட்டு ஏறிக்கொண்டிருந்தபோது இது தொடங்கியது."
+  },
+  {
+    "id": "S40",
+    "gender": "F",
+    "en": "I need your strongest painkiller. My head is killing me.",
+    "ta": "உங்களிடம் உள்ள மிகவும் வீரியமான வலி நிவாரணி வேண்டும். தலைவலி தாங்க முடியவில்லை."
+  },
+  {
+    "id": "S40_duration",
+    "gender": "F",
+    "en": "It came on suddenly about an hour ago — like being hit on the head.",
+    "ta": "சுமார் ஒரு மணி நேரத்துக்கு முன்பு திடீரென்று வந்தது — தலையில் யாரோ அடித்தது போல இருந்தது."
+  },
+  {
+    "id": "S40_symptoms",
+    "gender": "F",
+    "en": "It's the worst headache of my life. My neck is stiff and I've vomited twice. Light hurts my eyes.",
+    "ta": "என் வாழ்க்கையிலேயே இதுதான் மிக மோசமான தலைவலி. கழுத்து விறைப்பாக இருக்கிறது, இரண்டு முறை வாந்தி எடுத்தேன். வெளிச்சம் பட்டால் கண் வலிக்கிறது."
+  },
+  {
+    "id": "S40_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S40_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S40_history",
+    "gender": "F",
+    "en": "I don't usually get headaches.",
+    "ta": "எனக்குப் பொதுவாகத் தலைவலி வருவதில்லை."
+  },
+  {
+    "id": "S40_lifestyle",
+    "gender": "F",
+    "en": "Office worker.",
+    "ta": "நான் அலுவலகத்தில் வேலை செய்கிறேன்."
+  },
+  {
+    "id": "S41",
+    "gender": "F",
+    "en": "My 2-month-old baby has a temperature. Can I get some infant paracetamol drops?",
+    "ta": "என் 2 மாதக் குழந்தைக்குக் காய்ச்சல் இருக்கிறது. கைக்குழந்தைகளுக்கான பாராசிட்டமால் சொட்டு மருந்து கிடைக்குமா?"
+  },
+  {
+    "id": "S41_duration",
+    "gender": "F",
+    "en": "Since this morning.",
+    "ta": "இன்று காலையிலிருந்து."
+  },
+  {
+    "id": "S41_symptoms",
+    "gender": "F",
+    "en": "His temperature is 38.4 °C. He's feeding less than usual and sleepier.",
+    "ta": "அவனுக்கு வெப்பநிலை 38.4 °C. வழக்கத்தைவிடக் குறைவாகப் பால் குடிக்கிறான், அதிகமாகத் தூங்குகிறான்."
+  },
+  {
+    "id": "S41_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "ஒவ்வாமை எதுவும் இல்லை."
+  },
+  {
+    "id": "S41_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S41_history",
+    "gender": "F",
+    "en": "He was born full-term, healthy.",
+    "ta": "அவன் முழு மாதத்தில் ஆரோக்கியமாகப் பிறந்தான்."
+  },
+  {
+    "id": "S41_lifestyle",
+    "gender": "F",
+    "en": "He had his first vaccines last week.",
+    "ta": "போன வாரம் அவனுக்கு முதல் தடுப்பூசிகள் போடப்பட்டன."
+  },
+  {
+    "id": "S42",
+    "gender": "M",
+    "en": "I need a strong cough syrup. This cough just won't go away.",
+    "ta": "எனக்கு வீரியமான இருமல் சிரப் வேண்டும். இந்த இருமல் போகவே மாட்டேன் என்கிறது."
+  },
+  {
+    "id": "S42_duration",
+    "gender": "M",
+    "en": "About four weeks now.",
+    "ta": "இப்போது சுமார் நான்கு வாரங்களாக."
+  },
+  {
+    "id": "S42_symptoms",
+    "gender": "M",
+    "en": "I've lost weight without trying, I sweat at night, and sometimes there's a little blood in my phlegm.",
+    "ta": "முயற்சி செய்யாமலேயே என் எடை குறைந்துவிட்டது, இரவில் வியர்க்கிறது, சில சமயம் கபத்தில் கொஞ்சம் இரத்தம் வருகிறது."
+  },
+  {
+    "id": "S42_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S42_meds",
+    "gender": "M",
+    "en": "I tried two cough syrups already.",
+    "ta": "ஏற்கனவே இரண்டு இருமல் சிரப்களை முயற்சி செய்துவிட்டேன்."
+  },
+  {
+    "id": "S42_history",
+    "gender": "M",
+    "en": "No known conditions.",
+    "ta": "அறியப்பட்ட நோய்கள் எதுவும் இல்லை."
+  },
+  {
+    "id": "S42_lifestyle",
+    "gender": "M",
+    "en": "I live in a crowded hostel.",
+    "ta": "நெரிசலான விடுதியில் தங்கியிருக்கிறேன்."
+  },
+  {
+    "id": "S43",
+    "gender": "F",
+    "en": "I have bad diarrhoea. Can I get loperamide to stop it?",
+    "ta": "எனக்குக் கடுமையான வயிற்றுப்போக்கு இருக்கிறது. அதை நிறுத்த லோபெரமைடு கிடைக்குமா?"
+  },
+  {
+    "id": "S43_duration",
+    "gender": "F",
+    "en": "Two days.",
+    "ta": "இரண்டு நாட்களாக."
+  },
+  {
+    "id": "S43_symptoms",
+    "gender": "F",
+    "en": "There's blood in the stool and I have a high fever. Severe cramps.",
+    "ta": "மலத்தில் இரத்தம் வருகிறது, கடுமையான காய்ச்சலும் இருக்கிறது. வயிற்றில் கடுமையான பிடிப்பு வலியும் இருக்கிறது."
+  },
+  {
+    "id": "S43_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S43_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S43_history",
+    "gender": "F",
+    "en": "Healthy.",
+    "ta": "நான் ஆரோக்கியமாகத்தான் இருக்கிறேன்."
+  },
+  {
+    "id": "S43_lifestyle",
+    "gender": "F",
+    "en": "I came back from a trip last week.",
+    "ta": "கடந்த வாரம்தான் ஒரு பயணம் முடித்துத் திரும்பி வந்தேன்."
+  },
+  {
+    "id": "S44",
+    "gender": "M",
+    "en": "Just give me some antibiotics, I have a cold. I don't have time for a doctor.",
+    "ta": "தயவுசெய்து எனக்குக் கொஞ்சம் ஆன்டிபயாடிக் மாத்திரை கொடுங்கள், சளி பிடித்திருக்கிறது. மருத்துவரிடம் போக எனக்கு நேரமில்லை."
+  },
+  {
+    "id": "S44_duration",
+    "gender": "M",
+    "en": "Two days.",
+    "ta": "இரண்டு நாட்களாக."
+  },
+  {
+    "id": "S44_symptoms",
+    "gender": "M",
+    "en": "Runny nose, sore throat, mild temperature. No breathing difficulty, no ear pain, no severe throat pain.",
+    "ta": "மூக்கு ஒழுகுகிறது, தொண்டை வலிக்கிறது, லேசான காய்ச்சல் இருக்கிறது. மூச்சுத் திணறல் இல்லை, காது வலி இல்லை, தொண்டையில் கடுமையான வலியும் இல்லை."
+  },
+  {
+    "id": "S44_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S44_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S44_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "நான் ஆரோக்கியமாகத்தான் இருக்கிறேன்."
+  },
+  {
+    "id": "S44_lifestyle",
+    "gender": "M",
+    "en": "Very busy at work.",
+    "ta": "வேலை மிகவும் அதிகமாக இருக்கிறது, நேரமே கிடைப்பதில்லை."
+  },
+  {
+    "id": "S45",
+    "gender": "F",
+    "en": "I have a mole on my back that's itchy. Can you give me a cream?",
+    "ta": "என் முதுகில் உள்ள ஒரு மச்சத்தில் அரிப்பு இருக்கிறது. அதற்கு ஏதாவது கிரீம் தர முடியுமா?"
+  },
+  {
+    "id": "S45_duration",
+    "gender": "F",
+    "en": "I noticed it changing over the last two months.",
+    "ta": "கடந்த இரண்டு மாதங்களாக அது மாறிவருவதைக் கவனித்தேன்."
+  },
+  {
+    "id": "S45_symptoms",
+    "gender": "F",
+    "en": "It's got bigger, the edge is irregular, it has two colours now and it bled once.",
+    "ta": "அது பெரிதாகிவிட்டது, அதன் ஓரம் ஒழுங்கற்றதாக இருக்கிறது, இப்போது இரண்டு நிறங்களில் இருக்கிறது, ஒருமுறை இரத்தமும் வந்தது."
+  },
+  {
+    "id": "S45_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S45_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S45_history",
+    "gender": "F",
+    "en": "I had bad sunburns as a child.",
+    "ta": "சிறு வயதில் வெயிலில் என் தோல் பலமுறை மோசமாக எரிந்து சிவந்திருக்கிறது."
+  },
+  {
+    "id": "S45_lifestyle",
+    "gender": "F",
+    "en": "I work outdoors.",
+    "ta": "நான் திறந்தவெளியில் வேலை செய்கிறேன்."
+  },
+  {
+    "id": "S46",
+    "gender": "M",
+    "en": "I have a small sore on my foot. I need an antiseptic cream.",
+    "ta": "என் பாதத்தில் ஒரு சிறிய புண் இருக்கிறது. எனக்கு ஒரு கிருமிநாசினி கிரீம் வேண்டும்."
+  },
+  {
+    "id": "S46_duration",
+    "gender": "M",
+    "en": "About two weeks — it isn't healing.",
+    "ta": "சுமார் இரண்டு வாரங்களாக — அது ஆறவே இல்லை."
+  },
+  {
+    "id": "S46_symptoms",
+    "gender": "M",
+    "en": "The skin around it is red and warm, and I can't feel my toes well.",
+    "ta": "அதைச் சுற்றியுள்ள தோல் சிவந்து சூடாக இருக்கிறது, என் கால் விரல்களில் உணர்ச்சியும் சரியாகத் தெரியவில்லை."
+  },
+  {
+    "id": "S46_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S46_meds",
+    "gender": "M",
+    "en": "Metformin and insulin.",
+    "ta": "மெட்ஃபார்மின், இன்சுலின் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S46_history",
+    "gender": "M",
+    "en": "Type 2 diabetes for 15 years.",
+    "ta": "15 வருடங்களாக டைப் 2 நீரிழிவு (சர்க்கரை நோய்) இருக்கிறது."
+  },
+  {
+    "id": "S46_lifestyle",
+    "gender": "M",
+    "en": "I walk barefoot at home.",
+    "ta": "வீட்டில் செருப்பு இல்லாமல் வெறுங்காலுடன் நடப்பேன்."
+  },
+  {
+    "id": "S47",
+    "gender": "F",
+    "en": "A bee stung me ten minutes ago. Can I get an antihistamine?",
+    "ta": "பத்து நிமிடங்களுக்கு முன் ஒரு தேனீ என்னைக் கொட்டிவிட்டது. ஆன்டிஹிஸ்டமின் மாத்திரை கிடைக்குமா?"
+  },
+  {
+    "id": "S47_duration",
+    "gender": "F",
+    "en": "Ten minutes ago.",
+    "ta": "பத்து நிமிடங்களுக்கு முன்பு."
+  },
+  {
+    "id": "S47_symptoms",
+    "gender": "F",
+    "en": "My lips are swelling, my throat feels tight and it's getting hard to breathe. I feel dizzy.",
+    "ta": "என் உதடுகள் வீங்குகின்றன, தொண்டை இறுகுவது போல இருக்கிறது, மூச்சுவிடக் கஷ்டமாகிக்கொண்டே வருகிறது. தலைசுற்றலாகவும் இருக்கிறது."
+  },
+  {
+    "id": "S47_allergies",
+    "gender": "F",
+    "en": "I had a big reaction to a sting once before.",
+    "ta": "முன்பு ஒருமுறை பூச்சி கொட்டியபோது எனக்குக் கடுமையான ஒவ்வாமை எதிர்வினை ஏற்பட்டது."
+  },
+  {
+    "id": "S47_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S47_history",
+    "gender": "F",
+    "en": "Asthma as a child.",
+    "ta": "சிறு வயதில் ஆஸ்துமா இருந்தது."
+  },
+  {
+    "id": "S47_lifestyle",
+    "gender": "F",
+    "en": "I was in the park.",
+    "ta": "நான் பூங்காவில் இருந்தேன்."
+  },
+  {
+    "id": "S48",
+    "gender": "M",
+    "en": "I need something for my heartburn. The usual antacids aren't working.",
+    "ta": "என் நெஞ்செரிச்சலுக்கு ஏதாவது மருந்து வேண்டும். வழக்கமாக எடுக்கும் ஆன்டாசிட் மருந்துகள் வேலை செய்யவில்லை."
+  },
+  {
+    "id": "S48_duration",
+    "gender": "M",
+    "en": "About three months now.",
+    "ta": "இப்போது சுமார் மூன்று மாதங்களாக."
+  },
+  {
+    "id": "S48_symptoms",
+    "gender": "M",
+    "en": "Food feels like it gets stuck when I swallow, and I've lost weight without trying.",
+    "ta": "விழுங்கும்போது உணவு தொண்டையில் சிக்கிக்கொள்வது போல இருக்கிறது, முயற்சி செய்யாமலேயே என் எடையும் குறைந்துவிட்டது."
+  },
+  {
+    "id": "S48_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S48_meds",
+    "gender": "M",
+    "en": "I've been taking antacids every day.",
+    "ta": "தினமும் ஆன்டாசிட் எடுத்துக்கொண்டு வருகிறேன்."
+  },
+  {
+    "id": "S48_history",
+    "gender": "M",
+    "en": "No diagnosis.",
+    "ta": "இதுவரை எந்த நோயும் கண்டறியப்படவில்லை."
+  },
+  {
+    "id": "S48_lifestyle",
+    "gender": "M",
+    "en": "I smoke.",
+    "ta": "நான் புகைபிடிப்பேன்."
+  },
+  {
+    "id": "S49",
+    "gender": "F",
+    "en": "My eye is red. Can I have some eye drops?",
+    "ta": "என் கண் சிவந்திருக்கிறது. எனக்குக் கொஞ்சம் கண் சொட்டு மருந்து கிடைக்குமா?"
+  },
+  {
+    "id": "S49_duration",
+    "gender": "F",
+    "en": "Since yesterday.",
+    "ta": "நேற்றிலிருந்து."
+  },
+  {
+    "id": "S49_symptoms",
+    "gender": "F",
+    "en": "It's very painful, my vision is blurry in that eye, and light really hurts.",
+    "ta": "மிகவும் வலிக்கிறது, அந்தக் கண்ணில் பார்வை மங்கலாக இருக்கிறது, வெளிச்சம் பட்டால் மிகவும் கூசி வலிக்கிறது."
+  },
+  {
+    "id": "S49_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S49_meds",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S49_history",
+    "gender": "F",
+    "en": "I wear contact lenses.",
+    "ta": "நான் காண்டாக்ட் லென்ஸ் அணிகிறேன்."
+  },
+  {
+    "id": "S49_lifestyle",
+    "gender": "F",
+    "en": "I sometimes sleep with my lenses in.",
+    "ta": "சில நேரங்களில் லென்ஸைக் கழற்றாமலேயே தூங்கிவிடுவேன்."
+  },
+  {
+    "id": "S50",
+    "gender": "M",
+    "en": "I need a new inhaler, mine isn't working. I can't catch my breath.",
+    "ta": "எனக்குப் புதிய இன்ஹேலர் வேண்டும், என்னுடையது வேலை செய்யவில்லை. மூச்சு விடவே முடியவில்லை."
+  },
+  {
+    "id": "S50_duration",
+    "gender": "M",
+    "en": "It got worse over the last hour.",
+    "ta": "கடந்த ஒரு மணி நேரத்தில் மோசமாகிவிட்டது."
+  },
+  {
+    "id": "S50_symptoms",
+    "gender": "M",
+    "en": "I'm very breathless, I can't finish sentences, and my lips look a bit blue. My reliever isn't helping.",
+    "ta": "கடுமையாக மூச்சு வாங்குகிறது, ஒரு வாக்கியத்தைக்கூட முழுமையாகப் பேச முடியவில்லை, என் உதடுகள் கொஞ்சம் நீலமாகத் தெரிகின்றன. நிவாரண இன்ஹேலர் உதவவில்லை."
+  },
+  {
+    "id": "S50_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S50_meds",
+    "gender": "M",
+    "en": "Blue reliever inhaler — I've used it many times today.",
+    "ta": "நீல நிற நிவாரண இன்ஹேலர் — இன்று அதைப் பலமுறை பயன்படுத்திவிட்டேன்."
+  },
+  {
+    "id": "S50_history",
+    "gender": "M",
+    "en": "Asthma.",
+    "ta": "எனக்கு ஆஸ்துமா இருக்கிறது."
+  },
+  {
+    "id": "S50_lifestyle",
+    "gender": "M",
+    "en": "Student.",
+    "ta": "நான் ஒரு மாணவர்."
+  },
+  {
+    "id": "S51",
+    "gender": "F",
+    "en": "I've been newly diagnosed with type 2 diabetes. Here is my prescription.",
+    "ta": "எனக்குப் புதிதாக டைப் 2 நீரிழிவு இருப்பது கண்டறியப்பட்டுள்ளது. இதோ என் மருந்துச்சீட்டு."
+  },
+  {
+    "id": "S51_duration",
+    "gender": "F",
+    "en": "Diagnosed this week.",
+    "ta": "இந்த வாரம்தான் கண்டறியப்பட்டது."
+  },
+  {
+    "id": "S51_symptoms",
+    "gender": "F",
+    "en": "I feel fine now.",
+    "ta": "இப்போது நன்றாகத்தான் இருக்கிறேன்."
+  },
+  {
+    "id": "S51_allergies",
+    "gender": "F",
+    "en": "No allergies.",
+    "ta": "எனக்கு எந்த ஒவ்வாமையும் இல்லை."
+  },
+  {
+    "id": "S51_meds",
+    "gender": "F",
+    "en": "No other medicines.",
+    "ta": "வேறு எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S51_history",
+    "gender": "F",
+    "en": "Type 2 diabetes. My doctor checked my kidney function.",
+    "ta": "டைப் 2 நீரிழிவு இருக்கிறது. என் மருத்துவர் சிறுநீரகச் செயல்பாட்டைப் பரிசோதித்தார்."
+  },
+  {
+    "id": "S51_lifestyle",
+    "gender": "F",
+    "en": "I'm starting to exercise more.",
+    "ta": "இப்போது அதிகமாக உடற்பயிற்சி செய்யத் தொடங்கியிருக்கிறேன்."
+  },
+  {
+    "id": "S52",
+    "gender": "M",
+    "en": "Can I get {BRAND}? It's for my hay fever.",
+    "ta": "{BRAND} கிடைக்குமா? என் பருவகால ஒவ்வாமைக்கு (ஹே ஃபீவர்) வேண்டும்."
+  },
+  {
+    "id": "S52_duration",
+    "gender": "M",
+    "en": "Hay fever season — a few days.",
+    "ta": "இது ஒவ்வாமைப் பருவம் — சில நாட்களாக இருக்கிறது."
+  },
+  {
+    "id": "S52_symptoms",
+    "gender": "M",
+    "en": "Sneezing, runny nose. No wheeze.",
+    "ta": "தும்மல் வருகிறது, மூக்கு ஒழுகுகிறது. மூச்சில் விசில் சத்தம் (வீசிங்) இல்லை."
+  },
+  {
+    "id": "S52_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S52_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S52_history",
+    "gender": "M",
+    "en": "Only hay fever.",
+    "ta": "பருவகால ஒவ்வாமை மட்டும்தான்."
+  },
+  {
+    "id": "S52_lifestyle",
+    "gender": "M",
+    "en": "I take the bus to work.",
+    "ta": "நான் பேருந்தில் வேலைக்குச் செல்கிறேன்."
+  },
+  {
+    "id": "S53",
+    "gender": "F",
+    "en": "I have a cold. Give me your strongest cold and flu tablets.",
+    "ta": "எனக்குச் சளி பிடித்திருக்கிறது. உங்களிடம் இருப்பதிலேயே மிகவும் வீரியமான சளி, ஃப்ளூ மாத்திரைகளைக் கொடுங்கள்."
+  },
+  {
+    "id": "S53_duration",
+    "gender": "F",
+    "en": "Three days.",
+    "ta": "மூன்று நாட்களாக."
+  },
+  {
+    "id": "S53_symptoms",
+    "gender": "F",
+    "en": "Blocked nose, aches, mild temperature. No breathlessness or chest pain.",
+    "ta": "மூக்கடைப்பு, உடல்வலி, லேசான காய்ச்சல் இருக்கிறது. மூச்சுத் திணறலோ நெஞ்சு வலியோ இல்லை."
+  },
+  {
+    "id": "S53_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S53_meds",
+    "gender": "F",
+    "en": "Amlodipine, metformin and atorvastatin.",
+    "ta": "அம்லோடிபின், மெட்ஃபார்மின், அடோர்வாஸ்டாடின் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S53_history",
+    "gender": "F",
+    "en": "High blood pressure and type 2 diabetes.",
+    "ta": "உயர் இரத்த அழுத்தமும் டைப் 2 நீரிழிவும் இருக்கின்றன."
+  },
+  {
+    "id": "S53_lifestyle",
+    "gender": "F",
+    "en": "I live alone.",
+    "ta": "நான் தனியாக வசிக்கிறேன்."
+  },
+  {
+    "id": "S54",
+    "gender": "M",
+    "en": "Can you fill this prescription? I didn't get it filled before.",
+    "ta": "இந்த மருந்துச்சீட்டுக்கு மருந்து தர முடியுமா? முன்பு இதை வாங்காமல் விட்டுவிட்டேன்."
+  },
+  {
+    "id": "S54_duration",
+    "gender": "M",
+    "en": "The prescription is from earlier this year.",
+    "ta": "இந்த மருந்துச்சீட்டு இந்த ஆண்டின் தொடக்கத்தில் எழுதப்பட்டது."
+  },
+  {
+    "id": "S54_symptoms",
+    "gender": "M",
+    "en": "I have a sore throat again now.",
+    "ta": "இப்போது மீண்டும் தொண்டை வலிக்கிறது."
+  },
+  {
+    "id": "S54_allergies",
+    "gender": "M",
+    "en": "No allergies.",
+    "ta": "எனக்கு எந்த ஒவ்வாமையும் இல்லை."
+  },
+  {
+    "id": "S54_meds",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எந்த மருந்தும் எடுத்துக்கொள்ளவில்லை."
+  },
+  {
+    "id": "S54_history",
+    "gender": "M",
+    "en": "Healthy.",
+    "ta": "நான் ஆரோக்கியமாகத்தான் இருக்கிறேன்."
+  },
+  {
+    "id": "S54_lifestyle",
+    "gender": "M",
+    "en": "Engineer.",
+    "ta": "நான் ஒரு பொறியாளர்."
+  },
+  {
+    "id": "S55",
+    "gender": "M",
+    "en": "My cough syrup isn't working. I need something stronger.",
+    "ta": "என் இருமல் சிரப் வேலை செய்யவில்லை. இன்னும் வீரியமான ஏதாவது வேண்டும்."
+  },
+  {
+    "id": "S55_duration",
+    "gender": "M",
+    "en": "Two weeks — getting worse.",
+    "ta": "இரண்டு வாரங்களாக — மோசமாகிக்கொண்டே வருகிறது."
+  },
+  {
+    "id": "S55_symptoms",
+    "gender": "M",
+    "en": "I'm more breathless than usual, my ankles are swollen, and I have to sleep propped up on pillows.",
+    "ta": "வழக்கத்தைவிட அதிகமாக மூச்சு வாங்குகிறது, கணுக்கால்கள் வீங்கியிருக்கின்றன, தலையணைகளை அடுக்கி வைத்துச் சாய்ந்தபடிதான் தூங்க முடிகிறது."
+  },
+  {
+    "id": "S55_allergies",
+    "gender": "M",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S55_meds",
+    "gender": "M",
+    "en": "Blood pressure tablets.",
+    "ta": "இரத்த அழுத்த மாத்திரைகள் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S55_history",
+    "gender": "M",
+    "en": "High blood pressure, heart attack 5 years ago.",
+    "ta": "உயர் இரத்த அழுத்தம் இருக்கிறது; 5 வருடங்களுக்கு முன் மாரடைப்பு வந்தது."
+  },
+  {
+    "id": "S55_lifestyle",
+    "gender": "M",
+    "en": "Ex-smoker.",
+    "ta": "முன்பு புகைபிடித்தேன், இப்போது நிறுத்திவிட்டேன்."
+  },
+  {
+    "id": "S56",
+    "gender": "F",
+    "en": "My doctor started me on a cholesterol tablet. Here's the prescription.",
+    "ta": "என் மருத்துவர் எனக்குக் கொலஸ்ட்ரால் மாத்திரை தொடங்கியிருக்கிறார். இதோ மருந்துச்சீட்டு."
+  },
+  {
+    "id": "S56_duration",
+    "gender": "F",
+    "en": "Diagnosed last week.",
+    "ta": "கடந்த வாரம் கண்டறியப்பட்டது."
+  },
+  {
+    "id": "S56_symptoms",
+    "gender": "F",
+    "en": "No symptoms.",
+    "ta": "எந்த அறிகுறியும் இல்லை."
+  },
+  {
+    "id": "S56_allergies",
+    "gender": "F",
+    "en": "None.",
+    "ta": "எதுவும் இல்லை."
+  },
+  {
+    "id": "S56_meds",
+    "gender": "F",
+    "en": "Amlodipine for blood pressure.",
+    "ta": "இரத்த அழுத்தத்துக்கு அம்லோடிபின் எடுத்துக்கொள்கிறேன்."
+  },
+  {
+    "id": "S56_history",
+    "gender": "F",
+    "en": "High blood pressure. Not pregnant.",
+    "ta": "உயர் இரத்த அழுத்தம் இருக்கிறது. நான் கர்ப்பமாக இல்லை."
+  },
+  {
+    "id": "S56_lifestyle",
+    "gender": "F",
+    "en": "I drink grapefruit juice every morning.",
+    "ta": "தினமும் காலையில் கிரேப்ஃப்ரூட் பழச்சாறு குடிப்பேன்."
+  },
+  {
+    "id": "thx_dispense_M",
+    "gender": "M",
+    "en": "Thank you so much! I will take these medicines as advised.",
+    "ta": "மிக்க நன்றி! நீங்கள் கூறியபடி மருந்துகளைச் சரியாகப் பயன்படுத்துகிறேன்."
+  },
+  {
+    "id": "thx_dispense_F",
+    "gender": "F",
+    "en": "Thank you so much! I will take these medicines as advised.",
+    "ta": "மிக்க நன்றி! நீங்கள் கூறியபடி மருந்துகளைச் சரியாகப் பயன்படுத்துகிறேன்."
+  },
+  {
+    "id": "thx_refer_M",
+    "gender": "M",
+    "en": "Thank you for the guidance. I will consult the doctor right away.",
+    "ta": "உங்கள் ஆலோசனைக்கு நன்றி. நான் உடனே மருத்துவரிடம் செல்கிறேன்."
+  },
+  {
+    "id": "thx_refer_F",
+    "gender": "F",
+    "en": "Thank you for the guidance. I will consult the doctor right away.",
+    "ta": "உங்கள் ஆலோசனைக்கு நன்றி. நான் உடனே மருத்துவரிடம் செல்கிறேன்."
+  },
+  {
+    "id": "thx_advise_M",
+    "gender": "M",
+    "en": "Thank you for explaining so clearly. I will follow your advice.",
+    "ta": "தெளிவாக விளக்கியதற்கு நன்றி. உங்கள் ஆலோசனையை அப்படியே பின்பற்றுகிறேன்."
+  },
+  {
+    "id": "thx_advise_F",
+    "gender": "F",
+    "en": "Thank you for explaining so clearly. I will follow your advice.",
+    "ta": "தெளிவாக விளக்கியதற்கு நன்றி. உங்கள் ஆலோசனையை அப்படியே பின்பற்றுகிறேன்."
+  },
+  {
+    "id": "thx_emergency_M",
+    "gender": "M",
+    "en": "Thank you for warning me. I am going to the emergency room immediately!",
+    "ta": "எச்சரித்ததற்கு நன்றி. நான் உடனே அவசர சிகிச்சைப் பிரிவுக்குச் செல்கிறேன்!"
+  },
+  {
+    "id": "thx_emergency_F",
+    "gender": "F",
+    "en": "Thank you for warning me. I am going to the emergency room immediately!",
+    "ta": "எச்சரித்ததற்கு நன்றி. நான் உடனே அவசர சிகிச்சைப் பிரிவுக்குச் செல்கிறேன்!"
+  },
+  {
+    "id": "q_duration",
+    "gender": "F",
+    "en": "How long have you had this problem?",
+    "ta": "இந்தப் பிரச்சனை எத்தனை நாட்களாக இருக்கிறது?",
+    "role": "pharmacist"
+  },
+  {
+    "id": "q_symptoms",
+    "gender": "F",
+    "en": "Can you describe your symptoms a bit more?",
+    "ta": "உங்கள் அறிகுறிகளைப் பற்றி கொஞ்சம் விளக்க முடியுமா?",
+    "role": "pharmacist"
+  },
+  {
+    "id": "q_allergies",
+    "gender": "F",
+    "en": "Do you have any known drug or food allergies?",
+    "ta": "உங்களுக்கு ஏதேனும் மருந்து அல்லது உணவு ஒவ்வாமை இருக்கிறதா?",
+    "role": "pharmacist"
+  },
+  {
+    "id": "q_meds",
+    "gender": "F",
+    "en": "Are you currently taking any other medicines?",
+    "ta": "நீங்கள் தற்போது வேறு ஏதேனும் மருந்துகள் எடுத்துக் கொள்கிறீர்களா?",
+    "role": "pharmacist"
+  },
+  {
+    "id": "q_history",
+    "gender": "F",
+    "en": "Do you have any chronic medical conditions?",
+    "ta": "உங்களுக்கு நீண்டகால உடல்நலப் பிரச்சனைகள் ஏதேனும் உள்ளனவா?",
+    "role": "pharmacist"
+  },
+  {
+    "id": "q_lifestyle",
+    "gender": "F",
+    "en": "Are you pregnant, breastfeeding, or planning to drive?",
+    "ta": "கர்ப்பமாகவோ, தாய்ப்பால் தருபவராகவோ அல்லது வாகனம் ஓட்டுபவராகவோ இருக்கிறீர்களா?",
+    "role": "pharmacist"
+  }
+]

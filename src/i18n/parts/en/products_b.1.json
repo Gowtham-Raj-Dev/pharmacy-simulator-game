@@ -1,0 +1,570 @@
+{
+ "lubricantEye": {
+  "generic": "Carboxymethylcellulose 0.5% eye drops",
+  "cls": "Lubricant eye drops (artificial tears)",
+  "use": "Used to relieve dry, gritty or tired eyes.",
+  "warnings": [
+   "Do not touch the dropper tip to the eye.",
+   "Discard after opening as per label (often 28 days).",
+   "Refer a painful red eye, light sensitivity or reduced vision urgently."
+  ],
+  "symptoms": [
+   "dry eyes",
+   "tired eyes",
+   "gritty eyes"
+  ]
+ },
+ "earWax": {
+  "generic": "Carbamide peroxide 6.5% ear drops",
+  "cls": "Ear wax softener",
+  "use": "Used to soften and help remove ear wax.",
+  "warnings": [
+   "Do not use if the eardrum may be perforated, or with ear pain, discharge or dizziness.",
+   "Do not insert cotton buds into the ear canal."
+  ],
+  "symptoms": [
+   "ear wax",
+   "blocked ear"
+  ]
+ },
+ "folic": {
+  "generic": "Folic acid 400 mcg",
+  "cls": "Vitamin (B9)",
+  "use": "Commonly recommended before conception and in early pregnancy to reduce the risk of neural tube defects.",
+  "warnings": [
+   "Higher doses are used only on medical advice.",
+   "Speak to a doctor/midwife about pregnancy supplements."
+  ],
+  "symptoms": [
+   "pregnancy planning",
+   "pregnancy"
+  ]
+ },
+ "vitD": {
+  "generic": "Cholecalciferol (Vitamin D3)",
+  "cls": "Vitamin D",
+  "use": "Supports calcium absorption and bone health; used for dietary supplementation.",
+  "warnings": [
+   "Do not exceed the labelled dose; high doses only on medical advice."
+  ],
+  "symptoms": [
+   "bone health",
+   "vitamin d"
+  ]
+ },
+ "calciumD": {
+  "generic": "Calcium carbonate + Vitamin D3",
+  "cls": "Mineral + vitamin supplement",
+  "use": "Used as a dietary supplement for calcium and vitamin D.",
+  "warnings": [
+   "Separate from some antibiotics (e.g., ciprofloxacin, tetracyclines) and thyroid tablets.",
+   "May cause constipation."
+  ],
+  "symptoms": [
+   "bone health",
+   "calcium"
+  ]
+ },
+ "iron": {
+  "generic": "Ferrous fumarate",
+  "cls": "Iron supplement",
+  "use": "Used as an iron supplement; iron-deficiency should be confirmed by a doctor.",
+  "warnings": [
+   "May cause dark stools, constipation or stomach upset.",
+   "Accidental iron overdose is dangerous for children — store securely.",
+   "Separate from antacids, calcium and tea/coffee."
+  ],
+  "symptoms": [
+   "tiredness",
+   "anaemia",
+   "iron"
+  ]
+ },
+ "multivit": {
+  "generic": "Multivitamin & multimineral",
+  "cls": "Dietary supplement",
+  "use": "Used to supplement the diet; not a substitute for a balanced diet.",
+  "warnings": [
+   "Do not combine multiple vitamin products without advice.",
+   "Contains iron — keep away from children."
+  ],
+  "symptoms": [
+   "tiredness",
+   "vitamins",
+   "general health"
+  ]
+ },
+ "vitC": {
+  "generic": "Ascorbic acid (Vitamin C)",
+  "cls": "Vitamin C",
+  "use": "Used as a dietary supplement of vitamin C.",
+  "warnings": [
+   "High doses may cause stomach upset.",
+   "Caution with history of kidney stones."
+  ],
+  "symptoms": [
+   "vitamin c",
+   "general health"
+  ]
+ },
+ "omega3": {
+  "generic": "Omega-3 fatty acids (fish oil)",
+  "cls": "Dietary supplement",
+  "use": "Used as a dietary supplement of omega-3 fatty acids.",
+  "warnings": [
+   "Check with a doctor if taking anticoagulants.",
+   "May cause fishy aftertaste."
+  ],
+  "symptoms": [
+   "general health"
+  ]
+ },
+ "probiotic": {
+  "generic": "Lactobacillus rhamnosus (probiotic)",
+  "cls": "Probiotic supplement",
+  "use": "Used as a dietary supplement of live bacteria.",
+  "warnings": [
+   "Not a replacement for ORS in diarrhoea.",
+   "Seek advice if immunocompromised."
+  ],
+  "symptoms": [
+   "digestive health"
+  ]
+ },
+ "glucose": {
+  "generic": "Dextrose (Glucose)",
+  "cls": "Glucose / Energy supplement",
+  "use": "Used as a quick source of glucose, e.g., for treating mild low blood sugar in people with diabetes.",
+  "warnings": [
+   "Severe hypoglycaemia (confusion, unconsciousness) is an emergency.",
+   "People with diabetes should follow their care plan."
+  ],
+  "symptoms": [
+   "low sugar",
+   "hypoglycaemia",
+   "energy"
+  ]
+ },
+ "bcomplexTonic": {
+  "generic": "Vitamin B-complex syrup",
+  "cls": "Nutritional tonic",
+  "use": "Used as a dietary supplement of B vitamins. Does not treat any disease.",
+  "warnings": [
+   "Contains sugar — diabetics check label.",
+   "Not a substitute for a balanced diet."
+  ],
+  "symptoms": [
+   "tiredness",
+   "appetite",
+   "vitamins"
+  ]
+ },
+ "ironTonic": {
+  "generic": "Ferric ammonium citrate + Folic acid + Vitamin B12 syrup",
+  "cls": "Iron tonic",
+  "use": "Used as an iron and vitamin dietary supplement.",
+  "warnings": [
+   "May darken stools or stain teeth — use a straw/rinse mouth.",
+   "Keep away from children (iron)."
+  ],
+  "symptoms": [
+   "tiredness",
+   "anaemia",
+   "iron"
+  ]
+ },
+ "calciumTonic": {
+  "generic": "Calcium + Vitamin D3 suspension",
+  "cls": "Calcium tonic",
+  "use": "Used as a calcium and vitamin D dietary supplement.",
+  "warnings": [
+   "Separate from certain antibiotics and thyroid tablets.",
+   "Shake well."
+  ],
+  "symptoms": [
+   "bone health",
+   "calcium"
+  ]
+ },
+ "kidsMultiTonic": {
+  "generic": "Multivitamin syrup (children)",
+  "cls": "Children's nutritional tonic",
+  "use": "Used as a vitamin supplement for children as per label age.",
+  "warnings": [
+   "Use the measuring cup provided; do not exceed dose.",
+   "Contains sugar."
+  ],
+  "symptoms": [
+   "vitamins",
+   "appetite"
+  ]
+ },
+ "thermometer": {
+  "generic": "Digital thermometer",
+  "cls": "Medical device",
+  "use": "Used to measure body temperature (oral, underarm or rectal as per instructions).",
+  "warnings": [
+   "Clean the tip before and after use.",
+   "Fever is commonly defined as 38 °C (100.4 °F) or higher."
+  ],
+  "symptoms": [
+   "fever",
+   "temperature"
+  ]
+ },
+ "irThermo": {
+  "generic": "Infrared forehead thermometer",
+  "cls": "Medical device",
+  "use": "Used for non-contact screening of body temperature.",
+  "warnings": [
+   "Follow distance instructions.",
+   "Confirm unusual readings with a contact thermometer."
+  ],
+  "symptoms": [
+   "fever",
+   "temperature"
+  ]
+ },
+ "bpArm": {
+  "generic": "Upper-arm automatic blood pressure monitor",
+  "cls": "Medical device",
+  "use": "Used to measure blood pressure and pulse at home.",
+  "warnings": [
+   "Rest 5 minutes seated, back supported, arm at heart level, correct cuff size.",
+   "Avoid caffeine/exercise 30 minutes before measuring.",
+   "Share readings with your doctor; do not change medicines yourself."
+  ],
+  "symptoms": [
+   "blood pressure",
+   "hypertension"
+  ]
+ },
+ "bpWrist": {
+  "generic": "Wrist blood pressure monitor",
+  "cls": "Medical device",
+  "use": "Used to measure blood pressure at the wrist.",
+  "warnings": [
+   "Keep the wrist at heart level during measurement.",
+   "Upper-arm monitors are generally preferred for accuracy."
+  ],
+  "symptoms": [
+   "blood pressure"
+  ]
+ },
+ "glucometer": {
+  "generic": "Blood glucose meter",
+  "cls": "Medical device",
+  "use": "Used by people with diabetes to monitor blood glucose levels.",
+  "warnings": [
+   "Use only compatible test strips.",
+   "Wash and dry hands before testing.",
+   "Follow your diabetes team's targets."
+  ],
+  "symptoms": [
+   "diabetes",
+   "blood sugar"
+  ]
+ },
+ "strips": {
+  "generic": "Blood glucose test strips",
+  "cls": "Diagnostic consumable",
+  "use": "Used with a compatible glucose meter to test blood sugar.",
+  "warnings": [
+   "Keep in the original vial, tightly closed, away from heat and moisture.",
+   "Do not use after expiry or beyond the opened-vial life on the label."
+  ],
+  "symptoms": [
+   "diabetes",
+   "blood sugar"
+  ]
+ },
+ "lancets": {
+  "generic": "Sterile lancets",
+  "cls": "Diagnostic consumable",
+  "use": "Used with a lancing device to obtain a small blood sample.",
+  "warnings": [
+   "Single use only — never share.",
+   "Dispose of in a sharps container."
+  ],
+  "symptoms": [
+   "diabetes",
+   "blood sugar"
+  ]
+ },
+ "oximeter": {
+  "generic": "Fingertip pulse oximeter",
+  "cls": "Medical device",
+  "use": "Used to estimate blood oxygen saturation (SpO₂) and pulse rate.",
+  "warnings": [
+   "Nail polish, cold fingers and movement can affect readings.",
+   "Seek urgent care for breathlessness regardless of the reading."
+  ],
+  "symptoms": [
+   "oxygen",
+   "breathing"
+  ]
+ },
+ "nebulizer": {
+  "generic": "Compressor nebulizer",
+  "cls": "Medical device",
+  "use": "Used to deliver prescribed inhaled medicines as a mist.",
+  "warnings": [
+   "Use only with medicines prescribed for nebulisation.",
+   "Clean and dry parts after each use."
+  ],
+  "symptoms": [
+   "asthma",
+   "breathing"
+  ]
+ },
+ "spacer": {
+  "generic": "Inhaler spacer device",
+  "cls": "Medical device",
+  "use": "Used with a pressurised metered-dose inhaler to improve delivery of medicine to the lungs.",
+  "warnings": [
+   "Wash as per instructions and air-dry.",
+   "Check compatibility with the inhaler."
+  ],
+  "symptoms": [
+   "asthma",
+   "inhaler"
+  ]
+ },
+ "sanitizer": {
+  "generic": "Alcohol-based hand sanitiser (70% alcohol)",
+  "cls": "Hand hygiene",
+  "use": "Used to reduce germs on hands when soap and water are not available.",
+  "warnings": [
+   "Flammable.",
+   "Not effective on visibly dirty hands — wash with soap and water.",
+   "Supervise children."
+  ],
+  "symptoms": [
+   "hygiene"
+  ]
+ },
+ "mask": {
+  "generic": "3-ply disposable face mask",
+  "cls": "Personal protective equipment",
+  "use": "Used to reduce spread of respiratory droplets.",
+  "warnings": [
+   "Single use; replace when damp.",
+   "Cover nose and mouth fully."
+  ],
+  "symptoms": [
+   "hygiene",
+   "cold",
+   "flu"
+  ]
+ },
+ "toothpaste": {
+  "generic": "Potassium nitrate + Sodium fluoride toothpaste",
+  "cls": "Oral care (sensitivity)",
+  "use": "Used for daily oral care and relief of tooth sensitivity.",
+  "warnings": [
+   "Persistent tooth pain needs a dentist.",
+   "Supervise children to avoid swallowing."
+  ],
+  "symptoms": [
+   "sensitive teeth",
+   "toothache"
+  ]
+ },
+ "lipBalm": {
+  "generic": "Lip balm (petrolatum based)",
+  "cls": "Lip care",
+  "use": "Used to moisturise and protect dry, chapped lips.",
+  "warnings": [
+   "For external use only."
+  ],
+  "symptoms": [
+   "dry lips",
+   "chapped lips"
+  ]
+ },
+ "pads": {
+  "generic": "Sanitary pads",
+  "cls": "Feminine hygiene",
+  "use": "Used for menstrual hygiene.",
+  "warnings": [
+   "Change regularly (every 4–6 hours)."
+  ],
+  "symptoms": [
+   "periods"
+  ]
+ },
+ "zincOxide": {
+  "generic": "Zinc oxide barrier cream",
+  "cls": "Barrier cream (nappy rash)",
+  "use": "Used to protect skin and soothe mild nappy rash.",
+  "warnings": [
+   "Change nappies frequently and allow nappy-free time.",
+   "Seek advice if rash is severe, blistered, spreading or with fever."
+  ],
+  "symptoms": [
+   "nappy rash",
+   "diaper rash"
+  ]
+ },
+ "diapers": {
+  "generic": "Disposable baby diapers",
+  "cls": "Baby hygiene",
+  "use": "Used for infant hygiene.",
+  "warnings": [
+   "Choose the correct size by weight."
+  ],
+  "symptoms": [
+   "baby care"
+  ]
+ },
+ "babyWipes": {
+  "generic": "Fragrance-free baby wipes",
+  "cls": "Baby hygiene",
+  "use": "Used for gentle cleansing during nappy changes.",
+  "warnings": [
+   "Discontinue if irritation occurs."
+  ],
+  "symptoms": [
+   "baby care"
+  ]
+ },
+ "babyLotion": {
+  "generic": "Baby moisturising lotion",
+  "cls": "Baby skin care",
+  "use": "Used to moisturise a baby's skin.",
+  "warnings": [
+   "Patch test; stop if irritation occurs."
+  ],
+  "symptoms": [
+   "baby dry skin",
+   "dry skin"
+  ]
+ },
+ "amoxicillin": {
+  "generic": "Amoxicillin",
+  "cls": "Antibiotic (penicillin)",
+  "use": "Prescription antibiotic for certain bacterial infections. Not effective against viruses (e.g., common cold).",
+  "warnings": [
+   "Do not use with penicillin allergy.",
+   "Complete the course as prescribed.",
+   "May cause diarrhoea or rash."
+  ],
+  "symptoms": [
+   "bacterial infection"
+  ]
+ },
+ "coamox": {
+  "generic": "Amoxicillin + Clavulanic acid",
+  "cls": "Antibiotic (penicillin + β-lactamase inhibitor)",
+  "use": "Prescription antibiotic for certain bacterial infections.",
+  "warnings": [
+   "Do not use with penicillin allergy.",
+   "Take with a meal.",
+   "Complete the course."
+  ],
+  "symptoms": [
+   "bacterial infection"
+  ]
+ },
+ "azithromycin": {
+  "generic": "Azithromycin",
+  "cls": "Antibiotic (macrolide)",
+  "use": "Prescription antibiotic for certain bacterial infections.",
+  "warnings": [
+   "Take exactly as prescribed.",
+   "May interact with some heart-rhythm medicines."
+  ],
+  "symptoms": [
+   "bacterial infection"
+  ]
+ },
+ "ciprofloxacin": {
+  "generic": "Ciprofloxacin",
+  "cls": "Antibiotic (fluoroquinolone)",
+  "use": "Prescription antibiotic for certain bacterial infections.",
+  "warnings": [
+   "Separate from antacids, calcium, iron and zinc (reduced absorption).",
+   "Tendon pain — stop and seek advice.",
+   "May cause photosensitivity."
+  ],
+  "symptoms": [
+   "bacterial infection"
+  ]
+ },
+ "metronidazole": {
+  "generic": "Metronidazole",
+  "cls": "Antibiotic / Antiprotozoal",
+  "use": "Prescription medicine for certain bacterial and protozoal infections.",
+  "warnings": [
+   "Avoid alcohol during treatment and for at least 48 hours after (risk of severe reaction).",
+   "May cause metallic taste."
+  ],
+  "symptoms": [
+   "infection"
+  ]
+ },
+ "metformin": {
+  "generic": "Metformin hydrochloride",
+  "cls": "Antidiabetic (biguanide)",
+  "use": "Prescription medicine used in type 2 diabetes to help control blood glucose.",
+  "warnings": [
+   "Take with meals to reduce stomach upset.",
+   "Dose depends on kidney function.",
+   "Follow the prescriber's plan; do not stop suddenly without advice."
+  ],
+  "symptoms": [
+   "diabetes"
+  ]
+ },
+ "glimepiride": {
+  "generic": "Glimepiride",
+  "cls": "Antidiabetic (sulfonylurea)",
+  "use": "Prescription medicine used in type 2 diabetes.",
+  "warnings": [
+   "Can cause low blood sugar (hypoglycaemia) — do not skip meals.",
+   "Know the signs: sweating, shaking, confusion."
+  ],
+  "symptoms": [
+   "diabetes"
+  ]
+ },
+ "amlodipine": {
+  "generic": "Amlodipine",
+  "cls": "Antihypertensive (calcium-channel blocker)",
+  "use": "Prescription medicine used for high blood pressure and angina.",
+  "warnings": [
+   "May cause ankle swelling, flushing or headache.",
+   "Do not stop without medical advice."
+  ],
+  "symptoms": [
+   "blood pressure",
+   "hypertension"
+  ]
+ },
+ "losartan": {
+  "generic": "Losartan potassium",
+  "cls": "Antihypertensive (ARB)",
+  "use": "Prescription medicine used for high blood pressure.",
+  "warnings": [
+   "Not used in pregnancy.",
+   "Monitoring of kidney function and potassium may be needed.",
+   "NSAIDs may reduce effect and affect kidneys."
+  ],
+  "symptoms": [
+   "blood pressure"
+  ]
+ },
+ "atorvastatin": {
+  "generic": "Atorvastatin",
+  "cls": "Lipid-lowering (statin)",
+  "use": "Prescription medicine used to lower cholesterol and cardiovascular risk.",
+  "warnings": [
+   "Report unexplained muscle pain or weakness.",
+   "Avoid large amounts of grapefruit juice.",
+   "Not used in pregnancy."
+  ],
+  "symptoms": [
+   "cholesterol"
+  ]
+ }
+}

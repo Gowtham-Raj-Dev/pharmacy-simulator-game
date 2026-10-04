@@ -1,0 +1,564 @@
+{
+ "questions#0": {
+  "Q001": {
+   "q": "What is the main educational use of paracetamol?",
+   "options": [
+    "Relief of mild-to-moderate pain and fever",
+    "Treating bacterial infections",
+    "Lowering blood pressure",
+    "Reducing stomach acid"
+   ],
+   "x": "Paracetamol is an analgesic and antipyretic."
+  },
+  "Q002": {
+   "q": "Which organ is most at risk from paracetamol overdose?",
+   "options": [
+    "Liver",
+    "Lungs",
+    "Skin",
+    "Eyes"
+   ],
+   "x": "Paracetamol overdose can cause severe liver damage."
+  },
+  "Q003": {
+   "q": "Ibuprofen belongs to which class of medicines?",
+   "options": [
+    "NSAIDs",
+    "Antibiotics",
+    "Antihistamines",
+    "Proton pump inhibitors"
+   ],
+   "x": "Ibuprofen is a non-steroidal anti-inflammatory drug."
+  },
+  "Q004": {
+   "q": "Why is aspirin avoided in children and teenagers under 16?",
+   "options": [
+    "Risk of Reye's syndrome",
+    "It is ineffective in children",
+    "It causes drowsiness",
+    "It stains teeth"
+   ],
+   "x": "Aspirin in under-16s is linked to Reye's syndrome."
+  },
+  "Q005": {
+   "q": "A customer takes a cold & flu tablet containing paracetamol and asks for extra paracetamol. What is the main risk?",
+   "options": [
+    "Accidental overdose from duplicate ingredients",
+    "Antibiotic resistance",
+    "Low blood sugar",
+    "Rebound congestion"
+   ],
+   "x": "Duplicate paracetamol is a common cause of accidental overdose."
+  },
+  "Q006": {
+   "q": "NSAIDs such as ibuprofen are best taken:",
+   "options": [
+    "With or after food",
+    "Only on an empty stomach",
+    "With alcohol",
+    "Crushed into eye drops"
+   ],
+   "x": "Taking NSAIDs with food reduces stomach irritation."
+  },
+  "Q007": {
+   "q": "A temperature commonly regarded as a fever is:",
+   "options": [
+    "38 °C (100.4 °F) or higher",
+    "35 °C or higher",
+    "36.5 °C exactly",
+    "34 °C or lower"
+   ],
+   "x": "Fever is commonly defined as ≥ 38 °C."
+  },
+  "Q008": {
+   "q": "Which antihistamine is classed as second-generation (low-sedating)?",
+   "options": [
+    "Cetirizine",
+    "Chlorphenamine",
+    "Diphenhydramine",
+    "Dimenhydrinate"
+   ],
+   "x": "Cetirizine is a second-generation antihistamine."
+  },
+  "Q009": {
+   "q": "The most common side effect of first-generation antihistamines like chlorphenamine is:",
+   "options": [
+    "Drowsiness",
+    "Hair growth",
+    "High blood sugar",
+    "Tooth staining"
+   ],
+   "x": "First-generation antihistamines are sedating."
+  },
+  "Q010": {
+   "q": "A professional driver with hay fever should preferably be offered:",
+   "options": [
+    "A low-sedating antihistamine",
+    "A sedating antihistamine at night and day",
+    "An oral antibiotic",
+    "A sleeping aid"
+   ],
+   "x": "Sedating antihistamines impair driving."
+  },
+  "Q011": {
+   "q": "Lip swelling and difficulty breathing minutes after a bee sting suggest:",
+   "options": [
+    "Anaphylaxis — call emergency services",
+    "Mild irritation — apply calamine",
+    "Sunburn",
+    "A fungal infection"
+   ],
+   "x": "These are signs of a severe allergic reaction."
+  },
+  "Q012": {
+   "q": "Sedating antihistamines should be used with caution in people with:",
+   "options": [
+    "Glaucoma or prostate enlargement",
+    "Dry skin",
+    "Hay fever",
+    "Short-sightedness"
+   ],
+   "x": "Anticholinergic effects can worsen glaucoma and urinary retention."
+  },
+  "Q013": {
+   "q": "How do antacids relieve heartburn?",
+   "options": [
+    "They neutralise stomach acid",
+    "They kill bacteria",
+    "They numb the throat",
+    "They increase acid production"
+   ],
+   "x": "Antacids neutralise existing stomach acid."
+  },
+  "Q014": {
+   "q": "Omeprazole belongs to which class?",
+   "options": [
+    "Proton pump inhibitor",
+    "Antihistamine",
+    "NSAID",
+    "Laxative"
+   ],
+   "x": "Omeprazole is a PPI that reduces acid production."
+  },
+  "Q015": {
+   "q": "What is the first priority in managing acute diarrhoea?",
+   "options": [
+    "Replacing fluids and electrolytes (ORS)",
+    "Starting antibiotics",
+    "Stopping all food and drink",
+    "Taking a laxative"
+   ],
+   "x": "ORS prevents and treats dehydration."
+  },
+  "Q016": {
+   "q": "Loperamide should NOT be used when diarrhoea is accompanied by:",
+   "options": [
+    "Blood in the stool or high fever",
+    "Mild cramps",
+    "Recent spicy food",
+    "Feeling tired"
+   ],
+   "x": "These are red flags needing referral."
+  },
+  "Q017": {
+   "q": "Ispaghula husk (psyllium) must be taken with:",
+   "options": [
+    "Plenty of water",
+    "Alcohol",
+    "Nothing at all",
+    "Antacids only"
+   ],
+   "x": "Bulk-forming laxatives need adequate fluid."
+  },
+  "Q018": {
+   "q": "Which symptom with heartburn requires referral to a doctor?",
+   "options": [
+    "Difficulty swallowing with weight loss",
+    "Burning after a spicy meal",
+    "Occasional bloating",
+    "Mild burping"
+   ],
+   "x": "Dysphagia and weight loss are alarm symptoms."
+  },
+  "Q019": {
+   "q": "Why should antacids be separated from other medicines by about 2 hours?",
+   "options": [
+    "They can reduce absorption of other medicines",
+    "They make other medicines toxic",
+    "They cause drowsiness",
+    "They raise blood pressure"
+   ],
+   "x": "Antacids can bind or affect absorption of some drugs."
+  },
+  "Q020": {
+   "q": "Antibiotics are NOT effective against:",
+   "options": [
+    "Viral infections like the common cold",
+    "Certain bacterial infections",
+    "Bacterial skin infections",
+    "Bacterial urinary infections"
+   ],
+   "x": "Antibiotics act on bacteria, not viruses."
+  },
+  "Q021": {
+   "q": "Dextromethorphan is used for:",
+   "options": [
+    "Dry, non-productive cough",
+    "Chesty cough with mucus",
+    "Diarrhoea",
+    "Fungal infections"
+   ],
+   "x": "It is a cough suppressant."
+  },
+  "Q022": {
+   "q": "Guaifenesin is classed as:",
+   "options": [
+    "An expectorant",
+    "An antihistamine",
+    "A decongestant",
+    "An antacid"
+   ],
+   "x": "Guaifenesin helps loosen mucus."
+  },
+  "Q023": {
+   "q": "Prolonged use of xylometazoline nasal spray (more than about 7 days) can cause:",
+   "options": [
+    "Rebound congestion",
+    "Liver damage",
+    "Hair loss",
+    "Low blood sugar"
+   ],
+   "x": "Known as rhinitis medicamentosa."
+  },
+  "Q024": {
+   "q": "Oral decongestants such as pseudoephedrine should be avoided in:",
+   "options": [
+    "Uncontrolled high blood pressure",
+    "Dry skin",
+    "Mild acne",
+    "Athlete's foot"
+   ],
+   "x": "They can raise blood pressure."
+  },
+  "Q025": {
+   "q": "Salbutamol inhalers are classed as:",
+   "options": [
+    "Short-acting bronchodilators (relievers)",
+    "Antibiotics",
+    "Antihistamines",
+    "Cough suppressants"
+   ],
+   "x": "Salbutamol relieves bronchospasm quickly."
+  },
+  "Q026": {
+   "q": "A spacer used with a metered-dose inhaler:",
+   "options": [
+    "Improves delivery of medicine to the lungs",
+    "Replaces the need for medicine",
+    "Is only for nebulisers",
+    "Increases side effects"
+   ],
+   "x": "Spacers reduce coordination problems and throat deposition."
+  },
+  "Q027": {
+   "q": "A cough lasting more than about 3 weeks with weight loss and night sweats should be:",
+   "options": [
+    "Referred for medical evaluation",
+    "Treated with more cough syrup",
+    "Ignored",
+    "Treated with antacids"
+   ],
+   "x": "This may indicate a serious cause such as TB."
+  },
+  "Q028": {
+   "q": "First aid for a minor burn is to cool it under cool running water for about:",
+   "options": [
+    "20 minutes",
+    "10 seconds",
+    "1 minute",
+    "2 hours with ice"
+   ],
+   "x": "About 20 minutes of cool running water is recommended."
+  },
+  "Q029": {
+   "q": "Clotrimazole cream is mainly used for:",
+   "options": [
+    "Fungal skin infections",
+    "Bacterial pneumonia",
+    "Acne scars",
+    "Sunburn"
+   ],
+   "x": "Clotrimazole is an antifungal."
+  },
+  "Q030": {
+   "q": "Hydrocortisone 1% cream should NOT be applied to:",
+   "options": [
+    "Broken or infected skin",
+    "Mild insect bite reactions",
+    "Mild irritant dermatitis",
+    "Small itchy patches on the arm"
+   ],
+   "x": "Steroids on infected/broken skin can worsen infection."
+  },
+  "Q031": {
+   "q": "SPF on a sunscreen mainly measures protection against:",
+   "options": [
+    "UVB radiation",
+    "Insect bites",
+    "Infrared heat",
+    "Fungal infection"
+   ],
+   "x": "SPF relates to UVB; look for UVA ratings too."
+  },
+  "Q032": {
+   "q": "Which is a key safety warning for paraffin-based emollients?",
+   "options": [
+    "Fire risk when soaked into fabric",
+    "They cause drowsiness",
+    "They raise blood pressure",
+    "They interact with warfarin"
+   ],
+   "x": "Fabric with paraffin residue can ignite easily."
+  },
+  "Q033": {
+   "q": "Permethrin 5% cream is used to treat:",
+   "options": [
+    "Scabies",
+    "Dandruff",
+    "Acne",
+    "Dry eyes"
+   ],
+   "x": "Permethrin 5% is a scabies treatment."
+  },
+  "Q034": {
+   "q": "Povidone-iodine antiseptic should be avoided in people with:",
+   "options": [
+    "Iodine sensitivity",
+    "Hay fever",
+    "Short hair",
+    "Mild constipation"
+   ],
+   "x": "Iodine allergy/sensitivity is a contraindication."
+  },
+  "Q035": {
+   "q": "A 2-month-old baby has a temperature of 38.4 °C. The correct action is:",
+   "options": [
+    "Refer urgently to a doctor",
+    "Sell infant drops and wait 3 days",
+    "Give adult paracetamol",
+    "Advise a warm bath only"
+   ],
+   "x": "Infants under 3 months with fever need urgent assessment."
+  },
+  "Q036": {
+   "q": "Paediatric medicine doses are usually based on:",
+   "options": [
+    "The child's age and/or weight",
+    "The parent's weight",
+    "The time of day",
+    "The price of the product"
+   ],
+   "x": "Follow age/weight dosing on the label."
+  },
+  "Q037": {
+   "q": "For mild pain in pregnancy, which is usually preferred over NSAIDs?",
+   "options": [
+    "Paracetamol",
+    "High-dose aspirin",
+    "Ibuprofen",
+    "Naproxen"
+   ],
+   "x": "NSAIDs are generally avoided in pregnancy unless prescribed."
+  },
+  "Q038": {
+   "q": "Folic acid is recommended before and in early pregnancy to reduce the risk of:",
+   "options": [
+    "Neural tube defects",
+    "Hay fever",
+    "Tooth decay",
+    "Sunburn"
+   ],
+   "x": "Folic acid lowers neural tube defect risk."
+  },
+  "Q039": {
+   "q": "Why are sedating antihistamine sleep aids generally not recommended for older adults?",
+   "options": [
+    "Increased risk of confusion and falls",
+    "They are too expensive",
+    "They are ineffective in everyone",
+    "They cause hair loss"
+   ],
+   "x": "Anticholinergic and sedative effects increase falls risk."
+  },
+  "Q040": {
+   "q": "Honey-containing cough remedies should not be given to:",
+   "options": [
+    "Infants under 1 year",
+    "Adults",
+    "Teenagers",
+    "Older adults"
+   ],
+   "x": "Honey carries a risk of infant botulism under 1 year."
+  },
+  "Q041": {
+   "q": "A patient on warfarin asks for pain relief. Which should be avoided unless prescribed?",
+   "options": [
+    "NSAIDs such as ibuprofen or aspirin",
+    "Saline nasal spray",
+    "Emollient cream",
+    "ORS"
+   ],
+   "x": "NSAIDs/aspirin increase bleeding risk with warfarin."
+  },
+  "Q042": {
+   "q": "NSAIDs can increase blood levels of which medicine, risking toxicity?",
+   "options": [
+    "Lithium",
+    "Vitamin C",
+    "Saline",
+    "Calamine"
+   ],
+   "x": "NSAIDs reduce lithium clearance."
+  },
+  "Q043": {
+   "q": "Patients taking metronidazole should be advised to avoid:",
+   "options": [
+    "Alcohol",
+    "Water",
+    "Bread",
+    "Sunlight entirely"
+   ],
+   "x": "Alcohol can cause a severe disulfiram-like reaction."
+  },
+  "Q044": {
+   "q": "Ciprofloxacin absorption is reduced when taken together with:",
+   "options": [
+    "Antacids, calcium or iron",
+    "Water",
+    "Paracetamol",
+    "Saline"
+   ],
+   "x": "Polyvalent cations bind fluoroquinolones."
+  },
+  "Q045": {
+   "q": "A customer is allergic to penicillin. Which medicine must be avoided?",
+   "options": [
+    "Amoxicillin",
+    "Azithromycin",
+    "Paracetamol",
+    "Cetirizine"
+   ],
+   "x": "Amoxicillin is a penicillin."
+  },
+  "Q046": {
+   "q": "Dextromethorphan should not be used with which class of medicines?",
+   "options": [
+    "MAO inhibitors",
+    "Emollients",
+    "Vitamins",
+    "ORS"
+   ],
+   "x": "Risk of serotonin toxicity."
+  },
+  "Q047": {
+   "q": "Which product type is a concern for a customer with diabetes buying cough syrup?",
+   "options": [
+    "Syrups containing sugar",
+    "Sugar-free syrups",
+    "Saline sprays",
+    "Thermometers"
+   ],
+   "x": "Choose sugar-free formulations where possible."
+  },
+  "Q048": {
+   "q": "A customer has chest pressure spreading to the left arm with sweating. What should the pharmacist do?",
+   "options": [
+    "Call emergency services immediately",
+    "Sell an antacid",
+    "Advise rest for a week",
+    "Recommend a cough syrup"
+   ],
+   "x": "These may be signs of a heart attack."
+  },
+  "Q049": {
+   "q": "A sudden, \"worst ever\" headache with a stiff neck requires:",
+   "options": [
+    "Emergency referral",
+    "Strong painkillers and rest",
+    "An antihistamine",
+    "A follow-up next month"
+   ],
+   "x": "This may indicate a serious condition such as a brain bleed or meningitis."
+  },
+  "Q050": {
+   "q": "A mouth ulcer that has lasted more than 3 weeks should be:",
+   "options": [
+    "Referred to a doctor or dentist",
+    "Treated with more gel",
+    "Ignored",
+    "Covered with a plaster"
+   ],
+   "x": "Persistent ulcers need assessment."
+  },
+  "Q051": {
+   "q": "A mole that has changed shape and colour and has bled should be:",
+   "options": [
+    "Referred for prompt medical assessment",
+    "Treated with hydrocortisone",
+    "Removed at home",
+    "Covered with sunscreen only"
+   ],
+   "x": "Possible skin cancer warning signs."
+  },
+  "Q052": {
+   "q": "A painful red eye with blurred vision and light sensitivity needs:",
+   "options": [
+    "Urgent same-day eye assessment",
+    "Lubricant drops for a month",
+    "Antihistamine tablets",
+    "No action"
+   ],
+   "x": "These are red-eye red flags."
+  },
+  "Q053": {
+   "q": "An asthmatic who cannot complete sentences and whose reliever is not helping is:",
+   "options": [
+    "A medical emergency",
+    "Suitable for cough syrup",
+    "Suitable for antihistamines",
+    "Fine to wait until tomorrow"
+   ],
+   "x": "Signs of a severe asthma attack."
+  },
+  "Q054": {
+   "q": "A person with diabetes has a foot wound that is not healing and looks red. The best action is:",
+   "options": [
+    "Refer promptly to a doctor/foot clinic",
+    "Sell antiseptic and review in a month",
+    "Advise walking barefoot",
+    "Soak in very hot water"
+   ],
+   "x": "Diabetic foot wounds can deteriorate quickly."
+  },
+  "Q055": {
+   "q": "At what temperature range should unopened insulin and vaccines be stored?",
+   "options": [
+    "2–8 °C (refrigerated, not frozen)",
+    "Below 0 °C (frozen)",
+    "25–30 °C",
+    "40 °C"
+   ],
+   "x": "Cold-chain products are stored at 2–8 °C."
+  },
+  "Q056": {
+   "q": "The pharmacy fridge reads 14 °C. What should the pharmacist do first?",
+   "options": [
+    "Record it, quarantine affected stock and follow the excursion procedure",
+    "Ignore it if it was short",
+    "Move all items to the freezer",
+    "Sell the items quickly at a discount"
+   ],
+   "x": "Temperature excursions must be documented and managed."
+  }
+ }
+}

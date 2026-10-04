@@ -1,0 +1,142 @@
+{
+ "S19": {
+  "title": "Blocked ear",
+  "complaint": "My right ear feels blocked. I think it's wax.",
+  "answers": {
+   "duration": "About a week.",
+   "symptoms": "Muffled hearing only. No pain, no discharge, no dizziness, no fever.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "No ear operations or perforated eardrum.",
+   "lifestyle": "I use cotton buds a lot."
+  },
+  "seeDoctor": "if you have ear pain, discharge, dizziness, sudden hearing loss, or symptoms persist after treatment",
+  "learning": "Ear-wax softening drops are suitable for simple wax build-up. Pain, discharge, dizziness or a possible perforated eardrum require referral. Avoid cotton buds."
+ },
+ "S20": {
+  "title": "Tired, dry eyes",
+  "complaint": "My eyes feel dry and gritty, especially after work on the computer.",
+  "answers": {
+   "duration": "A couple of months, worse in the evening.",
+   "symptoms": "Gritty and tired eyes. No pain, no light sensitivity, and my vision is normal.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Healthy, I don't wear contact lenses.",
+   "lifestyle": "I work at a screen for 9 hours a day."
+  },
+  "seeDoctor": "if you have eye pain, sensitivity to light, or any change in vision",
+  "learning": "Lubricant eye drops and screen breaks help dry eyes. A painful red eye, light sensitivity or reduced vision must be referred urgently."
+ },
+ "S21": {
+  "title": "Threadworm in the family",
+  "complaint": "My son has an itchy bottom at night and I saw tiny white worms. I think it's threadworm.",
+  "answers": {
+   "duration": "A few nights now.",
+   "symptoms": "Itching at night. No weight loss, tummy pain or blood.",
+   "allergies": "No allergies.",
+   "meds": "Nothing.",
+   "history": "He's 7. I'm not pregnant or breastfeeding.",
+   "lifestyle": "There are four of us at home."
+  },
+  "seeDoctor": "if symptoms persist after treatment, or for children under 2 or anyone pregnant",
+  "learning": "Threadworm: an anthelmintic such as mebendazole for household members (with age/pregnancy checks) plus strict hygiene measures."
+ },
+ "S22": {
+  "title": "Quitting smoking",
+  "complaint": "I want to quit smoking. Is there something to help with the cravings?",
+  "answers": {
+   "duration": "I've smoked for 20 years.",
+   "symptoms": "No chest pain or breathing problems.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "No heart attack, stroke or heart problems.",
+   "lifestyle": "About 15 cigarettes a day."
+  },
+  "seeDoctor": "or a stop-smoking service for extra support — combining NRT with behavioural support works best",
+  "learning": "Nicotine replacement therapy reduces withdrawal symptoms. Check for recent cardiovascular events, and encourage behavioural support."
+ },
+ "S23": {
+  "title": "Headache — patient on warfarin",
+  "complaint": "I've got a nagging tension headache. Can I have some ibuprofen?",
+  "answers": {
+   "duration": "Since this morning.",
+   "symptoms": "Dull headache across the forehead. It came on slowly. No fall or knock to the head, no drowsiness or vomiting, no vision problems, no weakness, no unusual bleeding.",
+   "allergies": "No allergies.",
+   "meds": "I take warfarin for my heart rhythm, and a cholesterol tablet.",
+   "history": "Atrial fibrillation — that's why I'm on warfarin. I get this same tension headache now and then when I'm stressed; it feels exactly like my usual ones.",
+   "lifestyle": "Retired."
+  },
+  "seeDoctor": "if the headache is sudden and severe, follows a head injury, or you notice unusual bleeding or bruising — and mention regular paracetamol use to your anticoagulation clinic",
+  "learning": "NSAIDs and aspirin increase bleeding risk with warfarin. Paracetamol at standard doses is generally preferred for occasional pain; regular use should be discussed with the anticoagulation clinic."
+ },
+ "S24": {
+  "title": "Back pain with asthma",
+  "complaint": "I strained my lower back lifting boxes. Give me something strong, please.",
+  "answers": {
+   "duration": "Two days.",
+   "symptoms": "Muscle ache in the lower back. No numbness, no leg weakness, no problems passing urine.",
+   "allergies": "Not allergic exactly — but ibuprofen made my asthma worse once.",
+   "meds": "Just my blue reliever inhaler when needed.",
+   "history": "I have asthma. Last time I took ibuprofen I became wheezy.",
+   "lifestyle": "I'm moving house."
+  },
+  "seeDoctor": "if you develop numbness, leg weakness, problems passing urine, or the pain isn't improving after a couple of weeks",
+  "learning": "Some people with asthma are sensitive to NSAIDs (including aspirin and topical NSAIDs). Paracetamol is a safer option for them."
+ },
+ "S25": {
+  "title": "Blocked nose with high blood pressure",
+  "complaint": "I have a terribly blocked nose from a cold. I need a strong decongestant tablet.",
+  "answers": {
+   "duration": "Three days.",
+   "symptoms": "Blocked nose and mild sore throat. No high fever, no facial swelling.",
+   "allergies": "No allergies.",
+   "meds": "I take amlodipine for my blood pressure.",
+   "history": "High blood pressure.",
+   "lifestyle": "Office worker."
+  },
+  "seeDoctor": "if symptoms last more than 10 days, you develop severe facial pain or high fever",
+  "learning": "Oral decongestants (pseudoephedrine, phenylephrine) can raise blood pressure — avoid in hypertension. Saline sprays or steam inhalation are safer alternatives."
+ },
+ "S26": {
+  "title": "Dry cough — diabetic customer",
+  "complaint": "I have a dry cough that won't settle. Can I have a cough syrup?",
+  "answers": {
+   "duration": "Five days.",
+   "symptoms": "Dry, irritating cough. No breathlessness, no blood, no fever.",
+   "allergies": "None.",
+   "meds": "Metformin for my diabetes.",
+   "history": "Type 2 diabetes.",
+   "lifestyle": "I watch my sugar intake carefully."
+  },
+  "seeDoctor": "if the cough lasts more than 3 weeks, or you develop breathlessness, chest pain or blood in the phlegm",
+  "learning": "For customers with diabetes, choose sugar-free liquid formulations where possible."
+ },
+ "S27": {
+  "title": "Hay fever — professional driver",
+  "complaint": "My hay fever is bad this week — sneezing and runny nose. Something cheap that works?",
+  "answers": {
+   "duration": "About five days.",
+   "symptoms": "Sneezing, runny nose, itchy eyes. No wheeze.",
+   "allergies": "None.",
+   "meds": "None.",
+   "history": "Only hay fever.",
+   "lifestyle": "I'm a truck driver — I'll be driving through the night."
+  },
+  "seeDoctor": "if you develop wheezing or breathlessness",
+  "learning": "Sedating antihistamines (e.g., chlorphenamine) impair driving. Choose a low-sedating antihistamine and advise caution if any drowsiness occurs."
+ },
+ "S28": {
+  "title": "Child fever — parent asks for aspirin",
+  "complaint": "My 6-year-old has a fever. Can I give him some of my aspirin?",
+  "answers": {
+   "duration": "Since last night.",
+   "symptoms": "Temperature 38.4 °C. He's a bit tired but drinking and playing. No rash, no breathing difficulty, no stiff neck, not drowsy.",
+   "allergies": "No allergies.",
+   "meds": "Nothing.",
+   "history": "He's healthy. No asthma.",
+   "lifestyle": "He goes to school."
+  },
+  "seeDoctor": "if the fever lasts more than 3 days, or he develops a rash that doesn't fade, breathing difficulty, stiff neck, unusual drowsiness or signs of dehydration",
+  "learning": "Aspirin must not be given to children under 16 (risk of Reye's syndrome). Use a paediatric paracetamol or ibuprofen formulation dosed by age/weight."
+ }
+}

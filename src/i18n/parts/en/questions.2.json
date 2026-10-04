@@ -1,0 +1,234 @@
+{
+ "questions#1": {
+  "Q057": {
+   "q": "FEFO stands for:",
+   "options": [
+    "First Expiry, First Out",
+    "First Entry, Final Order",
+    "Fast Expiry, Free Offer",
+    "Final Expiry, First Order"
+   ],
+   "x": "Stock with the earliest expiry is used first."
+  },
+  "Q058": {
+   "q": "Expired medicines found on the shelf should be:",
+   "options": [
+    "Removed, quarantined and disposed of properly",
+    "Sold at a discount",
+    "Moved to the back of the shelf",
+    "Given away free"
+   ],
+   "x": "Expired stock must never be supplied."
+  },
+  "Q059": {
+   "q": "A prescription-only medicine may be supplied:",
+   "options": [
+    "Only against a valid prescription",
+    "To anyone who asks politely",
+    "If the customer pays extra",
+    "If the customer used it before"
+   ],
+   "x": "Legal and safety requirement."
+  },
+  "Q060": {
+   "q": "Why are look-alike/sound-alike medicines a safety concern?",
+   "options": [
+    "They increase the risk of selection errors",
+    "They are always counterfeit",
+    "They expire faster",
+    "They need refrigeration"
+   ],
+   "x": "Double-check names, strengths and forms."
+  },
+  "Q061": {
+   "q": "Reporting suspected adverse drug reactions is part of:",
+   "options": [
+    "Pharmacovigilance",
+    "Stock rotation",
+    "Marketing",
+    "Price control"
+   ],
+   "x": "Pharmacovigilance monitors medicine safety."
+  },
+  "Q062": {
+   "q": "\"Store below 25 °C\" on a label means:",
+   "options": [
+    "Keep at room temperature not exceeding 25 °C",
+    "Freeze the product",
+    "Keep in the fridge only",
+    "Store in direct sunlight"
+   ],
+   "x": "Do not exceed 25 °C."
+  },
+  "Q063": {
+   "q": "A prescription dated about 9 months ago for an old illness should generally be:",
+   "options": [
+    "Referred back to the prescriber",
+    "Dispensed as written",
+    "Dispensed at half quantity",
+    "Photocopied and reused"
+   ],
+   "x": "Prescriptions have validity periods and clinical context."
+  },
+  "Q064": {
+   "q": "For an accurate home blood pressure reading, the arm should be:",
+   "options": [
+    "Supported at heart level after 5 minutes' rest",
+    "Raised above the head",
+    "Hanging down while standing",
+    "Measured right after exercise"
+   ],
+   "x": "Correct posture and rest improve accuracy."
+  },
+  "Q065": {
+   "q": "Blood glucose test strips should be stored:",
+   "options": [
+    "In their original container, tightly closed",
+    "Loose in a wallet",
+    "In the freezer",
+    "In a humid bathroom"
+   ],
+   "x": "Moisture and heat damage strips."
+  },
+  "Q066": {
+   "q": "Used lancets should be:",
+   "options": [
+    "Disposed of in a sharps container",
+    "Reused several times",
+    "Shared with family",
+    "Thrown loose in household waste"
+   ],
+   "x": "Lancets are single-use sharps."
+  },
+  "Q067": {
+   "q": "Which can make pulse oximeter readings less reliable?",
+   "options": [
+    "Cold fingers, movement or nail polish",
+    "Clean, warm hands",
+    "Sitting still",
+    "Good lighting"
+   ],
+   "x": "These factors affect signal quality."
+  },
+  "Q068": {
+   "q": "A digital thermometer tip should be cleaned:",
+   "options": [
+    "Before and after each use",
+    "Once a year",
+    "Never",
+    "Only when it stops working"
+   ],
+   "x": "Hygiene prevents cross-infection."
+  }
+ },
+ "modules": {
+  "pain": {
+   "title": "Pain & Fever",
+   "facts": [
+    "Paracetamol relieves pain and reduces fever; it has little anti-inflammatory effect.",
+    "Paracetamol overdose can cause serious liver damage, sometimes with few early symptoms — urgent help is needed even if the person feels well.",
+    "Many combination cold & flu products contain paracetamol — check for duplicate ingredients.",
+    "Ibuprofen, naproxen and aspirin are NSAIDs: take with food; avoid with stomach ulcers, NSAID allergy or NSAID-sensitive asthma.",
+    "Aspirin must not be given to children and teenagers under 16 (risk of Reye's syndrome).",
+    "Fever is commonly defined as a temperature of 38 °C (100.4 °F) or higher."
+   ]
+  },
+  "allergy": {
+   "title": "Allergy & Antihistamines",
+   "facts": [
+    "Second-generation antihistamines (cetirizine, loratadine, fexofenadine) cause less drowsiness than first-generation ones.",
+    "First-generation antihistamines (chlorphenamine, diphenhydramine) cause drowsiness — counsel about driving and alcohol.",
+    "Sedating antihistamines have anticholinergic effects: caution in glaucoma, prostate enlargement and older adults.",
+    "Swelling of the lips or throat, or difficulty breathing after exposure to an allergen, may be anaphylaxis — call emergency services."
+   ]
+  },
+  "gi": {
+   "title": "Digestive Health",
+   "facts": [
+    "Antacids neutralise stomach acid; separate them from other medicines by about 2 hours.",
+    "Proton pump inhibitors (e.g., omeprazole) reduce acid production.",
+    "ORS replaces fluids and electrolytes — the priority in acute diarrhoea.",
+    "Loperamide is for short-term acute diarrhoea in adults; avoid if there is blood in the stool or fever.",
+    "Bulk-forming laxatives (ispaghula) must be taken with plenty of water.",
+    "Alarm symptoms with indigestion: difficulty swallowing, weight loss, vomiting blood, black stools."
+   ]
+  },
+  "resp": {
+   "title": "Cough, Cold & Throat",
+   "facts": [
+    "Antibiotics do not work against viral infections like the common cold.",
+    "Dextromethorphan is a cough suppressant for dry cough; guaifenesin is an expectorant for chesty cough.",
+    "Topical nasal decongestants should not be used for more than about 7 days (rebound congestion).",
+    "Oral decongestants can raise blood pressure — avoid in uncontrolled hypertension.",
+    "A cough lasting more than about 3 weeks, or with blood, weight loss or night sweats, needs medical evaluation.",
+    "Salbutamol is a short-acting \"reliever\" inhaler; a spacer can improve delivery from a metered-dose inhaler."
+   ]
+  },
+  "skin": {
+   "title": "Skin & First Aid",
+   "facts": [
+    "Cool a minor burn under cool running water for about 20 minutes; do not apply ice, butter or toothpaste.",
+    "Clotrimazole and terbinafine are topical antifungals used for athlete's foot.",
+    "Hydrocortisone 1% is a mild topical steroid for short-term use — not on broken or infected skin.",
+    "SPF mainly indicates protection against UVB rays; reapply sunscreen about every 2 hours.",
+    "Paraffin-based emollients soaked into fabric are a fire hazard.",
+    "Permethrin is used for scabies; dimeticone and permethrin lotions are used for head lice."
+   ]
+  },
+  "special": {
+   "title": "Children, Pregnancy & Older Adults",
+   "facts": [
+    "Infants under 3 months with a temperature of 38 °C or more need urgent medical assessment.",
+    "Paediatric doses are based on age and/or weight as on the label.",
+    "NSAIDs are generally avoided in pregnancy unless prescribed; paracetamol is usually preferred for pain.",
+    "Folic acid is recommended before conception and in early pregnancy to reduce the risk of neural tube defects.",
+    "Older adults are more sensitive to sedating medicines (falls, confusion).",
+    "Honey should not be given to infants under 1 year old."
+   ]
+  },
+  "interact": {
+   "title": "Interactions & Contraindications",
+   "facts": [
+    "NSAIDs and aspirin increase bleeding risk with warfarin.",
+    "NSAIDs can increase lithium levels, risking toxicity.",
+    "Avoid alcohol with metronidazole (risk of a severe reaction).",
+    "Antacids, calcium and iron reduce absorption of ciprofloxacin and tetracyclines — separate doses.",
+    "Amoxicillin is a penicillin — contraindicated in penicillin allergy.",
+    "Dextromethorphan and decongestants interact dangerously with MAO inhibitors."
+   ]
+  },
+  "redflags": {
+   "title": "Red Flags & Referral",
+   "facts": [
+    "Chest pain spreading to the arm or jaw with sweating or nausea: call emergency services.",
+    "Sudden \"worst ever\" headache with stiff neck or vomiting: emergency.",
+    "Bloody diarrhoea or high fever with diarrhoea: refer.",
+    "Mouth ulcer lasting more than 3 weeks: refer.",
+    "A changing, bleeding mole: refer for assessment.",
+    "Painful red eye with reduced vision or light sensitivity: urgent eye assessment."
+   ]
+  },
+  "storage": {
+   "title": "Storage, Cold Chain & Compliance",
+   "facts": [
+    "Refrigerated medicines (e.g., insulin, vaccines) are stored at 2–8 °C and must not be frozen.",
+    "A fridge temperature excursion must be recorded, affected stock quarantined, and the excursion procedure followed.",
+    "FEFO = First Expiry, First Out.",
+    "Expired medicines must be removed from saleable stock, quarantined and disposed of properly.",
+    "Prescription-only medicines must only be supplied against a valid prescription.",
+    "Look-alike / sound-alike medicines increase selection errors — double-check every item.",
+    "Suspected adverse drug reactions should be reported to the pharmacovigilance system."
+   ]
+  },
+  "devices": {
+   "title": "Devices & Monitoring",
+   "facts": [
+    "Measure blood pressure seated after 5 minutes' rest, back supported, arm at heart level, with the right cuff size.",
+    "Glucose test strips must be kept in their original container, tightly closed.",
+    "Lancets are single-use and should go into a sharps container.",
+    "Clean thermometer tips before and after each use.",
+    "Pulse oximeter readings can be affected by cold fingers, movement and nail polish."
+   ]
+  }
+ }
+}

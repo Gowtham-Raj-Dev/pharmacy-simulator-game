@@ -1,0 +1,858 @@
+{
+ "symptoms": [
+  {
+   "title": "Headache",
+   "keywords": [
+    "headache",
+    "head ache",
+    "migraine"
+   ],
+   "cats": [
+    {
+     "name": "Simple analgesics (e.g., paracetamol, ibuprofen)",
+     "why": "May relieve mild tension-type headache if suitable for the person."
+    }
+   ],
+   "refer": "Sudden \"worst ever\" headache, stiff neck, confusion, weakness, head injury, visual disturbance, headache in pregnancy with swelling, or new headache over 50."
+  },
+  {
+   "title": "Fever",
+   "keywords": [
+    "fever",
+    "temperature",
+    "pyrexia"
+   ],
+   "cats": [
+    {
+     "name": "Antipyretic analgesics (paracetamol, ibuprofen)",
+     "why": "Can reduce fever and discomfort; choose age-appropriate formulations."
+    },
+    {
+     "name": "Thermometers",
+     "why": "To monitor temperature accurately."
+    }
+   ],
+   "refer": "Infant under 3 months with ≥38 °C, fever > 3 days, non-blanching rash, breathing difficulty, stiff neck, drowsiness, or dehydration."
+  },
+  {
+   "title": "Sore throat",
+   "keywords": [
+    "sore throat",
+    "throat"
+   ],
+   "cats": [
+    {
+     "name": "Throat lozenges / sprays",
+     "why": "May soothe throat discomfort temporarily."
+    },
+    {
+     "name": "Simple analgesics",
+     "why": "May ease pain and fever if suitable."
+    }
+   ],
+   "refer": "Difficulty swallowing or breathing, drooling, high fever, symptoms > 1 week, or immunocompromised."
+  },
+  {
+   "title": "Dry cough",
+   "keywords": [
+    "dry cough",
+    "tickly cough"
+   ],
+   "cats": [
+    {
+     "name": "Cough suppressants (e.g., dextromethorphan)",
+     "why": "Considered for short-term dry cough in adults."
+    },
+    {
+     "name": "Soothing linctus (glycerin/honey)",
+     "why": "Demulcent; can soothe an irritated throat."
+    }
+   ],
+   "refer": "Cough > 3 weeks, blood in phlegm, breathlessness, chest pain, weight loss, night sweats."
+  },
+  {
+   "title": "Chesty cough",
+   "keywords": [
+    "chesty cough",
+    "productive cough",
+    "phlegm",
+    "mucus"
+   ],
+   "cats": [
+    {
+     "name": "Expectorants (e.g., guaifenesin)",
+     "why": "May help loosen mucus."
+    }
+   ],
+   "refer": "Green/bloody sputum with fever, breathlessness, chest pain, cough > 3 weeks."
+  },
+  {
+   "title": "Cough",
+   "keywords": [
+    "cough"
+   ],
+   "cats": [
+    {
+     "name": "Dry cough products",
+     "why": "Suppressants/demulcents for non-productive cough."
+    },
+    {
+     "name": "Chesty cough products",
+     "why": "Expectorants for productive cough."
+    }
+   ],
+   "refer": "Cough > 3 weeks, blood, breathlessness, chest pain, weight loss, night sweats."
+  },
+  {
+   "title": "Nasal congestion",
+   "keywords": [
+    "blocked nose",
+    "nasal congestion",
+    "stuffy nose",
+    "sinus"
+   ],
+   "cats": [
+    {
+     "name": "Saline sprays/drops",
+     "why": "Gentle; suitable for most people."
+    },
+    {
+     "name": "Topical decongestants",
+     "why": "Short-term (≤ 7 days) use only."
+    },
+    {
+     "name": "Steam inhalation (menthol/eucalyptus)",
+     "why": "May relieve the feeling of congestion."
+    }
+   ],
+   "refer": "Symptoms > 10 days, severe facial pain, high fever. Oral decongestants: avoid in high blood pressure."
+  },
+  {
+   "title": "Allergic rhinitis (hay fever)",
+   "keywords": [
+    "runny nose",
+    "sneezing",
+    "hay fever",
+    "allergy",
+    "itchy eyes"
+   ],
+   "cats": [
+    {
+     "name": "Low-sedating antihistamines (cetirizine, loratadine, fexofenadine)",
+     "why": "Commonly used for hay fever; less drowsiness."
+    },
+    {
+     "name": "Sedating antihistamines",
+     "why": "Cause drowsiness — avoid when driving."
+    }
+   ],
+   "refer": "Wheeze, breathlessness, or no improvement with treatment."
+  },
+  {
+   "title": "Heartburn / indigestion",
+   "keywords": [
+    "heartburn",
+    "acidity",
+    "indigestion",
+    "acid reflux"
+   ],
+   "cats": [
+    {
+     "name": "Antacids",
+     "why": "Neutralise stomach acid for quick relief."
+    },
+    {
+     "name": "Alginates",
+     "why": "Form a protective raft over stomach contents."
+    },
+    {
+     "name": "Acid reducers (H2 blockers, PPIs)",
+     "why": "Short-term reduction of acid production."
+    }
+   ],
+   "refer": "Chest pain spreading to arm/jaw, difficulty swallowing, weight loss, vomiting blood, black stools, age > 55 with new symptoms."
+  },
+  {
+   "title": "Diarrhoea",
+   "keywords": [
+    "diarrhoea",
+    "diarrhea",
+    "loose motions"
+   ],
+   "cats": [
+    {
+     "name": "Oral rehydration salts (ORS)",
+     "why": "Replaces fluids and electrolytes — first priority."
+    },
+    {
+     "name": "Antimotility (loperamide) — adults only",
+     "why": "Short-term symptom relief if no blood or fever."
+    }
+   ],
+   "refer": "Blood in stool, high fever, signs of dehydration, infants/elderly, > 48 hours, recent travel with severe symptoms."
+  },
+  {
+   "title": "Constipation",
+   "keywords": [
+    "constipation"
+   ],
+   "cats": [
+    {
+     "name": "Bulk-forming laxatives (ispaghula)",
+     "why": "Increase stool bulk; take with water."
+    },
+    {
+     "name": "Osmotic laxatives (lactulose)",
+     "why": "Soften stools."
+    }
+   ],
+   "refer": "Blood in stool, weight loss, severe pain, change in bowel habit > 2 weeks, age > 50 with new symptoms."
+  },
+  {
+   "title": "Minor cuts & grazes",
+   "keywords": [
+    "cut",
+    "wound",
+    "graze",
+    "scrape"
+   ],
+   "cats": [
+    {
+     "name": "Antiseptics",
+     "why": "Clean the wound to reduce infection risk."
+    },
+    {
+     "name": "Plasters & dressings",
+     "why": "Protect the wound."
+    }
+   ],
+   "refer": "Deep or gaping wounds, uncontrolled bleeding, animal bites, numbness, signs of infection."
+  },
+  {
+   "title": "Minor burns",
+   "keywords": [
+    "burn",
+    "scald"
+   ],
+   "cats": [
+    {
+     "name": "Burn dressings / hydrogels",
+     "why": "Cover after cooling the burn for ~20 minutes under cool running water."
+    }
+   ],
+   "refer": "Large, deep, facial, hand, genital, electrical or chemical burns; burns in young children."
+  },
+  {
+   "title": "Sprains & muscle pain",
+   "keywords": [
+    "sprain",
+    "strain",
+    "muscle pain",
+    "back pain"
+   ],
+   "cats": [
+    {
+     "name": "Topical NSAIDs",
+     "why": "Local pain relief if no NSAID contraindications."
+    },
+    {
+     "name": "Support bandages & cold packs",
+     "why": "Compression and cooling."
+    }
+   ],
+   "refer": "Cannot bear weight, deformity, severe swelling, numbness, back pain with leg weakness or bladder problems."
+  },
+  {
+   "title": "Fungal skin infection",
+   "keywords": [
+    "athlete's foot",
+    "fungal",
+    "ringworm"
+   ],
+   "cats": [
+    {
+     "name": "Topical antifungals",
+     "why": "E.g., clotrimazole, terbinafine."
+    }
+   ],
+   "refer": "Nail involvement, widespread infection, diabetes, no improvement after 2 weeks."
+  },
+  {
+   "title": "Itching & bites",
+   "keywords": [
+    "itch",
+    "itching",
+    "insect bite",
+    "rash"
+   ],
+   "cats": [
+    {
+     "name": "Calamine / soothing lotions",
+     "why": "Soothe itchy skin."
+    },
+    {
+     "name": "Mild hydrocortisone",
+     "why": "Short-term for inflammation (not on face/infected skin)."
+    },
+    {
+     "name": "Antihistamines",
+     "why": "May reduce itching."
+    }
+   ],
+   "refer": "Swelling of lips/throat or breathing difficulty (emergency), spreading redness, fever."
+  },
+  {
+   "title": "Sunburn",
+   "keywords": [
+    "sunburn"
+   ],
+   "cats": [
+    {
+     "name": "After-sun / calamine",
+     "why": "Cooling and soothing."
+    }
+   ],
+   "refer": "Extensive blistering, fever, chills, dizziness or confusion."
+  },
+  {
+   "title": "Mouth ulcers",
+   "keywords": [
+    "mouth ulcer",
+    "canker"
+   ],
+   "cats": [
+    {
+     "name": "Antiseptic mouthwash / local anaesthetic gel",
+     "why": "Ease pain and keep area clean."
+    }
+   ],
+   "refer": "Ulcer > 3 weeks, unexplained recurrent ulcers, painless or unusual ulcers."
+  },
+  {
+   "title": "Head lice",
+   "keywords": [
+    "head lice",
+    "lice",
+    "nits"
+   ],
+   "cats": [
+    {
+     "name": "Head-lice lotions (dimeticone, permethrin)",
+     "why": "Applied as directed, repeated after 7 days."
+    }
+   ],
+   "refer": "Infected scalp, treatment failure."
+  },
+  {
+   "title": "Nappy rash",
+   "keywords": [
+    "nappy rash",
+    "diaper rash"
+   ],
+   "cats": [
+    {
+     "name": "Barrier creams (zinc oxide)",
+     "why": "Protect skin from moisture."
+    }
+   ],
+   "refer": "Severe, blistered or spreading rash, or fever."
+  },
+  {
+   "title": "Acne",
+   "keywords": [
+    "acne",
+    "pimples"
+   ],
+   "cats": [
+    {
+     "name": "Benzoyl peroxide gels",
+     "why": "For mild to moderate acne."
+    }
+   ],
+   "refer": "Severe, cystic or scarring acne."
+  },
+  {
+   "title": "Dry eyes",
+   "keywords": [
+    "dry eyes",
+    "gritty eyes"
+   ],
+   "cats": [
+    {
+     "name": "Lubricant eye drops",
+     "why": "Artificial tears."
+    }
+   ],
+   "refer": "Pain, light sensitivity, reduced vision, contact-lens wearers with red eye."
+  },
+  {
+   "title": "Ear wax",
+   "keywords": [
+    "ear wax",
+    "blocked ear"
+   ],
+   "cats": [
+    {
+     "name": "Ear-wax softening drops",
+     "why": "Soften wax."
+    }
+   ],
+   "refer": "Ear pain, discharge, dizziness, possible perforation."
+  },
+  {
+   "title": "Travel sickness",
+   "keywords": [
+    "travel sickness",
+    "motion sickness"
+   ],
+   "cats": [
+    {
+     "name": "Antihistamines for motion sickness",
+     "why": "Taken before travel; cause drowsiness."
+    }
+   ],
+   "refer": "Persistent vomiting."
+  },
+  {
+   "title": "Dry skin",
+   "keywords": [
+    "dry skin",
+    "eczema",
+    "cracked skin"
+   ],
+   "cats": [
+    {
+     "name": "Emollients",
+     "why": "Moisturise and protect."
+    }
+   ],
+   "refer": "Infected (weeping/crusted) skin, widespread eczema not controlled."
+  },
+  {
+   "title": "Stopping smoking",
+   "keywords": [
+    "smoking",
+    "quit smoking"
+   ],
+   "cats": [
+    {
+     "name": "Nicotine replacement therapy",
+     "why": "Reduces cravings and withdrawal."
+    }
+   ],
+   "refer": "Recent heart attack/stroke, pregnancy — seek advice."
+  },
+  {
+   "title": "Threadworm",
+   "keywords": [
+    "worms",
+    "threadworm"
+   ],
+   "cats": [
+    {
+     "name": "Anthelmintics",
+     "why": "E.g., mebendazole with hygiene measures."
+    }
+   ],
+   "refer": "Children under 2, pregnancy, persistent symptoms."
+  },
+  {
+   "title": "Toothache",
+   "keywords": [
+    "toothache"
+   ],
+   "cats": [
+    {
+     "name": "Simple analgesics",
+     "why": "Short-term until dental review."
+    }
+   ],
+   "refer": "Dentist for all toothache; urgently for facial swelling, fever or difficulty swallowing."
+  },
+  {
+   "title": "Sleep problems",
+   "keywords": [
+    "insomnia",
+    "sleep"
+   ],
+   "cats": [
+    {
+     "name": "Sleep hygiene advice",
+     "why": "First-line for most people."
+    },
+    {
+     "name": "Short-term sedating antihistamines (adults)",
+     "why": "Not for older adults; short term only."
+    }
+   ],
+   "refer": "Persistent insomnia, low mood, sleep apnoea symptoms."
+  },
+  {
+   "title": "Chest pain",
+   "keywords": [
+    "chest pain"
+   ],
+   "cats": [],
+   "refer": "EMERGENCY: chest pain, especially spreading to arm/jaw with sweating, nausea or breathlessness — call emergency services."
+  },
+  {
+   "title": "Breathlessness",
+   "keywords": [
+    "breathless",
+    "shortness of breath",
+    "wheeze"
+   ],
+   "cats": [],
+   "refer": "Breathlessness, wheeze not relieved by inhaler, or inability to complete sentences — urgent medical/emergency care."
+  }
+ ],
+ "levels": [
+  {
+   "title": "Basic Pharmacy Navigation",
+   "rank": "Trainee Pharmacist",
+   "intro": "Welcome to your first shift! Learn your way around the pharmacy. Use the joystick to walk, swipe to look around, and tap things to interact.",
+   "objectives": [
+    "Walk to the dispensing counter",
+    "Inspect any medicine shelf",
+    "Check the medicine refrigerator",
+    "Find the POS / cash counter",
+    "Visit the storage area"
+   ],
+   "unlock": [
+    "Customer service"
+   ]
+  },
+  {
+   "title": "Simple Customer Interactions",
+   "rank": "Trainee Pharmacist",
+   "intro": "Customers are arriving. Listen, ask questions, and choose a suitable product.",
+   "objectives": [
+    "Serve 2 customers"
+   ],
+   "unlock": [
+    "Uniform: Teal scrubs"
+   ]
+  },
+  {
+   "title": "Medicine Information",
+   "rank": "Pharmacy Intern",
+   "intro": "Always read the medicine information before dispensing. Use the search to find products by name, ingredient or symptom.",
+   "objectives": [
+    "View full details of 3 products",
+    "Use symptom search",
+    "Serve 2 customers"
+   ],
+   "unlock": [
+    "Skin care & vitamin catalog"
+   ]
+  },
+  {
+   "title": "Multiple Customer Conditions",
+   "rank": "Pharmacy Intern",
+   "intro": "Customers now have more varied problems. Ask the right questions before deciding.",
+   "objectives": [
+    "Serve 3 customers"
+   ],
+   "unlock": [
+    "Baby care & devices catalog"
+   ]
+  },
+  {
+   "title": "Safety Checks",
+   "rank": "Junior Pharmacist",
+   "intro": "Some customers have allergies, conditions or medicines that make certain products unsafe. The safety check is your last line of defence.",
+   "objectives": [
+    "Serve 3 customers safely"
+   ],
+   "unlock": [
+    "Uniform: Navy coat",
+    "Prescription cabinet"
+   ]
+  },
+  {
+   "title": "Inventory Management",
+   "rank": "Junior Pharmacist",
+   "intro": "Keep stock healthy: restock low items, remove expired stock and protect the cold chain.",
+   "objectives": [
+    "Place a restock order at the POS",
+    "Handle the expired stock in storage",
+    "Respond to the refrigerator alarm",
+    "Serve 2 customers"
+   ],
+   "unlock": [
+    "Evening shift lighting"
+   ]
+  },
+  {
+   "title": "Difficult Customer Scenarios",
+   "rank": "Pharmacist",
+   "intro": "Not every problem can be solved over the counter. Recognise red flags and refer when needed.",
+   "objectives": [
+    "Serve 3 customers (red-flag cases)"
+   ],
+   "unlock": [
+    "Pharmacy expansion wing"
+   ]
+  },
+  {
+   "title": "Advanced Pharmacy Simulation",
+   "rank": "Pharmacist",
+   "intro": "A busy shift with prescriptions, stock problems and random events. Stay safe under pressure.",
+   "objectives": [
+    "Serve 4 customers"
+   ],
+   "unlock": [
+    "Uniform: Charcoal coat"
+   ]
+  },
+  {
+   "title": "Inspection Preparation",
+   "rank": "Senior Pharmacist",
+   "intro": "Inspections require 20/20. Study the training modules and pass a practice quiz before the official inspection.",
+   "objectives": [
+    "Complete 3 training modules",
+    "Score 8/10 or more in a practice quiz"
+   ],
+   "unlock": [
+    "Hospital pharmacy theme"
+   ]
+  },
+  {
+   "title": "20-Question Inspection",
+   "rank": "Senior Pharmacist",
+   "intro": "The official pharmacy inspection. Every answer must be correct.",
+   "objectives": [
+    "Pass the official inspection (20/20)"
+   ],
+   "unlock": [
+    "Career mode",
+    "Certified pharmacy plaque"
+   ]
+  }
+ ],
+ "ranks": [
+  "Trainee Pharmacist",
+  "Pharmacy Intern",
+  "Junior Pharmacist",
+  "Pharmacist",
+  "Senior Pharmacist",
+  "Pharmacy Manager"
+ ],
+ "upgrades": {
+  "outfit_teal": {
+   "name": "Teal scrubs",
+   "desc": "A modern teal scrub top under your coat."
+  },
+  "outfit_navy": {
+   "name": "Navy coat",
+   "desc": "A professional navy pharmacist coat."
+  },
+  "outfit_charcoal": {
+   "name": "Charcoal coat",
+   "desc": "A premium charcoal coat."
+  },
+  "fridge_pro": {
+   "name": "Medical-grade refrigerator",
+   "desc": "Data-logging fridge with fewer temperature alarms."
+  },
+  "pos_pro": {
+   "name": "Pro POS terminal",
+   "desc": "Faster checkout; +5% customer satisfaction on payment."
+  },
+  "signage": {
+   "name": "Digital section signage",
+   "desc": "Illuminated section signs for easier navigation."
+  },
+  "expansion": {
+   "name": "Expansion wing",
+   "desc": "Open the extra aisle with more shelves and products."
+  },
+  "theme_evening": {
+   "name": "Evening shift",
+   "desc": "Warm evening lighting preset."
+  },
+  "theme_hospital": {
+   "name": "Hospital pharmacy theme",
+   "desc": "Clinical white-and-blue interior."
+  }
+ },
+ "achievements": {
+  "first": {
+   "name": "First Customer",
+   "desc": "Serve your first customer."
+  },
+  "detective": {
+   "name": "Thorough Consultation",
+   "desc": "Ask all six questions before deciding."
+  },
+  "safe5": {
+   "name": "Safety First",
+   "desc": "Five safe decisions in a row."
+  },
+  "referral": {
+   "name": "Life Saver",
+   "desc": "Correctly refer an emergency case."
+  },
+  "generic": {
+   "name": "Generic Guru",
+   "desc": "Offer a generic alternative for an out-of-stock brand."
+  },
+  "coldchain": {
+   "name": "Cold Chain Guardian",
+   "desc": "Handle a refrigerator alarm correctly."
+  },
+  "expired": {
+   "name": "FEFO Hero",
+   "desc": "Quarantine expired stock."
+  },
+  "certified": {
+   "name": "Certified Pharmacy",
+   "desc": "Pass a 20/20 inspection."
+  },
+  "scholar": {
+   "name": "Knowledge Seeker",
+   "desc": "Complete all training modules."
+  },
+  "served25": {
+   "name": "Busy Counter",
+   "desc": "Serve 25 customers."
+  }
+ },
+ "events": {
+  "fridge": {
+   "title": "Refrigerator temperature alarm",
+   "toast": "Refrigerator alarm! Temperature out of range.",
+   "objective": "Respond to the refrigerator alarm",
+   "text": "The medicine refrigerator reads {temp} °C (required range 2–8 °C). It has been out of range for about 25 minutes. It holds insulin and other cold-chain products.",
+   "options": [
+    "Record the reading, quarantine the cold-chain stock pending assessment, fix the cause (door seal/setting) and follow the temperature-excursion procedure.",
+    "Ignore it — the temperature will come back down by itself.",
+    "Move all insulin and vaccines into the freezer compartment to cool them quickly.",
+    "Sell the insulin quickly at a discount before it spoils."
+   ],
+   "learn": "Cold-chain medicines (e.g., insulin, vaccines) must be kept at 2–8 °C and never frozen. Excursions are documented, affected stock is quarantined and assessed (e.g., with the manufacturer) before any use, and the cause is fixed."
+  },
+  "expired": {
+   "title": "Expired stock discovered",
+   "toast": "Expired stock found in storage.",
+   "objective": "Handle the expired stock in storage",
+   "text": "During a stock check you find a carton of {product} (batch {batch}) with expiry {expiry}. It is past its expiry date.",
+   "options": [
+    "Remove it from saleable stock, label it, place it in the quarantine bin and record it for proper disposal/return.",
+    "Move it to the front of the shelf so it sells first (FEFO).",
+    "Sell it at a discount — a few weeks past expiry is fine.",
+    "Put it at the back of the shelf behind newer stock."
+   ],
+   "learn": "Expired medicines must never be supplied. Remove, segregate (quarantine), document and dispose of them through the proper route. FEFO (First Expiry, First Out) applies to in-date stock only."
+  },
+  "misplaced": {
+   "title": "Product in the wrong location",
+   "toast": "A product was found on the wrong shelf.",
+   "objective": "Check the misplaced product on the vitamins shelf",
+   "text": "A {product} pen — a refrigerated prescription medicine — has been found on the Vitamins shelf at room temperature. Nobody knows how long it has been there.",
+   "options": [
+    "Remove it from sale, quarantine it as a possible cold-chain breach, record the incident and check the rest of the shelf.",
+    "Put it back in the fridge and sell it as normal.",
+    "Leave it on the vitamins shelf so customers can find it.",
+    "Give it to the next customer who asks for vitamins."
+   ],
+   "learn": "Products in the wrong location are a dispensing-error and storage risk. Cold-chain items left at room temperature must be quarantined and assessed, and Rx items must never be on open self-selection shelves."
+  }
+ },
+ "rules": {
+  "Already taking a paracetamol-containing product (duplicate ingredient).": "Already taking a paracetamol-containing product (duplicate ingredient).",
+  "Already taking an oral decongestant (duplicate).": "Already taking an oral decongestant (duplicate).",
+  "Asthma that worsened after an NSAID.": "Asthma that worsened after an NSAID.",
+  "Asthma — NSAIDs can trigger bronchospasm in some people.": "Asthma — NSAIDs can trigger bronchospasm in some people.",
+  "Customer has a sulfonamide allergy.": "Customer has a sulfonamide allergy.",
+  "Customer is allergic to penicillin.": "Customer is allergic to penicillin.",
+  "Customer is pregnant — this product is generally avoided in pregnancy.": "Customer is pregnant — this product is generally avoided in pregnancy.",
+  "Customer reacts to iodine.": "Customer reacts to iodine.",
+  "Customer reported an NSAID/aspirin allergy.": "Customer reported an NSAID/aspirin allergy.",
+  "Diabetes — a sugar-free formulation is preferable.": "Diabetes — a sugar-free formulation is preferable.",
+  "Drives professionally — sedating products impair driving.": "Drives professionally — sedating products impair driving.",
+  "Glaucoma — anticholinergic medicines can worsen it.": "Glaucoma — anticholinergic medicines can worsen it.",
+  "Glaucoma — decongestants should be used with caution.": "Glaucoma — decongestants should be used with caution.",
+  "High blood pressure — oral decongestants can raise BP.": "High blood pressure — oral decongestants can raise BP.",
+  "High blood pressure — use topical decongestants cautiously and short-term.": "High blood pressure — use topical decongestants cautiously and short-term.",
+  "History of stomach ulcer / GI bleed.": "History of stomach ulcer / GI bleed.",
+  "Honey-containing products must not be given under 1 year.": "Honey-containing products must not be given under 1 year.",
+  "Kidney disease — NSAIDs can worsen kidney function.": "Kidney disease — NSAIDs can worsen kidney function.",
+  "Not for under-16s (aspirin — Reye's syndrome risk).": "Not for under-16s (aspirin — Reye's syndrome risk).",
+  "Not suitable for a baby under 3 months.": "Not suitable for a baby under 3 months.",
+  "Not suitable for a child of this age.": "Not suitable for a child of this age.",
+  "Not suitable for a child under 6.": "Not suitable for a child under 6.",
+  "Not suitable for an infant.": "Not suitable for an infant.",
+  "Older adult — sedating/anticholinergic medicines increase falls and confusion risk.": "Older adult — sedating/anticholinergic medicines increase falls and confusion risk.",
+  "Pregnancy — check with the doctor before use.": "Pregnancy — check with the doctor before use.",
+  "Prostate enlargement — anticholinergic effects can cause urinary retention.": "Prostate enlargement — anticholinergic effects can cause urinary retention.",
+  "Prostate enlargement — decongestants can worsen urinary retention.": "Prostate enlargement — decongestants can worsen urinary retention.",
+  "Takes an MAO inhibitor — dangerous interaction.": "Takes an MAO inhibitor — dangerous interaction.",
+  "Takes blood-pressure medicine — NSAIDs can reduce blood-pressure control.": "Takes blood-pressure medicine — NSAIDs can reduce blood-pressure control.",
+  "Takes blood-pressure medicine — oral decongestants oppose its effect.": "Takes blood-pressure medicine — oral decongestants oppose its effect.",
+  "Takes lithium — NSAIDs can raise lithium levels (toxicity).": "Takes lithium — NSAIDs can raise lithium levels (toxicity).",
+  "Takes other sedating medicines.": "Takes other sedating medicines.",
+  "Takes warfarin — NSAIDs/aspirin increase bleeding risk.": "Takes warfarin — NSAIDs/aspirin increase bleeding risk.",
+  "Takes warfarin — topical NSAIDs/salicylates can still increase bleeding risk.": "Takes warfarin — topical NSAIDs/salicylates can still increase bleeding risk."
+ },
+ "names": {
+  "M": [
+   "Aarav Sharma",
+   "Rohan Mehta",
+   "Vikram Rao",
+   "Arjun Nair",
+   "Kabir Singh",
+   "Imran Khan",
+   "Daniel Thomas",
+   "Suresh Iyer",
+   "Rahul Verma",
+   "Anil Kapoor-Das",
+   "Joseph D'Souza",
+   "Farhan Ali",
+   "Manoj Pillai",
+   "Ravi Kumar",
+   "Siddharth Jain",
+   "Alex Fernandes",
+   "Harish Reddy",
+   "Gopal Menon",
+   "Nikhil Bose",
+   "Samuel George"
+  ],
+  "F": [
+   "Priya Patel",
+   "Meera Krishnan",
+   "Ananya Gupta",
+   "Fatima Sheikh",
+   "Kavya Reddy",
+   "Sneha Joshi",
+   "Aisha Rahman",
+   "Lakshmi Iyer",
+   "Neha Malhotra",
+   "Riya Sen",
+   "Deepa Nair",
+   "Sarah Mathew",
+   "Pooja Desai",
+   "Divya Menon",
+   "Zara Hussain",
+   "Anjali Rao",
+   "Shalini Verma",
+   "Grace Pereira",
+   "Nandini Das",
+   "Tara Kulkarni"
+  ],
+  "childM": [
+   "Aryan",
+   "Vihaan",
+   "Ishaan",
+   "Kian",
+   "Reyansh"
+  ],
+  "childF": [
+   "Anika",
+   "Myra",
+   "Saanvi",
+   "Diya",
+   "Kiara"
+  ]
+ }
+}
