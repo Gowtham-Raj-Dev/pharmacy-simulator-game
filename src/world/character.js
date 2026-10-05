@@ -710,6 +710,8 @@ export class Character {
     this.blinkT = 2 + Math.random() * 3; this.blink = 0;
     this.lookTarget = null; this.look = { yaw: 0, pitch: 0 };
     this.jawOpen = 0;
+    this.lip = null;         // loudness (0…1) of this character's recorded line while it plays (lip-sync), else null
+    this.turnRate = 0; this.moveDir = 1;
     this.limp = desc.gesture === 'limp';
     this.onStep = null;
     this.onCough = null;
@@ -810,10 +812,12 @@ export class Character {
 
   get position() { return this.group.position; }
 
-  walkPath(points, { run = false, onArrive = null, speed = null } = {}) {
+  /** Walk along points. backward: step back to them, facing away (e.g. backing up to a chair). */
+  walkPath(points, { run = false, onArrive = null, speed = null, backward = false } = {}) {
     this.path = points.map((p) => p.clone ? p.clone() : new THREE.Vector3(p.x, 0, p.z));
     this.targetSpeed = speed || (run ? this.runSpeed : this.walkSpeed);
     this.onArrive = onArrive;
+    this.backward = backward;
     this.sitTarget = 0;
     this.faceAngle = null;
   }
@@ -825,37 +829,52 @@ export class Character {
 
   dispose() { if (this.real) this.real.dispose(); else { this.geoHi.dispose(); this.geoLo.dispose(); } this.skeleton.dispose(); }
 
-  /** Per-frame update. extMove: optional {vx, vz, speed} for player control */
+  /** Per-frame update. extMove: {heading, speed} when the game moves this character (player control) */
   update(dt, cameraPos, extMove) {
     this.t += dt;
     const g = this.group;
+    const h0 = this.heading;
+    this.moveDir = 1;
     // ── movement ──
     if (extMove) {
-      this.speed = damp(this.speed, extMove.speed, 10, dt);
-      if (extMove.speed > 0.05) this.heading = angleDamp(this.heading, Math.atan2(extMove.vx, extMove.vz), 12, dt);
+      this.speed = extMove.speed;
+      if (extMove.heading != null) this.heading = extMove.heading;
     } else if (this.path && this.path.length) {
       const tgt = this.path[0];
       const dx = tgt.x - g.position.x, dz = tgt.z - g.position.z;
       const d = Math.hypot(dx, dz);
       const last = this.path.length === 1;
-      if (d < (last ? 0.06 : 0.25)) {
+      if (d < (last ? 0.05 : 0.22)) {
         this.path.shift();
         if (!this.path.length) {
           this.path = null; this.targetSpeed = 0;
           const cb = this.onArrive; this.onArrive = null; if (cb) cb(this);
         }
       } else {
-        this.heading = angleDamp(this.heading, Math.atan2(dx, dz), 7, dt);
-        const sp = last ? Math.min(this.targetSpeed, d * 2.2 + 0.25) : this.targetSpeed;
-        this.speed = damp(this.speed, sp, 6, dt);
+        // people walk the way they face: turn towards the next point, slowing down (or turning on
+        // the spot) for sharp corners instead of sliding sideways round them
+        const back = this.backward ? -1 : 1;
+        const want = Math.atan2(dx * back, dz * back);
+        this.heading = angleDamp(this.heading, want, 7, dt);
+        const err = Math.abs(Math.atan2(Math.sin(want - this.heading), Math.cos(want - this.heading)));
+        const sp = (last ? Math.min(this.targetSpeed, d * 2.2 + 0.12) : this.targetSpeed) * clamp((Math.cos(err) - 0.25) / 0.6, 0, 1);
+        this.speed = damp(this.speed, sp, sp < this.speed ? 9 : 6, dt);
         const step = Math.min(d, this.speed * dt);
-        g.position.x += (dx / d) * step; g.position.z += (dz / d) * step;
+        // along the body's facing, homing in on the point (straight onto the final spot)
+        const k = last && d < 0.3 ? 1 : 0.3;
+        let mx = Math.sin(this.heading) * back * (1 - k) + (dx / d) * k, mz = Math.cos(this.heading) * back * (1 - k) + (dz / d) * k;
+        const ml = Math.hypot(mx, mz) || 1; mx /= ml; mz /= ml;
+        g.position.x += mx * step; g.position.z += mz * step;
+        this.moveDir = back;
       }
     } else {
-      this.speed = damp(this.speed, 0, 8, dt);
+      this.speed = damp(this.speed, 0, 10, dt);
       if (this.faceAngle != null) this.heading = angleDamp(this.heading, this.faceAngle, 6, dt);
     }
     g.rotation.y = this.heading;
+    // turning speed (rad/s) — the animators step the feet round when turning on the spot (jumps = teleports, ignored)
+    const dh = Math.atan2(Math.sin(this.heading - h0), Math.cos(this.heading - h0));
+    this.turnRate = Math.abs(dh) > 1 ? 0 : damp(this.turnRate || 0, dh / Math.max(dt, 1e-4), 12, dt);
 
     // LOD by camera distance
     if (cameraPos) {
@@ -879,7 +898,7 @@ export class Character {
     const walkW = clamp(sp / 0.9, 0, 1);
     const runAmt = clamp((sp - 1.6) / 1.6, 0, 1);
     const strideLen = P.H * (0.42 + runAmt * 0.25) * (P.stoop ? 0.85 : 1);
-    this.phase += (sp / strideLen) * Math.PI * dt;
+    this.phase += (sp / strideLen) * Math.PI * dt * (this.moveDir || 1);
     const ph = this.phase;
     const breath = Math.sin(t * 1.7);
     const idleW = 1 - walkW;
@@ -911,7 +930,7 @@ export class Character {
       add('head', -0.04 - runAmt * 0.1 + P.stoop * -0.5, s * 0.04, 0, walkW);
       // footsteps on heel strike
       const sign = Math.sign(c);
-      if (sign !== this._lastStepSign && sp > 0.4) { this._lastStepSign = sign; this.onStep?.(this); }
+      if (sign !== this._lastStepSign && sp > 0.4) { this._lastStepSign = sign; if (this.real?.kind !== 'rb') this.onStep?.(this); } // mocap bodies step on their own touch-downs
     }
     // sit
     this.sitW = damp(this.sitW, this.sitTarget, 5, dt);
@@ -995,7 +1014,7 @@ export class Character {
     this.blink = Math.max(0, this.blink - dt * 7);
     const lid = Math.sin(Math.min(1, this.blink) * Math.PI) * 1.25 + (exprName === 'pain' ? 0.25 : 0);
     B.lidL.rotation.x = lid; B.lidR.rotation.x = lid;
-    const speak = this.talking ? Math.max(0, Math.sin(t * 13) * 0.5 + noise1(t * 9) * 0.5) : 0;
+    const speak = this.lip != null ? this.lip : this.talking ? Math.max(0, Math.sin(t * 13) * 0.5 + noise1(t * 9) * 0.5) : 0; // lip: loudness of the voice playing
     this.jawOpen = damp(this.jawOpen, speak * 0.13, 18, dt);
     B.jaw.rotation.x = this.jawOpen;
   }
@@ -1096,6 +1115,8 @@ export function makeProp(kind) {
   let g, m;
   if (kind === 'bag') { g = new THREE.BoxGeometry(0.16, 0.2, 0.08); m = new THREE.MeshStandardMaterial({ color: 0xf2efe6, roughness: 0.9 }); }
   else if (kind === 'card') { g = new THREE.BoxGeometry(0.085, 0.055, 0.004); m = new THREE.MeshStandardMaterial({ color: 0x1d6fb8, roughness: 0.4, metalness: 0.2 }); }
+  else if (kind === 'phone') { g = new THREE.BoxGeometry(0.072, 0.15, 0.009); m = new THREE.MeshStandardMaterial({ color: 0x15181d, roughness: 0.25, metalness: 0.4, emissive: 0x2b4f6e, emissiveIntensity: 0.35 }); } // UPI: phone showing the QR scanner
+  else if (kind === 'notes') { g = new THREE.BoxGeometry(0.13, 0.065, 0.006); m = new THREE.MeshStandardMaterial({ color: 0xb9a0c9, roughness: 0.85 }); } // a few folded rupee notes
   else if (kind === 'box') { g = new THREE.BoxGeometry(0.09, 0.05, 0.13); m = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6 }); }
   else { g = new THREE.BoxGeometry(0.1, 0.1, 0.1); m = new THREE.MeshStandardMaterial({ color: 0xff00ff }); }
   const mesh = new THREE.Mesh(g, m);

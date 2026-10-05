@@ -19,10 +19,11 @@ import { SECTIONS } from './data/products.js';
 import { EVENTS, fillEvent } from './data/events.js';
 import { saveGame, newGameState, deleteSave, saveSettings } from './core/state.js';
 import { haptic } from './core/audio.js';
-import { clamp, fmtMoney, randi, rand, pick, damp } from './core/util.js';
+import { clamp, fmtMoney, randi, rand, pick, damp, angleDamp } from './core/util.js';
 import { t, tp, setLang, getLang, isTA } from './i18n/i18n.js';
 import { applyContent } from './i18n/content.js';
 import { Guide } from './systems/guide.js';
+import { customerClips, thanksClip, PHARMACIST_CLIPS } from './data/voices.js';
 
 const _f = new THREE.Vector3(), _r = new THREE.Vector3(), _d = new THREE.Vector3(), _tmp = new THREE.Vector3();
 const ray = new THREE.Raycaster();
@@ -48,7 +49,7 @@ export class Game {
     this.nav = new NavGrid({ minX: -8, maxX: 8, minZ: -9, maxZ: 9 }, 0.2);
     this.nav.rebuild(world.activeColliders(), 0.3);
     this.player = new Character(pharmacistDesc(OUTFITS.default));
-    this.player.walkSpeed = 1.8; this.player.runSpeed = 3.3;
+    this.player.walkSpeed = 1.8; this.player.runSpeed = 3.0; // a jog: the run mocap plays near its recorded pace (natural cadence, planted feet)
     this.player.group.position.copy(world.points.playerStart);
     scene.add(this.player.group);
     this.player.onStep = () => this.audio.sfx('step', { vol: 0.45 });
@@ -59,7 +60,7 @@ export class Game {
     this.blobs = new THREE.InstancedMesh(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: blobShadowTexture(), transparent: true, depthWrite: false, toneMapped: false, opacity: 0.85 }), 24);
     this.blobs.frustumCulled = false; this.blobs.renderOrder = 1;
     scene.add(this.blobs);
-    this.frameAvg = 16; this.pr = 1; this.autoTimer = 0;
+    this.frameAvg = 16; this.pr = 0;
     this.saveTimer = 0; this.hudTimer = 0; this.alarmTimer = 0;
     this.cineTimers = [];
     this.guide = new Guide(this);
@@ -85,13 +86,16 @@ export class Game {
   // ───────────────────────── Lifecycle ─────────────────────────
   showTitle(hasSave) {
     this.mode = 'title';
+    this.finishTalk(true);
     this.customers.clearAll();
     this.ui.closeAll(); this.ui.closeDialogue(true);
     this.ui.showHUD(false);
     this.audio.setMusic('calm');
-    this.rig.setShot(new THREE.Vector3(1.5, 2.3, 6.7), new THREE.Vector3(-0.8, 1.2, -4), { cut: true });
+    this.titleView();
     this.ui.showTitle({ hasSave, onContinue: () => this.startPlay(false), onNew: () => this.newGame() });
   }
+  /** The lobby camera: a slow drift across the pharmacy (driven by update() while in title mode). */
+  titleView() { this.rig.setShot(new THREE.Vector3(1.5, 2.3, 6.7), new THREE.Vector3(-0.8, 1.2, -4), { cut: true }); }
   newGame() {
     const s = newGameState();
     Object.keys(this.state).forEach((k) => delete this.state[k]);
@@ -107,7 +111,7 @@ export class Game {
     s.orders = s.orders || []; this.world.setDelivery?.(this.arrivedOrders().length > 0);
     if (!s.levelObjectives) this.initLevelObjectives();
     s.inspection.active = false;
-    this.player.group.position.copy(this.world.points.playerStart); this.player.heading = 0; this.rig.yaw = 0; this.rig.pitch = 0.32;
+    this.player.group.position.copy(this.world.points.playerStart); this.player.heading = 0; this._pSpeed = 0; this.rig.yaw = 0; this.rig.pitch = 0.32;
     this.rig.clearShot();
     this.mode = 'play';
     this.ui.showHUD(true); this.ui.updateHUD();
@@ -153,20 +157,24 @@ export class Game {
     const mv = this.input.update();
     let ext = null, moving = false;
     if (canControl && mv.mag > 0.05) {
-      if (P.path) { P.path = null; P.onArrive = null; }
+      if (P.path) { P.path = null; P.onArrive = null; this._pSpeed = P.speed; }
       P.faceAngle = null;
       ui.hideJoyHint();
       const f = this.rig.forward(_f);
       const r = _r.set(-f.z, 0, f.x);
-      _d.set(0, 0, 0).addScaledVector(r, mv.x).addScaledVector(f, mv.y).normalize();
+      _d.set(0, 0, 0).addScaledVector(r, mv.x).addScaledVector(f, mv.y);
       // realistic (mocap) walking reads best at a brisk 1.8 m/s; RUN / Shift / full stick = jog-run
-      const speed = mv.run ? 3.3 : 0.45 + 1.35 * mv.mag;
-      this.movePlayer(_d, speed, dt);
-      ext = { vx: _d.x, vz: _d.z, speed };
+      const speed = this.steerPlayer(Math.atan2(_d.x, _d.z), mv.run ? P.runSpeed : 0.45 + 1.35 * mv.mag, dt);
+      ext = { heading: P.heading, speed };
       moving = true;
-    } else if (!P.path && P.faceAngle == null) ext = { vx: 0, vz: 0, speed: 0 };
+    } else if (this._pSpeed > 0 && !P.path) {
+      const speed = this.steerPlayer(null, 0, dt); // let go: slow down over a step or two
+      ext = { heading: P.heading, speed };
+      moving = true;
+    } else if (!P.path && P.faceAngle == null) ext = { heading: P.heading, speed: 0 };
     if (canControl && this.input.camKeys.rot) this.rig.rotate(this.input.camKeys.rot * 220 * dt, 0);
     if (canControl && this.input.camKeys.zoom) this.rig.zoom(1 + this.input.camKeys.zoom * 1.2 * dt);
+    if (this._speaker) this._speaker.lip = this.audio.lipLevel(); // jaw follows the voice playing now
     P.update(dt, this.camera.position, ext);
     if (P.path) moving = true;
     this.customers.update(dt);
@@ -209,6 +217,31 @@ export class Game {
     this.blobs.count = n; this.blobs.instanceMatrix.needsUpdate = true;
   }
 
+  /**
+   * Joystick walking. The body speeds up and slows down like a person (no instant start or stop),
+   * turns before it walks off in a new direction, and always moves the way it faces, so the
+   * mocap feet stay planted. Returns the real ground speed (pushing into a shelf = standing still),
+   * which drives the legs.
+   */
+  steerPlayer(want, wantSpeed, dt) {
+    const P = this.player;
+    if (want != null) {
+      P.heading = angleDamp(P.heading, want, 11, dt);
+      const err = Math.abs(Math.atan2(Math.sin(want - P.heading), Math.cos(want - P.heading)));
+      wantSpeed *= clamp(Math.cos(err) + 0.3, 0, 1); // sharp turn: slow down / turn on the spot first
+    }
+    const cur = this._pSpeed || 0;
+    const acc = wantSpeed > cur ? (wantSpeed > 2.2 ? 5 : 3.8) : 5.5; // m/s²: a step or two to get going / to stop
+    this._pSpeed = wantSpeed > cur ? Math.min(wantSpeed, cur + acc * dt) : Math.max(wantSpeed, cur - acc * dt);
+    if (this._pSpeed < 0.02) { this._pSpeed = 0; return 0; }
+    _d.set(Math.sin(P.heading), 0, Math.cos(P.heading));
+    const p = P.group.position, x0 = p.x, z0 = p.z;
+    this.movePlayer(_d, this._pSpeed, dt);
+    const real = Math.max(0, ((p.x - x0) * _d.x + (p.z - z0) * _d.z) / dt);
+    this._pSpeed = Math.min(this._pSpeed, real + 0.6); // blocked: don't build up speed against the shelf
+    return real;
+  }
+
   movePlayer(dir, speed, dt) {
     const p = this.player.group.position;
     let nx = p.x + dir.x * speed * dt, nz = p.z + dir.z * speed * dt;
@@ -241,7 +274,8 @@ export class Game {
     if (d < 0.3) { if (heading != null) P.faceTo(heading); setTimeout(() => cb?.(), 120); return; }
     const path = this.nav.findPath(P.group.position, target);
     if (!path) { cb?.(); return; }
-    P.walkPath(path, { run: d > 5, speed: d > 5 ? 3.3 : 1.8, onArrive: () => { if (heading != null) P.faceTo(heading); setTimeout(() => cb?.(), 150); } });
+    this._pSpeed = 0;
+    P.walkPath(path, { run: d > 5, speed: d > 5 ? P.runSpeed : P.walkSpeed, onArrive: () => { if (heading != null) P.faceTo(heading); setTimeout(() => cb?.(), 150); } });
   }
 
   // ───────────────────────── Interaction ─────────────────────────
@@ -350,6 +384,7 @@ export class Game {
     c.char.expression = c.scn.difficulty >= 4 ? 'concerned' : 'neutral';
     this.ui.toast(t('g.atCounter', { name: c.name }), '', 'user');
     this.audio.sfx('notify', { vol: 0.6 });
+    this.audio.prefetch([...PHARMACIST_CLIPS, ...customerClips(c.scn)]); // their voice is ready before you ask
     this.updateObjective();
   }
   onCustomerAtPOS() { this.updateObjective(); }
@@ -368,33 +403,11 @@ export class Game {
       this.ui.openDialogue(c);
       if (!c.greeted) {
         c.greeted = true;
-        this.isDialogueSpeaking = true;
-        c.log.push({ who: 'me', text: t('g.hello') });
-        this.ui.refreshDialogue();
-        this.pharmacistSay(t('g.hello'), 'g_hello', () => {
-          if (this.mode !== 'dialogue' || this.activeCustomer !== c || c.state === 'leaving') {
-            this.isDialogueSpeaking = false;
-            return;
-          }
-          setTimeout(() => {
-            if (this.mode !== 'dialogue' || this.activeCustomer !== c || c.state === 'leaving') {
-              this.isDialogueSpeaking = false;
-              return;
-            }
-            c.log.push({ who: 'cust', text: c.complaint });
-            if (c.scn.prescription) c.log.push({ who: 'sys', text: t('g.handsRx') });
-            if (c.scn.child && c.scn.child.age < 1) c.log.push({ who: 'sys', text: t('g.holdingBaby', { m: c.scn.child.months }) });
-            this.ui.refreshDialogue();
-            this.customerSay(c, c.complaint, false, c.scn?.id, () => {
-              this.isDialogueSpeaking = false;
-              this.ui.refreshDialogue();
-            });
-          }, 300);
-        });
-      } else {
-        this.isDialogueSpeaking = false;
-        this.ui.refreshDialogue();
-      }
+        const notes = [];
+        if (c.scn.prescription) notes.push({ who: 'sys', text: t('g.handsRx') });
+        if (c.scn.child && c.scn.child.age < 1) notes.push({ who: 'sys', text: t('g.holdingBaby', { m: c.scn.child.months }) });
+        this.talk(c, [{ who: 'me', text: t('g.hello'), clip: 'g_hello' }, { who: 'cust', text: c.complaint, clip: c.scn.id, notes }]);
+      } else this.ui.refreshDialogue();
       this.updateObjective();
     });
   }
@@ -417,10 +430,7 @@ export class Game {
   }
   pauseConsultation() {
     const c = this.activeCustomer;
-    this.audio.stopSpeech();
-    this.isDialogueSpeaking = false;
-    this.player.say(false);
-    if (c?.char) c.char.say(false);
+    this.finishTalk();
     this.ui.closeDialogue();
     this.rig.clearShot();
     this.player.lookTarget = null;
@@ -429,121 +439,89 @@ export class Game {
     this.ui.toast(t('g.custWaiting'), '', 'info', 3600);
   }
   ask(key) {
-    if (this.isDialogueSpeaking) return;
-    const c = this.activeCustomer; if (!c || c.asked.has(key)) return;
+    const c = this.activeCustomer; if (!c || c.asked.has(key) || c.decided) return;
     c.asked.add(key);
-    this.isDialogueSpeaking = true;
-    const qKey = key.startsWith('q_') ? key : 'q_' + key;
-    c.log.push({ who: 'me', text: t('q.' + key + '.prompt') });
     this.audio.sfx('click');
+    // asking while someone is still talking skips the rest of that line
+    this.talk(c, [{ who: 'me', text: t('q.' + key + '.prompt'), clip: 'q_' + key }, { who: 'cust', text: c.scn.answers[key], clip: `${c.scn.id}_${key}` }]);
+  }
+
+  // ── Conversation turns ──
+  // talk() plays lines one after another (pharmacist 'me' / customer 'cust'), each added to the
+  // dialogue log as it starts. finishTalk() skips: the voice stops, the remaining lines appear at once.
+  talk(c, lines, onDone) {
+    this.finishTalk();
+    const T = this._talk = { c, lines, i: 0, onDone };
+    this.isDialogueSpeaking = true;
+    this._talkLine(T);
+  }
+  _talkLine(T) {
+    if (this._talk !== T) return;
+    const L = T.lines[T.i];
+    if (!L) { this._talkEnd(T); return; }
+    this._logLine(T.c, L);
     this.ui.refreshDialogue();
-    this.pharmacistSay(t('q.' + key + '.prompt'), qKey, () => {
-      if (this.mode !== 'dialogue' || this.activeCustomer !== c || c.state === 'leaving') {
-        this.isDialogueSpeaking = false;
-        return;
-      }
-      setTimeout(() => {
-        if (this.mode !== 'dialogue' || this.activeCustomer !== c || c.state === 'leaving') {
-          this.isDialogueSpeaking = false;
-          return;
-        }
-        const ans = c.scn.answers[key];
-        c.log.push({ who: 'cust', text: ans });
-        this.ui.refreshDialogue();
-        this.customerSay(c, ans, false, c.scn?.id + '_' + key, () => {
-          this.isDialogueSpeaking = false;
-          this.ui.refreshDialogue();
-        });
-      }, 300);
-    });
+    L.act?.(); // a gesture that goes with the line (e.g. handing a medicine back)
+    const next =() => { if (this._talk !== T) return; T.i++; T.gap = setTimeout(() => this._talkLine(T), 280); };
+    if (L.who === 'me') this.pharmacistSay(L.text, L.clip, next);
+    else this.customerSay(T.c, L.text, L.clip, next);
   }
-  // The customer answers in their own voice (one voice per customer).
-  // The mouth strictly follows the speech turn: turns ON when audio starts, OFF when audio ends.
-  customerSay(c, text, queue = false, clipId = null, onEnd = null) {
-    if (!c || c.state === 'leaving' || c.state === 'toPOS' || !c.item?.busy) {
-      onEnd?.();
+  _logLine(c, L) {
+    if (L.logged) return;
+    L.logged = true;
+    c.log.push({ who: L.who, text: L.text }, ...(L.notes || []));
+  }
+  /** Skip to the end of the conversation turn (cancel: also drop what was to happen after it). */
+  finishTalk(cancel = false) {
+    const T = this._talk; if (!T) return;
+    clearTimeout(T.gap); clearTimeout(this._sayT);
+    this.audio.stopSpeech();
+    this.player.say(false); T.c.char?.say(false);
+    this._setSpeaker(null);
+    for (; T.i < T.lines.length; T.i++) this._logLine(T.c, T.lines[T.i]);
+    this._talkEnd(T, cancel);
+  }
+  _talkEnd(T, cancel) {
+    if (this._talk !== T) return;
+    this._talk = null;
+    this.isDialogueSpeaking = false;
+    this.ui.refreshDialogue();
+    if (!cancel) T.onDone?.();
+  }
+  /** A customer walks away from the counter: their conversation skips to its end. */
+  endTalkWith(c) {
+    if (this._talk?.c === c) this.finishTalk();
+    c.char?.say(false);
+  }
+  /** Lip-sync: the character whose recorded line is playing moves the jaw with the voice. */
+  _setSpeaker(ch) {
+    if (this._speaker && this._speaker !== ch) this._speaker.lip = null;
+    this._speaker = ch;
+  }
+  /** One line in a character's own voice. Without voices the mouth moves for a reading-time estimate. */
+  _say(ch, text, opts, onEnd) {
+    clearTimeout(this._sayT);
+    const done = () => { if (this._speaker === ch) this._setSpeaker(null); ch.say(false); onEnd?.(); };
+    if (!this.settings.voiceDialogue) {
+      ch.say(true);
+      this._sayT = setTimeout(done, clamp(String(text).length * 55, 1200, 6500));
       return;
     }
-    const dur = clamp(String(text).length * 55, 1200, 6500);
-    clearTimeout(c._sayT);
-    let started = false;
-    const mouth = (on) => { if (c.char && c.state !== 'leaving') c.char.say(on); };
-    const stopMouth = () => {
-      clearTimeout(c._sayT);
-      c._sayT = null;
-      mouth(false);
-    };
-
-    if (!this.settings.voiceDialogue) {
-      mouth(true);
-      c._sayT = setTimeout(() => { stopMouth(); onEnd?.(); }, dur);
-    } else {
-      c._sayT = setTimeout(() => {
-        if (!started && c.state !== 'leaving') {
-          mouth(true);
-          c._sayT = setTimeout(() => { stopMouth(); onEnd?.(); }, dur);
-        }
-      }, queue ? 9000 : 2000);
-
-      this.audio.speak(text, {
-        clipId: clipId || (text === c.complaint ? c.scn?.id : null),
-        gender: c.gender,
-        age: c.age,
-        voice: c.num,
-        queue,
-        onStart: () => {
-          if (!c || c.state === 'leaving' || c.state === 'toPOS' || !c.item?.busy) {
-            this.audio.stopSpeech();
-            stopMouth();
-            onEnd?.();
-            return;
-          }
-          started = true;
-          clearTimeout(c._sayT);
-          mouth(true);
-        },
-        onEnd: () => {
-          stopMouth();
-          onEnd?.();
-        }
-      });
-    }
-    if (this.mode !== 'dialogue') this.ui.subtitle(c.name.split(' ')[0], String(text), dur + 600);
+    this.audio.speak(text, { ...opts, onStart: () => { this._setSpeaker(ch); ch.say(true); }, onEnd: done });
   }
-  /** The pharmacist (player) says her line out loud — same fixed voice all game. */
-  pharmacistSay(text, clipId = null, onEnd = null) {
-    const p = this.player;
-    clearTimeout(this._pSayT);
-    const dur = clamp(String(text).length * 50, 900, 4500);
-    const stopMouth = () => { clearTimeout(this._pSayT); this._pSayT = null; p.say(false); };
-    if (!this.settings.voiceDialogue) {
-      p.say(true);
-      this._pSayT = setTimeout(() => { stopMouth(); onEnd?.(); }, dur);
-      return;
-    }
-    let started = false;
-    this._pSayT = setTimeout(() => {
-      if (!started) {
-        p.say(true);
-        this._pSayT = setTimeout(() => { stopMouth(); onEnd?.(); }, dur);
-      }
-    }, 2000);
-    this.audio.speak(text, {
-      clipId,
-      gender: 'F',
-      age: 32,
-      voice: 1,
-      role: 'staff',
-      onStart: () => {
-        started = true;
-        clearTimeout(this._pSayT);
-        p.say(true);
-      },
-      onEnd: () => {
-        stopMouth();
-        onEnd?.();
-      }
-    });
+  /** The customer, in their own voice (data/voices.js). */
+  customerSay(c, text, clip, onEnd) {
+    if (!c || c.state === 'leaving' || c.state === 'toPOS' || !c.item?.busy) { onEnd?.(); return; }
+    this._say(c.char, text, { clip, gender: c.gender, age: c.age, voice: c.num }, onEnd);
+  }
+  /** The pharmacist (player): the same voice all game. */
+  pharmacistSay(text, clip, onEnd) {
+    this._say(this.player, text, { clip, gender: 'F', age: 32, voice: 1, role: 'staff' }, onEnd);
+  }
+  inspectorSay(line, clip, ms) {
+    const ins = this.inspector;
+    if (ms) this.ui.subtitle(tp('g.inspector'), line, ms);
+    this._say(ins, line, { clip, gender: 'M', age: 52, voice: 3, role: 'staff' });
   }
   openCabinet(q) {
     if (this.mode !== 'play' && this.mode !== 'dialogue') return;
@@ -609,35 +587,19 @@ export class Game {
     this.ui.showCounsel(opts, { title, onPick: (i) => this.finalizeDecision(d, opts[i]) });
   }
   finalizeDecision(d, opt) {
-    const c = this.activeCustomer; if (!c) return;
-    this.isDialogueSpeaking = true;
-    c.log.push({ who: 'me', text: opt.text });
-    this.ui.refreshDialogue();
+    const c = this.activeCustomer; if (!c || c.decided) return;
+    c.decided = true; // no more questions: the explanation and thank-you play, then the outcome
     const extra = { counselCorrect: !!opt.correct, requested: c.requested };
     const res = evaluate(d, c.scn, c.asked, extra);
     this.applyResult(res, c, d);
-    const outcomeKey = d.type === 'dispense' ? 'thx_dispense' : d.type === 'refer' ? (d.urgency === 'emergency' ? 'thx_emergency' : 'thx_refer') : 'thx_advise';
-    const line = d.type === 'dispense' ? t('g.thxDispense') : d.type === 'refer' ? (d.urgency === 'emergency' ? t('g.thxEmergency') : t('g.thxRefer')) : t('g.thxAdvise');
-    c.char.expression = d.type === 'refer' ? 'concerned' : 'happy';
-
-    this.pharmacistSay(opt.text, null, () => {
-      if (!c || c.state === 'leaving') {
-        this.isDialogueSpeaking = false;
-        return;
-      }
-      setTimeout(() => {
-        if (!c || c.state === 'leaving') {
-          this.isDialogueSpeaking = false;
-          return;
-        }
-        c.log.push({ who: 'cust', text: line });
-        this.ui.refreshDialogue();
-        this.customerSay(c, line, false, outcomeKey + '_' + c.gender, () => {
-          this.isDialogueSpeaking = false;
-          setTimeout(() => this.ui.showOutcome(res, () => this.afterOutcome(c, d)), 400);
-        });
-      }, 300);
-    });
+    // a wrong medicine is never handed over: the customer gives it back (in their own voice) and walks out without it
+    const returned = d.type === 'dispense' && !res.handOver.length;
+    const kind = returned ? 'return' : d.type === 'dispense' ? 'dispense' : d.type === 'refer' ? (d.urgency === 'emergency' ? 'emergency' : 'refer') : 'advise';
+    const line = t({ dispense: 'g.thxDispense', return: 'g.thxReturn', emergency: 'g.thxEmergency', refer: 'g.thxRefer', advise: 'g.thxAdvise' }[kind]);
+    c.char.expression = d.type === 'refer' || returned ? 'concerned' : 'happy';
+    const handBack = returned ? () => { c.char.setAction('give', 1.4); setTimeout(() => this.player.setAction('take', 1.2), 450); } : null;
+    this.talk(c, [{ who: 'me', text: opt.text, clip: opt.clip }, { who: 'cust', text: line, clip: thanksClip(c.scn, kind), act: handBack }],
+      () => setTimeout(() => this.ui.showOutcome(res, () => this.afterOutcome(c, d, res)), 400));
   }
   applyResult(res, c, d) {
     const s = this.state, dl = res.deltas;
@@ -659,23 +621,22 @@ export class Game {
     this.progress('serve', { safe: safeGood });
     this.ui.updateHUD();
   }
-  afterOutcome(c, d) {
-    this.audio.stopSpeech();
-    this.isDialogueSpeaking = false;
-    this.player.say(false);
-    if (c?.char) c.char.say(false);
+  afterOutcome(c, d, res) {
     this.ui.closeDialogue();
     this.rig.clearShot();
     this.mode = 'play';
     this.player.lookTarget = null;
     this.activeCustomer = null; this.tray = [];
-    if (d.type === 'dispense') {
-      c.bill = d.products;
+    const sold = d.type === 'dispense' ? res.handOver : [];
+    const back = d.type === 'dispense' ? d.products.filter((p) => !sold.includes(p)) : [];
+    if (back.length) this.ui.toast(t(sold.length ? 'g.extrasBack' : 'g.returnedBack', { list: back.map((p) => p.brand).join(', '), name: c.name.split(' ')[0] }), sold.length ? '' : 'warn', 'box', 4200);
+    if (sold.length) {
+      c.bill = sold;
       this.customers.sendToPOS(c);
       const total = c.bill.reduce((a, p) => a + p.price, 0);
       this.world.setPOS({ line1: tp('g.pending'), line2: c.name, total: fmtMoney(total) });
       this.world.setCFD(tp('g.items', { n: c.bill.length }), fmtMoney(total));
-      this.ui.toast(t('g.toPOS'), '', 'cash');
+      this.ui.toast(t('g.toPOS_' + c.pay.method, { name: c.name.split(' ')[0] }), '', c.pay.method === 'upi' ? 'device' : c.pay.method);
     } else {
       if (d.urgency === 'emergency') { this.ui.toast(t('g.emergencyCalled'), 'warn', 'phone', 3500); setTimeout(() => this.audio.sfx('siren'), 1200); }
       this.customers.leave(c, 1800);
@@ -683,8 +644,10 @@ export class Game {
     this.updateObjective();
     this.save();
   }
-  completePayment(method) {
+  completePayment() {
     const c = this.customers.posCust; if (!c || !c.bill || c.state !== 'atPOS') return;
+    const pay = c.pay || { method: 'upi' }, method = pay.method;
+    const prop = { upi: 'phone', card: 'card', cash: 'notes' }[method];
     this.autoWalkTo(this.world.points.posPharm, 0, () => {
       const s = this.state;
       c.state = 'paying';
@@ -696,9 +659,10 @@ export class Game {
       this.player.lookTarget = new THREE.Vector3(c.char.group.position.x, 1.5, c.char.group.position.z);
       this.player.setAction('type', 0.9);
       this.audio.sfx('beep');
-      if (!c.char.props.card) { c.char.attachProp('card', makeProp('card'), 'handR', [0, -0.11, 0.04]); c.char.attachProp('bag', makeProp('bag'), 'handR', [0, -0.12, 0.05]); }
-      setTimeout(() => { c.char.setAction('pay', 1.4); c.char.showProp('card', method !== 'cash'); }, 500);
-      setTimeout(() => { this.audio.sfx('cash'); this.player.showProp('bag', true); this.player.setAction('give', 1.4); c.char.showProp('card', false); this.haptic('success'); }, 1300);
+      if (!c.char.props[prop]) c.char.attachProp(prop, makeProp(prop), 'handR', [0, -0.11, 0.04]);
+      if (!c.char.props.bag) c.char.attachProp('bag', makeProp('bag'), 'handR', [0, -0.12, 0.05]);
+      setTimeout(() => { c.char.setAction('pay', 1.4); c.char.showProp(prop, true); }, 500);
+      setTimeout(() => { this.audio.sfx('cash'); this.player.showProp('bag', true); this.player.setAction('give', 1.4); c.char.showProp(prop, false); this.haptic('success'); }, 1300);
       setTimeout(() => { this.player.showProp('bag', false); c.char.setAction('take', 1.0); c.char.showProp('bag', true); c.char.expression = 'smile'; }, 2400);
       setTimeout(() => {
         this.player.lookTarget = null;
@@ -706,10 +670,10 @@ export class Game {
         this.customers.leave(c, 0);
         setTimeout(() => c.char.showProp('bag', false), 9000);
       }, 3300);
-      this.world.setPOS({ line1: tp('g.paid'), line2: tp('g.paidThanks', { method: method.toUpperCase() }), total: fmtMoney(total) });
+      this.world.setPOS({ line1: tp('g.paid'), line2: method === 'cash' && pay.change ? tp('pos.changeShort', { change: fmtMoney(pay.change) }) : tp('g.paidThanks', { method: tp('pos.' + method) }), total: fmtMoney(total) });
       this.world.setCFD(tp('g.thankYou'), fmtMoney(total));
       setTimeout(() => { this.world.setPOS({ line1: tp('g.ready'), line2: tp('g.scan') }); this.world.setCFD(tp('g.welcome'), '₹ 0'); }, 5000);
-      this.ui.toast(t('g.paidToast', { total: fmtMoney(total) }), 'good', 'cash');
+      this.ui.toast(method === 'cash' && pay.change ? t('g.paidToastCash', { total: fmtMoney(total), change: fmtMoney(pay.change) }) : t('g.paidToastBy', { total: fmtMoney(total), method: t('pos.' + method) }), 'good', method === 'upi' ? 'device' : method);
       this.ui.updateHUD();
       this.save();
     });
@@ -907,7 +871,7 @@ export class Game {
     W.setMood('inspection');
     W.setPOS({ title: tp('w.pos'), line1: tp('g.inspMode'), line2: tp('g.compliance'), mode: 'inspection' });
     ui.cinema(true, tp(official ? 'insp.official' : 'insp.surprise'));
-    P.path = null; P.group.position.copy(W.points.pharmService); P.heading = 0; P.faceTo(0); P.lookTarget = null;
+    P.path = null; this._pSpeed = 0; P.group.position.copy(W.points.pharmService); P.heading = 0; P.faceTo(0); P.lookTarget = null;
     const spot = W.points.service;
     ins.group.visible = true; ins.group.position.set(0.3, 0, W.points.doorOutside.z); ins.heading = Math.PI; ins.expression = 'serious';
     ins.setAction('clipboard', 99999);
@@ -929,10 +893,7 @@ export class Game {
     this._cine(() => { this._cineTrack = ins; this.rig.setShot(new THREE.Vector3(-2.4, 0.95, 1.4), new THREE.Vector3(0, 1.45, 4), { speed: 1.4 }); }, 2800);
     this._cine(() => { this._cineTrack = null; this.dialogueShot(ins); ins.lookTarget = new THREE.Vector3(P.group.position.x, 1.55, P.group.position.z); P.lookTarget = new THREE.Vector3(spot.x, 1.65, spot.z); }, 7600);
     this._cine(() => {
-      const line = tp('g.inspGreeting');
-      ins.say(true); setTimeout(() => ins.say(false), 4200);
-      this.audio.speak(line, { gender: 'M', age: 52, voice: 3, role: 'staff' });
-      ui.subtitle(tp('g.inspector'), line, 4800);
+      this.inspectorSay(tp('g.inspGreeting'), 'insp_greeting', 4800);
     }, 8600);
     this._cine(finish, 13200);
   }
@@ -956,8 +917,7 @@ export class Game {
     const s = this.state, I = this.insp;
     s.inspection.failed++; s.inspection.best = Math.max(s.inspection.best, I.correct);
     this.save();
-    const line = tp('g.inspWrong');
-    this.inspector.say(true); setTimeout(() => this.inspector.say(false), 3000); this.audio.speak(line, { gender: 'M', age: 52, voice: 3, role: 'staff' });
+    this.inspectorSay(tp('g.inspWrong'), 'insp_wrong');
     this.ui.showInspectionFail(I.correct, () => this.beginInspectionQuiz(), () => this.ui.showTraining());
   }
   inspectionPassed() {
@@ -968,8 +928,8 @@ export class Game {
     this.world.setCertified(true);
     this.achieve('certified');
     this.audio.sfx('complete'); this.haptic('success');
-    const line = tp('g.inspPass');
-    this.inspector.expression = 'smile'; this.inspector.say(true); setTimeout(() => this.inspector.say(false), 3500); this.audio.speak(line, { gender: 'M', age: 52, voice: 3, role: 'staff' });
+    this.inspector.expression = 'smile';
+    this.inspectorSay(tp('g.inspPass'), 'insp_pass');
     this.save();
     this.ui.showInspectionPass(() => {
       const ins = this.inspector, W = this.world;
@@ -1073,7 +1033,7 @@ export class Game {
   }
   jumpToLevel(n) {
     const s = this.state;
-    this.customers.clearAll(); this.activeCustomer = null; this.tray = []; this.activeEvent = null;
+    this.finishTalk(true); this.customers.clearAll(); this.activeCustomer = null; this.tray = []; this.activeEvent = null;
     s.careerMode = false; s.level = n; this.initLevelObjectives(); this.applyUnlocks();
     this.world.setFridgeTemp(5.2, false); this.world.expiredCarton.visible = false; this.world.highlightShelf(null);
     this.ui.updateHUD();
@@ -1112,7 +1072,7 @@ export class Game {
     const o = OUTFITS[this.state.outfit] || OUTFITS.default;
     const old = this.player;
     const P = new Character(pharmacistDesc(o));
-    P.walkSpeed = 1.8; P.runSpeed = 3.3;
+    P.walkSpeed = 1.8; P.runSpeed = 3.0;
     P.group.position.copy(old.group.position); P.heading = old.heading;
     P.onStep = old.onStep;
     P.attachProp('bag', makeProp('bag'), 'handR', [0, -0.12, 0.05]);
@@ -1184,24 +1144,24 @@ export class Game {
     this.ui.root.classList.toggle('color-safe', S.colorSafe);
     document.body.classList.toggle('reduced', S.reducedMotion);
     this.audio.applyVolumes();
-    if (!S.voiceDialogue) this.audio.stopSpeech();
+    if (!S.voiceDialogue) { this.finishTalk(); this.audio.stopSpeech(); }
     this.world.setLODDebug(S.lodDebug);
     this.applyQuality();
     this.ui.updateHUD();
     if (persist) { clearTimeout(this._setT); this._setT = setTimeout(() => this.saveSettingsNow(), 400); }
   }
   applyQuality() {
-    const q = this.settings.quality, dpr = window.devicePixelRatio || 1;
-    this.maxPR = q === 'low' ? Math.min(dpr, 1) * 0.8 : q === 'medium' ? Math.min(dpr, 1.5) : q === 'high' ? Math.min(dpr, 2) : q === 'ultra' ? Math.min(dpr, 2.5) : Math.min(dpr, 2);
-    if (q !== 'auto' || !this.pr || this.pr > this.maxPR) this.pr = q === 'auto' ? Math.min(this.maxPR, 1.5) : this.maxPR;
-    this.renderer.setPixelRatio(this.pr);
-    const shadows = q === 'high' || q === 'ultra' || q === 'auto';
+    const q = this.settings.quality;
+    // a quality picked by the player starts fresh: every effect of it on, smooth mode may step down again
+    if (this._q !== q) { this._q = q; this._aoDropped = this._reflDropped = this._bloomDropped = false; this._shadowDrop = 0; this._dropped = []; if (this._perf) { this._perf.failed.clear(); this._perf.cool = 2; } }
+    this.fitResolution(true);
     const ultra = q === 'ultra';
-    const key = (shadows ? 1 : 0) + (ultra ? 2 : 0);
+    const shadows = (q === 'high' || ultra || q === 'auto') && this._shadowDrop < 2, ultraShadows = ultra && !this._shadowDrop;
+    const key = (shadows ? 1 : 0) + (ultraShadows ? 2 : 0);
     if (this._shadowKey !== key) {
       this._shadowKey = key;
       this.renderer.shadowMap.enabled = shadows;
-      this.world.setShadows(shadows, ultra, window.matchMedia?.('(hover: hover) and (pointer: fine)').matches);
+      this.world.setShadows(shadows, ultraShadows, window.matchMedia?.('(hover: hover) and (pointer: fine)').matches);
       Character.shadows = shadows;
       this.scene.traverse((o) => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => { m.needsUpdate = true; }); if (o.isSkinnedMesh) o.castShadow = shadows; });
       this.blobs.visible = !shadows;
@@ -1212,10 +1172,32 @@ export class Game {
     this.ao = (ultra || (q === 'high' && desk)) && !this._aoDropped;      // ambient occlusion pass
     this.reflWanted = (ultra || (q === 'high' && desk)) && !this._reflDropped;
     this.world.setReflections?.(this.reflWanted, ...this.reflSize());
-    Character.lodDist = ultra ? 16 : q === 'low' ? 6 : 9;
-    const near = q === 'low' ? 5 : ultra ? 16 : q === 'medium' ? 8 : 11, far = q === 'low' ? 10 : ultra ? 30 : q === 'medium' ? 16 : 20;
+    // detail distances: PCs keep every shelf's real packs and full-detail people across the whole store
+    // (no swap to the flat low-res shelf picture); phones keep them over most of it
+    const big = ultra || (desk && q !== 'low');
+    Character.lodDist = big ? 16 : q === 'low' ? 6 : q === 'medium' ? 9 : 12;
+    const near = big ? 28 : q === 'low' ? 8 : q === 'medium' ? 14 : 18, far = big ? 48 : q === 'low' ? 14 : q === 'medium' ? 24 : 30;
     for (const s of this.world.shelves) { s.lod.levels[1].distance = near; s.lod.levels[2].distance = far; }
     this.onQualityChange?.(q);
+  }
+  /**
+   * Render resolution window. Never a blurry upscale: at least Full HD (or the screen's own resolution
+   * when it has fewer pixels), and the screen's native resolution on PCs. Only Low goes down to 720p.
+   */
+  resolutionLimits() {
+    const q = this.settings.quality, dpr = window.devicePixelRatio || 1;
+    const desk = document.documentElement.classList.contains('desktop') || window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
+    const long = Math.max(window.innerWidth, window.innerHeight) || 1;
+    const fhd = Math.min(dpr, Math.max(1, 1920 / long)), hd = Math.min(dpr, Math.max(0.75, 1280 / long));
+    if (q === 'low') return { max: hd, min: hd };
+    return { max: desk ? Math.max(fhd, Math.min(dpr, 2)) : q === 'ultra' ? Math.max(fhd, Math.min(dpr, 2.5)) : fhd, min: fhd };
+  }
+  /** (Re)fit the render resolution: on a quality change it starts sharp; on a resize it stays inside the window. */
+  fitResolution(reset = false) {
+    const { max, min } = this.resolutionLimits();
+    this.maxPR = max; this.minPR = min;
+    const pr = reset ? max : clamp(this.pr || max, min, max);
+    if (pr !== this.pr || reset) { this.pr = pr; this.renderer.setPixelRatio(pr); }
   }
   reflSize() { const v = this.renderer.getDrawingBufferSize(this._dbs || (this._dbs = new THREE.Vector2())); return [Math.max(256, Math.round(v.x * 0.5)), Math.max(256, Math.round(v.y * 0.5))]; }
   recenterCamera() { this.rig.yaw = this.player.heading; this.rig.pitch = 0.3; this.rig.dist = 3.1; this.rig.lastManual = this.rig.time; }
@@ -1227,35 +1209,66 @@ export class Game {
       else { const r = (d.requestFullscreen || d.webkitRequestFullscreen).call(d, { navigationUI: 'hide' }); r?.then?.(() => { try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* ignore */ } }).catch?.(() => {}); }
     } catch { /* ignore */ }
   }
-  /** Dynamic resolution (auto quality) */
+  /**
+   * Smooth mode. Every ~2 s: if many frames missed the budget, drop the costliest effect (AO, reflections,
+   * bloom, shadows) — the picture stays sharp; resolution only ever comes down to the Full-HD floor.
+   * When frames are steady again, resolution goes back up first, then the dropped effects come back one
+   * by one (loading hitches don't cost an effect for good); an effect that makes it slow again stays off.
+   * A share of slow frames (not an average) is used, so a single hitch (a model upload, a tab switch) is
+   * ignored, and a vsync-locked 60 FPS (16.7 ms every frame) counts as steady.
+   */
   perfTick(frameMs) {
     this.frameAvg = this.frameAvg * 0.95 + frameMs * 0.05;
+    const P = this._perf || (this._perf = { n: 0, slow: 0, t: 0, cool: 3, good: 0, trial: null, failed: new Set() });
+    P.n++; P.t += frameMs / 1000; if (frameMs > (this.settings.fpsCap === 30 ? 36 : 19.5)) P.slow++;
+    if (P.t < 2) return;
+    const slowShare = P.slow / P.n; P.n = P.slow = 0; P.t = 0;
+    if (P.cool > 0) { P.cool--; return; } // let a change settle (and the first seconds after loading pass)
     if (this.settings.quality !== 'auto' && !this.settings.adaptiveRes) return;
-    this.autoTimer += frameMs / 1000;
-    if (this.autoTimer < 2) return;
-    // Smooth mode: drop resolution quickly when frames are slow, raise it back slowly.
-    // keep it HD: never below ~1× on PCs, ~1.2× on high-DPI phones (effects step down first)
-    const dpr = window.devicePixelRatio || 1, desk = document.documentElement.classList.contains('desktop');
-    const minPR = this.settings.quality === 'low' ? Math.max(0.6, this.maxPR * 0.6) : Math.min(this.maxPR, desk ? Math.max(0.85, dpr * 0.75) : Math.max(0.9, Math.min(1.25, dpr * 0.6)));
-    const slow = this.settings.fpsCap === 30 ? 36 : 19.5, fast = this.settings.fpsCap === 30 ? 26 : 14;
-    // at the lowest render scale and still slow: drop costly effects one by one instead of going blurry
-    if (this.frameAvg > slow && this.pr <= minPR + 1e-3) { if (this._degrade()) { this.autoTimer = -2; return; } }
-    if (this.frameAvg > slow && this.pr > minPR) { this.pr = Math.max(minPR, this.pr - (this.frameAvg > slow * 1.5 ? 0.2 : 0.1)); this.renderer.setPixelRatio(this.pr); this.onQualityChange?.(this.settings.quality); this.autoTimer = 0.5; }
-    else if (this.frameAvg < fast && this.pr < this.maxPR) { this.pr = Math.min(this.maxPR, this.pr + 0.05); this.renderer.setPixelRatio(this.pr); this.onQualityChange?.(this.settings.quality); this.autoTimer = -3; }
-    else this.autoTimer = 1;
-  }
-  /** One step down the effects ladder (reflections → bloom → fixture shadows → all shadows). */
-  _degrade() {
-    if (this.ao) { this._aoDropped = true; this.ao = false; return true; }
-    if (this.world.reflOn) { this._reflDropped = true; this.world.setReflections(false); return true; }
-    if (this.bloom) { this._bloomDropped = true; this.bloom = false; return true; }
-    if (this._shadowKey >= 2) { this._shadowKey = 1; this.world.setShadows(true, false, false); return true; }
-    if (this.renderer.shadowMap.enabled) {
-      this._shadowKey = 0; this.renderer.shadowMap.enabled = false; this.world.setShadows(false, false); Character.shadows = false;
-      this.scene.traverse((o) => { if (o.material) (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => { m.needsUpdate = true; }); if (o.isSkinnedMesh) o.castShadow = false; });
-      this.blobs.visible = true; return true;
+    const setPR = (pr) => { this.pr = pr; this.renderer.setPixelRatio(pr); this.onQualityChange?.(this.settings.quality); P.cool = 1; };
+    if (slowShare > 0.3) {
+      P.good = 0;
+      if (P.trial) { P.failed.add(P.trial); P.trial = null; } // the effect just brought back is too heavy here
+      if (this._degrade()) { P.cool = 1; return; }
+      if (this.pr > this.minPR + 1e-3) setPR(Math.max(this.minPR, this.pr - 0.25));
+      return;
     }
-    return false;
+    if (slowShare >= 0.05) { P.good = 0; return; }
+    P.good++; if (P.good >= 2) P.trial = null;
+    if (this.pr < this.maxPR - 1e-3) { if (P.good >= 3) { P.good = 0; setPR(Math.min(this.maxPR, this.pr + 0.25)); } return; }
+    const last = this._dropped[this._dropped.length - 1];
+    if (last && !P.failed.has(last) && P.good >= 5) { P.good = 0; P.trial = last; this._restore(); P.cool = 1; }
+  }
+  /** One step down the effects ladder (AO → reflections → bloom → fixture shadows → all shadows). */
+  _degrade() {
+    let what = null;
+    if (this.ao) { this._aoDropped = true; what = 'ao'; }
+    else if (this.world.reflOn) { this._reflDropped = true; what = 'refl'; }
+    else if (this.bloom) { this._bloomDropped = true; what = 'bloom'; }
+    else if (this._shadowKey >= 2) { this._shadowDrop = 1; what = 'shadowHQ'; }
+    else if (this.renderer.shadowMap.enabled) { this._shadowDrop = 2; what = 'shadow'; }
+    if (!what) return false;
+    this._dropped.push(what);
+    this.applyQuality();
+    return true;
+  }
+  /** After the GPU ran out of memory: keep the sharp resolution, drop the extras that need big buffers for this session. */
+  lightenAfterContextLoss() {
+    const P = this._perf;
+    for (const what of ['ao', 'refl', 'bloom', 'shadowHQ']) { P?.failed.add(what); if (!this._dropped.includes(what)) this._dropped.push(what); }
+    this._aoDropped = this._reflDropped = this._bloomDropped = true; this._shadowDrop = Math.max(this._shadowDrop, 1);
+    this._shadowKey = -1; // re-apply shadows (their map is rebuilt smaller)
+    this.applyQuality();
+  }
+  /** Bring back the most recently dropped effect. */
+  _restore() {
+    const what = this._dropped.pop();
+    if (what === 'ao') this._aoDropped = false;
+    else if (what === 'refl') this._reflDropped = false;
+    else if (what === 'bloom') this._bloomDropped = false;
+    else if (what === 'shadowHQ') this._shadowDrop = 0;
+    else if (what === 'shadow') this._shadowDrop = 1;
+    this.applyQuality();
   }
   haptic(kind) { haptic(this.settings, kind); }
 

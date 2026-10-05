@@ -394,9 +394,12 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     const sc = new THREE.Color(SECTIONS[def.section].color);
     // frame (local: front faces +z)
     const add = (key, gw, gh, gd, x, y, z, color) => { const g = new THREE.BoxGeometry(gw, gh, gd); g.translate(x, y + gh / 2, z); b.add(key, local(g), color); };
-    add('matte', w, h, 0.02, 0, 0, -d / 2 + 0.01, def.glass ? 0xdfe6e4 : C.shelfBack);
+    // back panel, kick and header sit between the 25 mm side panels (ends buried 10 mm inside them):
+    // flush with the panels' outer faces they z-fought, flickering dark wedges along the unit edges
+    const inner = w - 0.03;
+    add('matte', inner, h, 0.02, 0, 0, -d / 2 + 0.01, def.glass ? 0xdfe6e4 : C.shelfBack);
     add('gloss', 0.025, h, d, -w / 2 + 0.0125, 0, 0, C.shelf); add('gloss', 0.025, h, d, w / 2 - 0.0125, 0, 0, C.shelf);
-    add('matte', w, 0.1, d - 0.02, 0, 0, 0.0, C.kick);
+    add('matte', inner, 0.1, d - 0.02, 0, 0, 0.0, C.kick);
     const base = def.base || 0.1;
     if (def.base) {
       // drawer cabinet base
@@ -412,7 +415,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
       levelYs.push(y + 0.022);
     }
     // header
-    add('matte', w, 0.16, 0.03, 0, h - 0.16, d / 2 - 0.02, sc.getHex());
+    add('matte', inner, 0.16, 0.03, 0, h - 0.16, d / 2 - 0.02, sc.getHex());
     add('gloss', w, 0.03, d, 0, h, 0, C.shelf);
     if (def.glass) { const gp = new THREE.PlaneGeometry(w - 0.06, h - base - 0.2); gp.translate(0, base + (h - base - 0.2) / 2, d / 2 + 0.005); gp.applyMatrix4(m); const gm = new THREE.Mesh(gp, M.glass); gm.matrixAutoUpdate = false; root.add(gm); }
 
@@ -625,7 +628,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
       const add = (gw, gh, gd, px, py, pz, color, key = 'metal') => { const geo = new THREE.BoxGeometry(gw, gh, gd); geo.translate(px, py + gh / 2, pz); geo.applyMatrix4(g.matrixWorld); zb.add(key, geo, color); };
       for (const sx of [-w / 2, w / 2]) for (const sz of [-0.25, 0.25]) add(0.05, 2.4, 0.05, sx, 0, sz, 0x2f5f8a);
       for (let l = 0; l < 4; l++) {
-        add(w, 0.04, 0.55, 0, 0.15 + l * 0.6, 0, 0xc9822b);
+        add(w, 0.04, 0.53, 0, 0.15 + l * 0.6, 0, 0xc9822b); // edges inside the uprights (flush faces z-fight)
         let px = -w / 2 + 0.2;
         while (px < w / 2 - 0.2) { const bw = 0.3 + rnd() * 0.15, bh = 0.25 + rnd() * 0.25; add(bw, bh, 0.4, px + bw / 2, 0.19 + l * 0.6, 0, rnd() < 0.8 ? C.carton : 0xffffff, 'matte'); px += bw + 0.04; }
       }

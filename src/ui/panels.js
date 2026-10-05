@@ -48,7 +48,10 @@ export const panelMethods = {
       h('div', { class: 'who' }, h('div', { class: 'num' }, t('dlg.customerN', { n: num3(c.num) })), h('div', { class: 'nm' }, c.name), h('div', { class: 'meta' }, t('dlg.meta', { age: c.age, gender: t(c.gender === 'M' ? 'common.male' : 'common.female') }) + forWhom)),
       h('span', { class: 'diff' }, t('diff.' + c.scn.difficulty)),
       h('button', { class: 'xbtn', 'aria-label': t('dlg.stepAway'), onclick: () => g.pauseConsultation(), html: icon('close', 20) }));
-    this.dlgLog = h('div', { class: 'log' });
+    // tapping the conversation (or Skip / S) skips the line being spoken
+    this.dlgLog = h('div', { class: 'log', onclick: () => { if (g.isDialogueSpeaking) g.finishTalk(); } });
+    this.dlgSkip = h('button', { class: 'skip-pill hidden', ...K('s'), 'aria-label': t('dlg.skip'), onclick: (e) => { e.stopPropagation(); g.finishTalk(); } },
+      t('dlg.skip'), h('span', { class: 'icw', html: icon('skip', 14) }));
     this.dlgMentor = h('div', { class: 'mentor-bar hidden' });
     this.dlgSug = h('div', { class: 'sug-bar hidden' });
     this.dlgQ = h('div', { class: 'qgrid' });
@@ -61,7 +64,7 @@ export const panelMethods = {
       c.scn.prescription ? act('rx', t('dlg.prescription'), () => { c.rxViewed = true; this.showPrescription(c); }, 'ghost', ['x']) : act('chat', t('dlg.advise'), () => g.beginCounsel({ type: 'advise' }), 'ghost', ['x']),
       act('shield', t('dlg.safety'), () => g.openSafetyCheck(), 'primary', ['Enter', '↵']));
     this.dlgActs.lastChild.style.gridColumn = 'span 2';
-    const sheet = h('div', { class: 'sheet pe' }, head, this.dlgLog, this.dlgMentor, this.dlgQ, this.dlgSug, h('div', { style: { padding: '0 0 6px' } }, this.dlgTray), this.dlgActs);
+    const sheet = h('div', { class: 'sheet pe' }, head, this.dlgLog, this.dlgSkip, this.dlgMentor, this.dlgQ, this.dlgSug, h('div', { style: { padding: '0 0 6px' } }, this.dlgTray), this.dlgActs);
     this.layer.prepend(sheet);
     this.dlgSheet = sheet; this.dlgCust = c;
     this.hud.classList.add('dlg'); this.root.classList.add('dlg-open'); this._logFor = null;
@@ -76,18 +79,20 @@ export const panelMethods = {
       else if (e.who === 'sys') this.dlgLog.append(h('div', { class: 'bub sys' }, e.text));
       else this.dlgLog.append(h('div', { class: 'bub cust', dataset: { who: c.name.split(' ')[0] } }, e.text));
     }
+    this.dlgSkip.classList.toggle('hidden', !g.isDialogueSpeaking);
+    this.dlgLog.classList.toggle('talking', !!g.isDialogueSpeaking); // room under the last line for Skip
     this.dlgLog.scrollTop = this.dlgLog.scrollHeight;
     const guided = g.settings.guided;
     this.dlgQ.innerHTML = '';
     for (const q of QUESTION_TYPES) {
-      const done = c.asked.has(q.key);
-      const key = guided && g.guide.isKey(c, q.key) && !done;
-      const disabled = done || !!g.isDialogueSpeaking;
+      const done = c.asked.has(q.key), off = done || !!c.decided;
+      const key = guided && g.guide.isKey(c, q.key) && !off;
+      // stays tappable while someone talks: asking skips the rest of that line
       this.dlgQ.append(h('button', {
-        class: 'qbtn' + (done ? ' done' : '') + (key ? ' key' : '') + (g.isDialogueSpeaking ? ' speaking-disabled' : ''),
-        disabled,
+        class: 'qbtn' + (done ? ' done' : '') + (key ? ' key' : ''),
+        disabled: off,
         ...K(String(QUESTION_TYPES.indexOf(q) + 1)),
-        onclick: () => { if (!done && !g.isDialogueSpeaking) g.ask(q.key); }
+        onclick: () => { if (!off) g.ask(q.key); }
       },
         h('span', { class: 'icw', html: icon(done ? 'check' : q.icon, 17) }),
         h('span', { class: 'ql' }, t('q.' + q.key + '.label')),
@@ -148,17 +153,7 @@ export const panelMethods = {
     for (const p of g.tray) el.append(h('div', { class: 'titem' }, h('span', {}, p.name), h('button', { 'aria-label': t('common.remove'), onclick: () => g.removeFromTray(p.id), html: icon('close', 14) })));
   },
   closeDialogue(silent) {
-    this.g?.audio?.stopSpeech?.();
-    if (this.g) {
-      this.g.isDialogueSpeaking = false;
-      this.g.player?.say(false);
-      if (this.dlgCust?.char) this.dlgCust.char.say(false);
-    }
-    if (this.dlgCust) {
-      clearTimeout(this.dlgCust._sayT);
-      this.dlgCust._sayT = null;
-      if (this.dlgCust.char) { this.dlgCust.char.talking = false; this.dlgCust.char.say(false); }
-    }
+    this.g?.finishTalk?.();
     if (this.dlgSheet) { this.dlgSheet.remove(); this.dlgSheet = null; this.dlgCust = null; }
     this.hud.classList.remove('dlg'); this.root.classList.remove('dlg-open');
     if (!silent) this.g.onModalChange?.();
@@ -525,7 +520,6 @@ export const panelMethods = {
     const g = this.g, s = g.state;
     const pc = g.customers.posCust;
     const pending = pc && pc.state === 'atPOS' && pc.bill;
-    let method = 'upi';
     const body = h('div', {});
     const tabs = h('div', { class: 'tabs' });
     const content = h('div', {});
@@ -536,11 +530,18 @@ export const panelMethods = {
       if (tab === 'checkout') {
         if (!pending) { content.append(h('div', { class: 'ev-hero info' }, h('span', { class: 'icw', html: icon('cash', 22) }), t('pos.none'))); return; }
         const total = pc.bill.reduce((a, p) => a + p.price, 0);
+        // the customer decides how they pay (chosen on the way to the counter) — the pharmacist only collects it
+        const pay = pc.pay || { method: 'upi' };
+        const ic = { upi: 'device', card: 'card', cash: 'cash' }[pay.method];
+        const sub = pay.method === 'cash' ? t('pos.cashSub', { given: fmtMoney(pay.given) }) : t(pay.method === 'card' ? 'pos.cardSub' : 'pos.upiSub');
         if (g.settings.guided) content.append(h('div', { class: 'mentor-card good' }, h('span', { class: 'micon', html: MENTOR }), h('div', {}, h('b', {}, t('guide.mentor')), h('div', {}, t('pos.mentor')))));
         content.append(h('div', { class: 'pf', style: { marginBottom: '10px' } }, h('label', {}, t('sc.customer')), h('div', {}, `${pc.name} · #${num3(pc.num)}`)),
-          h('div', { class: 'bill' }, pc.bill.map((p) => h('div', { class: 'li' }, h('span', {}, p.name), h('span', {}, fmtMoney(p.price)))), h('div', { class: 'tot' }, h('span', {}, t('pos.total')), h('span', {}, fmtMoney(total)))),
-          h('div', { class: 'paym' }, [['upi', t('pos.upi'), 'device'], ['card', t('pos.card'), 'cash'], ['cash', t('pos.cash'), 'cash']].map(([k, l, ic]) => h('button', { class: method === k ? 'on' : '', ...K(String(['upi', 'card', 'cash'].indexOf(k) + 1)), onclick: () => { method = k; draw(); } }, h('span', { class: 'icw', html: icon(ic, 22) }), l))));
-        content.append(h('button', { class: 'btn primary block', ...K('Enter', '↵'), style: { marginTop: '14px' }, onclick: () => { m.close(); g.completePayment(method); } }, h('span', { class: 'icw', html: icon('check', 18) }), t('pos.complete')));
+          h('div', { class: 'bill' }, pc.bill.map((p) => h('div', { class: 'li' }, h('span', {}, p.name), h('span', {}, fmtMoney(p.price)))), h('div', { class: 'tot' }, h('span', {}, t('pos.total')), h('span', {}, fmtMoney(total))),
+            pay.method === 'cash' ? h('div', { class: 'li' }, h('span', {}, t('pos.given')), h('span', {}, fmtMoney(pay.given))) : null,
+            pay.method === 'cash' ? h('div', { class: 'li chg' }, h('span', {}, t('pos.change')), h('span', {}, pay.change ? fmtMoney(pay.change) : t('pos.exact'))) : null),
+          h('div', { class: 'paychoice' }, h('span', { class: 'pic', html: icon(ic, 26) }),
+            h('div', { class: 'pt' }, h('i', {}, t('pos.custChoice')), h('b', {}, t('pos.pay_' + pay.method)), h('span', {}, sub))));
+        content.append(h('button', { class: 'btn primary block', ...K('Enter', '↵'), style: { marginTop: '14px' }, onclick: () => { m.close(); g.completePayment(); } }, h('span', { class: 'icw', html: icon('check', 18) }), t('pos.complete')));
       } else if (tab === 'orders') {
         this._ordersTab(content, draw, () => m.close());
       } else {

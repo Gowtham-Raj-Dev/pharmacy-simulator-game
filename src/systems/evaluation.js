@@ -122,26 +122,35 @@ export function safetyRows(products, scn, asked) {
 }
 
 const WRONG_COUNSEL = ['eval.wrong1', 'eval.wrong2', 'eval.wrong3', 'eval.wrong4', 'eval.wrong5'];
+/** Recorded pharmacist lines for the counselling options (tools/voice-lines.mjs records them). */
+export const counselClips = {
+  fixed: Object.fromEntries([...WRONG_COUNSEL, 'eval.emergencyRight', 'eval.referRight', 'eval.referWrong1', 'eval.referWrong2', 'eval.adviseRight', 'eval.adviseWrong1', 'eval.adviseWrong2']
+    .map((k) => ['co_' + k.slice(5), k])),
+  advice: (scn, i) => `adv_${scn.id}_${i}`,
+  base: (p) => `cb_${p.baseKey}`,                         // "This contains … {use} {warn}"
+  when: (scn) => `cw_${scn.seeDoctor ? scn.id : 'persist'}`, // "Please see a doctor {when}."
+};
+const co = (k) => ({ text: t(k), clip: 'co_' + k.slice(5) });
 
 export function counselOptions(decision, scn) {
   let opts;
   if (decision.type === 'dispense') {
     const p = decision.products.find((x) => matchesAccept(x, scn.correct.accept || [])) || decision.products[0];
     const right = t('eval.counselRight', { brand: p.brand, gen: mapBi(p.generic, (g) => g.replace(/\s*\(.*?\)/g, '')), use: p.use, warn: p.warnings[0] || '', when: scn.seeDoctor || t('eval.persist') });
-    opts = [{ text: right, correct: true }, ...shuffle([...WRONG_COUNSEL]).slice(0, 2).map((k) => ({ text: t(k) }))];
+    opts = [{ text: right, correct: true, clip: [counselClips.base(p), counselClips.when(scn)] }, ...shuffle([...WRONG_COUNSEL]).slice(0, 2).map(co)];
   } else if (scn.adviceOptions && ((decision.type === 'refer' && (scn.correct.type === 'refer' || scn.alsoOk?.type === 'refer')) || (decision.type === 'advise' && (scn.correct.type === 'advise' || scn.alsoOk?.type === 'advise')))) {
-    opts = scn.adviceOptions.map((o) => ({ ...o }));
+    opts = scn.adviceOptions.map((o, i) => ({ ...o, clip: counselClips.advice(scn, i) }));
   } else if (decision.type === 'refer') {
     opts = [
-      { text: t(decision.urgency === 'emergency' ? 'eval.emergencyRight' : 'eval.referRight'), correct: true },
-      { text: t('eval.referWrong1') },
-      { text: t('eval.referWrong2') },
+      { ...co(decision.urgency === 'emergency' ? 'eval.emergencyRight' : 'eval.referRight'), correct: true },
+      co('eval.referWrong1'),
+      co('eval.referWrong2'),
     ];
   } else {
     opts = [
-      { text: t('eval.adviseRight'), correct: true },
-      { text: t('eval.adviseWrong1') },
-      { text: t('eval.adviseWrong2') },
+      { ...co('eval.adviseRight'), correct: true },
+      co('eval.adviseWrong1'),
+      co('eval.adviseWrong2'),
     ];
   }
   return shuffle(opts);
@@ -155,10 +164,12 @@ export function evaluate(decision, scn, asked, extra = {}) {
   const correct = scn.correct, also = scn.alsoOk;
   const missed = (scn.keyQuestions || []).filter((k) => !asked.has(k));
   const emergency = correct.type === 'refer' && correct.urgency === 'emergency';
+  let handOver = []; // the medicines the customer actually takes home (and pays for)
 
   if (decision.type === 'dispense') {
     const issues = productIssues(decision.products, scn, asked);
     const majors = issues.filter((i) => i.sev === 'major'), cautions = issues.filter((i) => i.sev === 'caution');
+    const fits = [...(correct.type === 'dispense' ? correct.accept : []), ...(also?.type === 'dispense' ? also.accept : [])];
     if (correct.type === 'refer') {
       grade = 'dangerous'; safe = false; title = t(emergency ? 'eval.t.missedEmergency' : 'eval.t.missedReferral');
       d.safety -= emergency ? 26 : 18; d.reputation -= 8; d.satisfaction -= 4;
@@ -173,7 +184,7 @@ export function evaluate(decision, scn, asked, extra = {}) {
       const alsoAcc = also?.type === 'dispense' ? also.accept : [];
       const best = decision.products.some((p) => matchesAccept(p, accept));
       const ok = decision.products.some((p) => matchesAccept(p, alsoAcc));
-      const extraItems = decision.products.filter((p) => !matchesAccept(p, [...accept, ...alsoAcc]));
+      const extraItems = decision.products.filter((p) => !matchesAccept(p, fits));
       if (best) { grade = 'excellent'; title = t('eval.t.safe'); d.safety += 9; d.satisfaction += 10; d.reputation += 4; d.xp += 60; }
       else if (ok) { grade = 'good'; title = t('eval.t.acceptable'); d.safety += 5; d.satisfaction += 5; d.reputation += 2; d.xp += 35; N.push(t('eval.n.better')); }
       else if (correct.type === 'advise') { grade = 'poor'; title = t('eval.t.notNeeded'); d.safety -= 4; d.satisfaction -= 3; d.xp += 10; N.push(t('eval.n.advice')); }
@@ -185,6 +196,10 @@ export function evaluate(decision, scn, asked, extra = {}) {
       else if ((best || ok) && decision.products.some((p) => p.isGeneric)) { d.satisfaction += 2; N.push(t('eval.n.generic')); }
       if (extra.requested && (best || ok) && !decision.products.some((p) => p.id === extra.requested.id)) { N.push(t('eval.n.alt')); extra.genericAlt = true; }
     }
+    // a wrong or unsafe choice is never handed over: it goes back on the shelf and the customer leaves
+    // without it. A safe, suitable choice is — minus any extra item the customer didn't need.
+    if (safe && grade !== 'poor') handOver = decision.products.filter((p) => matchesAccept(p, fits));
+    if (!handOver.length) N.push(t('eval.n.withheld'));
   } else if (decision.type === 'refer') {
     if (correct.type === 'refer') {
       if (emergency && decision.urgency !== 'emergency') { grade = 'good'; title = t('eval.t.underTriaged'); d.safety += 4; d.xp += 30; N.push(t('eval.n.underTriaged')); }
@@ -212,7 +227,7 @@ export function evaluate(decision, scn, asked, extra = {}) {
   if (asked.size >= 6) extra.detective = true;
 
   const learn = scn.learning;
-  return { grade, title, safe, deltas: d, notes: N, learning: learn, extra };
+  return { grade, title, safe, deltas: d, notes: N, learning: learn, extra, handOver };
 }
 
 export const GRADE_STYLE = {

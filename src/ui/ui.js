@@ -175,6 +175,7 @@ export class UI {
     const close = (silent) => {
       if (!wrap.isConnected) return;
       wrap.remove(); this.stack.splice(this.stack.indexOf(api), 1);
+      this._syncTitle();
       if (!silent) onClose?.();
       this.g.onModalChange?.();
       setTimeout(() => this.flushToasts(), 50);
@@ -194,6 +195,7 @@ export class UI {
     this.layer.appendChild(wrap);
     const api = { el: m, wrap, close, cls };
     this.stack.push(api);
+    this._syncTitle();
     this.g.audio.sfx('whoosh', { vol: 0.6 });
     this.g.onModalChange?.();
     return api;
@@ -255,8 +257,11 @@ export class UI {
     // below the modal layer: settings / training / about open on top of the title, not under its dark overlay
     this.root.insertBefore(el, this.layer);
     this._title = el;
+    this._syncTitle();
   }
   refreshTitle() { if (this._title && this._titleArgs) this.showTitle(this._titleArgs); }
+  /** The lobby menu steps aside while a panel (training, settings, about, confirm…) is open over it. */
+  _syncTitle() { this._title?.classList.toggle('covered', this.stack.length > 0); }
 
   showNotice(onAccept) {
     const body = h('div', { class: 'prose' },

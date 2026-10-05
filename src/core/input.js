@@ -115,7 +115,9 @@ export class Input {
     const mag = Math.min(1, Math.hypot(x, y));
     if (mag > 1e-3) { const n = Math.hypot(x, y); x /= n; y /= n; }
     this.move.x = x; this.move.y = y; this.move.mag = this.enabled ? mag : 0;
-    this.move.run = this.sprint || (k.has('ShiftLeft') || k.has('ShiftRight')) || (this.joy.id !== null && mag > 0.95);
+    // full stick = run; it keeps running until the stick eases back a little (no walk/run flicker at the edge)
+    this._stickRun = this.joy.id !== null && mag > (this._stickRun ? 0.8 : 0.95);
+    this.move.run = this.sprint || (k.has('ShiftLeft') || k.has('ShiftRight')) || this._stickRun;
     this.camKeys.rot = (k.has('KeyC') ? 1 : 0) - (k.has('KeyZ') ? 1 : 0);
     this.camKeys.zoom = (k.has('Minus') || k.has('NumpadSubtract') ? 1 : 0) - (k.has('Equal') || k.has('NumpadAdd') ? 1 : 0);
     return this.move;

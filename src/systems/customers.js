@@ -10,6 +10,23 @@ const _v = new THREE.Vector3(), _off = new THREE.Vector3(), _tgt = new THREE.Vec
 
 function ageGroup(age) { return age >= 62 ? 'elderly' : age < 13 ? 'child' : age < 18 ? 'teen' : 'adult'; }
 
+/**
+ * How a customer pays is their own choice, as at a real counter: most people scan UPI, older people
+ * more often hand over cash, some tap a card (more so for bigger bills). Cash comes as notes, so there
+ * is usually change to give back. Returns { method, given?, change? }.
+ */
+export function choosePayment(age, total) {
+  const w = age >= 60 ? { upi: 0.28, card: 0.17, cash: 0.55 } : age < 30 ? { upi: 0.72, card: 0.1, cash: 0.18 } : { upi: 0.55, card: 0.17, cash: 0.28 };
+  if (total > 800) { w.card += 0.15; w.cash = Math.max(0.05, w.cash - 0.1); }
+  let r = Math.random() * (w.upi + w.card + w.cash);
+  const method = (r -= w.upi) < 0 ? 'upi' : (r -= w.card) < 0 ? 'card' : 'cash';
+  if (method !== 'cash') return { method };
+  const amt = Math.ceil(total), up = (n) => Math.ceil(amt / n) * n;
+  const note = [50, 100, 200, 500, 2000].find((n) => n >= amt) || up(500);
+  const given = Math.random() < 0.15 ? amt : pick([...new Set([up(50), up(100), note])]);
+  return { method, given, change: given - amt };
+}
+
 export class CustomerManager {
   constructor(game) {
     this.g = game;
@@ -22,17 +39,14 @@ export class CustomerManager {
   }
 
   async preload(onProgress) {
-    // realistic visitors: one pooled character per Rocketbox avatar (every visitor model gets used)
-    // (a core set loads now; the rest stream in during play so the first load stays quick)
+    // realistic visitors: one pooled character per Rocketbox avatar (every visitor model gets used).
+    // All of them load here, behind the loading screen: nothing pops in or downloads once the lobby is up.
     let plan = [];
     const ageFor = (id, i) => (Rocketbox.info(id).age === 'older' ? 66 + (i % 9) : 24 + ((i * 7) % 30));
     if (Rocketbox.enabled) {
       const all = Rocketbox.visitorIds();
-      const core = all.filter((id) => !id.startsWith('rb') || Rocketbox.info(id).age === 'older');
-      await Rocketbox.loadAll(core, (p) => onProgress?.(p * 0.75));
-      core.forEach((id, i) => { const a = Rocketbox.info(id); if (Rocketbox.has(id)) plan.push([a.sex, ageFor(id, i), { avatar: id }]); });
-      this._streamIds = all.filter((id) => !core.includes(id));
-      setTimeout(() => this._streamVisitors(ageFor), 2500);
+      await Rocketbox.loadAll(all, (p) => onProgress?.(p * 0.75));
+      all.forEach((id, i) => { const a = Rocketbox.info(id); if (Rocketbox.has(id)) plan.push([a.sex, ageFor(id, i), { avatar: id }]); });
     }
     if (!plan.length) plan = [['M', 34], ['M', 45], ['M', 28], ['M', 56], ['F', 27], ['F', 38], ['F', 48], ['F', 31], ['M', 70], ['F', 68], ['M', 74], ['F', 66], ['F', 15]];
     plan.push(['M', 6], ['F', 7], ['M', 3]);
@@ -41,17 +55,6 @@ export class CustomerManager {
       this._build(gender, age, extra);
       onProgress?.(0.75 + 0.25 * (i + 1) / plan.length);
       if (i % 3 === 2) await new Promise((r) => setTimeout(r, 0));
-    }
-  }
-  async _streamVisitors(ageFor) {
-    for (const [i, id] of (this._streamIds || []).entries()) {
-      await new Promise((r) => setTimeout(r, 350));
-      const t = await Rocketbox.load(id);
-      if (!t) continue;
-      // upload its textures one per frame so the stream never causes a visible hitch
-      for (const tx of Rocketbox.textures(id)) { await new Promise((r) => requestAnimationFrame(r)); try { this.g.renderer.initTexture(tx); } catch { /* ignore */ } }
-      await new Promise((r) => requestAnimationFrame(r));
-      if (!this.pool.some((p) => p.char.desc.avatar === id)) { const a = Rocketbox.info(id); this._build(a.sex, ageFor(id, i + 20), { avatar: id }); }
     }
   }
   _build(gender, age, extra = {}) {
@@ -150,7 +153,8 @@ export class CustomerManager {
       const approach = seat.pos.clone().add(new THREE.Vector3(0, 0, -0.7));
       const path = g.nav.findPath(c.char.group.position, approach) || [approach];
       c.char.walkPath(path, { onArrive: () => {
-        c.char.walkPath([seat.pos], { speed: 0.6, onArrive: () => { c.char.faceTo(seat.heading); c.char.heading = seat.heading; c.char.sit(true); c.state = 'waiting'; } });
+        // turn round and step back to the chair, then sit down
+        c.char.walkPath([seat.pos], { speed: 0.45, backward: true, onArrive: () => { c.char.faceTo(seat.heading); c.char.sit(true); c.state = 'waiting'; } });
       } });
     } else {
       c.state = 'queued';
@@ -181,27 +185,19 @@ export class CustomerManager {
 
   sendToPOS(c) {
     const W = this.g.world;
-    this.g.audio.stopSpeech();
-    clearTimeout(c._sayT);
-    c._sayT = null;
-    if (c.char) { c.char.talking = false; c.char.say(false); }
+    this.g.endTalkWith(c);
     if (this.counterCust === c) this.counterCust = null;
     this.posCust = c;
     c.state = 'toPOS';
+    c.pay = choosePayment(c.age, c.bill ? c.bill.reduce((a, p) => a + p.price, 0) : 0);
     c.char.walkPath([new THREE.Vector3(W.points.posCustomer.x - 0.6, 0, W.points.posCustomer.z + 0.1), W.points.posCustomer], { onArrive: () => { c.state = 'atPOS'; c.char.faceTo(Math.PI); this.g.onCustomerAtPOS?.(c); } });
     setTimeout(() => this.advanceQueue(), 1500);
   }
   leave(c, delay = 0) {
     const g = this.g, W = g.world;
-    g.audio.stopSpeech();
-    clearTimeout(c._sayT);
-    c._sayT = null;
+    g.endTalkWith(c);
     c.state = 'leaving';
-    if (c.char) { c.char.talking = false; c.char.say(false); }
     setTimeout(() => {
-      g.audio.stopSpeech();
-      clearTimeout(c._sayT);
-      c._sayT = null;
       if (this.counterCust === c) this.counterCust = null;
       if (this.posCust === c) this.posCust = null;
       if (c.seat) { c.seat.taken = null; c.seat = null; }
@@ -220,6 +216,7 @@ export class CustomerManager {
     this.g.onCustomerLeft?.(c);
   }
   clearAll() {
+    this.g.finishTalk(true);
     this.g.audio.stopSpeech();
     for (const c of [...this.active]) { this._release(c.item); if (c.childItem) this._release(c.childItem); if (c.seat) c.seat.taken = null; }
     this.active = []; this.counterCust = null; this.posCust = null;

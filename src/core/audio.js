@@ -1,5 +1,5 @@
-// Procedural audio (Web Audio) — no audio files needed, tiny footprint.
-// Ambience, SFX, generative music (normal + inspection), optional TTS voices.
+// Audio (Web Audio): procedural ambience, SFX and generative music (normal + inspection),
+// plus the dialogue voices (recorded neural voices, text-to-speech as the fallback).
 import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 import { Capacitor } from '@capacitor/core';
 import { getLang } from '../i18n/i18n.js';
@@ -57,9 +57,8 @@ export class AudioSys {
     this.musicMode = 'none';
     this._musicTimer = null;
     this._voices = [];
-    this._speechQueue = [];
-    this._isSpeaking = false;
-    this._currentVoiceAudio = null;
+    this._tok = 0;          // bumped by stopSpeech(): callbacks of a cancelled line are ignored
+    this._voiceSrc = null;  // Web Audio sources of the recorded line playing now
   }
 
   init() {
@@ -74,6 +73,13 @@ export class AudioSys {
     this.sfxBus = c.createGain(); this.sfxBus.connect(this.master);
     this.musicBus = c.createGain(); this.musicBus.connect(this.master);
     this.ambBus = c.createGain(); this.ambBus.connect(this.master);
+    // voice: levelled line → analyser (lip-sync) → voice volume → gentle compressor → master
+    this.lipTap = c.createAnalyser(); this.lipTap.fftSize = 512; this._lipBuf = new Float32Array(512);
+    this.voiceBus = c.createGain();
+    const comp = c.createDynamicsCompressor();
+    comp.threshold.value = -22; comp.knee.value = 10; comp.ratio.value = 3; comp.attack.value = 0.004; comp.release.value = 0.2;
+    const lift = c.createGain(); lift.gain.value = 1.4;
+    this.lipTap.connect(this.voiceBus); this.voiceBus.connect(comp); comp.connect(lift); lift.connect(this.master);
     // shared noise buffer
     const len = c.sampleRate * 2;
     this.noiseBuf = c.createBuffer(1, len, c.sampleRate);
@@ -99,13 +105,16 @@ export class AudioSys {
 
   applyVolumes() {
     if (!this.ctx) return;
-    const s = this.settings;
+    const s = this.settings, d = this._ducked;
     const t = this.ctx.currentTime;
     this.master.gain.setTargetAtTime(s.master, t, 0.05);
     this.sfxBus.gain.setTargetAtTime(s.sfx, t, 0.05);
-    this.musicBus.gain.setTargetAtTime(s.music * 0.5, t, 0.2);
-    this.ambBus.gain.setTargetAtTime(s.sfx * 0.55, t, 0.2);
+    // while someone speaks, the music and room tone step back so every word is clear
+    this.musicBus.gain.setTargetAtTime(s.music * 0.5 * (d ? 0.3 : 1), t, d ? 0.08 : 0.5);
+    this.ambBus.gain.setTargetAtTime(s.sfx * 0.55 * (d ? 0.45 : 1), t, d ? 0.08 : 0.5);
+    this.voiceBus.gain.setTargetAtTime(s.voice ?? 1, t, 0.05);
   }
+  _duck(on) { if (this._ducked !== on) { this._ducked = on; this.applyVolumes(); } }
 
   // ── primitives ──
   _env(g, t, a, peak, dcy, sustain = 0) {
@@ -289,8 +298,12 @@ export class AudioSys {
     return out;
   }
 
-  // ── Voice: native text-to-speech in the apps (Android WebView has no speechSynthesis),
-  // Web Speech in browsers. Tamil uses a ta-IN voice, English an en-IN voice. ──
+  // ── Voice. Dialogue lines are recorded neural voices (public/audio/voices/<en|ta>/<clip>.mp3,
+  // cast in data/voices.js): every customer has a voice of their own, the pharmacist and the
+  // inspector too. They play through Web Audio, levelled to one loudness and gently compressed,
+  // with the music and room tone ducked underneath; their loudness drives the speaker's jaw.
+  // A line without a recording falls back to text-to-speech: native in the apps (Android
+  // WebView has no speechSynthesis), Web Speech in browsers. ──
   async _nativeTTS() {
     if (this._tts !== undefined) return this._tts;
     this._tts = null;
@@ -306,83 +319,128 @@ export class AudioSys {
     return this._tts;
   }
   /**
-   * Speak a line with real human audio. opts: clipId (for pre-recorded neural studio voice),
-   * gender 'F'|'M', age, voice (seed: same seed → same voice), queue, onStart / onEnd.
+   * Say a line (stops any line still playing). opts: clip — recorded line id, or a list played
+   * back to back; gender / age / voice — the text-to-speech voice if there is no recording;
+   * onStart / onEnd — each fires exactly once (a line that can't play still ends, silently).
+   * stopSpeech() cancels without calling onEnd.
    */
   speak(text, opts = {}) {
+    this.stopSpeech();
     if (!this.settings.voiceDialogue || text == null) { opts.onEnd?.(); return; }
-    if (this.ctx && this.ctx.state === 'suspended') this.ctx.resume().catch(() => {});
-
-    // If queue is requested and already speaking, enqueue to speak sequentially!
-    if (opts.queue && (this._isSpeaking || this._currentVoiceAudio)) {
-      this._speechQueue.push({ text, opts });
-      return;
-    }
-
-    if (!opts.queue) {
-      this.stopSpeech();
-    }
-
-    this._executeSpeak(text, opts);
-  }
-
-  _executeSpeak(text, opts = {}) {
-    this._isSpeaking = true;
-
-    const wrappedOnEnd = () => {
-      this._isSpeaking = false;
-      opts.onEnd?.();
-      // Natural 200ms conversational turn gap before next person speaks:
-      setTimeout(() => {
-        if (!this._isSpeaking && this._speechQueue.length > 0) {
-          const next = this._speechQueue.shift();
-          this._executeSpeak(next.text, next.opts);
-        }
-      }, 200);
-    };
-
-    // Try playing pre-recorded studio neural audio file first!
-    if (opts.clipId) {
-      const activeLang = this.lang || getLang() || 'en';
-      const langFolder = (activeLang === 'ta' || activeLang === 'bi') ? 'ta' : 'en';
-      const url = `./audio/voices/${langFolder}/${opts.clipId}.mp3`;
-
-      const audio = new Audio(url);
-      audio.volume = Math.min(1, (this.settings.voice ?? 1) * (this.settings.master ?? 1));
-
-      let started = false;
-      const cleanup = () => {
-        if (this._currentVoiceAudio === audio) this._currentVoiceAudio = null;
-      };
-
-      audio.onplay = () => {
-        started = true;
+    if (this.ctx?.state === 'suspended') this.ctx.resume().catch(() => {});
+    const tok = this._tok;
+    let started = false, ended = false;
+    const live = () => tok === this._tok && !ended; // a late download of a finished line never plays
+    const o = {
+      ...opts,
+      onStart: () => {
+        if (!live() || started) return;
+        started = true; this._duck(true);
         opts.onStart?.();
-      };
-      audio.onended = () => {
-        cleanup();
-        wrappedOnEnd();
-      };
-      audio.onerror = () => {
-        cleanup();
-        if (!started) {
-          this._fallbackTTS(text, { ...opts, onEnd: wrappedOnEnd });
-        }
-      };
-
-      this._currentVoiceAudio = audio;
-      audio.play().catch(() => {
-        cleanup();
-        if (!started) this._fallbackTTS(text, { ...opts, onEnd: wrappedOnEnd });
-      });
-      return;
-    }
-
-    this._fallbackTTS(text, { ...opts, onEnd: wrappedOnEnd });
+      },
+      onEnd: () => {
+        if (!live() || ended) return;
+        ended = true;
+        if (!started) { started = true; opts.onStart?.(); }
+        this._stopPlayback(); this._duck(false);
+        opts.onEnd?.();
+      },
+    };
+    // watchdog: a line that can't start (stalled download, TTS without a voice) never holds the conversation up
+    this._watch = setTimeout(() => { if (!started) o.onEnd(); }, 6000);
+    const clips = [].concat(opts.clip || []).filter(Boolean);
+    if (!clips.length) this._fallbackTTS(text, o);
+    else if (this.ctx) this._playClips(clips, text, o, live);
+    else this._playElement(clips, text, o, live);
   }
 
-  _fallbackTTS(text, opts = {}) {
-    this._nativeTTS().then((tts) => (tts ? this._speakNative(tts, text, opts) : this._speakWeb(text, opts)));
+  _clipUrl(id) { return `./audio/voices/${(this.lang || getLang() || 'en') === 'en' ? 'en' : 'ta'}/${id}.mp3`; }
+  /** Compressed bytes of a recorded line, cached: ArrayBuffer · 'missing' (no recording) · null (can't fetch here) */
+  _fetchClip(id) {
+    const url = this._clipUrl(id), C = this._bytes || (this._bytes = new Map());
+    let p = C.get(url);
+    if (p) C.delete(url); // most recently used goes last
+    else p = fetch(url).then((r) => (r.ok ? r.arrayBuffer() : r.status === 404 ? 'missing' : null)).catch(() => null);
+    C.set(url, p);
+    if (C.size > 90) C.delete(C.keys().next().value);
+    return { url, p };
+  }
+  /** Download upcoming lines in the background so they start instantly. */
+  prefetch(ids) { if (this.settings.voiceDialogue) for (const id of ids) this._fetchClip(id); }
+  async _decodeClip(id) {
+    const { url, p } = this._fetchClip(id);
+    const D = this._decoded || (this._decoded = new Map());
+    if (D.has(url)) return D.get(url);
+    const bytes = await p;
+    if (!(bytes instanceof ArrayBuffer)) return bytes;
+    let buf;
+    try { buf = await this.ctx.decodeAudioData(bytes.slice(0)); } catch { return null; }
+    // level every voice to the same speech loudness (RMS of the voiced samples)
+    const d = buf.getChannelData(0);
+    let s = 0, n = 0;
+    for (let i = 0; i < d.length; i += 3) { const x = d[i]; if (x > 0.02 || x < -0.02) { s += x * x; n++; } }
+    const r = { buf, gain: n ? Math.min(2.5, Math.max(0.4, 0.13 / Math.sqrt(s / n))) : 1 };
+    D.set(url, r);
+    if (D.size > 6) D.delete(D.keys().next().value);
+    return r;
+  }
+  async _playClips(ids, text, o, live) {
+    const parts = await Promise.all(ids.map((id) => this._decodeClip(id)));
+    if (!live()) return;
+    if (parts.includes('missing')) { this._fallbackTTS(text, o); return; } // no recording of this line
+    if (parts.some((x) => !x)) { this._playElement(ids, text, o, live); return; } // can't fetch / decode here (file://)
+    const c = this.ctx;
+    let at = c.currentTime + 0.03;
+    this._voiceSrc = parts.map((x) => {
+      const src = c.createBufferSource(), g = c.createGain();
+      src.buffer = x.buf; g.gain.value = x.gain;
+      src.connect(g); g.connect(this.lipTap);
+      src.start(at); at += x.buf.duration + 0.2;
+      return src;
+    });
+    this._voiceSrc[this._voiceSrc.length - 1].onended = () => { if (live()) o.onEnd(); };
+    o.onStart();
+  }
+  /** <audio> element playback, for builds that can't fetch the files (opened from disk). */
+  _playElement(ids, text, o, live) {
+    let i = 0;
+    const next = () => {
+      if (!live()) return;
+      if (i >= ids.length) { o.onEnd(); return; }
+      const a = this._el = new Audio(this._clipUrl(ids[i++]));
+      a.volume = Math.min(1, (this.settings.voice ?? 1) * (this.settings.master ?? 1));
+      a.onplay = () => { if (live()) o.onStart(); };
+      a.onended = () => next();
+      a.onerror = () => { if (live()) { if (i === 1) this._fallbackTTS(text, o); else o.onEnd(); } };
+      a.play().catch(() => { if (live() && i === 1) this._fallbackTTS(text, o); });
+    };
+    next();
+  }
+  _stopPlayback() {
+    clearTimeout(this._watch); clearTimeout(this._watch2);
+    for (const s of this._voiceSrc || []) { try { s.onended = null; s.stop(); } catch { /* not started */ } }
+    this._voiceSrc = null;
+    if (this._el) { const a = this._el; a.onplay = a.onended = a.onerror = null; try { a.pause(); } catch { /* ignore */ } this._el = null; }
+  }
+  /** Loudness (0…1) of the recorded line playing now, for lip-sync; null when none is playing. */
+  lipLevel() {
+    if (!this._voiceSrc || !this.lipTap) return null;
+    const now = performance.now();
+    if (now - (this._lipT || 0) > 10) {
+      this._lipT = now;
+      this.lipTap.getFloatTimeDomainData(this._lipBuf);
+      let s = 0;
+      for (const x of this._lipBuf) s += x * x;
+      this._lip = Math.max(0, Math.min(1, (Math.sqrt(s / this._lipBuf.length) - 0.015) * 7));
+    }
+    return this._lip;
+  }
+
+  _fallbackTTS(text, o = {}) {
+    // speech synthesis sometimes never reports the end: finish the line after a generous estimate
+    const onStart = o.onStart;
+    const p = { ...o, onStart: () => { clearTimeout(this._watch2); this._watch2 = setTimeout(() => o.onEnd?.(), 2500 + String(text).length * 110); onStart?.(); } };
+    this._nativeTTS().then((tts) => (tts ? this._speakNative(tts, text, p) : this._speakWeb(text, p)));
   }
 
   // Per-voice character: subtle pitch/rate variations to preserve natural human voice quality without robotic distortion.
@@ -436,36 +494,23 @@ export class AudioSys {
     const { rate, pitch } = this._prosody(opts, true);
     const volume = Math.min(1, this.settings.voice * this.settings.master);
     const est = Math.max(900, say.length * (isTamil ? 75 : 62) / rate);
-    const wait = opts.queue ? Math.max(0, (this._busyUntil || 0) - performance.now()) : 0;
-    this._busyUntil = performance.now() + wait + est;
     if (this._nativeTimeout) clearTimeout(this._nativeTimeout);
-    this._nativeTimeout = setTimeout(() => {
-      opts.onStart?.();
-      this._nativeTimeout = setTimeout(() => opts.onEnd?.(), est);
-    }, wait);
+    // native TTS reports no progress: the line starts now and ends after an estimate
+    opts.onStart?.();
+    this._nativeTimeout = setTimeout(() => opts.onEnd?.(), est);
     if (tts === 'lite') {
-      try { if (window.RxTTS.speakQ) window.RxTTS.speakQ(say, lang, rate, pitch, volume, !!opts.queue); else setTimeout(() => window.RxTTS.speak(say, lang, rate, pitch, volume), wait); } catch { /* ignore */ }
+      try { if (window.RxTTS.speakQ) window.RxTTS.speakQ(say, lang, rate, pitch, volume, false); else window.RxTTS.speak(say, lang, rate, pitch, volume); } catch { /* ignore */ }
       return;
     }
-    const go = () => tts.speak({ text: say, lang, rate, pitch, volume, category: 'playback', queueStrategy: opts.queue ? 1 : 0 }).catch(() => {});
-    if (opts.queue) go(); else tts.stop().catch(() => {}).finally(go);
+    tts.stop().catch(() => {}).finally(() => tts.speak({ text: say, lang, rate, pitch, volume, category: 'playback', queueStrategy: 0 }).catch(() => {}));
   }
 
+  /** Stop whatever is being said. Pending onStart / onEnd callbacks are dropped. */
   stopSpeech() {
-    this._speechQueue = [];
-    this._isSpeaking = false;
-    if (this._currentVoiceAudio) {
-      try {
-        this._currentVoiceAudio.onended = null;
-        this._currentVoiceAudio.onerror = null;
-        this._currentVoiceAudio.onplay = null;
-        this._currentVoiceAudio.pause();
-        this._currentVoiceAudio.currentTime = 0;
-      } catch { /* ignore */ }
-      this._currentVoiceAudio = null;
-    }
+    this._tok = (this._tok || 0) + 1;
+    this._stopPlayback();
+    this._duck(false);
     this._speakingUtterances?.clear();
-    this._busyUntil = 0;
     if (this._resumeInterval) {
       clearInterval(this._resumeInterval);
       this._resumeInterval = null;
@@ -479,12 +524,11 @@ export class AudioSys {
         speechSynthesis.cancel();
       }
     } catch { /* ignore */ }
-    this._nativeTTS().then((tts) => {
-      try {
-        if (tts && tts !== 'lite' && tts.stop) tts.stop().catch(() => {});
-        else if (window.RxTTS?.stop) window.RxTTS.stop();
-      } catch { /* ignore */ }
-    });
+    try {
+      const tts = this._tts;
+      if (tts && tts !== 'lite' && tts.stop) tts.stop().catch(() => {});
+      else if (window.RxTTS?.stop) window.RxTTS.stop();
+    } catch { /* ignore */ }
   }
 
   // Best natural voice for a language + gender. Strict gender separation:

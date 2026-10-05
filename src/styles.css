@@ -167,7 +167,11 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .qbtn.done { background: #fff; border-color: var(--line); color: var(--ink-3); }
 .qbtn.done .icw { color: var(--good); }
 .qbtn:active { transform: scale(.97); }
-.qbtn:disabled, .qbtn.speaking-disabled { opacity: .55; pointer-events: none; cursor: default; }
+.qbtn:disabled { opacity: .55; pointer-events: none; cursor: default; }
+/* "Skip ▸|" while someone is talking: floats over the bottom-right of the conversation, no layout shift */
+.skip-pill { align-self: flex-end; position: relative; z-index: 4; height: 30px; margin: -36px 12px 6px 0; padding: 0 10px 0 12px; display: inline-flex; align-items: center; gap: 5px; border-radius: 15px; background: rgba(20, 40, 38, .72); color: #fff; font-size: .74em; font-weight: 700; letter-spacing: .03em; backdrop-filter: blur(6px); animation: bubIn .25s ease; }
+.skip-pill:active { transform: scale(.95); }
+.log.talking { padding-bottom: 40px; }
 .dlg-actions { padding: 8px 12px 12px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; }
 .dlg-actions .btn { min-height: 46px; font-size: .74em; padding: 0 8px; text-transform: uppercase; flex-direction: column; gap: 2px; line-height: 1.1; }
 .tray { margin: 0 12px; padding: 8px; border: 2px dashed var(--teal-l); border-radius: 14px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; min-height: 48px; transition: background .2s, border-color .2s; }
@@ -293,6 +297,13 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .paym { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
 .paym button { border: 2px solid var(--line); border-radius: 14px; padding: 12px 6px; font-weight: 750; font-size: .84em; display: flex; flex-direction: column; align-items: center; gap: 6px; background: #fff; }
 .paym button.on { border-color: var(--teal); background: var(--teal-xl); color: var(--teal-d); }
+.bill .li.chg { background: var(--warn-l); font-weight: 800; }
+.paychoice { display: flex; align-items: center; gap: 12px; margin-top: 12px; padding: 12px 14px; border: 2px solid var(--teal); border-radius: 14px; background: var(--teal-xl); }
+.paychoice .pic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; flex: none; background: #fff; color: var(--teal-d); box-shadow: var(--sh-s); }
+.paychoice .pt { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.paychoice .pt b { font-size: .98em; color: var(--teal-d); }
+.paychoice .pt span { font-size: .8em; color: var(--ink-2); line-height: 1.3; }
+.paychoice .pt i { font-style: normal; font-size: .66em; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal); }
 .tabs { display: flex; gap: 4px; background: var(--soft); border-radius: 12px; padding: 4px; margin-bottom: 12px; }
 .tabs button { flex: 1; padding: 9px; border-radius: 9px; font-weight: 750; font-size: .82em; color: var(--ink-2); }
 .tabs button.on { background: #fff; color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
@@ -395,7 +406,9 @@ input[type=range]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 
 .lbar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #2ee59d, #0fa596); transition: width .25s; }
 .lstep { font-size: .78em; opacity: .65; letter-spacing: .04em; min-height: 1.2em; }
 .title { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; padding: calc(20px + var(--safe-t)) calc(24px + var(--safe-r)) calc(20px + var(--safe-b)) calc(28px + var(--safe-l)); background: linear-gradient(90deg, rgba(5,22,20,.86) 0%, rgba(5,22,20,.55) 45%, rgba(5,22,20,0) 75%); pointer-events: auto; animation: fadeIn .6s; }
-.title-inner { width: min(420px, 90vw); color: #fff; display: flex; flex-direction: column; gap: 14px; max-height: 100%; overflow-y: auto; }
+.title-inner { width: min(420px, 90vw); color: #fff; display: flex; flex-direction: column; gap: 14px; max-height: 100%; overflow-y: auto; transition: opacity .25s, transform .25s; }
+/* a panel is open over the lobby: the menu steps aside instead of showing behind it */
+.title.covered .title-inner { opacity: 0; transform: translateX(-24px); visibility: hidden; pointer-events: none; transition: opacity .2s, transform .2s, visibility 0s .2s; }
 .title .logo h1 { font-size: 2.6em; }
 .title .tagline { opacity: .85; font-size: .95em; line-height: 1.45; margin: 0; }
 .title .btn { min-height: 52px; font-size: .98em; justify-content: flex-start; padding: 0 18px; }

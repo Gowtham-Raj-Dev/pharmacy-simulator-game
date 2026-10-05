@@ -36,6 +36,11 @@ const _v = new THREE.Vector3(), _v2 = new THREE.Vector3();
 const AX = new THREE.Vector3(1, 0, 0), AY = new THREE.Vector3(0, 1, 0), DOWN = new THREE.Vector3(0, -1, 0);
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 const damp = (a, b, k, dt) => a + (b - a) * (1 - Math.exp(-k * dt));
+/** Did a cycle phase going a → b (either direction, under half a cycle) pass p? */
+function crossed(a, b, p) {
+  const d = ((b - a + 1.5) % 1) - 0.5, q = ((p - a + 1.5) % 1) - 0.5;
+  return d > 0 ? q > 0 && q <= d : d < 0 && q < 0 && q >= d;
+}
 
 const T = new Map();      // id → template (loaded)
 const P = new Map();      // id → load promise
@@ -180,9 +185,12 @@ function prepare(id, gltf, donor, runDonor) {
     };
   }
   rt.chest0inv = W0('Bip01_Spine2').invert();
-  const t = { id, scene, bones, height, hipY, clips, srcClips, rt, speed: {} };
+  const t = { id, scene, bones, height, hipY, clips, srcClips, rt, speed: {}, gait: {} };
+  // the library's run floats (stance foot ~4 cm up, a sprinter's hop): plant it and soften it to a jog
+  if (clips.run && srcClips.run !== srcClips.walkFast) clips.run = groundClip(t, clips.run, clips.idle, 0.6);
   if (clips.sit) t.sitPelvis = sampleBone(t, clips.sit, 'Bip01_Pelvis', 0.5);
-  for (const name of LOCO) if (clips[name]) t.speed[name] = measureSpeed(t, clips[name]);
+  for (const name of LOCO) if (clips[name]) { t.gait[name] = measureGait(t, clips[name]); t.speed[name] = t.gait[name].speed; }
+  t.jaw = jawOpening(bones, clips);
   // keep the progression sane if a clip measured oddly
   t.speed.walk = clamp(t.speed.walk || 1.3, 0.9, 1.8);
   t.speed.walkFast = clamp(t.speed.walkFast || 2.0, t.speed.walk + 0.3, 3.0);
@@ -251,29 +259,98 @@ function fillFrom(clip, idle) {
   if (!extra.length) return clip;
   return new THREE.AnimationClip(clip.name, clip.duration, [...clip.tracks, ...extra]);
 }
+/** Height of the lowest foot / toe bone at N evenly spaced times of a clip. */
+function footLows(t, clip, N = 48) {
+  const s = cloneSkinned(t.scene);
+  const bones = {}; s.traverse((o) => { if (o.isBone) bones[o.name] = o; });
+  const feet = ['Bip01_L_Toe0', 'Bip01_R_Toe0', 'Bip01_L_Foot', 'Bip01_R_Foot'].map((n) => bones[n]).filter(Boolean);
+  const mx = new THREE.AnimationMixer(s); mx.clipAction(clip).play();
+  const lows = [];
+  for (let i = 0; i < N; i++) {
+    mx.setTime((i / N) * clip.duration); s.updateMatrixWorld(true);
+    let m = Infinity; for (const f of feet) m = Math.min(m, f.getWorldPosition(_v).y);
+    lows.push(m);
+  }
+  mx.stopAllAction(); mx.uncacheRoot(s);
+  return lows;
+}
+/**
+ * Put a locomotion clip's feet on the floor. The root (Bip01) comes down until the supporting foot is as
+ * low as it is when standing (idle), and its up-and-down bounce is scaled by `bounce` about the lowest
+ * point (stance stays planted, the airborne hop between strides gets smaller).
+ */
+function groundClip(t, clip, idle, bounce = 1) {
+  const root = t.scene.getObjectByName('Bip01');
+  const tr = clip.tracks.find((x) => x.name === 'Bip01.position');
+  if (!root?.parent || !tr) return clip;
+  const lows = footLows(t, clip).sort((a, b) => a - b);
+  const floor = idle ? Math.min(...footLows(t, idle, 12)) : 0;
+  const lift = Math.max(0, lows[Math.floor(lows.length * 0.1)] - floor);  // stance height above standing
+  if (lift < 0.008 && bounce === 1) return clip;
+  // root keys live in the parent's space (the file's armature is rotated and scaled): world up ↔ local
+  t.scene.updateMatrixWorld(true);
+  const M = new THREE.Matrix3().setFromMatrix4(root.parent.matrixWorld), e = M.elements;
+  const row = new THREE.Vector3(e[1], e[4], e[7]);                          // local position → world height
+  const up = new THREE.Vector3(0, 1, 0).applyMatrix3(M.clone().invert());   // +1 m world height, in local units
+  const v = tr.values, n = v.length / 3;
+  let lo = Infinity; for (let i = 0; i < n; i++) lo = Math.min(lo, row.x * v[i * 3] + row.y * v[i * 3 + 1] + row.z * v[i * 3 + 2]);
+  const c = clip.clone(), out = c.tracks.find((x) => x.name === 'Bip01.position'), w = out.values = v.slice();
+  const shift = (i, d) => { w[i * 3] += up.x * d; w[i * 3 + 1] += up.y * d; w[i * 3 + 2] += up.z * d; };
+  for (let i = 0; i < n; i++) shift(i, (row.x * v[i * 3] + row.y * v[i * 3 + 1] + row.z * v[i * 3 + 2] - lo) * (bounce - 1) - lift);
+  // a smaller hop lands a little lower: never let a toe sink into the floor
+  const sink = floor - 0.003 - Math.min(...footLows(t, c));
+  if (sink > 0) for (let i = 0; i < n; i++) shift(i, sink);
+  return c;
+}
 function sampleBone(t, clip, name, frac) {
   const s = cloneSkinned(t.scene); let b = null; s.traverse((o) => { if (o.name === name) b = o; });
   const mx = new THREE.AnimationMixer(s); mx.clipAction(clip).play(); mx.setTime(clip.duration * frac); s.updateMatrixWorld(true);
   const p = b.getWorldPosition(new THREE.Vector3()); mx.stopAllAction(); mx.uncacheRoot(s); return p;
 }
-/** Ground speed of an in-place locomotion clip: how fast a planted foot slides backwards. */
-function measureSpeed(t, clip) {
+/**
+ * Gait of an in-place locomotion clip:
+ *  speed — ground speed (how fast a planted foot slides backwards)
+ *  off   — cycle phase where the left foot reaches furthest forward. Walk, fast walk and run are
+ *          played shifted by it, so in a blend both clips have the same foot forward (no mushy legs)
+ *  steps — phases (after that shift) where each foot touches down, for footstep sounds
+ */
+function measureGait(t, clip) {
   const s = cloneSkinned(t.scene);
   const bones = {}; s.traverse((o) => { if (o.isBone) bones[o.name] = o; });
   const mx = new THREE.AnimationMixer(s); mx.clipAction(clip).play();
-  const N = 48, feet = ['Bip01_L_Foot', 'Bip01_R_Foot'].map((n) => bones[n]).filter(Boolean);
+  const N = 60, feet = ['Bip01_L_Foot', 'Bip01_R_Foot'].map((n) => bones[n]).filter(Boolean);
   const rec = feet.map(() => []);
   for (let i = 0; i <= N; i++) {
     mx.setTime((i / N) * clip.duration); s.updateMatrixWorld(true);
     feet.forEach((f, k) => { f.getWorldPosition(_v); rec[k].push([_v.y, _v.z]); });
   }
+  mx.stopAllAction(); mx.uncacheRoot(s);
   const dt = clip.duration / N; let sum = 0, n = 0;
+  const fwd = [], down = [];
   for (const r of rec) {
     const minY = Math.min(...r.map((p) => p[0]));
     for (let i = 1; i < r.length; i++) if (r[i][0] < minY + 0.02 && r[i - 1][0] < minY + 0.02) { sum += Math.abs(r[i][1] - r[i - 1][1]) / dt; n++; }
+    let iz = 0; for (let i = 1; i < N; i++) if (r[i][1] > r[iz][1]) iz = i;
+    let j = iz; for (let m = 0; m < N; m++) { const i = (iz + m) % N; if (r[i][0] < minY + 0.025) { j = i; break; } } // first contact after the swing
+    fwd.push(iz / N); down.push(j / N);
   }
-  mx.stopAllAction(); mx.uncacheRoot(s);
-  return n ? sum / n : 0;
+  const off = fwd[0] ?? 0;
+  return { speed: n ? sum / n : 0, off, steps: down.map((p) => (p - off + 1) % 1) };
+}
+/** How the 'talk' mocap opens the jaw, so recorded speech can drive it by loudness instead. */
+function jawOpening(bones, clips) {
+  const name = 'Bip01_MJaw';
+  const track = (c) => c?.tracks.find((x) => x.name === name + '.quaternion');
+  const ti = track(clips.idle), tt = track(clips.talk);
+  if (!bones[name] || !ti || !tt) return null;
+  const rest = new THREE.Quaternion().fromArray(ti.values, 0);
+  let angle = 0; const open = new THREE.Quaternion();
+  for (let i = 0; i < tt.values.length; i += 4) { _q.fromArray(tt.values, i); const a = rest.angleTo(_q); if (a > angle) { angle = a; open.copy(_q); } }
+  if (angle < 0.02) return null;
+  const d = rest.clone().invert().multiply(open);  // rest → widest open, about one axis
+  if (d.w < 0) d.set(-d.x, -d.y, -d.z, -d.w);
+  const axis = new THREE.Vector3(d.x, d.y, d.z).normalize();
+  return { rest, axis, angle: Math.min(angle, 0.3) };
 }
 
 // ───────────────────────── per-character body ─────────────────────────
@@ -360,7 +437,9 @@ class RocketBody {
     const sp = ch.speed / this.s;
     const sitting = ch.sitTarget > 0.5 || ch.sitW > 0.5;
     // ── target weights ──
-    const moveW = sitting ? 0 : clamp((sp - 0.06) / 0.35, 0, 1);
+    // turning on the spot: small steps instead of the feet swivelling on the floor
+    const turnW = sitting ? 0 : clamp((Math.abs(ch.turnRate || 0) - 1.2) / 3, 0, 0.35) * clamp(1 - sp / 0.5, 0, 1);
+    const moveW = sitting ? 0 : Math.max(clamp((sp - 0.05) / 0.25, 0, 1), turnW);
     const vW = t.speed.walk, vF = t.speed.walkFast, vR = t.speed.run;
     // walk → fast walk → run; each clip may play up to ~30% faster before blending into the next
     let lw = 1, lf = 0, lr = 0;
@@ -378,14 +457,25 @@ class RocketBody {
       walk: moveW * lw, walkFast: moveW * lf, run: moveW * lr,
     };
     let sum = 0;
-    for (const k in A) { W[k] = damp(W[k], tgt[k] || 0, LOCO.includes(k) ? 9 : 5, dt); sum += W[k]; }
+    // starting / stopping: the legs must keep up with the body (slow cross-fades = sliding feet)
+    const moving = moveW > 0.02 || (W.walk || 0) + (W.walkFast || 0) + (W.run || 0) > 0.02;
+    for (const k in A) { W[k] = damp(W[k], tgt[k] || 0, LOCO.includes(k) ? 16 : moving ? 14 : 5, dt); sum += W[k]; }
     for (const k in A) { const w = sum > 1e-4 ? W[k] / sum : (k === 'idle' ? 1 : 0); A[k].setEffectiveWeight(w); A[k].enabled = w > 0.002; }
-    // ── locomotion phase: one shared cycle so walk ↔ run blends keep the feet in step ──
-    let rate = 0, lwSum = 0;
-    for (const k of LOCO) { if (!A[k]) continue; const w = W[k]; const stride = t.speed[k] * t.clips[k].duration; rate += w * (sp > 0.05 ? sp / stride : 1 / t.clips[k].duration); lwSum += w; }
-    if (lwSum > 1e-4) this.cyc = (this.cyc + (rate / lwSum) * dt) % 1;
-    for (const k of LOCO) if (A[k]) A[k].time = this.cyc * t.clips[k].duration;
+    // ── locomotion phase: one shared cycle (clips lined up on the left foot) so walk ↔ run blends
+    // keep the feet in step; backwards when stepping back ──
+    let rate = 0, lwSum = 0, lead = null;
+    for (const k of LOCO) { if (!A[k]) continue; const w = W[k]; const stride = t.speed[k] * t.clips[k].duration; rate += w * (sp > 0.05 ? sp / stride : 1 / t.clips[k].duration); lwSum += w; if (!lead || w > W[lead]) lead = k; }
+    const c0 = this.cyc;
+    if (lwSum > 1e-4) this.cyc = (this.cyc + (ch.moveDir || 1) * (rate / lwSum) * dt + 1) % 1;
+    for (const k of LOCO) if (A[k]) A[k].time = ((this.cyc + t.gait[k].off) % 1) * t.clips[k].duration;
+    // footsteps exactly when a foot touches down
+    if (ch.onStep && lead && moveW > 0.4) for (const p of t.gait[lead].steps) if (crossed(c0, this.cyc, p)) ch.onStep(ch);
     this.mixer.update(dt);
+    // lip-sync: while a recorded line plays, the jaw opens with its loudness (closed in the pauses)
+    if (t.jaw && ch.lip != null) {
+      this.jawK = damp(this.jawK || 0, ch.lip, ch.lip > (this.jawK || 0) ? 35 : 18, dt);
+      this.b.Bip01_MJaw.quaternion.copy(t.jaw.rest).multiply(_q.setFromAxisAngle(t.jaw.axis, Math.min(1.2, this.jawK) * t.jaw.angle));
+    } else this.jawK = 0;
     // seated: put the pelvis over the chair seat (seat top 0.49 m, centre just behind the character origin)
     const sw = W.sit || 0;
     if (t.sitPelvis) { this.model.position.set(0, sw * (0.58 / this.s - t.sitPelvis.y), sw * (-0.05 / this.s - t.sitPelvis.z)); }
