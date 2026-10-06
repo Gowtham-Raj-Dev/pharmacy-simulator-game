@@ -1,6 +1,6 @@
 {
   "name": "rxshift-pharmacy-sim",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "RxShift — 3D pharmacy training simulator for Android & iOS (educational)",
   "type": "module",
