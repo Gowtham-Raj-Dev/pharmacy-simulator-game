@@ -150,6 +150,8 @@ test/                  Playwright smoke/flow tests and content validation (node 
 
 `npm run site` builds the game and writes `site/`: `index.html` is the home page, which asks whether to **play in the browser** (opens `/rxshift-sim/`) or **download the APK** (`/download/RxShift-Pharmacy-Sim.apk`, the signed release if present, otherwise the debug build). The home page itself never loads the game. Upload the whole `site/` folder to any static host. The home page source is `site-src/index.html`.
 
+The live GitHub Pages site (`.github/workflows/deploy.yml`, from the root `index.html`) does not carry the APK (`*.apk` is gitignored). Its **Download APK** button and the QR code beside it (shown on computers only, for scanning with a phone) both point at `https://github.com/Gowtham-Raj-Dev/pharmacy-simulator-game/releases/latest/download/RxShift-Pharmacy-Sim.apk`. To ship a new APK, publish a GitHub release with a file of exactly that name: `gh release create vX.Y.Z RxShift-Pharmacy-Sim.apk`. The QR never needs regenerating.
+
 ## Extending
 
 - **Hospital stock (brands).** Edit `src/data/brands.js` to match the brands your pharmacy actually stocks. Each entry is `b(name, manufacturer, onlyVariants)` or `gen(name)` for the generic; keys match the ingredients in `products.js`. Have a pharmacist verify the list against the formulary.

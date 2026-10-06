@@ -289,6 +289,9 @@ function initApp() {
     webCard?.classList.add('rec');
     apkCard?.classList.remove('rec');
   }
+  // QR to the APK: only on computers (a phone can't scan its own screen)
+  const apkQr = document.getElementById('apk-qr');
+  if (apkQr && !isAndroid && !isIos) apkQr.hidden = false;
   if (isIos) {
     const iosNote = document.getElementById('ios-note');
     if (iosNote) iosNote.hidden = false;
