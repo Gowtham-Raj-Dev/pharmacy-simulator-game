@@ -5,7 +5,7 @@ import { LEVELS, UPGRADES, ACHIEVEMENTS } from '../data/levels.js';
 import { MODULES } from '../data/questions.js';
 import { panelMethods, bindPanels } from './panels.js';
 import { K } from './keys.js';
-import { t, tp, getLang } from '../i18n/i18n.js';
+import { t, tp, getLang, isTA } from '../i18n/i18n.js';
 
 const SVG = (d, s = 20) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const MENTOR_IC = SVG('<circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><path d="M12 14v4M10 16h4"/>', 22);
@@ -352,7 +352,7 @@ export class UI {
       item('trophy', t('menu.achievements'), t('menu.achSub', { n: Object.keys(g.state.achievements).length, total: ACHIEVEMENTS.length }), () => this.showAchievements()),
       item('gear', t('menu.settings'), t('menu.settingsSub'), () => this.showSettings()),
       item('info', t('menu.about'), '', () => this.showAbout()),
-      item('home', isTA() ? 'முகப்புப் பக்கம்' : 'Home page', isTA() ? 'Browser · APK · Desktop' : 'Browser · APK · Desktop', () => { m.close(); window.location.href = window.location.pathname; }),
+      document.documentElement.classList.contains('native') ? null : item('home', isTA() ? 'முகப்புப் பக்கம்' : 'Home page', 'Browser · APK · Desktop', () => { m.close(); window.location.href = window.location.pathname; }), // (the apps have no website home)
       item('door', t('menu.exit'), g.lastSaveText(), () => { m.close(); g.exitToTitle(); }));
     const m = this.modal({ title: t('menu.title'), eyebrow: t('menu.paused'), body: h('div', {}, this.langSwitch(false, () => { m.close(true); this.showMenu(); }), list) });
   }

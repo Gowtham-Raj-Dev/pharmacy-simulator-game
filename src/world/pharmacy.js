@@ -542,7 +542,8 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
 
   // ── Overhead Department Lightboxes (Prescriptions, Consultation, Cashier) ──
   {
-    const makeDeptSign = (title, sub, icon, accent, x, z, w = 1.8) => {
+    // key + English subtitle, not baked strings: relabel() re-runs the factory in the current language
+    const makeDeptSign = (key, sub, icon, accent, x, z, w = 1.8) => {
       const dh = 0.46, dy = 2.52;
       // 3D casing box
       box('matte', w + 0.04, dh + 0.04, 0.05, x, dy - dh / 2, z, 0x1e293b);
@@ -551,14 +552,14 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
         box('metal', 0.014, H - (dy + dh / 2), 0.014, x + dx, dy + dh / 2, z, C.steel);
         box('metal', 0.06, 0.015, 0.06, x + dx, H - 0.015, z, C.steel);
       }
-      const mat = lsign(() => TX.deptSignTexture(title, sub, icon, accent));
+      const mat = lsign(() => TX.deptSignTexture(tp(key), isBi() ? sub : '', icon, accent));
       plane(mat, w, dh, x, dy, z + 0.028, 0);
       plane(mat, w, dh, x, dy, z - 0.028, Math.PI);
     };
 
-    makeDeptSign(tp('w.prescriptions') || 'PRESCRIPTIONS', isBi() ? 'MEDICINE DISPENSARY' : '', 'rx', '#0284c7', -4.8, -3.8, 1.9);
-    makeDeptSign(tp('w.consultation') || 'CONSULTATION', isBi() ? 'CLINICAL ADVICE & CARE' : '', 'shield', '#0f8a7e', -1.2, -3.8, 1.8);
-    makeDeptSign(tp('w.payHere') || 'PAY HERE', isBi() ? 'BILLING & CHECKOUT' : '', 'heart', '#4338ca', posX, -3.8, 1.6);
+    makeDeptSign('w.prescriptions', 'MEDICINE DISPENSARY', 'rx', '#0284c7', -4.8, -3.8, 1.9);
+    makeDeptSign('w.consultation', 'CLINICAL ADVICE & CARE', 'shield', '#0f8a7e', -1.2, -3.8, 1.8);
+    makeDeptSign('w.payHere', 'BILLING & CHECKOUT', 'heart', '#4338ca', posX, -3.8, 1.6);
   }
   // exterior sign above door (seen from outside & through glass)
   { const mk = S('w.storeName', { w: 1024, h: 160, bg: '#0f8a7e', fg: '#fff', cross: true, align: 'center', size: 0.5 }); const mat = lsign(mk); plane(mat, 4.8, 0.75, 0, 2.95, 9.08, 0); plane(mat, 4.8, 0.75, 0, 2.95, 9.02, Math.PI); }

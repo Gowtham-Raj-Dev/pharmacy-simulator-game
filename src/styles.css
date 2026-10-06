@@ -194,7 +194,7 @@ button { font: inherit; color: inherit; border: 0; background: none; cursor: poi
 .rx-card .bad { color: var(--bad); font-weight: 700; }
 
 /* ── Inventory ── */
-.inv { display: flex; flex-direction: column; height: 100%; }
+.inv { display: flex; flex-direction: column; flex: 1; min-height: 0; } /* (fills the panel under its header, so the tray row stays on screen) */
 .inv-top { padding: 12px 14px 8px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--line); }
 .searchbox { display: flex; align-items: center; gap: 8px; background: var(--soft); border-radius: 14px; padding: 0 12px; height: 48px; border: 1.5px solid transparent; }
 .searchbox:focus-within { border-color: var(--teal); background: #fff; }
@@ -432,6 +432,16 @@ input[type=range]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 
   .subtitle { bottom: calc(var(--edge-b) + 210px); max-width: calc(100vw - 24px); }
   .toasts { width: calc(100vw - 2 * (52px + 46px)); }
 }
+/* small portrait phones: tighter top bar so the rank keeps readable words; the cabinet's tray and
+   Safety check button stack instead of squeezing each other */
+@media (max-width: 400px) {
+  .topbar { gap: 6px; } .hud-tr { gap: 4px; } .chip, html.touch .chip { padding: 0 7px; gap: 3px; } .chip.menu { width: 38px; }
+  .hud-tl { gap: 7px; padding-right: 8px; }
+}
+@media (max-width: 480px) {
+  .inv-tray .row { flex-wrap: wrap; }
+  .inv-tray .row > .tray, .inv-tray .row > .btn { flex: 1 1 100%; }
+}
 
 .notice-ic { width: 56px; height: 56px; border-radius: 18px; background: var(--teal-l); color: var(--teal-d); display: grid; place-items: center; margin: 4px auto 10px; }
 .prose { font-size: .9em; line-height: 1.5; color: var(--ink-2); }
@@ -574,6 +584,9 @@ html.kbd .lang-card[data-kbd]::after { top: 10px; right: 10px; }
 .kb-hit { filter: brightness(1.12); transform: scale(.96); }
 
 @media (orientation: landscape) and (min-width: 600px) { .dlg-open .toasts { left: 24%; width: min(44vw, 400px); } .dlg-open .subtitle { left: 24%; max-width: 44vw; } }
+/* portrait: the dialogue sheet fills the lower screen and the customer's face shows in the strip above it,
+   so notifications ride just under the top bar (the objective row is hidden while talking), one line wide */
+@media (orientation: portrait), (max-width: 599px) { .dlg-open .toasts { top: calc(var(--edge-t) + 54px); width: min(calc(100vw - 24px - var(--safe-l) - var(--safe-r)), 420px); } }
 @media (orientation: landscape) and (max-width: 760px) { .cbtn { width: 36px; height: 36px; } .cam-bar { gap: 2px; padding: 4px; } .lvl-info { width: 100px; } .chip { padding: 0 8px; font-size: .78em; gap: 4px; } .hud-tl { padding-right: 10px; } }
 .ctl-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
 .ctl-row { display: flex; gap: 12px; align-items: flex-start; background: var(--soft); border-radius: 14px; padding: 12px; }
@@ -684,10 +697,10 @@ html.lang-bi .bi .be { font-size: .78em; }
   .m-head h2 { font-size: 1.02em; }
   .btn { font-size: .88em; }
 }
-/* the game is landscape-only: ask phones held upright to rotate */
+/* the installed apps are landscape-only: ask phones held upright to rotate (browsers play in portrait too) */
 .rotate-hint { display: none; }
 @media (orientation: portrait) {
-  .rotate-hint { display: flex !important; position: fixed !important; inset: 0 !important; z-index: 99999 !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; gap: 18px !important; background: #0b1f1d !important; color: #e9f5f3 !important; font: 600 15px/1.5 var(--font) !important; text-align: center !important; padding: 24px !important; pointer-events: auto !important; }
+  html.native .rotate-hint { display: flex !important; position: fixed !important; inset: 0 !important; z-index: 99999 !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; gap: 18px !important; background: #0b1f1d !important; color: #e9f5f3 !important; font: 600 15px/1.5 var(--font) !important; text-align: center !important; padding: 24px !important; pointer-events: auto !important; }
   .rotate-hint svg { width: 76px !important; height: 76px !important; color: #2fd3be !important; animation: rotHint 2s ease-in-out infinite !important; }
   @keyframes rotHint { 0%, 25% { transform: rotate(0); } 50%, 100% { transform: rotate(-90deg); } }
 }

@@ -8,7 +8,7 @@ import { Game } from './game.js';
 import { UI } from './ui/ui.js';
 import { AudioSys } from './core/audio.js';
 import { loadGame, loadSettings, newGameState } from './core/state.js';
-import { nextFrame } from './core/util.js';
+import { nextFrame, fullscreenLandscape } from './core/util.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
@@ -19,6 +19,13 @@ import { StatusBar } from '@capacitor/status-bar';
 import { setLang, getLang } from './i18n/i18n.js';
 import { initContent, applyContent } from './i18n/content.js';
 import { initShortcuts } from './ui/keys.js';
+
+// The installed apps (Capacitor, or the lite WebView APK that tags its user agent) are landscape-only.
+// Android browsers play in landscape too: a tap goes full screen and locks it (see initApp). Browsers that
+// can't lock (iPhone) never see a "rotate your phone" screen: the game plays in either orientation.
+const NATIVE = Capacitor.isNativePlatform() || /RxShiftApp/.test(navigator.userAgent);
+const ANDROID_WEB = !NATIVE && /Android/i.test(navigator.userAgent);
+document.documentElement.classList.toggle('native', NATIVE);
 
 // Colour grade: Khronos PBR Neutral tone mapping (keeps whites from blowing out and product colours
 // true) + a touch of saturation and contrast. Runs inside every material's shader — no extra pass.
@@ -136,8 +143,8 @@ async function boot(overrideLang) {
   };
   game.onQualityChange = () => { if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(window.innerWidth, window.innerHeight); } world.resizeReflections?.(...game.reflSize()); };
   if (Capacitor.isNativePlatform()) { try { await StatusBar.setOverlaysWebView({ overlay: true }); await StatusBar.hide(); } catch { /* ignore */ } }
-  // landscape-only game (the native apps also lock it in their manifests)
-  try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* not supported */ }
+  // the apps are landscape-only (their manifests lock it too); Android browsers lock it from a tap (initApp)
+  if (NATIVE) { try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* not supported */ } }
   // resize
   const onResize = () => {
     const w = window.innerWidth, h = window.innerHeight;
@@ -148,6 +155,7 @@ async function boot(overrideLang) {
     camera.aspect = w / h;
     game.rig.baseFov = w < h ? 68 : 55;
     camera.updateProjectionMatrix();
+    game.reframe();
   };
   window.addEventListener('resize', onResize);
   // GPU memory ran out (other apps holding it, or a driver reset): the browser restores the context and
@@ -234,9 +242,17 @@ function initApp() {
   const landing = document.getElementById('landing');
   const playBtn = document.getElementById('play-now-btn');
 
-  // Skip landing page if running native (Capacitor Android/iOS) or explicit query/hash
-  const isNative = Capacitor.isNativePlatform();
-  const directGame = isNative || location.search.includes('game') || location.hash.includes('game');
+  // Android browsers: a tap in the game while the phone is upright (on a direct ?game link, or after the
+  // player left full screen) goes back to full-screen landscape; the landing page scrolls normally
+  if (ANDROID_WEB) {
+    document.addEventListener('pointerup', () => {
+      if (landing && !landing.classList.contains('hidden')) return;
+      if (matchMedia('(orientation: portrait)').matches) fullscreenLandscape();
+    });
+  }
+
+  // Skip landing page if running native (Capacitor Android/iOS, lite APK) or explicit query/hash
+  const directGame = NATIVE || location.search.includes('game') || location.hash.includes('game');
 
   if (directGame || !landing) {
     if (landing) landing.classList.add('hidden');
@@ -294,6 +310,7 @@ function initApp() {
 
   playBtn?.addEventListener('click', (e) => {
     e.preventDefault();
+    if (ANDROID_WEB) fullscreenLandscape(); // (needs this tap: browsers only allow full screen from one)
     startSimulation();
   });
 }

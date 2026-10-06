@@ -19,7 +19,7 @@ import { SECTIONS } from './data/products.js';
 import { EVENTS, fillEvent } from './data/events.js';
 import { saveGame, newGameState, deleteSave, saveSettings } from './core/state.js';
 import { haptic } from './core/audio.js';
-import { clamp, fmtMoney, randi, rand, pick, damp, angleDamp } from './core/util.js';
+import { clamp, fmtMoney, randi, rand, pick, damp, angleDamp, fullscreenLandscape } from './core/util.js';
 import { t, tp, setLang, getLang, isTA } from './i18n/i18n.js';
 import { applyContent } from './i18n/content.js';
 import { Guide } from './systems/guide.js';
@@ -423,10 +423,17 @@ export class Game {
       pos = new THREE.Vector3(pp.x, 1.66, pp.z).addScaledVector(d, -0.75).addScaledVector(right, -0.55);
       look = new THREE.Vector3(cp.x, head - 0.05, cp.z).addScaledVector(right, 0.85);
     } else {
+      // aimed low: the face sits in the strip between the top bar and the bottom sheet
       pos = new THREE.Vector3(pp.x, 1.7, pp.z).addScaledVector(d, -0.55).addScaledVector(right, 0.35);
-      look = new THREE.Vector3(cp.x, head - 0.62, cp.z);
+      look = new THREE.Vector3(cp.x, head - 0.7, cp.z);
     }
     this.rig.setShot(pos, look, { speed: 3.5, fov: land ? 40 : 46 });
+    this._dlgShot = [target, this.rig.shot];
+  }
+  /** The phone was turned (browsers play in both orientations): re-frame a conversation for the new screen shape. */
+  reframe() {
+    const [target, shot] = this._dlgShot || [];
+    if (target && shot && this.rig.shot === shot) this.dialogueShot(target);
   }
   pauseConsultation() {
     const c = this.activeCustomer;
@@ -1204,9 +1211,8 @@ export class Game {
   canFullscreen() { const d = document.documentElement; return !!(d.requestFullscreen || d.webkitRequestFullscreen) && !window.Capacitor?.isNativePlatform?.() && !/RxShiftApp/.test(navigator.userAgent); } // the Android app is already full-screen
   toggleFullscreen() {
     try {
-      const d = document.documentElement;
       if (document.fullscreenElement || document.webkitFullscreenElement) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-      else { const r = (d.requestFullscreen || d.webkitRequestFullscreen).call(d, { navigationUI: 'hide' }); r?.then?.(() => { try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* ignore */ } }).catch?.(() => {}); }
+      else fullscreenLandscape();
     } catch { /* ignore */ }
   }
   /**

@@ -66,6 +66,16 @@ export function noise1(x) {
 export const fmtMoney = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
 export const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
 export const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+/**
+ * Full screen, then lock to landscape. A web page may only lock the orientation while it is full screen
+ * (Android browsers allow it; iPhones and PCs refuse, harmlessly). Must be called from a tap.
+ */
+export function fullscreenLandscape() {
+  const d = document.documentElement, req = d.requestFullscreen || d.webkitRequestFullscreen;
+  const lock = () => { try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* not supported */ } };
+  if (document.fullscreenElement || document.webkitFullscreenElement || !req) { lock(); return; }
+  try { const r = req.call(d, { navigationUI: 'hide' }); if (r?.then) r.then(lock, () => {}); else lock(); } catch { /* blocked */ }
+}
 
 // ── Inline SVG icon set (stroke icons, 24×24) ──
 const P = {
