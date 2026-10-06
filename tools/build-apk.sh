@@ -3,7 +3,7 @@
 # Needs: JDK, and the Ubuntu/Debian Android packages:
 #   sudo apt-get install aapt apksigner zipalign android-sdk-platform-23 dalvik-exchange
 # Usage: tools/build-apk.sh            (builds the web game first)
-#        SKIP_WEB=1 tools/build-apk.sh (reuse dist/)
+#        SKIP_WEB=1 tools/build-apk.sh (reuse dist-app/)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 LITE="$ROOT/android-lite"
@@ -13,9 +13,9 @@ OUT="$LITE/build"
 KS="$LITE/rxshift-release.jks"; KS_PASS="${KS_PASS:-rxshift-release}"; ALIAS=rxshift
 APK="$ROOT/RxShift-Pharmacy-Sim.apk"
 
-[ -n "${SKIP_WEB:-}" ] || (cd "$ROOT" && npx vite build)
+[ -n "${SKIP_WEB:-}" ] || (cd "$ROOT" && npx vite build --mode app)   # the app page: game only, no landing page
 rm -rf "$OUT"; mkdir -p "$OUT/classes" "$OUT/gen" "$OUT/assets/www"
-cp -r "$ROOT/dist/." "$OUT/assets/www/"
+cp -r "$ROOT/dist-app/." "$OUT/assets/www/"
 
 cd "$LITE"
 echo "• resources"

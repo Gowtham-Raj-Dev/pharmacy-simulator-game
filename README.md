@@ -12,9 +12,16 @@ RxShift is a 3D mobile training simulator. You play a pharmacist in a modern ret
 npm install
 npm run dev          # http://localhost:5173 (use --host to test on a phone on the same Wi-Fi)
 npm run build        # dist/index.html: one self-contained offline file (~1 MB, ~270 KB gzip)
+npm run build:app    # dist-app/index.html: the installed apps' page (from app.html), see below
 npm run site         # site/: home page (Play in browser / Download APK) + game at /rxshift-sim/ + download/
 npm run site:preview # serve site/ locally
 ```
+
+### The app build (Android & iOS)
+
+The apps do not open the website's page. `npm run build:app` builds `app.html` into `dist-app/index.html`, which `capacitor.config.json` (`webDir`) and `tools/build-apk.sh` ship. It holds only the game: no landing page, no website links, and no network fonts (Inter is bundled from `@fontsource-variable/inter`), so the app goes splash screen → loading screen → game. The game script sits at the end of the page so the loading screen paints first. `npm run cap:sync`, `npm run android` and `npm run ios` build it for you.
+
+The Android app is a full-screen game window (`android/app/src/main/java/com/zrubix/rxshift/MainActivity.java`): the status bar and navigation bar stay hidden (a swipe from the edge shows them for a moment), the screen stays on, the game draws behind the camera cutout and gets the cutout's size as its `--safe-*` padding, and Back works like Esc (double-tap Back to exit). On iOS, `Info.plist` hides the status bar.
 
 ### Direct APK (no Android Studio)
 
@@ -24,7 +31,7 @@ Rebuild it on any Ubuntu/Debian machine without Gradle:
 
 ```bash
 sudo apt-get install aapt apksigner zipalign android-sdk-platform-23 dalvik-exchange
-tools/build-apk.sh        # vite build → aapt → javac → dx → zipalign → apksigner
+tools/build-apk.sh        # vite build --mode app → aapt → javac → dx → zipalign → apksigner
 ```
 
 The first run creates `android-lite/rxshift-release.jks` (password `rxshift-release`, override with `KS_PASS`). **Keep that file**: updates must be signed with the same key or Android refuses to install them over the old version. The Capacitor project below is still the route for Play Store builds (AAB, targetSdk 35).
@@ -32,7 +39,7 @@ The first run creates `android-lite/rxshift-release.jks` (password `rxshift-rele
 ### Android
 Requirements: Android Studio (Ladybug or newer), JDK 17 or 21, and the Android SDK.
 ```bash
-npm run build && npx cap sync android
+npm run build:app && npx cap sync android
 npx cap open android            # then Run ▶ on a device or emulator
 # or from the CLI:
 cd android && ./gradlew assembleDebug     # app/build/outputs/apk/debug/app-debug.apk
@@ -43,7 +50,7 @@ A GitHub Actions workflow (`.github/workflows/android.yml`) builds a debug APK o
 ### iOS
 Requirements: macOS, Xcode 15 or newer. The project uses Swift Package Manager, so CocoaPods is not needed.
 ```bash
-npm run build && npx cap sync ios
+npm run build:app && npx cap sync ios
 npx cap open ios                # select your Team in Signing & Capabilities, then Run ▶
 ```
 

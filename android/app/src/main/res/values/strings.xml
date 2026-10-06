@@ -4,4 +4,5 @@
     <string name="title_activity_main">RxShift Pharmacy Sim</string>
     <string name="package_name">com.zrubix.rxshift</string>
     <string name="custom_url_scheme">com.zrubix.rxshift</string>
+    <string name="exit_hint">Back = close / menu · double-tap back to exit</string>
 </resources>

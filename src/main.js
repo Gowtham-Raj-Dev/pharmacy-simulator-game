@@ -15,7 +15,6 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { Capacitor } from '@capacitor/core';
-import { StatusBar } from '@capacitor/status-bar';
 import { setLang, getLang } from './i18n/i18n.js';
 import { initContent, applyContent } from './i18n/content.js';
 import { initShortcuts } from './ui/keys.js';
@@ -142,7 +141,7 @@ async function boot(overrideLang) {
     return composer;
   };
   game.onQualityChange = () => { if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(window.innerWidth, window.innerHeight); } world.resizeReflections?.(...game.reflSize()); };
-  if (Capacitor.isNativePlatform()) { try { await StatusBar.setOverlaysWebView({ overlay: true }); await StatusBar.hide(); } catch { /* ignore */ } }
+  // (the apps hide the status and navigation bars themselves from launch: MainActivity on Android, Info.plist on iOS)
   // the apps are landscape-only (their manifests lock it too); Android browsers lock it from a tap (initApp)
   if (NATIVE) { try { screen.orientation?.lock?.('landscape').catch(() => {}); } catch { /* not supported */ } }
   // resize

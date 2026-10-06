@@ -1,0 +1,25 @@
+<!doctype html>
+<!-- The installed apps' page (Capacitor Android/iOS and the lite APK), built by `npm run build:app` into
+     dist-app/index.html. It holds only the game: no landing page, no website links and no network fonts,
+     so the first thing the app paints is the loading screen. The website's page is index.html. -->
+<html lang="en" class="native">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1f1d" />
+<title>RxShift Pharmacy Sim</title>
+<link rel="stylesheet" href="./src/app-fonts.css" />
+<link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="ui"></div>
+<div class="loading">
+  <div class="logo"><div class="cross"></div><div><h1>Rx<span>Shift</span></h1><p>Pharmacy Training Simulator</p></div></div>
+  <div class="lbar"><i id="lbar"></i></div>
+  <div class="lstep" id="lstep">Starting…</div>
+</div>
+<div class="rotate-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><div>Please rotate your phone<br>தயவுசெய்து போனைத் திருப்பவும்</div></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
