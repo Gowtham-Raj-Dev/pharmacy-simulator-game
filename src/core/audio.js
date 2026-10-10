@@ -3,6 +3,11 @@
 import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
 import { Capacitor } from '@capacitor/core';
 import { getLang } from '../i18n/i18n.js';
+import VOICE_ALIAS from '../data/voice-alias.json';
+
+// Recorded lines: MP3 on the website, Opus in the Android app (a third of the size at the same quality,
+// see tools/app_voices.py). Lines with the same voice and text share one recording (voice-alias.json).
+const VOICE_EXT = __VOICE_EXT__;
 
 const TA_VOWELS = {
   '\u0B85': 'a', '\u0B86': 'aa', '\u0B87': 'i', '\u0B88': 'ee', '\u0B89': 'u', '\u0B8A': 'oo',
@@ -354,7 +359,10 @@ export class AudioSys {
     else this._playElement(clips, text, o, live);
   }
 
-  _clipUrl(id) { return `./audio/voices/${(this.lang || getLang() || 'en') === 'en' ? 'en' : 'ta'}/${id}.mp3`; }
+  _clipUrl(id) {
+    const lang = (this.lang || getLang() || 'en') === 'en' ? 'en' : 'ta';
+    return `./audio/voices/${lang}/${VOICE_ALIAS[lang]?.[id] || id}.${VOICE_EXT}`;
+  }
   /** Compressed bytes of a recorded line, cached: ArrayBuffer · 'missing' (no recording) · null (can't fetch here) */
   _fetchClip(id) {
     const url = this._clipUrl(id), C = this._bytes || (this._bytes = new Map());

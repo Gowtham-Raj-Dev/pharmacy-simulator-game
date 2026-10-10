@@ -17,3 +17,8 @@ ios/App/App/public/
 site/
 HospitalCharacterPack-12-people/
 test/*.png
+# 96 kbps voice masters (re-recorded by tools/app_voices.py)
+tools/voice-masters/
+# Promo video working files (frames, narration masters, intermediate renders)
+tools/promo/work/
+__pycache__/

@@ -43,6 +43,21 @@
 #landing .hero h2 { margin: 0 0 10px; font-size: clamp(26px, 5vw, 40px); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; color: #e9f5f3; }
 #landing .hero p { margin: 0; color: #a9c4c0; font-size: clamp(15px, 2.2vw, 17px); }
 
+/* Trailer: poster + play button; the video file loads when it is played (main.js) */
+#landing .trailer { position: relative; margin: 0 0 26px; min-width: 0; }
+#landing .trailer-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #071513; border: 1.5px solid #1f4a45; box-shadow: 0 18px 44px rgba(0,0,0,.35); }
+#landing .trailer-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #071513; display: block; }
+#landing .trailer-play { position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 14px; padding: 18px; border: 0; cursor: pointer; font: inherit; color: #fff; text-align: left; background: linear-gradient(180deg, rgba(7,21,19,0) 45%, rgba(7,21,19,.85)); }
+#landing .trailer-play[hidden] { display: none; }
+#landing .trailer-ic { flex: none; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #14b8a6, #0b7f74); box-shadow: 0 8px 22px rgba(15,165,150,.45); transition: transform .15s; }
+#landing .trailer-ic svg { margin-left: 3px; }
+#landing .trailer-play:hover .trailer-ic { transform: scale(1.07); }
+#landing .trailer-label { display: flex; flex-direction: column; min-width: 0; }
+#landing .trailer-label b { font-size: 18px; font-weight: 800; }
+#landing .trailer-label small { font-size: 13px; font-weight: 600; color: #a9c4c0; }
+#landing .trailer-fs { position: absolute; top: 12px; right: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 12px; font: inherit; font-size: 14px; font-weight: 700; color: #fff; background: rgba(7,21,19,.72); border: 1px solid rgba(255,255,255,.24); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); cursor: pointer; }
+#landing .trailer-fs:hover { background: rgba(15,165,150,.85); border-color: transparent; }
+
 #landing .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 #landing .choice { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1.5px solid #1f4a45; border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 14px; position: relative; min-width: 0; }
 #landing .choice.rec { border-color: #0fa596; box-shadow: 0 0 0 4px rgba(15,165,150,.14); }
@@ -89,13 +104,14 @@ html:not([lang="en"]) #landing [data-l="en"], html:not([lang="ta"]) #landing [da
 /* Desktop: everything on one screen (no page scroll), wider page */
 @media (min-width: 1000px) and (min-height: 600px) {
   #landing .wrap { max-width: min(1600px, 94vw); min-height: 100vh; display: flex; flex-direction: column; padding: 22px 40px 14px; }
-  #landing .main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(340px, 0.85fr) 1.6fr; grid-template-rows: auto auto auto; column-gap: 36px; row-gap: 16px;
-    grid-template-areas: 'hero choices' 'steps choices' 'notice choices'; align-items: start; align-content: center; padding: clamp(12px, 3vh, 36px) 0 8px; }
+  #landing .main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(340px, 0.85fr) 1.6fr; grid-template-rows: auto auto auto auto; column-gap: 36px; row-gap: 16px;
+    grid-template-areas: 'hero choices' 'trailer choices' 'steps choices' 'notice choices'; align-items: start; align-content: center; padding: clamp(12px, 3vh, 36px) 0 8px; }
   #landing .hero { grid-area: hero; margin: 0; }
   #landing .hero h2 { font-size: clamp(28px, 2.6vw, 40px); overflow-wrap: anywhere; }
   html[lang="ta"] #landing .hero h2 { font-size: clamp(22px, 1.9vw, 30px); line-height: 1.3; }
   html[lang="ta"] #landing .hero p { font-size: 14.5px; }
   html[lang="ta"] #landing .steps ol { font-size: 12.5px; }
+  #landing .trailer { grid-area: trailer; margin: 0; }
   #landing .choices { grid-area: choices; align-self: center; }
   #landing .choice .btn { margin-top: auto; } /* (both cards' buttons line up at the bottom) */
   #landing .choice { padding: clamp(18px, 2.4vh, 26px); gap: clamp(10px, 1.6vh, 16px); }
@@ -103,6 +119,13 @@ html:not([lang="en"]) #landing [data-l="en"], html:not([lang="ta"]) #landing [da
   #landing .steps ol { font-size: 13.5px; }
   #landing .notice { grid-area: notice; margin: 0; }
   #landing footer { margin-top: 0; }
+}
+/* laptops: the trailer takes the place of the APK install steps (phones, where the APK is installed, always show them) */
+@media (min-width: 1000px) and (min-height: 600px) and (max-height: 999px) {
+  #landing .steps { display: none; }
+}
+@media (min-width: 1000px) and (min-height: 600px) and (max-height: 780px) {
+  #landing .trailer { width: min(100%, 30vh * 16 / 9); }   /* (short screens: a smaller player, so nothing scrolls) */
 }
 @media (min-width: 1700px) and (min-height: 950px) {
   #landing { font-size: 17px; }

@@ -2,6 +2,7 @@
 // as compact game-ready GLBs in public/people/.
 //
 //   node tools/rocketbox-import.mjs Adults/Female_Adult_02:rbF02 Adults/Male_Adult_05:rbM05 …
+//   node tools/optimize-people.mjs      (afterwards: lossless packing, meshopt geometry + WebP hair layer)
 //
 // For each avatar: download the FBX + textures, convert with FBX2glTF, swap the
 // placeholder textures for resized JPEGs (colour 1024², normal 512²) and a 512² PNG

@@ -298,10 +298,37 @@ function initApp() {
     apkLink?.setAttribute('aria-disabled', 'true');
   }
 
+  // Trailer: the poster is a small image; the video itself is fetched only when the visitor plays it
+  // (2K on computers and on phones / tablets with a 2K-class screen, 1080p on smaller ones). Full screen is the video's own
+  // full-screen mode (on an iPhone, the system player).
+  const trailer = document.getElementById('trailer');
+  const trailerPlay = document.getElementById('trailer-play');
+  if (trailer && trailerPlay) {
+    const base = new URL('video/', document.baseURI).href;
+    const px = Math.min(screen.width, screen.height) * (window.devicePixelRatio || 1);
+    const computer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const big = (computer || px >= 1300) && !navigator.connection?.saveData;
+    trailer.poster = base + 'rxshift-trailer-poster.jpg';
+    const playTrailer = () => {
+      if (!trailer.getAttribute('src')) trailer.src = base + (big ? 'rxshift-trailer-1440p.mp4' : 'rxshift-trailer-1080p.mp4');
+      trailer.controls = true;
+      trailerPlay.hidden = true;
+      trailer.play()?.catch(() => {});
+    };
+    trailerPlay.addEventListener('click', playTrailer);
+    document.getElementById('trailer-fs')?.addEventListener('click', () => {
+      playTrailer();
+      const full = trailer.requestFullscreen || trailer.webkitRequestFullscreen;
+      if (full) Promise.resolve(full.call(trailer)).catch(() => {});
+      else trailer.webkitEnterFullscreen?.();
+    });
+  }
+
   let booted = false;
   function startSimulation() {
     if (booted) return;
     booted = true;
+    trailer?.pause();
     landing.classList.add('fade-out');
     const selectedLang = root.lang || 'en';
     setTimeout(() => {

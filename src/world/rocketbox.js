@@ -6,11 +6,13 @@
 // medicines, paying, holding a clipboard, symptom gestures (cough, headache …),
 // looking at whoever they talk to, blinking.
 //
-// Files live in public/people/*.glb (one per avatar). Avatars without their own clips
-// share the clips of a same-gender donor (identical Biped bone names).
+// Files live in public/people/*.glb (one per avatar), packed losslessly by tools/optimize-people.mjs
+// (meshopt geometry, WebP hair textures). Avatars without their own clips share the clips of a
+// same-gender donor (identical Biped bone names).
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { clone as cloneSkinned } from 'three/examples/jsm/utils/SkeletonUtils.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 // role: pharmacist (the player) · doctor (the inspector) · visitor (customers)
 // age: 'adult' or 'older' (used for elderly customers)
@@ -49,7 +51,7 @@ const usage = new Map();  // id → number of characters using it (for variety)
 function baseUrl() { try { return new URL('people/', document.baseURI).href; } catch { return './people/'; } }
 /** .glb normally; hosts that only serve web file types get <id>.json (glTF + base64 buffer) + image files. */
 async function loadAvatarFile(id) {
-  const loader = new GLTFLoader();
+  const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   if (window.RX_PEOPLE_FORMAT !== 'json') return loader.loadAsync(baseUrl() + id + '.glb');
   const res = await fetch(baseUrl() + id + '.json');
   if (!res.ok) throw new Error('HTTP ' + res.status);

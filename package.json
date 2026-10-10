@@ -1,6 +1,6 @@
 {
   "name": "rxshift-pharmacy-sim",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "description": "RxShift — 3D pharmacy training simulator for Android & iOS (educational)",
   "type": "module",
@@ -9,9 +9,9 @@
     "build": "vite build",
     "build:app": "vite build --mode app",
     "preview": "vite preview --host",
-    "cap:sync": "npm run build:app && npx cap sync",
+    "cap:sync": "npm run build:app && npx cap sync android",
     "android": "npm run build:app && npx cap sync android && npx cap open android",
-    "ios": "npm run build:app && npx cap sync ios && npx cap open ios",
+    "ios": "vite build --mode app-mp3 && npx cap sync ios && npx cap open ios",
     "site": "vite build && node tools/site.mjs",
     "site:preview": "npx vite preview --outDir site --host"
   },
@@ -33,6 +33,7 @@
     "@gltf-transform/extensions": "^4.5.1",
     "@gltf-transform/functions": "^4.5.1",
     "fbx2gltf": "^0.9.7-p1",
+    "meshoptimizer": "^0.22.0",
     "playwright": "1.55",
     "vite": "^6.3.0",
     "vite-plugin-singlefile": "^2.2.0"
