@@ -72,11 +72,14 @@ export function boxProject(mat) {
   return mat;
 }
 
-export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}) {
+/** layout 1: the original pharmacy. layout 2 ("Medical 2"): the same room re-planned as an L-shaped store with
+ *  a back pharmacist room, an office, a vitamin cabinet, a glass counter and free-standing display gondolas. */
+export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4, layout = 1 } = {}) {
+  const L2 = layout === 2;
   TX.setAnisotropy(anisotropy);
   const W = {
     root: new THREE.Group(), colliders: [], interactables: [], shelves: [], points: {}, hitBoxes: [],
-    zones: {}, mats: {}, lights: {}, screens: {}, dynamic: [],
+    zones: {}, mats: {}, lights: {}, screens: {}, dynamic: [], layout,
   };
   scene.add(W.root);
   const root = W.root;
@@ -142,7 +145,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   const C = {
     wall: 0xf6f6f3, accent: 0x12a594, accentDark: 0x0b7c70, white: 0xf4f5f4, shelf: 0xf1f3f2, shelfBack: 0xe3ece9,
     counterFront: 0xffffff, quartz: 0xf3f2ef, dark: 0x2b3236, steel: 0xb9c0c4, chair: 0x2f6f78, plant: 0x3f8f4a, pot: 0xd9d4cb,
-    kick: 0x3a4146, fridge: 0xf2f4f5, carton: 0xc9a46c, red: 0xd64545,
+    kick: 0x3a4146, fridge: 0xf2f4f5, carton: 0xc9a46c, red: 0xd64545, green: 0x2f9e58, lime: 0xc9d43a,
   };
 
   // ── Floor (tiles + baked AO), exterior ──
@@ -265,6 +268,23 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   col(-8.4, -8, -9, 9, H); col(8, 8.4, -9, 9, H); col(-8, 8, -9.4, -9, H);
   col(-8, -1.3, 9, 9.3, H); col(1.3, 8, 9, 9.3, H);
 
+  // ── Medical 2: partitions that cut the room into the L-shaped store, the back room and the office ──
+  const iwall = (x0, z0, x1, z1, y0 = 0, y1 = H) => {
+    const len = Math.hypot(x1 - x0, z1 - z0);
+    const g = new THREE.BoxGeometry(len, y1 - y0, 0.12); g.rotateY(-Math.atan2(z1 - z0, x1 - x0)); g.translate((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+    batch.add('wall', g, C.wall);
+    if (y0 < 2) col(Math.min(x0, x1) - 0.06, Math.max(x0, x1) + 0.06, Math.min(z0, z1) - 0.06, Math.max(z0, z1) + 0.06, H);
+  };
+  if (L2) {
+    iwall(2, 5, 2, 9); iwall(2, 5, 8, 5);                                   // front-right corner is outside the store
+    iwall(-0.3, -9, -0.3, -1.3); iwall(-8, -4.8, -0.3, -4.8);               // back-left corner is outside; office side wall
+    iwall(-6.5, -1.3, -0.3, -1.3); iwall(-8, -1.3, -6.5, -1.3, 2.2, H);     // office front wall (door at the left end)
+    iwall(1.3, -3.4, 8, -3.4); iwall(-0.3, -3.4, 0, -3.4); iwall(0, -3.4, 1.3, -3.4, 2.2, H); // pharmacist room wall + door
+    for (const x of [1.0, 2.2, 3.4]) iwall(x, -9, x, -7.5);                 // pharmacist room bays
+    box('metal', 0.06, 2.2, 0.16, 0.0, 0, -3.4, C.dark); box('metal', 0.06, 2.2, 0.16, 1.3, 0, -3.4, C.dark);
+    box('metal', 0.06, 2.2, 0.16, -6.5, 0, -1.3, C.dark);
+  }
+
   // ── Ceiling + light panels ──
   {
     const g = new THREE.PlaneGeometry(16, 18, 32, 36); g.rotateX(Math.PI / 2); g.translate(0, H, 0);
@@ -283,7 +303,8 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   }
 
   // ── Dispensing counter ──
-  const counter = { x0: -6, x1: 3.2, z0: -4.2, z1: -3.4, h: 1.0 };
+  const counter = L2 ? { x0: 2.4, x1: 7.9, z0: -1.4, z1: -0.6, h: 1.0 } : { x0: -6, x1: 3.2, z0: -4.2, z1: -3.4, h: 1.0 };
+  const cz = (counter.z0 + counter.z1) / 2, rxX = counter.x0 + 1.2;
   box('wood', counter.x1 - counter.x0, 0.92, 0.04, (counter.x0 + counter.x1) / 2, 0.08, counter.z1 - 0.02, 0xffffff);
   box('matte', counter.x1 - counter.x0, 0.92, counter.z1 - counter.z0 - 0.06, (counter.x0 + counter.x1) / 2, 0.08, (counter.z0 + counter.z1) / 2 - 0.02, C.white);
   box('matte', counter.x1 - counter.x0, 0.08, counter.z1 - counter.z0 - 0.1, (counter.x0 + counter.x1) / 2, 0, (counter.z0 + counter.z1) / 2, C.kick);
@@ -295,57 +316,85 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   for (let x = counter.x0 + 0.4; x < counter.x1 - 0.3; x += 0.62) for (let r = 0; r < 3; r++) box('gloss', 0.56, 0.26, 0.02, x + 0.28, 0.12 + r * 0.29, counter.z0 - 0.005, 0xe9eceb);
   col(counter.x0 - 0.05, counter.x1 + 0.05, counter.z0 - 0.05, counter.z1 + 0.06, 1.05, { counter: true });
   // prescription section screen + sign
-  plane(M.glass, 2.2, 0.55, -4.8, 1.33, counter.z1 + 0.03, 0);
-  box('metal', 0.03, 0.6, 0.03, -5.9, 1.05, counter.z1 + 0.03, C.steel); box('metal', 0.03, 0.6, 0.03, -3.7, 1.05, counter.z1 + 0.03, C.steel);
+  plane(M.glass, 2.2, 0.55, rxX, 1.33, counter.z1 + 0.03, 0);
+  box('metal', 0.03, 0.6, 0.03, rxX - 1.1, 1.05, counter.z1 + 0.03, C.steel); box('metal', 0.03, 0.6, 0.03, rxX + 1.1, 1.05, counter.z1 + 0.03, C.steel);
   // staff gate at counter gap
-  box('matte', 0.04, 0.9, 0.7, 3.32, 0.05, -3.8, C.white);
+  box('matte', 0.04, 0.9, 0.7, L2 ? counter.x0 - 0.12 : counter.x1 + 0.12, 0.05, cz, C.white);
   // counter clutter: leaflet stand, hand sanitizer, small plant
-  box('matte', 0.25, 0.28, 0.12, -2.9, 1.05, -3.55, 0xffffff); box('matte', 0.2, 0.2, 0.02, -2.9, 1.1, -3.48, 0x9fd8cf);
-  cyl('gloss', 0.035, 0.035, 0.16, -0.2, 1.05, -3.55, 0xe8f4f2, 10); cyl('matte', 0.012, 0.012, 0.04, -0.2, 1.21, -3.55, 0x333333, 6);
-  cyl('matte', 0.07, 0.06, 0.12, 0.4, 1.05, -3.9, C.pot, 12); { const g = new THREE.IcosahedronGeometry(0.11, 1); g.translate(0.4, 1.25, -3.9); batch.add('matte', g, C.plant); }
+  const [clA, clB, clC] = L2 ? [5.75, 4.2, 2.75] : [-2.9, -0.2, 0.4];
+  box('matte', 0.25, 0.28, 0.12, clA, 1.05, cz + 0.25, 0xffffff); box('matte', 0.2, 0.2, 0.02, clA, 1.1, cz + 0.32, 0x9fd8cf);
+  cyl('gloss', 0.035, 0.035, 0.16, clB, 1.05, cz + 0.25, 0xe8f4f2, 10); cyl('matte', 0.012, 0.012, 0.04, clB, 1.21, cz + 0.25, 0x333333, 6);
+  cyl('matte', 0.07, 0.06, 0.12, clC, 1.05, cz - 0.1, C.pot, 12); { const g = new THREE.IcosahedronGeometry(0.11, 1); g.translate(clC, 1.25, cz - 0.1); batch.add('matte', g, C.plant); }
 
   // POS / cash counter equipment (pharmacist faces +z)
-  const posX = 2.2;
-  box('metal', 0.12, 0.25, 0.12, posX, 1.05, -3.95, C.dark);           // stand
-  box('gloss', 0.46, 0.3, 0.04, posX, 1.28, -3.92, C.dark);            // monitor body
+  const posX = L2 ? 6.9 : 2.2;
+  box('metal', 0.12, 0.25, 0.12, posX, 1.05, cz - 0.15, C.dark);           // stand
+  box('gloss', 0.46, 0.3, 0.04, posX, 1.28, cz - 0.12, C.dark);            // monitor body
   const posScreen = new TX.ScreenTexture(256, 160);
   TX.drawPOS(posScreen.g, 256, 160, { line1: tp('g.ready'), line2: tp('g.scan') });
   posScreen.texture.needsUpdate = true;
-  plane(new THREE.MeshBasicMaterial({ map: posScreen.texture, toneMapped: false }), 0.42, 0.26, posX, 1.43, -3.895, Math.PI);
+  plane(new THREE.MeshBasicMaterial({ map: posScreen.texture, toneMapped: false }), 0.42, 0.26, posX, 1.43, cz - 0.095, Math.PI);
   W.screens.pos = posScreen;
-  box('gloss', 0.42, 0.02, 0.14, posX, 1.05, -4.08, 0x222222);         // keyboard
-  box('metal', 0.42, 0.12, 0.4, posX + 0.6, 0.9, -4.0, 0x3a3f44);      // cash drawer (under top)
-  box('gloss', 0.08, 0.03, 0.16, posX - 0.55, 1.05, -3.65, 0x1d1d1d); box('gloss', 0.07, 0.06, 0.02, posX - 0.55, 1.08, -3.58, 0x2e7d32); // card terminal
-  box('gloss', 0.16, 0.12, 0.16, posX + 0.55, 1.05, -3.95, 0xe6e6e6);  // receipt printer
+  box('gloss', 0.42, 0.02, 0.14, posX, 1.05, cz - 0.28, 0x222222);         // keyboard
+  box('metal', 0.42, 0.12, 0.4, posX + 0.6, 0.9, cz - 0.2, 0x3a3f44);      // cash drawer (under top)
+  box('gloss', 0.08, 0.03, 0.16, posX - 0.55, 1.05, cz + 0.15, 0x1d1d1d); box('gloss', 0.07, 0.06, 0.02, posX - 0.55, 1.08, cz + 0.22, 0x2e7d32); // card terminal
+  box('gloss', 0.16, 0.12, 0.16, posX + 0.55, 1.05, cz - 0.15, 0xe6e6e6);  // receipt printer
   // customer facing display
-  box('gloss', 0.26, 0.16, 0.03, posX - 0.25, 1.12, -3.6, C.dark);
+  box('gloss', 0.26, 0.16, 0.03, posX - 0.25, 1.12, cz + 0.2, C.dark);
   const cfd = new TX.ScreenTexture(128, 64);
-  plane(new THREE.MeshBasicMaterial({ map: cfd.texture, toneMapped: false }), 0.24, 0.13, posX - 0.25, 1.2, -3.584, 0);
+  plane(new THREE.MeshBasicMaterial({ map: cfd.texture, toneMapped: false }), 0.24, 0.13, posX - 0.25, 1.2, cz + 0.216, 0);
   W.screens.cfd = cfd;
 
   // ── Back wall shelving behind counter: Tablets & Capsules (7 units) ──
   const shelfDefs = [];
-  for (let i = 0; i < 7; i++) shelfDefs.push({ section: 'tablets', x: -3.6 + i * 1.2, z: -8.77, rot: 0, levels: 6, height: 2.2 });
-  // Rx cabinet units (drawer base + glass shelves)
-  for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'rx', x: -7.0 + i * 1.3, z: -8.77, rot: 0, levels: 4, height: 2.2, width: 1.3, base: 0.95, glass: true });
-  // left wall: syrups & tonics (facing +x)
-  for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'syrups', x: -7.77, z: -2.1 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
-  for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'tonics', x: -7.77, z: 1.5 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
-  // right wall: skin care & baby care (facing -x)
-  for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'skincare', x: 7.77, z: -2.7 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1 });
-  for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'babycare', x: 7.77, z: 0.9 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1 });
-  // gondola A (x=-3.4): west vitamins, east first aid ; gondola B (x=3.4): west OTC, east devices
-  for (let i = 0; i < 3; i++) {
-    const z = -0.0 + i * 1.2;
-    shelfDefs.push({ section: 'vitamins', x: -3.62, z, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
-    shelfDefs.push({ section: 'firstaid', x: -3.18, z, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
-    shelfDefs.push({ section: 'otc', x: 3.18, z, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
-    shelfDefs.push({ section: 'devices', x: 3.62, z, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+  if (!L2) {
+    for (let i = 0; i < 7; i++) shelfDefs.push({ section: 'tablets', x: -3.6 + i * 1.2, z: -8.77, rot: 0, levels: 6, height: 2.2 });
+    // Rx cabinet units (drawer base + glass shelves)
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'rx', x: -7.0 + i * 1.3, z: -8.77, rot: 0, levels: 4, height: 2.2, width: 1.3, base: 0.95, glass: true });
+    // left wall: syrups & tonics (facing +x)
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'syrups', x: -7.77, z: -2.1 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'tonics', x: -7.77, z: 1.5 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
+    // right wall: skin care & baby care (facing -x)
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'skincare', x: 7.77, z: -2.7 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1 });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'babycare', x: 7.77, z: 0.9 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1 });
+    // gondola A (x=-3.4): west vitamins, east first aid ; gondola B (x=3.4): west OTC, east devices
+    for (let i = 0; i < 3; i++) {
+      const z = -0.0 + i * 1.2;
+      shelfDefs.push({ section: 'vitamins', x: -3.62, z, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+      shelfDefs.push({ section: 'firstaid', x: -3.18, z, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+      shelfDefs.push({ section: 'otc', x: 3.18, z, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+      shelfDefs.push({ section: 'devices', x: 3.62, z, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+    }
+    // expansion wing: personal care wall + wellness gondola
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'personal', x: 7.77, z: 6.0 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1, zone: 'expansion' });
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'personal', x: 4.6, z: 6.3 + i * 1.2, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true, zone: 'expansion' });
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'devices', x: 4.16, z: 6.3 + i * 1.2, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true, zone: 'expansion' });
+  } else {
+    // pharmacist room wall behind the counter: Rx cabinets + tablets
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'rx', x: 2.1 + i * 1.3, z: -3.12, rot: 0, levels: 4, height: 2.2, width: 1.3, base: 0.95, glass: true });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'tablets', x: 4.7 + i * 1.2, z: -3.12, rot: 0, levels: 6, height: 2.2 });
+    // long side wall: syrups & tonics ; wall behind the cash counter: skin care ; front return wall: baby care
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'syrups', x: -7.77, z: 0.3 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'tonics', x: -7.77, z: 3.9 + i * 1.2, rot: Math.PI / 2, levels: 5, height: 2.1 });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'skincare', x: 7.77, z: 0.6 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1 });
+    for (let i = 0; i < 3; i++) shelfDefs.push({ section: 'babycare', x: 3.0 + i * 1.2, z: 4.72, rot: Math.PI, levels: 5, height: 2.1 });
+    // vitamin cabinet on the office wall
+    for (let i = 0; i < 4; i++) shelfDefs.push({ section: 'vitamins', x: -5.6 + i * 1.2, z: -1.02, rot: 0, levels: 5, height: 2.1 });
+    // free-standing gondolas: centre x, first unit z, units, west-face section, east-face section
+    const gondola = (x, z0, n, west, east) => {
+      for (let i = 0; i < n; i++) {
+        shelfDefs.push({ section: west, x: x - 0.22, z: z0 + i * 1.2, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+        shelfDefs.push({ section: east, x: x + 0.22, z: z0 + i * 1.2, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true });
+      }
+    };
+    gondola(5.2, 1.7, 2, 'otc', 'firstaid');      // medicines display
+    gondola(2.9, 1.7, 2, 'devices', 'syrups');
+    gondola(-2.0, 6.2, 1, 'babycare', 'devices'); // groceries display
+    gondola(-4.6, 3.9, 1, 'firstaid', 'otc');
+    gondola(-4.6, 5.9, 2, 'vitamins', 'tonics');
+    // expansion: personal care by the entrance
+    for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'personal', x: 1.72, z: 6.0 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1, zone: 'expansion' });
   }
-  // expansion wing: personal care wall + wellness gondola
-  for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'personal', x: 7.77, z: 6.0 + i * 1.2, rot: -Math.PI / 2, levels: 5, height: 2.1, zone: 'expansion' });
-  for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'personal', x: 4.6, z: 6.3 + i * 1.2, rot: Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true, zone: 'expansion' });
-  for (let i = 0; i < 2; i++) shelfDefs.push({ section: 'devices', x: 4.16, z: 6.3 + i * 1.2, rot: -Math.PI / 2, levels: 4, height: 1.6, depth: 0.4, gondola: true, zone: 'expansion' });
 
   // ── Shared product rendering resources ──
   const atlas = TX.productAtlas(quality === 'high' || quality === 'ultra');
@@ -397,8 +446,9 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     // back panel, kick and header sit between the 25 mm side panels (ends buried 10 mm inside them):
     // flush with the panels' outer faces they z-fought, flickering dark wedges along the unit edges
     const inner = w - 0.03;
+    const sideC = L2 && !def.gondola ? C.green : C.shelf; // Medical 2: green wall cabinets
     add('matte', inner, h, 0.02, 0, 0, -d / 2 + 0.01, def.glass ? 0xdfe6e4 : C.shelfBack);
-    add('gloss', 0.025, h, d, -w / 2 + 0.0125, 0, 0, C.shelf); add('gloss', 0.025, h, d, w / 2 - 0.0125, 0, 0, C.shelf);
+    add('gloss', 0.025, h, d, -w / 2 + 0.0125, 0, 0, sideC); add('gloss', 0.025, h, d, w / 2 - 0.0125, 0, 0, sideC);
     add('matte', inner, 0.1, d - 0.02, 0, 0, 0.0, C.kick);
     const base = def.base || 0.1;
     if (def.base) {
@@ -416,7 +466,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     }
     // header
     add('matte', inner, 0.16, 0.03, 0, h - 0.16, d / 2 - 0.02, sc.getHex());
-    add('gloss', w, 0.03, d, 0, h, 0, C.shelf);
+    add('gloss', w, 0.03, d, 0, h, 0, sideC);
     if (def.glass) { const gp = new THREE.PlaneGeometry(w - 0.06, h - base - 0.2); gp.translate(0, base + (h - base - 0.2) / 2, d / 2 + 0.005); gp.applyMatrix4(m); const gm = new THREE.Mesh(gp, M.glass); gm.matrixAutoUpdate = false; root.add(gm); }
 
     // collider (world AABB)
@@ -504,16 +554,26 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     return m;
   };
 
-  sectionSign('tablets', 0, 2.44, -8.62, 0, 2.0, 0.44);
-  sectionSign('rx', -6.35, 2.44, -8.62, 0, 1.8, 0.42);
-  sectionSign('syrups', -7.56, 2.38, -0.9, Math.PI / 2, 1.6, 0.38);
-  sectionSign('tonics', -7.56, 2.38, 2.7, Math.PI / 2, 1.6, 0.38);
-  sectionSign('skincare', 7.56, 2.38, -1.5, -Math.PI / 2, 1.6, 0.38);
-  sectionSign('babycare', 7.56, 2.38, 2.1, -Math.PI / 2, 1.6, 0.38);
+  if (!L2) {
+    sectionSign('tablets', 0, 2.44, -8.62, 0, 2.0, 0.44);
+    sectionSign('rx', -6.35, 2.44, -8.62, 0, 1.8, 0.42);
+    sectionSign('syrups', -7.56, 2.38, -0.9, Math.PI / 2, 1.6, 0.38);
+    sectionSign('tonics', -7.56, 2.38, 2.7, Math.PI / 2, 1.6, 0.38);
+    sectionSign('skincare', 7.56, 2.38, -1.5, -Math.PI / 2, 1.6, 0.38);
+    sectionSign('babycare', 7.56, 2.38, 2.1, -Math.PI / 2, 1.6, 0.38);
+  } else {
+    sectionSign('tablets', 5.9, 2.44, -2.97, 0, 2.0, 0.44);
+    sectionSign('rx', 2.75, 2.44, -2.97, 0, 1.8, 0.42);
+    sectionSign('syrups', -7.56, 2.38, 1.5, Math.PI / 2, 1.6, 0.38);
+    sectionSign('tonics', -7.56, 2.38, 5.1, Math.PI / 2, 1.6, 0.38);
+    sectionSign('skincare', 7.56, 2.38, 1.8, -Math.PI / 2, 1.6, 0.38);
+    sectionSign('babycare', 4.2, 2.38, 4.51, Math.PI, 1.6, 0.38);
+    sectionSign('vitamins', -3.8, 2.38, -0.81, 0, 1.6, 0.38);
+  }
 
   // Hanging Gondola Aisle Lightboxes (Double Sided with Chrome Rods & Mounting Plates)
-  for (const [k1, k2, x] of [['vitamins', 'firstaid', -3.4], ['otc', 'devices', 3.4]]) {
-    const sw = 1.85, sh = 0.44, cy = 2.42, cz = 1.2, top = cy + sh / 2;
+  for (const [k1, k2, x] of L2 ? [['otc', 'firstaid', 5.2], ['devices', 'syrups', 2.9]] : [['vitamins', 'firstaid', -3.4], ['otc', 'devices', 3.4]]) {
+    const sw = 1.85, sh = 0.44, cy = 2.42, cz = L2 ? 2.3 : 1.2, top = cy + sh / 2;
     // Sleek dark architectural frame casing
     box('matte', 0.06, sh + 0.04, sw + 0.05, x, cy - sh / 2 - 0.02, cz, 0x1e293b);
     // Chrome ceiling drop suspension cables with ceiling escutcheons
@@ -529,15 +589,15 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
 
   // ── Main Store Header: PHARMACY Architectural Marquee ──
   {
-    const pw = 4.4, ph = 0.95, py = 2.95, pz = -8.72;
+    const pw = 4.4, ph = 0.95, py = 2.95, px = L2 ? 4.55 : 0, pz = L2 ? -3.3 : -8.72;
     // Backlit architectural panel with metallic trim
-    box('matte', pw + 0.08, ph + 0.06, 0.06, 0, py - ph / 2, pz, 0x072822);
+    box('matte', pw + 0.08, ph + 0.06, 0.06, px, py - ph / 2, pz, 0x072822);
     // Accent illumination strips top & bottom
-    box('glow', pw, 0.025, 0.03, 0, py + ph / 2 + 0.012, pz + 0.02, 0x10b981);
-    box('glow', pw, 0.025, 0.03, 0, py - ph / 2 - 0.012, pz + 0.02, 0x10b981);
+    box('glow', pw, 0.025, 0.03, px, py + ph / 2 + 0.012, pz + 0.02, 0x10b981);
+    box('glow', pw, 0.025, 0.03, px, py - ph / 2 - 0.012, pz + 0.02, 0x10b981);
     // Ultra-HD Marquee Face
     const marqueeMat = lsign(() => TX.pharmacyMarqueeTexture());
-    plane(marqueeMat, pw, ph, 0, py, pz + 0.034, 0);
+    plane(marqueeMat, pw, ph, px, py, pz + 0.034, 0);
   }
 
   // ── Overhead Department Lightboxes (Prescriptions, Consultation, Cashier) ──
@@ -557,21 +617,28 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
       plane(mat, w, dh, x, dy, z - 0.028, Math.PI);
     };
 
-    makeDeptSign('w.prescriptions', 'MEDICINE DISPENSARY', 'rx', '#0284c7', -4.8, -3.8, 1.9);
-    makeDeptSign('w.consultation', 'CLINICAL ADVICE & CARE', 'shield', '#0f8a7e', -1.2, -3.8, 1.8);
-    makeDeptSign('w.payHere', 'BILLING & CHECKOUT', 'heart', '#4338ca', posX, -3.8, 1.6);
+    makeDeptSign('w.prescriptions', 'MEDICINE DISPENSARY', 'rx', '#0284c7', L2 ? 3.4 : -4.8, cz, L2 ? 1.7 : 1.9);
+    makeDeptSign('w.consultation', 'CLINICAL ADVICE & CARE', 'shield', '#0f8a7e', L2 ? 5.15 : -1.2, cz, L2 ? 1.7 : 1.8);
+    makeDeptSign('w.payHere', 'BILLING & CHECKOUT', 'heart', '#4338ca', posX, cz, 1.6);
   }
   // exterior sign above door (seen from outside & through glass)
   { const mk = S('w.storeName', { w: 1024, h: 160, bg: '#0f8a7e', fg: '#fff', cross: true, align: 'center', size: 0.5 }); const mat = lsign(mk); plane(mat, 4.8, 0.75, 0, 2.95, 9.08, 0); plane(mat, 4.8, 0.75, 0, 2.95, 9.02, Math.PI); }
   // posters
-  plane(lmat(() => TX.posterTexture('hands')), 0.6, 0.84, -7.98, 1.6, 6.6, Math.PI / 2);
-  plane(lmat(() => TX.posterTexture('ask')), 0.6, 0.84, 7.98, 1.6, -4.0, -Math.PI / 2);
-  plane(lmat(() => TX.posterTexture('bp')), 0.6, 0.84, -7.98, 1.6, 4.9, Math.PI / 2);
-  plane(lmat(() => TX.posterTexture('abx')), 0.6, 0.84, 7.98, 1.6, 4.6, -Math.PI / 2);
+  if (!L2) {
+    plane(lmat(() => TX.posterTexture('hands')), 0.6, 0.84, -7.98, 1.6, 6.6, Math.PI / 2);
+    plane(lmat(() => TX.posterTexture('ask')), 0.6, 0.84, 7.98, 1.6, -4.0, -Math.PI / 2);
+    plane(lmat(() => TX.posterTexture('bp')), 0.6, 0.84, -7.98, 1.6, 4.9, Math.PI / 2);
+    plane(lmat(() => TX.posterTexture('abx')), 0.6, 0.84, 7.98, 1.6, 4.6, -Math.PI / 2);
+  } else {
+    plane(lmat(() => TX.posterTexture('hands')), 0.6, 0.84, -6.0, 1.6, -4.73, 0);
+    plane(lmat(() => TX.posterTexture('bp')), 0.6, 0.84, -4.8, 1.6, -4.73, 0);
+    plane(lmat(() => TX.posterTexture('abx')), 0.6, 0.84, -0.37, 1.6, -2.4, -Math.PI / 2);
+    plane(lmat(() => TX.posterTexture('ask')), 0.6, 0.84, 7.98, 1.6, -2.4, -Math.PI / 2);
+  }
 
-  // ── Refrigerator (behind counter, left wall) ──
+  // ── Refrigerator (behind counter, left wall; Medical 2: free-standing in the middle of the store) ──
+  const fx = L2 ? 0.5 : -7.55, fz = L2 ? 2.3 : -5.1;
   {
-    const fx = -7.55, fz = -5.1;
     box('gloss', 0.8, 2.0, 0.95, fx, 0, fz, C.fridge);
     box('matte', 0.02, 1.55, 0.78, fx + 0.41, 0.25, fz, 0x9aa4a8);     // inner back (seen through glass)
     for (let i = 0; i < 4; i++) box('gloss', 0.02, 0.02, 0.8, fx + 0.4, 0.4 + i * 0.38, fz, 0xdddddd);
@@ -593,9 +660,9 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     shelfInteract('fridge', tp('it.fridge'), new THREE.Vector3(fx, 1, fz), W.points.fridgeStand, -Math.PI / 2, 'fridge');
   }
 
-  // ── Pharmacist workstation (left wall) ──
+  // ── Pharmacist workstation (left wall; Medical 2: the office desk) ──
+  const dx = -7.55, dz = L2 ? -3.3 : -7.2;
   {
-    const dx = -7.55, dz = -7.2;
     box('wood', 0.8, 0.04, 1.8, dx, 0.74, dz, 0xffffff);
     box('matte', 0.76, 0.72, 0.04, dx, 0.02, dz - 0.86, C.white); box('matte', 0.76, 0.72, 0.04, dx, 0.02, dz + 0.86, C.white);
     box('gloss', 0.05, 0.36, 0.56, dx - 0.18, 0.95, dz, C.dark); box('metal', 0.1, 0.17, 0.1, dx - 0.18, 0.78, dz, C.dark);
@@ -669,32 +736,42 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   // ── Waiting area: chairs, side table, plant, BP kiosk ──
   W.points.waitSeats = [];
   {
-    const seatZ = 7.7;
-    for (let i = 0; i < 4; i++) {
-      const x = -7.1 + i * 0.75;
-      box('metal', 0.04, 0.42, 0.04, x - 0.22, 0, seatZ - 0.2, C.steel); box('metal', 0.04, 0.42, 0.04, x + 0.22, 0, seatZ - 0.2, C.steel);
-      box('metal', 0.04, 0.42, 0.04, x - 0.22, 0, seatZ + 0.2, C.steel); box('metal', 0.04, 0.42, 0.04, x + 0.22, 0, seatZ + 0.2, C.steel);
-      box('matte', 0.52, 0.07, 0.5, x, 0.42, seatZ, C.chair);
-      box('matte', 0.52, 0.48, 0.06, x, 0.48, seatZ + 0.24, C.chair);
-      W.points.waitSeats.push({ pos: new THREE.Vector3(x, 0, seatZ - 0.08), heading: Math.PI, taken: null });
+    if (!L2) {
+      const seatZ = 7.7;
+      for (let i = 0; i < 4; i++) {
+        const x = -7.1 + i * 0.75;
+        box('metal', 0.04, 0.42, 0.04, x - 0.22, 0, seatZ - 0.2, C.steel); box('metal', 0.04, 0.42, 0.04, x + 0.22, 0, seatZ - 0.2, C.steel);
+        box('metal', 0.04, 0.42, 0.04, x - 0.22, 0, seatZ + 0.2, C.steel); box('metal', 0.04, 0.42, 0.04, x + 0.22, 0, seatZ + 0.2, C.steel);
+        box('matte', 0.52, 0.07, 0.5, x, 0.42, seatZ, C.chair);
+        box('matte', 0.52, 0.48, 0.06, x, 0.48, seatZ + 0.24, C.chair);
+        W.points.waitSeats.push({ pos: new THREE.Vector3(x, 0, seatZ - 0.08), heading: Math.PI, taken: null });
+      }
+      col(-7.45, -4.65, seatZ - 0.28, seatZ + 0.3, 0.95);
+      box('wood', 0.5, 0.04, 0.5, -4.15, 0.5, 7.7, 0xffffff); cyl('metal', 0.03, 0.03, 0.5, -4.15, 0, 7.7, C.steel, 8);
+      box('matte', 0.22, 0.015, 0.3, -4.2, 0.54, 7.68, 0xe8d9b5); box('matte', 0.2, 0.012, 0.28, -4.1, 0.555, 7.74, 0x9fc9e0);
+      col(-4.42, -3.88, 7.43, 7.97, 0.6);
+    } else {
+      // four stools in front of the glass counter
+      [-4.6, -3.7, -2.8, -1.9].forEach((x, i) => {
+        box('matte', 0.42, 0.06, 0.42, x, 0, 2.8, C.kick); box('matte', 0.44, 0.42, 0.44, x, 0.05, 2.8, i % 2 ? C.green : C.lime);
+        W.points.waitSeats.push({ pos: new THREE.Vector3(x, 0, 2.74), heading: Math.PI, taken: null });
+      });
+      col(-4.85, -1.65, 2.56, 3.04, 0.5);
     }
-    col(-7.45, -4.65, seatZ - 0.28, seatZ + 0.3, 0.95);
-    box('wood', 0.5, 0.04, 0.5, -4.15, 0.5, 7.7, 0xffffff); cyl('metal', 0.03, 0.03, 0.5, -4.15, 0, 7.7, C.steel, 8);
-    box('matte', 0.22, 0.015, 0.3, -4.2, 0.54, 7.68, 0xe8d9b5); box('matte', 0.2, 0.012, 0.28, -4.1, 0.555, 7.74, 0x9fc9e0);
-    col(-4.42, -3.88, 7.43, 7.97, 0.6);
     // plants
-    for (const [px, pz] of [[-7.5, 8.55], [7.4, -3.95], [-3.4, 4.3]]) {
+    for (const [px, pz] of L2 ? [[-7.5, 8.55], [1.62, 8.55], [-0.8, -4.3]] : [[-7.5, 8.55], [7.4, -3.95], [-3.4, 4.3]]) {
       cyl('matte', 0.2, 0.16, 0.45, px, 0, pz, C.pot, 14);
       for (let k = 0; k < 5; k++) { const g = new THREE.IcosahedronGeometry(0.2 + rnd() * 0.08, 1); g.translate(px + (rnd() - 0.5) * 0.2, 0.7 + rnd() * 0.5, pz + (rnd() - 0.5) * 0.2); batch.add('matte', g, k % 2 ? C.plant : 0x357a40); }
       col(px - 0.25, px + 0.25, pz - 0.25, pz + 0.25, 1.4);
     }
     // waiting sign
     const wtMat = lsign(S('w.waiting', { w: 512, h: 96, bg: '#ffffff', fg: '#1d2b2a', size: 0.42, radius: 16 }), { transparent: true });
-    plane(wtMat, 1.3, 0.24, -7.97, 2.2, 7.0, Math.PI / 2);
+    plane(wtMat, 1.3, 0.24, -7.97, L2 ? 2.5 : 2.2, L2 ? 7.9 : 7.0, Math.PI / 2);
     // BP self-check kiosk
-    box('gloss', 0.6, 1.1, 0.55, -7.55, 0, 5.4, 0xffffff); box('matte', 0.6, 0.06, 0.55, -7.55, 1.1, 5.4, C.accent);
-    box('gloss', 0.3, 0.22, 0.04, -7.3, 1.2, 5.4, C.dark);
-    col(-7.9, -7.2, 5.1, 5.7, 1.3);
+    const kz = L2 ? 7.8 : 5.4;
+    box('gloss', 0.6, 1.1, 0.55, -7.55, 0, kz, 0xffffff); box('matte', 0.6, 0.06, 0.55, -7.55, 1.1, kz, C.accent);
+    box('gloss', 0.3, 0.22, 0.04, -7.3, 1.2, kz, C.dark);
+    col(-7.9, -7.2, kz - 0.3, kz + 0.3, 1.3);
   }
   // clock
   {
@@ -707,7 +784,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   }
   // certificate plaque (hidden until certified)
   {
-    const m = plane(lmat(() => TX.certificateTexture()), 0.62, 0.45, 3.4, 2.75, -8.97, 0);
+    const m = plane(lmat(() => TX.certificateTexture()), 0.62, 0.45, L2 ? 0.65 : 3.4, 2.75, L2 ? -3.33 : -8.97, 0);
     m.visible = false; W.certificate = m;
   }
   // expansion hoarding (temporary wall)
@@ -740,6 +817,38 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     (W.zones.expansion ||= new THREE.Group()).add(em);
   }
 
+  // ── Medical 2 fixtures: glass counter, round table, window display, office ──
+  if (L2) {
+    // glass display counter (white base, glass case with stock inside)
+    box('matte', 4.4, 0.08, 0.52, -3.4, 0, 0.8, C.kick); box('gloss', 4.4, 0.62, 0.6, -3.4, 0.08, 0.8, C.white);
+    box('gloss', 4.44, 0.03, 0.64, -3.4, 0.7, 0.8, C.quartz); box('gloss', 4.44, 0.03, 0.64, -3.4, 1.05, 0.8, C.quartz);
+    for (let i = 0; i < 16; i++) box('matte', 0.14 + rnd() * 0.08, 0.1 + rnd() * 0.14, 0.12, -5.4 + i * 0.268, 0.73, 0.72 + rnd() * 0.16, [0xffffff, 0x9fd8cf, 0xf3d27a, 0x8fb8e8, 0xf2a3a3][i % 5]);
+    for (const x of [-5.58, -4.13, -2.67, -1.22]) for (const z of [0.52, 1.08]) box('metal', 0.03, 0.32, 0.03, x, 0.73, z, C.steel);
+    { const g = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.32, 0.6), M.glass); g.position.set(-3.4, 0.89, 0.8); g.matrixAutoUpdate = false; g.updateMatrix(); root.add(g); }
+    col(-5.62, -1.18, 0.48, 1.12, 1.1, { counter: true });
+    // round display table
+    cyl('gloss', 0.62, 0.62, 0.05, -2.0, 0.74, 4.1, C.white, 28); cyl('gloss', 0.16, 0.3, 0.74, -2.0, 0, 4.1, C.white, 16);
+    cyl('gloss', 0.26, 0.26, 0.16, -2.0, 0.79, 4.1, C.quartz, 20);
+    for (let i = 0; i < 9; i++) { const a = i / 9 * Math.PI * 2; box('matte', 0.11, 0.13 + (i % 3) * 0.03, 0.08, -2.0 + Math.cos(a) * 0.43, 0.79, 4.1 + Math.sin(a) * 0.43, [C.green, 0xf3d27a, 0x8fb8e8, 0xf2a3a3, 0xffffff][i % 5], -a); }
+    col(-2.6, -1.4, 3.5, 4.7, 0.9);
+    // window display cabinet under the shop window
+    box('matte', 4.8, 0.08, 0.36, -3.9, 0, 8.65, C.kick); box('gloss', 4.8, 0.7, 0.42, -3.9, 0.08, 8.65, C.green); box('gloss', 4.86, 0.04, 0.48, -3.9, 0.78, 8.65, C.white);
+    for (let i = 0; i < 14; i++) box('matte', 0.16 + rnd() * 0.1, 0.16 + rnd() * 0.2, 0.14, -6.1 + i * 0.34, 0.82, 8.65, [0xffffff, 0x9fd8cf, 0xf3d27a, 0x8fb8e8, 0xf2a3a3][i % 5]);
+    col(-6.32, -1.48, 8.42, 8.9, 1.2);
+    // office: sofa, coffee table, two armchairs
+    box('matte', 2.0, 0.4, 0.8, -3.2, 0.05, -4.3, C.chair); box('matte', 2.0, 0.42, 0.18, -3.2, 0.45, -4.61, C.chair);
+    box('matte', 0.16, 0.24, 0.8, -4.12, 0.45, -4.3, C.chair); box('matte', 0.16, 0.24, 0.8, -2.28, 0.45, -4.3, C.chair);
+    col(-4.22, -2.18, -4.72, -3.88, 0.9);
+    cyl('gloss', 0.42, 0.42, 0.04, -3.2, 0.42, -3.0, C.white, 24); cyl('metal', 0.04, 0.2, 0.42, -3.2, 0, -3.0, C.steel, 10);
+    col(-3.6, -2.8, -3.4, -2.6, 0.5);
+    for (const [x, sx] of [[-4.5, -1], [-1.9, 1]]) {
+      box('matte', 0.56, 0.4, 0.56, x, 0.05, -3.0, C.dark); box('matte', 0.1, 0.42, 0.56, x + sx * 0.28, 0.45, -3.0, C.dark);
+      col(x - 0.34, x + 0.34, -3.3, -2.7, 0.9);
+    }
+    accentStrip(-6.5, -1.235, -0.3, -1.235, 2.38, 0.06, C.accent);
+    accentStrip(1.3, -3.335, 8, -3.335, 2.38, 0.06, C.accent); accentStrip(1.935, 5, 1.935, 9, 2.38, 0.06, C.accent); accentStrip(2, 4.935, 8, 4.935, 2.38, 0.06, C.accent);
+  }
+
   // ── Interactable registration for shelf groups ──
   function shelfInteract(id, label, pos, stand, heading, section, zone) {
     W.interactables.push({ id, type: id === 'fridge' ? 'fridge' : id === 'storage' ? 'storage' : id === 'workstation' ? 'workstation' : 'shelf', label, pos, stand, heading, section, zone, radius: 1.6 });
@@ -756,25 +865,31 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     const stand = c.clone().addScaledVector(front, 0.95); stand.y = 0;
     const sec = list[0].section;
     // behind-counter shelves: stand closer
-    if (sec === 'tablets' || sec === 'rx') { stand.z = -7.7; }
+    if ((sec === 'tablets' || sec === 'rx') && !list[0].def.gondola) { stand.z = L2 ? -2.05 : -7.7; }
     const heading = Math.atan2(-front.x, -front.z);
     const it = { id: 'shelf_' + key, type: 'shelf', label: SECTIONS[sec].name, pos: c, stand, heading, section: sec, shelves: list, zone: list[0].zone, radius: 2.0 };
     W.interactables.push(it);
     list.forEach((s) => { s.interact = it; });
   }
   // counter & POS
-  W.points.service = new THREE.Vector3(-1.2, 0, -2.85);
-  W.points.pharmService = new THREE.Vector3(-1.2, 0, -4.75);
-  W.points.posCustomer = new THREE.Vector3(posX, 0, -2.85);
-  W.points.posPharm = new THREE.Vector3(posX, 0, -4.75);
-  W.interactables.push({ id: 'counter', type: 'counter', label: 'Go to counter', pos: new THREE.Vector3(-1.2, 1, -3.8), stand: W.points.pharmService, heading: 0, radius: 1.6 });
-  W.interactables.push({ id: 'pos', type: 'pos', label: 'Use POS terminal', pos: new THREE.Vector3(posX, 1.2, -3.9), stand: W.points.posPharm, heading: 0, radius: 1.5 });
+  const svcX = L2 ? 4.9 : -1.2;
+  W.points.service = new THREE.Vector3(svcX, 0, counter.z1 + 0.55);
+  W.points.pharmService = new THREE.Vector3(svcX, 0, counter.z0 - 0.55);
+  W.points.posCustomer = new THREE.Vector3(posX, 0, counter.z1 + 0.55);
+  W.points.posPharm = new THREE.Vector3(posX, 0, counter.z0 - 0.55);
+  W.interactables.push({ id: 'counter', type: 'counter', label: 'Go to counter', pos: new THREE.Vector3(svcX, 1, cz), stand: W.points.pharmService, heading: 0, radius: 1.6 });
+  W.interactables.push({ id: 'pos', type: 'pos', label: 'Use POS terminal', pos: new THREE.Vector3(posX, 1.2, cz - 0.1), stand: W.points.posPharm, heading: 0, radius: 1.5 });
   W.points.doorOutside = new THREE.Vector3(0, 0, 12.0);
   W.points.doorInside = new THREE.Vector3(0, 0, 8.0);
   W.points.entry = new THREE.Vector3(0, 0, 6.5);
-  W.points.queue = [new THREE.Vector3(-1.2, 0, -1.7), new THREE.Vector3(-1.2, 0, -0.7), new THREE.Vector3(-0.6, 0, 0.4), new THREE.Vector3(0.2, 0, 1.4)];
-  W.points.playerStart = new THREE.Vector3(-1.2, 0, -5.6);
-  W.points.inspectorWait = new THREE.Vector3(0.0, 0, -2.85);
+  W.points.queue = L2
+    ? [new THREE.Vector3(3.7, 0, 0.3), new THREE.Vector3(2.6, 0, 0.3), new THREE.Vector3(1.5, 0, 0.3), new THREE.Vector3(0.9, 0, 1.2)]
+    : [new THREE.Vector3(-1.2, 0, -1.7), new THREE.Vector3(-1.2, 0, -0.7), new THREE.Vector3(-0.6, 0, 0.4), new THREE.Vector3(0.2, 0, 1.4)];
+  W.points.playerStart = new THREE.Vector3(svcX, 0, counter.z0 - (L2 ? 0.9 : 1.4));
+  W.points.inspectorWait = new THREE.Vector3(L2 ? 3.6 : 0.0, 0, counter.z1 + 0.55);
+  // the inspector's walk from the door to the counter, and the lobby camera's slow orbit
+  W.points.inspectorPath = L2 ? [new THREE.Vector3(-0.5, 0, 3.2), new THREE.Vector3(-0.5, 0, -0.1)] : [new THREE.Vector3(-0.2, 0, 3.0), new THREE.Vector3(-1.0, 0, -1.2)];
+  W.points.title = L2 ? { cx: -2.9, cz: 5.4, rx: 1.7, rz: 1.5, look: new THREE.Vector3(3.2, 1.2, -1.2) } : { cx: 1.5, cz: 4.5, rx: 4.5, rz: 2.2, look: new THREE.Vector3(-0.8, 1.2, -4) };
 
   // Hit boxes for tap raycasts
   for (const s of W.shelves) {
@@ -782,11 +897,11 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     W.hitBoxes.push({ box: new THREE.Box3(new THREE.Vector3(c.minX, 0, c.minZ), new THREE.Vector3(c.maxX, c.maxY, c.maxZ)), ref: s.interact, zone: s.zone });
   }
   const addHit = (id, min, max) => W.hitBoxes.push({ box: new THREE.Box3(new THREE.Vector3(...min), new THREE.Vector3(...max)), ref: W.interactables.find((i) => i.id === id) });
-  addHit('fridge', [-7.95, 0, -5.6], [-7.1, 2.0, -4.6]);
-  addHit('pos', [posX - 0.4, 1.0, -4.2], [posX + 0.4, 1.6, -3.5]);
-  addHit('workstation', [-7.95, 0, -8.1], [-7.1, 1.3, -6.3]);
+  addHit('fridge', [fx - 0.4, 0, fz - 0.5], [fx + 0.45, 2.0, fz + 0.5]);
+  addHit('pos', [posX - 0.4, 1.0, cz - 0.4], [posX + 0.4, 1.6, cz + 0.3]);
+  addHit('workstation', [dx - 0.4, 0, dz - 0.9], [dx + 0.45, 1.3, dz + 0.9]);
   addHit('storage', [4.7, 0, -9], [8, 2.6, -4.7]);
-  addHit('counter', [-6, 0, -4.2], [posX - 0.45, 1.05, -3.4]);
+  addHit('counter', [counter.x0, 0, counter.z0], [posX - 0.45, 1.05, counter.z1]);
 
   // ── Build static batches ──
   W.static = batch.build(root, mats);
@@ -817,7 +932,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
   key.castShadow = false;
   const fill = new THREE.DirectionalLight(0xe8f4ff, 0.22); fill.position.set(-4, 6, -6); scene.add(fill);
   W.lights = { hemi, key, fill, base: { hemi: 0.34, key: 1.6, fill: 0.22 } };
-  const spot = new THREE.SpotLight(0xffffff, 0, 9, 0.5, 0.6, 1.2); spot.position.set(-1.2, 3.3, -1.5); spot.target.position.set(-1.2, 0, -3.2); scene.add(spot); scene.add(spot.target);
+  const spot = new THREE.SpotLight(0xffffff, 0, 9, 0.5, 0.6, 1.2); spot.position.set(svcX, 3.3, counter.z1 + 1.9); spot.target.position.set(svcX, 0, counter.z1 + 0.2); scene.add(spot); scene.add(spot.target);
   W.lights.spot = spot;
 
   // ── Objective marker (floor ring + floating chevron) ──
@@ -918,7 +1033,7 @@ export function buildPharmacy(scene, { quality = 'medium', anisotropy = 4 } = {}
     for (const s of W.shelves) if (s.hl.visible) s.hl.material.opacity = 0.1 + Math.sin(t * 3.5) * 0.05;
     // zone culling: storage room contents only when camera/player near
     if (camPos) {
-      const inStorageView = camPos.z < -3.0;
+      const inStorageView = camPos.z < (L2 ? 1.0 : -3.0);
       if (W.zones.storage) W.zones.storage.visible = inStorageView;
     }
   };

@@ -7,7 +7,7 @@ import { RealHumans, Rocketbox } from './world/character.js';
 import { Game } from './game.js';
 import { UI } from './ui/ui.js';
 import { AudioSys } from './core/audio.js';
-import { loadGame, loadSettings, newGameState } from './core/state.js';
+import { loadGame, loadSettings, saveSettings, newGameState } from './core/state.js';
 import { nextFrame, fullscreenLandscape } from './core/util.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
@@ -37,7 +37,7 @@ THREE.ShaderChunk.tonemapping_pars_fragment = THREE.ShaderChunk.tonemapping_pars
     return pow( c, vec3( 1.07 ) );
   }`);
 
-async function boot(overrideLang) {
+async function boot(overrideLang, overrideLayout) {
   const setL = (p, t) => { const b = document.getElementById('lbar'); const s = document.getElementById('lstep'); if (b) b.style.width = Math.round(p * 100) + '%'; if (s && t) s.textContent = t; };
   setL(0.04, 'Preparing renderer…');
   const canvas = document.getElementById('gl');
@@ -56,6 +56,8 @@ async function boot(overrideLang) {
   renderer.setSize(window.innerWidth, window.innerHeight, false);
   const settings = await loadSettings();
   if (overrideLang && !settings.lang) settings.lang = overrideLang;
+  // which pharmacy to build: 1 = the original, 2 = "Medical 2" (picked on the home page or the game's home screen)
+  if (overrideLayout && settings.layout !== overrideLayout) { settings.layout = overrideLayout; saveSettings(settings); }
   const saved = await loadGame();
   const state = saved || newGameState();
   // loading messages in the player's language (once it is known)
@@ -80,7 +82,7 @@ async function boot(overrideLang) {
   await nextFrame();
   setL(0.3, L('Building shelves, counters and signage…', 'அலமாரிகள், கவுண்டர், அறிவிப்புப் பலகைகள் அமைக்கப்படுகின்றன…'));
   const desktop = window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
-  const world = buildPharmacy(scene, { quality: settings.quality, anisotropy: Math.min(desktop ? 16 : 8, renderer.capabilities.getMaxAnisotropy()) });
+  const world = buildPharmacy(scene, { quality: settings.quality, layout: settings.layout === 2 ? 2 : 1, anisotropy: Math.min(desktop ? 16 : 8, renderer.capabilities.getMaxAnisotropy()) });
   await nextFrame();
   // Reflection probe: capture the finished pharmacy itself (shelves, counter, light panels) as the
   // environment, so the glossy floor and fittings reflect the real room (box-projected in pharmacy.js).
@@ -325,7 +327,7 @@ function initApp() {
   }
 
   let booted = false;
-  function startSimulation() {
+  function startSimulation(layout) {
     if (booted) return;
     booted = true;
     trailer?.pause();
@@ -333,14 +335,20 @@ function initApp() {
     const selectedLang = root.lang || 'en';
     setTimeout(() => {
       landing.classList.add('hidden');
-      boot(selectedLang);
+      boot(selectedLang, layout);
     }, 240);
   }
 
   playBtn?.addEventListener('click', (e) => {
     e.preventDefault();
     if (ANDROID_WEB) fullscreenLandscape(); // (needs this tap: browsers only allow full screen from one)
-    startSimulation();
+    startSimulation(1);
+  });
+  // "Medical 2": the same game in the second pharmacy layout
+  document.getElementById('play-medical2-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (ANDROID_WEB) fullscreenLandscape();
+    startSimulation(2);
   });
 }
 

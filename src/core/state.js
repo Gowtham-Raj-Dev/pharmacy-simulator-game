@@ -29,6 +29,7 @@ export const DEFAULT_SETTINGS = {
   guided: true,             // mentor tips
   adaptiveRes: true,        // lower resolution automatically when FPS drops
   realHumans: true,         // realistic generated people (off = lightweight stylised people)
+  layout: 1,                // pharmacy layout: 1 = the original, 2 = "Medical 2"
 };
 
 export function newGameState() {

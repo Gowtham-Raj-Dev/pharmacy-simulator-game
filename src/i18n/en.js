@@ -18,6 +18,7 @@ export const EN = {
   'title.subtitle': 'Pharmacy Training Simulator', 'title.tagline': 'Serve customers safely, learn every medicine, and pass the 20/20 inspection.',
   'title.continue': 'Continue', 'title.newGame': 'New game', 'title.start': 'Start first shift', 'title.newConfirm': 'Start a new game?',
   'title.newConfirmText': 'Your current progress will be replaced.', 'title.startNew': 'Start new', 'title.fullscreen': 'Full screen',
+  'title.medical2': 'Medical 2', 'title.medical1': 'Medical 1', 'title.layoutNow1': 'Now: Medical 1', 'title.layoutNow2': 'Now: Medical 2',
   'title.foot': 'Hospital pharmacy training simulation with real medicine brands. Not medical advice. Always follow a qualified pharmacist or doctor.',
   'notice.title': 'Before you start', 'notice.eyebrow': 'Medical education notice', 'notice.b1': 'RxShift is an educational simulation.',
   'notice.p1': 'It uses curated, predefined teaching scenarios and the real medicine brands stocked in a hospital pharmacy. It does not diagnose or prescribe, and it is not a substitute for professional advice.',

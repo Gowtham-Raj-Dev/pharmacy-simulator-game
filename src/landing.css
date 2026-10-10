@@ -156,3 +156,6 @@ html:not([lang="en"]) #landing [data-l="en"], html:not([lang="ta"]) #landing [da
   #landing .logo h1 { font-size: 22px; }
   #landing .logo p { display: none; }
 }
+
+/* the second play button ("Medical 2") sits right under "Play now" */
+#landing .choice #play-medical2-btn { margin-top: 10px; }

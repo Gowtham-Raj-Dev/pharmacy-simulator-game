@@ -95,7 +95,15 @@ export class Game {
     this.ui.showTitle({ hasSave, onContinue: () => this.startPlay(false), onNew: () => this.newGame() });
   }
   /** The lobby camera: a slow drift across the pharmacy (driven by update() while in title mode). */
-  titleView() { this.rig.setShot(new THREE.Vector3(1.5, 2.3, 6.7), new THREE.Vector3(-0.8, 1.2, -4), { cut: true }); }
+  titleView() { const T = this.world.points.title; this.rig.setShot(new THREE.Vector3(T.cx, 2.3, T.cz + T.rz), T.look, { cut: true }); }
+  /** Home screen: switch between the two pharmacy layouts (1 = the original, 2 = "Medical 2"). The store is built at start-up, so the game reloads. */
+  async setLayout(n) {
+    if ((this.settings.layout || 1) === n) return;
+    this.settings.layout = n;
+    await saveSettings(this.settings);
+    const u = new URL(location.href); u.searchParams.set('game', '1'); // (the website: straight back into the game, not its landing page)
+    location.replace(u.href);
+  }
   newGame() {
     const s = newGameState();
     Object.keys(this.state).forEach((k) => delete this.state[k]);
@@ -149,8 +157,8 @@ export class Game {
     this.time += dt;
     const ui = this.ui, P = this.player;
     if (this.mode === 'title') {
-      const t = this.time * 0.06;
-      this.rig.setShot(new THREE.Vector3(Math.sin(t) * 4.5 + 1.5, 2.3 + Math.sin(t * 0.7) * 0.2, 4.5 + Math.cos(t) * 2.2), new THREE.Vector3(-0.8, 1.2, -4), { speed: 1.5 });
+      const t = this.time * 0.06, T = this.world.points.title;
+      this.rig.setShot(new THREE.Vector3(Math.sin(t) * T.rx + T.cx, 2.3 + Math.sin(t * 0.7) * 0.2, T.cz + Math.cos(t) * T.rz), T.look, { speed: 1.5 });
     }
     const canControl = this.mode === 'play' && !ui.modalOpen;
     this.input.enabled = canControl;
@@ -882,7 +890,7 @@ export class Game {
     const spot = W.points.service;
     ins.group.visible = true; ins.group.position.set(0.3, 0, W.points.doorOutside.z); ins.heading = Math.PI; ins.expression = 'serious';
     ins.setAction('clipboard', 99999);
-    ins.walkPath([W.points.doorInside, new THREE.Vector3(-0.2, 0, 3.0), new THREE.Vector3(-1.0, 0, -1.2), spot], { onArrive: () => { ins.faceTo(Math.PI); } });
+    ins.walkPath([W.points.doorInside, ...W.points.inspectorPath, spot], { onArrive: () => { ins.faceTo(Math.PI); } });
     this.rig.setShot(new THREE.Vector3(1.6, 1.45, 5.2), new THREE.Vector3(0, 1.35, 9.5), { cut: true, speed: 2 });
     this.audio.sfx('chime');
     const finish = () => {
